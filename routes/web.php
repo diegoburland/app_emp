@@ -41,5 +41,12 @@ Route::get('empresa', function () {
 
 
 */
-Route::get('empresa', 'Empresa@index');
+Route::get('empresa', 'Empresa_controller@index');
 
+Route::post('crear_empresa', 'Empresa_controller@store')->name('empresa.store');
+
+Route::get('empresa_new', function () {
+    return view('empresa_new');
+});
+
+Route::get('empresa_list', 'Empresa_controller@list');
