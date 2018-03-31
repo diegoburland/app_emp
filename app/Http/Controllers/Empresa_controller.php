@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+//use Illuminate\Http\RedirectResponse;
 
 use App\Empresa;
 
@@ -27,14 +28,13 @@ class Empresa_controller extends Controller
 		//Empresa::create(array('razon_social' =>$razon_social));
 		//return 'empresa creada';
     	//use App\Empresa::create(array())
-    	return $this->list();
+    	return redirect('empresa_list');
     }
 
     public function list(){
 
     	//$empresas = new Empresa();
     	return view('empresa_list', array('empresas' => Empresa::all()));
-    }
-
+    }    
 
 }

@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
-@section('title', 'Page Title')
+@section('title', 'Empresas')
 
 
 @section('content')
 <h4>Empresas</h4>
 
-<ul class="list-group">
+<div class="list-group">
   @foreach ($empresas as $empresa)
 
-    <li class="list-group-item">{{$empresa->razon_social}}</li>
+    <a class="list-group-item list-group-item-action" href="/empresa_evaluar/{{$empresa->id}}" >{{$empresa->razon_social}}</a>
   @endforeach
-</ul>
+</div>
 
 @endsection
