@@ -5,16 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Evaluacion;
+use App\Item;
+use App\Categoria;
 
 class Evaluacion_controller extends Controller
 {
     public function store(Request $request){
 		
 
-		Evaluacion::create($request->all());
+		$evaluacion = Evaluacion::create($request->all());
 		//Empresa::create(array('razon_social' =>$razon_social));
 		//return 'empresa creada';
     	//use App\Empresa::create(array())
-    	return redirect('empresa_list');
+    	return redirect('continuar_evaluacion/'. $evaluacion->id);
+    	//
+    }
+
+    public function continuar_evaluacion($id){
+
+    	$categorias = Categoria::all();
+    	$items = Item::all();
+    	return view('empresa_evaluar', array('evaluacion_id' => $id, 'categorias' => $categorias, 'items' => $items));
     }
 }

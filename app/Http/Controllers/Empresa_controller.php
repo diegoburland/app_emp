@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Empresa;
 
+
 class Empresa_controller extends Controller
 {
 	//var $empresas;

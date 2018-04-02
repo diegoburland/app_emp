@@ -4,14 +4,119 @@
 
 
 @section('content')
+<style type="text/css">
+.star-rating {
+	line-height:32px;
+	font-size:1.25em;
+}
 
-<form id="form_evaluar_empresa" method="POST" action="/crear_evaluacion">
+.star-rating .fa-star{color: yellow;}
+
+.evalua {
+	width: 200px;
+}
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	
+
+	function evaluar(self, item){
+		console.log($(self).siblings('input.rating-value').val())
+		$(self).siblings('input.rating-value').val($(self).data('rating'));
+		console.log($(self).siblings('input.rating-value').val())
+
+		var $star_rating = $('.star-rating-' + item + ' .fa');
+		$star_rating.each(function() {
+			if (parseInt($($star_rating).siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+		      return $(this).removeClass('fa-star-o').addClass('fa-star');
+		    } else {
+		      return $(this).removeClass('fa-star').addClass('fa-star-o');
+		    }
+	    });
+	}	
+
+</script>
+
+<form id="form_evaluar_empresa" method="POST" >
+	
+	@if(isset($empresa_id))
 	<input type="hidden" name="empresa_id" value="{{$empresa_id}}">
-	<h4>Evaluar Empresa</h4>
-	@method('POST')
-    @csrf
+	@endif
 
-  <div class="form-group row">
+	
+	@method('POST')
+	@csrf
+
+  @if(isset($evaluacion_id))
+  <input type="hidden" name="empresa_id" value="{{$evaluacion_id}}">
+  <h4>Continuar Evaluación</h4>
+  
+
+  	<div class="col col-sm-8">
+  	@foreach ($categorias as $categoria)
+  		<br>
+  		<div class="list-group">
+  			<a class="list-group-item list-group-item-action active">
+				<h5>{{$categoria->nombre}}</h5>    	
+			</a>	
+    	
+    	@foreach ($items as $item)
+
+    		@if($item->categoria_id == $categoria->id)
+    				  
+			  <a class="list-group-item list-group-item-action">{{$item->nombre}}			  	
+			      <div class="star-rating star-rating-{{$item->id}}">
+			        <span class="fa fa-star-o" data-rating="1" onclick="evaluar(this, {{$item->id}})"></span>
+			        <span class="fa fa-star-o" data-rating="2" onclick="evaluar(this, {{$item->id}})"></span>
+			        <span class="fa fa-star-o" data-rating="3" onclick="evaluar(this, {{$item->id}})"></span>
+			        <span class="fa fa-star-o" data-rating="4" onclick="evaluar(this, {{$item->id}})"></span>
+			        <span class="fa fa-star-o" data-rating="5" onclick="evaluar(this, {{$item->id}})"></span>
+			        <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+			      </div>
+			  </a>
+
+			   
+	    	@endif
+	  	
+	  	@endforeach
+
+	  	</div>
+  	@endforeach
+
+  	<br>
+	  	<div class="list-group">
+  			<a href="#" class="list-group-item list-group-item-action active">
+				<h5>Tiempo laboral</h5>    	
+			</a>
+			<a href="#" class="list-group-item list-group-item-action">
+			 	<div class="form-group row">
+			    	<div class="col-sm-8">
+			      		<label for="">Horas trabajadas por mes/semana</label>
+			    	  	<input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="" >
+			  	    </div>
+			  	</div>
+			</a>
+
+			<a href="#" class="list-group-item list-group-item-action">
+				<div class="form-group row">
+			    	<div class="col-sm-8">
+			      		<label for="">Cantidad de asuetos al año</label>
+			    	  	<input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="" >
+			  	    </div>
+			  	</div>
+			</a>
+			<br>
+	  		<button type="submit" class="btn btn-primary">Guardar Evaluación</button>
+
+		</div>  	
+
+  	</div>
+  	
+  @else
+  	<h4>Evaluar Empresa</h4>
+    <div class="form-group row">
     <div class="col-sm-4">
       <label for="">Evalúo mi</label>
       <select name="evalua" class="form-control">
@@ -70,6 +175,11 @@
   </div>
 
   <button type="submit" class="btn btn-primary">Empezar Evaluación</button>
+  @endif
+
+
+
+
 
 </form>
 

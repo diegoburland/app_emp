@@ -42,10 +42,13 @@ Route::get('empresa', function () {
 
 */
 Route::get('empresa', 'Empresa_controller@index');
-
-Route::post('crear_empresa', 'Empresa_controller@store')->name('empresa.store');
+//Route::post('crear_empresa', 'Empresa_controller@store')->name('empresa.store');
+Route::post('crear_empresa', 'Empresa_controller@store');
 
 Route::post('crear_evaluacion', 'Evaluacion_controller@store');
+
+Route::get('continuar_evaluacion/{id}', 'Evaluacion_controller@continuar_evaluacion');
+
 
 Route::get('empresa_new', function () {
     return view('empresa_new');
