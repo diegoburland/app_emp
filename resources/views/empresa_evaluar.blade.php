@@ -35,7 +35,18 @@
 		      return $(this).removeClass('fa-star').addClass('fa-star-o');
 		    }
 	    });
-	}	
+	}
+
+	$(function() {
+  		$('.carousel').carousel({
+	    	interval: false
+		});
+
+		$('#categoria_1').addClass('active');
+	});
+	
+
+	
 
 </script>
 
@@ -50,67 +61,98 @@
 	@csrf
 
   @if(isset($evaluacion_id))
+
+
   <input type="hidden" name="empresa_id" value="{{$evaluacion_id}}">
   <h4>Continuar Evaluación</h4>
   
-
   	<div class="col col-sm-8">
-  	@foreach ($categorias as $categoria)
-  		<br>
-  		<div class="list-group">
-  			<a class="list-group-item list-group-item-action active">
-				<h5>{{$categoria->nombre}}</h5>    	
-			</a>	
-    	
-    	@foreach ($items as $item)
 
-    		@if($item->categoria_id == $categoria->id)
-    				  
-			  <a class="list-group-item list-group-item-action">{{$item->nombre}}			  	
-			      <div class="star-rating star-rating-{{$item->id}}">
-			        <span class="fa fa-star-o" data-rating="1" onclick="evaluar(this, {{$item->id}})"></span>
-			        <span class="fa fa-star-o" data-rating="2" onclick="evaluar(this, {{$item->id}})"></span>
-			        <span class="fa fa-star-o" data-rating="3" onclick="evaluar(this, {{$item->id}})"></span>
-			        <span class="fa fa-star-o" data-rating="4" onclick="evaluar(this, {{$item->id}})"></span>
-			        <span class="fa fa-star-o" data-rating="5" onclick="evaluar(this, {{$item->id}})"></span>
-			        <input type="hidden" name="whatever1" class="rating-value" value="2.56">
-			      </div>
-			  </a>
+		<div id="demo" class="carousel slide" data-ride="carousel">
 
-			   
-	    	@endif
+	  		<div class="carousel-inner">
+
 	  	
+	  	@foreach ($categorias as $categoria)
+	  		
+			<div id="categoria_{{$categoria->id}}" class="carousel-item ">
+	  			<div class="list-group">
+	  				<a class="list-group-item list-group-item-action active">
+						<h5>{{$categoria->nombre}}</h5>    	
+					</a>	
+	    	
+	    	@foreach ($items as $item)
+
+	    		@if($item->categoria_id == $categoria->id)
+	    				  
+					  <a class="list-group-item list-group-item-action">{{$item->nombre}}			  	
+					      <div class="star-rating star-rating-{{$item->id}}">
+					        <span class="fa fa-star-o" data-rating="1" onclick="evaluar(this, {{$item->id}})"></span>
+					        <span class="fa fa-star-o" data-rating="2" onclick="evaluar(this, {{$item->id}})"></span>
+					        <span class="fa fa-star-o" data-rating="3" onclick="evaluar(this, {{$item->id}})"></span>
+					        <span class="fa fa-star-o" data-rating="4" onclick="evaluar(this, {{$item->id}})"></span>
+					        <span class="fa fa-star-o" data-rating="5" onclick="evaluar(this, {{$item->id}})"></span>
+					        <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+					      </div>
+					  </a>
+
+				   
+		    	@endif
+		  	
+		  	@endforeach
+
+		  		</div>	  	 
+		  	</div>	  	 
+
 	  	@endforeach
 
-	  	</div>
-  	@endforeach
+	  		<div class="carousel-item">
+	  			<div class="list-group">
+		  			<a href="#" class="list-group-item list-group-item-action active">
+						<h5>Tiempo laboral</h5>    	
+					</a>
+					<a href="#" class="list-group-item list-group-item-action">
+					 	<div class="form-group row">
+					    	<div class="col-sm-8">
+					      		<label for="">Horas trabajadas por mes/semana</label>
+					    	  	<input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="" >
+					  	    </div>
+					  	</div>
+					</a>
+
+					<a href="#" class="list-group-item list-group-item-action">
+						<div class="form-group row">
+					    	<div class="col-sm-8">
+					      		<label for="">Cantidad de asuetos al año</label>
+					    	  	<input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="" >
+					  	    </div>
+					  	</div>
+					</a>
+
+				</div>  
+	  		</div>
+		</div>
+	</div>
+
+ <div class="form-group row">
+    <div class="col-sm-12">
+    	<div class="btn-group" style="width: 100%">
+	  	<a class="btn btn-primary" href="#demo" data-slide="prev" style="width: 50%">
+		    Anterior
+		</a>
+		<a class="btn btn-primary" href="#demo" data-slide="next" style="width: 50%">
+		    Siguiente
+		</a>
+	</div>
+    </div>
+ </div>    
+	
+ 
+
+</div>
 
   	<br>
-	  	<div class="list-group">
-  			<a href="#" class="list-group-item list-group-item-action active">
-				<h5>Tiempo laboral</h5>    	
-			</a>
-			<a href="#" class="list-group-item list-group-item-action">
-			 	<div class="form-group row">
-			    	<div class="col-sm-8">
-			      		<label for="">Horas trabajadas por mes/semana</label>
-			    	  	<input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="" >
-			  	    </div>
-			  	</div>
-			</a>
-
-			<a href="#" class="list-group-item list-group-item-action">
-				<div class="form-group row">
-			    	<div class="col-sm-8">
-			      		<label for="">Cantidad de asuetos al año</label>
-			    	  	<input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="" >
-			  	    </div>
-			  	</div>
-			</a>
-			<br>
-	  		<button type="submit" class="btn btn-primary">Guardar Evaluación</button>
-
-		</div>  	
+	  		
 
   	</div>
   	
