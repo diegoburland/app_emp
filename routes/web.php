@@ -11,9 +11,9 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
+Route::get('/', function () {
+    return view('home');
+});
 
 /*Route::get('/insert', function() {
     App\Empresa::create(array('razon_social' => 'SIGMIN 2'));

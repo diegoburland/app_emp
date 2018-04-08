@@ -17,7 +17,7 @@
 }
 
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	
@@ -50,7 +50,7 @@
 
 </script>
 
-<form id="form_evaluar_empresa" method="POST" >
+<form id="form_evaluar_empresa" method="POST" action="/crear_evaluacion">
 	
 	@if(isset($empresa_id))
 	<input type="hidden" name="empresa_id" value="{{$empresa_id}}">
@@ -190,7 +190,7 @@
       <label for="">Departamento de la Empresa</label>
       <select name="departamento" class="form-control">
       	<option value=""></option>
-      	<option value="(Administración/Organización">(Administración/Organización</option>
+      	<option value="(Administración/Organización">Administración/Organización</option>
       	<option value="Compras/Proveedores">Compras/Proveedores</option>
       	<option value="Diseño">Diseño</option>
       	<option value="Finanzas/Controlling">Finanzas/Controlling</option>
