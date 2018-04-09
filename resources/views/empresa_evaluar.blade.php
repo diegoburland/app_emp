@@ -53,26 +53,14 @@
 		});
 
 		//$('#categoria_1').addClass('active');
-		console.log($("#empresa"));
 		
 		$("#empresa").autocomplete({
-	      source: function( request, response ) {
-	        $.ajax( {
-	          url: "search.php",
-	          dataType: "jsonp",
-	          data: {
-	            term: request.term
-	          },
-	          success: function( data ) {
-	            response( data );
-	          }
-	        } );
-	      },
+	      source: "/api/v1/buscar",
 	      minLength: 2,
-	      select: function( event, ui ) {
-	        log( "Selected: " + ui.item.value + " aka " + ui.item.id );
-	      }
-	    } );
+	      select: function(event, ui) {
+		  	$('#empresa').val(ui.item.value);
+		  }	      
+	    });
 
 	});
 	

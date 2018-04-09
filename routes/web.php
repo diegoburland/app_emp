@@ -60,20 +60,4 @@ Route::get('empresa_list', 'Empresa_controller@list');
     return view('empresa_evaluar');
 });*/
 
-Route::get('/api/v1/buscar/{term}', function($term) {
-        
-    
-    $results = array();
-    
-    $queries = DB::table('empresas')
-        ->where('first_name', 'LIKE', '%'.$term.'%')
-        ->orWhere('last_name', 'LIKE', '%'.$term.'%')
-        ->take(5)->get();
-    
-    foreach ($queries as $query)
-    {
-        $results[] = [ 'id' => $query->id, 'value' => $query->first_name.' '.$query->last_name ];
-    }
-    return Response::json($results);
-
-});
+Route::get('/api/v1/buscar', 'Empresa_controller@get_empresa');

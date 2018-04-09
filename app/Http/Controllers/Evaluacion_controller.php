@@ -26,5 +26,5 @@ class Evaluacion_controller extends Controller
     	$categorias = Categoria::all();
     	$items = Item::all();
     	return view('empresa_evaluar', array('categorias' => $categorias, 'items' => $items));
-    }
+    }    
 }
