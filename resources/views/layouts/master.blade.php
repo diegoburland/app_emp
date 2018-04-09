@@ -2,8 +2,10 @@
     <head>
         <title>@yield('title')</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="/css/app.css" rel="stylesheet" type="text/css"/>     
+        <link href="/css/app.css" rel="stylesheet" type="text/css"/>    
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+
+        
     </head>
     <body>
         @section('sidebar')
@@ -39,7 +41,7 @@
 
             <form class="form-inline my-2 my-lg-0">
               <a href="#" class="text-light mr-sm-2"><span class="fa fa-search"></span> buscar</a>
-              <button class="btn btn-outline-warning" type="button">Evaluar Empresa</button>                   
+              <button class="btn btn-outline-warning" type="button" onclick="window.location.href='/empresa_evaluar'">Evaluar Empresa</button>                   
             </form>     
 
           </nav>  
@@ -50,7 +52,9 @@
         </div>
     </body>
     
-    <script type="text/javascript" src="/js/app.js"></script>
+    
+    
         @section('head')
+
         @show
 </html>

@@ -47,7 +47,7 @@ Route::post('crear_empresa', 'Empresa_controller@store');
 
 Route::post('crear_evaluacion', 'Evaluacion_controller@store');
 
-Route::get('continuar_evaluacion/{id}', 'Evaluacion_controller@continuar_evaluacion');
+Route::get('empresa_evaluar', 'Evaluacion_controller@continuar_evaluacion');
 
 
 Route::get('empresa_new', function () {
@@ -56,6 +56,24 @@ Route::get('empresa_new', function () {
 
 Route::get('empresa_list', 'Empresa_controller@list');
 
-Route::get('empresa_evaluar/{id}', function ($id) {
-    return view('empresa_evaluar', array('empresa_id' => $id));
+/*Route::get('empresa_evaluar', function () {
+    return view('empresa_evaluar');
+});*/
+
+Route::get('/api/v1/buscar/{term}', function($term) {
+        
+    
+    $results = array();
+    
+    $queries = DB::table('empresas')
+        ->where('first_name', 'LIKE', '%'.$term.'%')
+        ->orWhere('last_name', 'LIKE', '%'.$term.'%')
+        ->take(5)->get();
+    
+    foreach ($queries as $query)
+    {
+        $results[] = [ 'id' => $query->id, 'value' => $query->first_name.' '.$query->last_name ];
+    }
+    return Response::json($results);
+
 });

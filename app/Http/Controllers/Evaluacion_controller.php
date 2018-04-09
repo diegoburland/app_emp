@@ -21,10 +21,10 @@ class Evaluacion_controller extends Controller
     	//
     }
 
-    public function continuar_evaluacion($id){
+    public function continuar_evaluacion(){
 
     	$categorias = Categoria::all();
     	$items = Item::all();
-    	return view('empresa_evaluar', array('evaluacion_id' => $id, 'categorias' => $categorias, 'items' => $items));
+    	return view('empresa_evaluar', array('categorias' => $categorias, 'items' => $items));
     }
 }

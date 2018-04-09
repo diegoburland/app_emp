@@ -3,6 +3,7 @@
 @section('title', 'Crear Empresa')
 
 @section('head')
+<script type="text/javascript" src="/js/app.js"></script>
 <script type="text/javascript" src="/js/empresa/empresa.js"></script>
 @endsection
 
