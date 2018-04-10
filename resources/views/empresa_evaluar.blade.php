@@ -33,88 +33,14 @@
 
 @section('head')
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/empresa/evaluacion.js"></script>
 @endsection
 
 
 
-<script type="text/javascript">
-	
 
-	function evaluar(self, item){
-		console.log($(self).siblings('input.rating-value').val())
-		$(self).siblings('input.rating-value').val($(self).data('rating'));
-		console.log($(self).siblings('input.rating-value').val())
 
-		var $star_rating = $('.star-rating-' + item + ' .fa');
-		$star_rating.each(function() {
-			if (parseInt($($star_rating).siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
-		      return $(this).removeClass('fa-star-o').addClass('fa-star');
-		    } else {
-		      return $(this).removeClass('fa-star').addClass('fa-star-o');
-		    }
-	    });
-	}
-
-	$(function() {
-
-		$('#a_anterior').hide();
-
-  		$('.carousel').carousel({
-	    	interval: false
-		});		
-
-		//$('#categoria_1').addClass('active');
-		
-		$("#empresa").autocomplete({
-	      source: "/api/v1/buscar",
-	      minLength: 2,
-	      select: function(event, ui) {
-		  	$('#empresa').val(ui.item.value);
-		  	$('#empresa_id').val(ui.item.id);
-		  }	      
-	    });
-
-	    $('#a_siguiente_solo').click(function(){
-	    	con = 0;
-	    	$('#paginador').removeClass('paginador_none');
-	    	$('#paginador').addClass('paginador');
-	    	$('#a_siguiente_solo').hide();
-	    });
-
-	    var con = 0;
-	    $('#a_pre').click(function(){
-
-	    	//console.log($('.carousel .carousel-inner #categoria_0').hasClass('active'))
-	    	con = con - 1;
-	    	if(con < 0){
-
-	    		$('#paginador').removeClass('paginador');
-	    		$('#paginador').addClass('paginador_none');
-	    		$('#a_siguiente_solo').show();
-	    	}
-	    	$('#a_sig').text('Siguiente');
-	    })
-
-	    $('#a_sig').click(function(){
-
-	    	//console.log($('.carousel .carousel-inner #categoria_0').hasClass('active'))
-	    	con = con + 1;
-	    	if(con == 5){
-
-	    		console.log('guardar datos');
-	    		$('#form_evaluar_empresa').submit();
-
-	    	}else if(con == 4){
-
-	    		$('#a_sig').text('Terminar');
-	    	}
-	    })
-
-	});		
-
-</script>
-
-<form id="form_evaluar_empresa" method="POST" action="/crear_evaluacion">
+<form id="form_evaluar_empresa" method="POST" action="/crear_evaluacion" novalidate class="needs-validation">
 	
 	
 
@@ -142,7 +68,10 @@
 							<div class="form-group row">
 						    	<div class="col-sm-8">
 						      		<label for="">Empresa</label>
-						    	  	<input type="text" class="form-control" id="empresa" v-model="" name="titulo" placeholder="Empresa" >
+						    	  	<input type="text" class="form-control" id="empresa" v-model="" name="titulo" placeholder="Empresa" required>
+						    	  	<div class="invalid-feedback">
+							          Por favor ingresa una empresa
+							        </div>
 						  	    </div>
 						  	</div>
 						</a>
@@ -150,13 +79,16 @@
 						 	<div class="form-group row">
 								<div class="col-sm-4">
 								  <label for="">Evalúo mi</label>
-								  <select name="evalua" class="form-control">
+								  <select name="evalua" class="form-control" required>
 								  	<option value=""></option>
 								  	<option value="Trabajo Actual">Trabajo Actual</option>
 								  	<option value="Trabajo Pasado">Trabajo Pasado</option>
 								  	<option value="Práctica">Práctica</option>
 								  	<option value="Otro">Otro</option>
 								  </select>
+								  <div class="invalid-feedback">
+							          Por favor selecciona que evaluas
+							      </div>
 								</div>
 							</div>
 						</a>
@@ -165,7 +97,7 @@
 							<div class="form-group row">
 								<div class="col-sm-8">
 								  <label for="">Elegir Posición</label>
-								  <select name="posicion" class="form-control">
+								  <select name="posicion" class="form-control" required>
 								  	<option value=""></option>
 								  	<option value="Empleado/Obrero">Empleado/Obrero</option>
 								  	<option value="Gerente/Directivo">Gerente/Directivo</option>
@@ -173,6 +105,9 @@
 								  	<option value="Estudiante">Estudiante</option>
 								  	<option value="Otro">Otro</option>
 								  </select>
+								  <div class="invalid-feedback">
+							          Por favor selecciona la posición
+							      </div>
 								</div>
 							</div>
 						</a>
@@ -180,7 +115,7 @@
 							<div class="form-group row">
 								<div class="col-sm-8">
 								  <label for="">Departamento de la Empresa</label>
-								  <select name="departamento" class="form-control">
+								  <select name="departamento" class="form-control" required>
 								  	<option value=""></option>
 								  	<option value="(Administración/Organización">Administración/Organización</option>
 								  	<option value="Compras/Proveedores">Compras/Proveedores</option>
@@ -198,6 +133,9 @@
 								  	<option value="distribución/venta">distribución/ventas</option>
 								  	<option value="Otro">Otro</option>
 								  </select>
+								  <div class="invalid-feedback">
+							          Por favor selecciona el departamento
+							      </div>
 								</div>
 							</div>
 						</a>
@@ -228,12 +166,12 @@
 			    				  
 							  <a class="list-group-item list-group-item-action">{{$item->nombre}}			  	
 							      <div class="star-rating star-rating-{{$item->id}}">
-							        <span class="fa fa-star-o" data-rating="1" onclick="evaluar(this, {{$item->id}})"></span>
-							        <span class="fa fa-star-o" data-rating="2" onclick="evaluar(this, {{$item->id}})"></span>
-							        <span class="fa fa-star-o" data-rating="3" onclick="evaluar(this, {{$item->id}})"></span>
-							        <span class="fa fa-star-o" data-rating="4" onclick="evaluar(this, {{$item->id}})"></span>
-							        <span class="fa fa-star-o" data-rating="5" onclick="evaluar(this, {{$item->id}})"></span>
-							        <input type="hidden" name="item_{{$item->id}}" class="rating-value" value="2.56">
+							        <span class="fa fa-star-o fa-lg" data-rating="1" onclick="evaluar(this, {{$item->id}})"></span>
+							        <span class="fa fa-star-o fa-lg" data-rating="2" onclick="evaluar(this, {{$item->id}})"></span>
+							        <span class="fa fa-star-o fa-lg" data-rating="3" onclick="evaluar(this, {{$item->id}})"></span>
+							        <span class="fa fa-star-o fa-lg" data-rating="4" onclick="evaluar(this, {{$item->id}})"></span>
+							        <span class="fa fa-star-o fa-lg" data-rating="5" onclick="evaluar(this, {{$item->id}})"></span>
+							        <input type="hidden" name="item_{{$item->id}}" class="rating-value" value="0">
 							      </div>
 							  </a>
 
@@ -286,7 +224,7 @@
 					</a>
 				</div>
 
-				<a class="btn btn-lg btn-warning" id="a_siguiente_solo" href="#demo" data-slide="next" style="width: 100%">
+				<a class="btn btn-lg btn-warning" id="a_siguiente_solo" style="width: 100%">
 					Siguiente
 				</a>
 		    </div>

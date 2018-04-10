@@ -40,7 +40,7 @@
             </div>
 
             <form class="form-inline my-2 my-lg-0">
-              <a href="#" class="text-light mr-sm-2"><span class="fa fa-search"></span> buscar</a>
+              <a href="/buscar_empresa" class="text-light mr-sm-2"><span class="fa fa-search"></span> Buscar</a>
               <button class="btn btn-outline-warning" type="button" onclick="window.location.href='/empresa_evaluar'">Evaluar Empresa</button>                   
             </form>     
 

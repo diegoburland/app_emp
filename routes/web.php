@@ -54,10 +54,14 @@ Route::get('empresa_new', function () {
     return view('empresa_new');
 });
 
+Route::get('buscar_empresa', function () {
+    return view('filtro_empresa');
+});
+
 Route::get('empresa_list', 'Empresa_controller@list');
 
 /*Route::get('empresa_evaluar', function () {
-    return view('empresa_evaluar');
+    return view('empresa_evaluar');buscar_empresa
 });*/
 
 Route::get('/api/v1/buscar', 'Empresa_controller@get_empresa');
