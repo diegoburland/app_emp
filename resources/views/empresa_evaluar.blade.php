@@ -16,6 +16,14 @@
 	width: 200px;
 }
 
+.paginador_none{
+	width: 100%; visibility: hidden; display: none;
+}
+
+.paginador{
+	width: 100%;
+}
+
 </style>
 
 <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script-->
@@ -48,9 +56,12 @@
 	}
 
 	$(function() {
+
+		$('#a_anterior').hide();
+
   		$('.carousel').carousel({
 	    	interval: false
-		});
+		});		
 
 		//$('#categoria_1').addClass('active');
 		
@@ -59,13 +70,47 @@
 	      minLength: 2,
 	      select: function(event, ui) {
 		  	$('#empresa').val(ui.item.value);
+		  	$('#empresa_id').val(ui.item.id);
 		  }	      
 	    });
 
-	});
-	
+	    $('#a_siguiente_solo').click(function(){
+	    	con = 0;
+	    	$('#paginador').removeClass('paginador_none');
+	    	$('#paginador').addClass('paginador');
+	    	$('#a_siguiente_solo').hide();
+	    });
 
-	
+	    var con = 0;
+	    $('#a_pre').click(function(){
+
+	    	//console.log($('.carousel .carousel-inner #categoria_0').hasClass('active'))
+	    	con = con - 1;
+	    	if(con < 0){
+
+	    		$('#paginador').removeClass('paginador');
+	    		$('#paginador').addClass('paginador_none');
+	    		$('#a_siguiente_solo').show();
+	    	}
+	    	$('#a_sig').text('Siguiente');
+	    })
+
+	    $('#a_sig').click(function(){
+
+	    	//console.log($('.carousel .carousel-inner #categoria_0').hasClass('active'))
+	    	con = con + 1;
+	    	if(con == 5){
+
+	    		console.log('guardar datos');
+	    		$('#form_evaluar_empresa').submit();
+
+	    	}else if(con == 4){
+
+	    		$('#a_sig').text('Terminar');
+	    	}
+	    })
+
+	});		
 
 </script>
 
@@ -75,7 +120,7 @@
 
 	@method('POST')
 	@csrf
-	<input type="hidden" name="empresa_id" value="">  
+	<input type="hidden" name="empresa_id" id="empresa_id" value="">  
 	<h4>Evaluar Empresa</h4>
 
 	<div class="col col-sm-8">
@@ -88,9 +133,9 @@
 	  		<div class="carousel-inner">
 
 
-	  			<div class="carousel-item active">
+	  			<div id="categoria_0" class="carousel-item active">
 		  			<div class="list-group">
-			  			<a href="#" class="list-group-item list-group-item-action active">
+			  			<a href="#" class="list-group-item list-group-item-action text-light bg-dark">
 							<h5>Datos Generales</h5>    								
 						</a>
 						<a class="list-group-item list-group-item-action">
@@ -101,7 +146,7 @@
 						  	    </div>
 						  	</div>
 						</a>
-						<a href="#" class="list-group-item list-group-item-action">
+						<a class="list-group-item list-group-item-action">
 						 	<div class="form-group row">
 								<div class="col-sm-4">
 								  <label for="">Evalúo mi</label>
@@ -116,7 +161,7 @@
 							</div>
 						</a>
 
-						<a href="#" class="list-group-item list-group-item-action">
+						<a class="list-group-item list-group-item-action">
 							<div class="form-group row">
 								<div class="col-sm-8">
 								  <label for="">Elegir Posición</label>
@@ -131,7 +176,7 @@
 								</div>
 							</div>
 						</a>
-						<a href="#" class="list-group-item list-group-item-action">
+						<a class="list-group-item list-group-item-action">
 							<div class="form-group row">
 								<div class="col-sm-8">
 								  <label for="">Departamento de la Empresa</label>
@@ -156,7 +201,7 @@
 								</div>
 							</div>
 						</a>
-						<a href="#" class="list-group-item list-group-item-action">
+						<a class="list-group-item list-group-item-action">
 							<div class="form-group row">
 								<div class="col-sm-8">
 								  <label for="">Título de tu Evaluación</label>
@@ -173,7 +218,7 @@
 		  		
 				<div id="categoria_{{$categoria->id}}" class="carousel-item ">
 		  			<div class="list-group">
-		  				<a class="list-group-item list-group-item-action active">
+		  				<a class="list-group-item list-group-item-action text-light bg-dark">
 							<h5>{{$categoria->nombre}}</h5>    	
 						</a>	
 		    	
@@ -188,7 +233,7 @@
 							        <span class="fa fa-star-o" data-rating="3" onclick="evaluar(this, {{$item->id}})"></span>
 							        <span class="fa fa-star-o" data-rating="4" onclick="evaluar(this, {{$item->id}})"></span>
 							        <span class="fa fa-star-o" data-rating="5" onclick="evaluar(this, {{$item->id}})"></span>
-							        <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+							        <input type="hidden" name="item_{{$item->id}}" class="rating-value" value="2.56">
 							      </div>
 							  </a>
 
@@ -204,7 +249,7 @@
 
 		  		<div class="carousel-item">
 		  			<div class="list-group">
-			  			<a href="#" class="list-group-item list-group-item-action active">
+			  			<a href="#" class="list-group-item list-group-item-action text-light bg-dark">
 							<h5>Tiempo laboral</h5>    	
 						</a>
 						<a href="#" class="list-group-item list-group-item-action">
@@ -232,14 +277,18 @@
 
 		<div class="form-group row">
 		    <div class="col-sm-12">
-		    	<div class="btn-group" style="width: 100%">
-				  	<a class="btn btn-lg btn-primary" href="#demo" data-slide="prev" style="width: 50%">
+		    	<div class="btn-group paginador_none" id="paginador">
+				  	<a class="btn btn-lg btn-warning" id="a_pre" href="#demo" data-slide="prev" style="width: 50%">
 					    Anterior
 					</a>
-					<a class="btn btn-lg btn-primary" href="#demo" data-slide="next" style="width: 50%">
+					<a class="btn btn-lg btn-warning" id="a_sig" href="#demo" data-slide="next" style="width: 50%">
 					    Siguiente
 					</a>
 				</div>
+
+				<a class="btn btn-lg btn-warning" id="a_siguiente_solo" href="#demo" data-slide="next" style="width: 100%">
+					Siguiente
+				</a>
 		    </div>
 		</div>    
 	
