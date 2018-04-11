@@ -41,7 +41,7 @@ Route::get('empresa', function () {
 
 
 */
-Route::get('empresa', 'Empresa_controller@index');
+Route::get('empresa/{id}', 'Empresa_controller@show');
 //Route::post('crear_empresa', 'Empresa_controller@store')->name('empresa.store');
 Route::post('crear_empresa', 'Empresa_controller@store');
 

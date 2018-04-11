@@ -16,12 +16,13 @@ class Empresa_controller extends Controller
 	/*public function __construct(){
 		$this->empresas = Empresa::all(array('razon_social'));
 	}
-
-    public function index()
+*/
+    public function show($id)
     {
+        $empresa = Empresa::find($id);
          //return 'hello world from controller : )';
-         return view('empresa',  array('name' => 'mandar datos'));
-    }*/
+         return view('empresa',  array('empresa' => $empresa));
+    }
 
     public function store(Request $request){
 		
