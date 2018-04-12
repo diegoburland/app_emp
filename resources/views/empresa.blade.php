@@ -7,10 +7,11 @@
 @endsection
 
 @section('content')
-<h2>{{$empresa->razon_social}}</h2>
+
 
 <div class="card">
   <div class="card-header">
+  	<h2>{{$empresa->razon_social}}</h2>
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home">Resumen</a>

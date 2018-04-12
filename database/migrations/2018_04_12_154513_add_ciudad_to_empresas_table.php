@@ -13,10 +13,11 @@ class AddCiudadToEmpresasTable extends Migration
      */
     public function up()
     {
+        
         Schema::table('empresas', function (Blueprint $table) {
 
             $table->integer('ciudad_id')->after('razon_social');
-            $table->foreign('ciudad_id')->references('id')->on('ciudades');
+            $table->foreign('ciudad_id')->references('id')->on('ciudades')->onDelete('cascade');
         });
     }
 
@@ -27,8 +28,9 @@ class AddCiudadToEmpresasTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::table('empresas', function (Blueprint $table) {
-            //
+             //Schema::dropIfExists('ciudades');
         });
     }
 }

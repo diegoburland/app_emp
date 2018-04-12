@@ -19,18 +19,21 @@ class CreateCiudadesTable extends Migration
             $table->string('nombre', 200);
             $table->integer('estado');
             $table->integer('departamento_id');
-            $table->foreign('departamento_id')->references('id')->on('departamentos');
+            $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade');
             $table->timestamps();
         });
+
+        DB::unprepared(file_get_contents('/home/jose/Documents/ocupacion/departamentos-y-municipios-colombia-SQL/municipios.sql'));
     }
 
     /**
      * Reverse the migrations.
-     *
+     *a-SQL/municipios.sql
      * @return void
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('ciudades');
     }
 }

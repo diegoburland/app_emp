@@ -20,6 +20,7 @@ class CreateEvalItemsTable extends Migration
             $table->unsignedInteger('item_id');
             $table->foreign('item_id')->references('id')->on('items');
             $table->integer('puntaje');
+            $table->string('comentario', 255)->nullable();
             $table->timestamps();
         });
     }

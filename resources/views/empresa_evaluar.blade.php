@@ -161,14 +161,15 @@
 			    		@if($item->categoria_id == $categoria->id)
 			    				  
 							  <a class="list-group-item list-group-item-action">{{$item->nombre}}			  	
-							      <div class="star-rating star-rating-{{$item->id}}">
+							      <div class="star-rating star-rating-{{$item->id}}" onclick="text_show({{$item->id}})">
 							        <span class="fa fa-star-o fa-lg" data-rating="1" onclick="evaluar(this, {{$item->id}})"></span>
 							        <span class="fa fa-star-o fa-lg" data-rating="2" onclick="evaluar(this, {{$item->id}})"></span>
 							        <span class="fa fa-star-o fa-lg" data-rating="3" onclick="evaluar(this, {{$item->id}})"></span>
 							        <span class="fa fa-star-o fa-lg" data-rating="4" onclick="evaluar(this, {{$item->id}})"></span>
 							        <span class="fa fa-star-o fa-lg" data-rating="5" onclick="evaluar(this, {{$item->id}})"></span>
-							        <input type="hidden" name="item_{{$item->id}}" class="rating-value" value="0">
+							        <input type="hidden" name="puntaje_{{$item->id}}" class="rating-value" value="0">
 							      </div>
+							      <textarea name="comentario_{{$item->id}}" id="text_{{$item->id}}" class="text_hide form-control" placeholder="Comentarios"></textarea>
 							  </a>
 
 						   

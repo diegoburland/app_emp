@@ -21,21 +21,17 @@ class Evaluacion_controller extends Controller
 
         foreach ($items as $item) {
             
-            if($request->input('item_' . $item->id) != null){
+            if($request->input('puntaje_' . $item->id) != null){
 
-                Eval_item::create(array('evaluacion_id' => $evaluacion->id, 'item_id' => $item->id, 'puntaje' => $request->input('item_' . $item->id)));
+                Eval_item::create(array('evaluacion_id' => $evaluacion->id, 'item_id' => $item->id, 'puntaje' => $request->input('puntaje_' . $item->id), 'comentario' => $request->input('comentario_' . $item->id)));
 
             }
         }
 
-		//Empresa::create(array('razon_social' =>$razon_social));
-		//return 'empresa creada';
-    	//use App\Empresa::create(array())
-    	//return redirect('continuar_evaluacion');
-    	//
 
+        //return $request;
         return redirect('/empresa/' . $request->input('empresa_id'));
-        //return $evaluacion;//$request->input('empresa_id');
+        
     }
 
     public function continuar_evaluacion(){

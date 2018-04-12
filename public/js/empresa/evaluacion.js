@@ -1,5 +1,7 @@
 
 function evaluar(self, item){
+
+    
 	console.log($(self).siblings('input.rating-value').val())
 	$(self).siblings('input.rating-value').val($(self).data('rating'));
 	console.log($(self).siblings('input.rating-value').val())
@@ -12,6 +14,11 @@ function evaluar(self, item){
 	      return $(this).removeClass('fa-star').addClass('fa-star-o');
 	    }
     });
+}
+
+function text_show(item) {
+    $('.text_hide').hide();
+    $('#text_'+item).show();
 }
 
 $(function() {
@@ -30,6 +37,7 @@ $(function() {
 
 
 	$('#a_anterior').hide();
+    $('.text_hide').hide();
 
 	$('.carousel').carousel({
     	interval: false

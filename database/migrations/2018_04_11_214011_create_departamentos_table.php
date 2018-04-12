@@ -52,7 +52,7 @@ class CreateDepartamentosTable extends Migration
         DB::table('departamentos')->insert([ 'id' =>94, 'nombre' => 'GUAINÍA']);
         DB::table('departamentos')->insert([ 'id' =>95, 'nombre' => 'GUAVIARE']);
         DB::table('departamentos')->insert([ 'id' =>97, 'nombre' => 'VAUPÉS']);
-        DB::table('departamentos')->insert([ 'id' =>99, 'nombre' => 'VICHADA');
+        DB::table('departamentos')->insert([ 'id' =>99, 'nombre' => 'VICHADA']);
     }
 
     /**
