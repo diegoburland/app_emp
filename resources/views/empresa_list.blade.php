@@ -9,7 +9,7 @@
 <div class="list-group">
   @foreach ($empresas as $empresa)
 
-    <a class="list-group-item list-group-item-action" href="/empresa" >{{$empresa->razon_social}}</a>
+    <a class="list-group-item list-group-item-action" href="/empresa/{{$empresa->id}}" >{{$empresa->razon_social}}</a>
   @endforeach
 </div>
 

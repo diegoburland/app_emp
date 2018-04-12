@@ -2,33 +2,69 @@
 
 @section('title', 'Crear Empresa')
 
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 @section('head')
-<script type="text/javascript" src="/js/app.js"></script>
-<script type="text/javascript" src="/js/empresa/empresa.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>  
+  <script type="text/javascript" src="/js/empresa/empresa.js"></script>
 @endsection
 
+
 @section('content')
-<form id="form_empresa" @submit="checkForm" method="POST" action="/crear_empresa">
+<form id="form_empresa" @submit="checkForm" autocomplete='off' method="POST" action="/crear_empresa">
 	<h4>Empresa</h4>
 	@method('POST')
-    @csrf
+  @csrf
 
-  <p v-if="errors.length">
-    <b>Por favor corregir los siquientes errores:</b>
-    <ul>
-      <li v-for="error in errors">@{{ error }}</li>
-    </ul>
-  </p>
   <div class="form-group row">
     <div class="col-sm-8">
       <label for="">Nombre de la Empresa</label>
-      <input type="text" class="form-control" id="razon_social" v-model="razon_social" name="razon_social" placeholder="Nombre de la Empresa" >
+      <input type="text" class="form-control" id="razon_social" name="razon_social" placeholder="Nombre de la Empresa" >
     </div>
   </div>
   <div class="form-group row">
     <div class="col-sm-8">
-    	<label for="">Ubicación</label>
-      <input type="text" class="form-control" id="ubicacion" v-model="ubicacion" name="ubicacion" placeholder="Ubicación">
+      <label for="">Ciudad</label>
+      <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" autocomplete="off">
+      <input type="hidden" name="ciudad_id" id="ciudad_id" value="">  
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-8">
+    	<label for="">Sector económico</label>
+      <select class="form-control" id="sector_economico" name="sector_economico">
+        <option></option>
+        <option value="Administrativa y Financiera">
+          Administrativa y Financiera
+        </option>
+        <option value="Archivo y Documentación">
+          Archivo y Documentación
+        </option>
+        <option value="Auditoría, Contraloría e Interventoría">
+          Auditoría, Contraloría e Interventoría
+        </option>
+        <option value="Calidad (aseguramiento, gestión y afines)">
+          Calidad (aseguramiento, gestión y afines)
+        </option>
+        <option value="Comercial, Ventas y Telemercadeo">
+          Comercial, Ventas y Telemercadeo
+        </option>
+        <option value="Comercio Exterior">
+          Comercio Exterior
+        </option>
+        <option value="Compras e Inventarios">
+          Compras e Inventarios
+        </option>
+        <option value="Construcción y Obra">
+          Construcción y Obra
+        </option>
+        <option value="Docencia">
+          Docencia
+        </option>        
+      </select>      
     </div>
   </div>
   <div class="form-group row">

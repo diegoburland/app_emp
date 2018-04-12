@@ -64,4 +64,5 @@ Route::get('empresa_list', 'Empresa_controller@list');
     return view('empresa_evaluar');buscar_empresa
 });*/
 
-Route::get('/api/v1/buscar', 'Empresa_controller@get_empresa');
+Route::get('/api/v1/buscar_empresa', 'Empresa_controller@get_empresa');
+Route::get('/api/v1/buscar_ubicacion', 'Ciudad_controller@get_ciudad');

@@ -46,7 +46,7 @@
 
 	@method('POST')
 	@csrf
-	<input type="hidden" name="empresa_id" id="empresa_id" value="">  
+	
 	<h4>Evaluar Empresa</h4>
 
 	<div class="col col-sm-8">
@@ -69,6 +69,7 @@
 						    	<div class="col-sm-8">
 						      		<label for="">Empresa</label>
 						    	  	<input type="text" class="form-control" id="empresa" v-model="" name="titulo" placeholder="Empresa" required>
+						    	  	<input type="hidden" name="empresa_id" id="empresa_id" value="">  
 						    	  	<div class="invalid-feedback">
 							          Por favor ingresa una empresa
 							        </div>

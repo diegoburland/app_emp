@@ -38,7 +38,7 @@ $(function() {
 	//$('#categoria_1').addClass('active');
 	
 	$("#empresa").autocomplete({
-      source: "/api/v1/buscar",
+      source: "/api/v1/buscar_empresa",
       minLength: 2,
       select: function(event, ui) {
 	  	$('#empresa').val(ui.item.value);
