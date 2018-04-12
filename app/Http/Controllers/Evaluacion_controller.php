@@ -34,7 +34,7 @@ class Evaluacion_controller extends Controller
     	//return redirect('continuar_evaluacion');
     	//
 
-        return $request;
+        return redirect('/empresa/' . $request->input('empresa_id'));
         //return $evaluacion;//$request->input('empresa_id');
     }
 

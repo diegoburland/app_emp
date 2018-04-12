@@ -7,21 +7,20 @@ use Illuminate\Http\Response;
 //use Illuminate\Http\RedirectResponse;
 
 use App\Empresa;
+use App\Item;
+use App\Categoria;
 
 
 class Empresa_controller extends Controller
 {
-	//var $empresas;
+	    
 
-	/*public function __construct(){
-		$this->empresas = Empresa::all(array('razon_social'));
-	}
-*/
     public function show($id)
     {
         $empresa = Empresa::find($id);
-         //return 'hello world from controller : )';
-         return view('empresa',  array('empresa' => $empresa));
+        $categorias = Categoria::all();
+        $items = Item::all();
+        return view('empresa',  array('empresa' => $empresa, 'categorias' => $categorias, 'items' => $items));
     }
 
     public function store(Request $request){
