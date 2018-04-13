@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
+use DB;
+
 class Empresa extends Model
 {
     
@@ -12,5 +15,21 @@ class Empresa extends Model
     public function ciudad()
     {
         return $this->belongsTo('App\Ciudad');
+    }
+
+    public function get_score($id){
+    	
+        
+        $results = array();
+
+        $evaluaciones = DB::table('evaluaciones')
+            ->join('eval_items', 'eval_items.evaluacion_id', '=', 'evaluaciones.id')
+            ->join('items', 'items.id', '=', 'eval_items.item_id')
+            ->select('items.id', 'items.nombre', 'items.categoria_id', DB::raw('round((sum(eval_items.puntaje)/count(items.id)), 2 ) as promedio'))
+            ->where('evaluaciones.empresa_id', '=', $id)
+            ->groupBy('items.id')->get();
+       
+
+        return $evaluaciones;
     }
 }

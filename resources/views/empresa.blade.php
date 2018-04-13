@@ -32,18 +32,32 @@
 	  		<b>Ubicación:</b> {{$empresa->ciudad->nombre}}<br>
 	  		<b>Sector económico:</b> {{$empresa->sector_economico}}<br>
 	  	</p>
+	  	
+	  	<b>Puntaje promedio:</b>
+	    <div class="star-rating star-rating-0">
+	      <span class="fa fa-star-o fa-lg" data-rating="1"></span>
+	      <span class="fa fa-star-o fa-lg" data-rating="2"></span>
+	      <span class="fa fa-star-o fa-lg" data-rating="3"></span>
+	      <span class="fa fa-star-o fa-lg" data-rating="4"></span>
+	      <span class="fa fa-star-o fa-lg" data-rating="5"></span>
+	      <input type="hidden" name="item_0" class="rating-value" value="{{$total_puntaje}}">
+	 		<span class="badge badge-primary badge-pill">{{$total_puntaje}}</span>
+	  	</div>
+		<br>
 	    <p class="card-text">Algun texto descriptivo de la empresa</p>
 	    <p class="card-text">Imagenes</p>
 	    <p class="card-text">Videos</p>
 	  </div>
-	  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-	  	<div id="demo" class="carousel slide" data-ride="carousel">
 
-	  		<div class="carousel-inner">
+	  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">	  	
+	  	
+	  	<div class="row">
 
 				@foreach ($categorias as $categoria)
 				  		
-					<div id="categoria_{{$categoria->id}}" class="carousel-item ">
+					<div class="col-lg-4 m-1">
+						
+					
 			  			<div class="list-group">
 			  				<a class="list-group-item list-group-item-action text-light bg-dark">
 								<h5>{{$categoria->nombre}}</h5>    	
@@ -55,12 +69,13 @@
 				    				  
 								  <a class="list-group-item list-group-item-action">{{$item->nombre}}			  	
 								      <div class="star-rating star-rating-{{$item->id}}">
-								        <span class="fa fa-star-o fa-lg" data-rating="1" onclick="evaluar(this, {{$item->id}})"></span>
-								        <span class="fa fa-star-o fa-lg" data-rating="2" onclick="evaluar(this, {{$item->id}})"></span>
-								        <span class="fa fa-star-o fa-lg" data-rating="3" onclick="evaluar(this, {{$item->id}})"></span>
-								        <span class="fa fa-star-o fa-lg" data-rating="4" onclick="evaluar(this, {{$item->id}})"></span>
-								        <span class="fa fa-star-o fa-lg" data-rating="5" onclick="evaluar(this, {{$item->id}})"></span>
-								        <input type="hidden" name="item_{{$item->id}}" class="rating-value" value="0">
+								        <span class="fa fa-star-o fa-lg" data-rating="1"></span>
+								        <span class="fa fa-star-o fa-lg" data-rating="2"></span>
+								        <span class="fa fa-star-o fa-lg" data-rating="3"></span>
+								        <span class="fa fa-star-o fa-lg" data-rating="4"></span>
+								        <span class="fa fa-star-o fa-lg" data-rating="5"></span>
+								        <input type="hidden" name="item_{{$item->id}}" class="rating-value" value="{{$item->promedio}}">
+								        <span class="badge badge-primary badge-pill">{{$item->promedio}}</span>
 								      </div>
 								  </a>
 
@@ -69,14 +84,11 @@
 					  	
 					  	@endforeach
 
-					  		</div>	  	 
-				  	</div>	  	 
-
+					  	</div>	
+					</div>  	 
+				  	
 				@endforeach
-
-			</div>	  	 
-		</div>	  	 
-
+			</div>
 	  </div>
 	  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">3...</div>
 	</div>

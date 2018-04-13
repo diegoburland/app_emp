@@ -17,10 +17,21 @@ class Empresa_controller extends Controller
 
     public function show($id)
     {
-        $empresa = Empresa::find($id);
+        $empresa = new Empresa();
+        $empresa = $empresa->find($id);
         $categorias = Categoria::all();
         $items = Item::all();
-        return view('empresa',  array('empresa' => $empresa, 'categorias' => $categorias, 'items' => $items));
+        $evaluacion = $empresa->get_score($id);
+
+        $total = 0;
+        $count = 0;
+        foreach ($evaluacion as $key => $value) {
+            $total = $total + $value->promedio;
+            $count = $count + 1;
+        }
+        $total_puntaje = round($total / $count, 2);
+
+        return view('empresa',  array('empresa' => $empresa, 'categorias' => $categorias, 'items' => $evaluacion, 'total_puntaje' => $total_puntaje));
     }
 
     public function store(Request $request){
@@ -55,6 +66,6 @@ class Empresa_controller extends Controller
         
 
         return response()->json($results);
-    }
+    }    
 
 }
