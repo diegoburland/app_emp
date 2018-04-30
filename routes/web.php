@@ -15,35 +15,12 @@ Route::get('/', function () {
     return view('home');
 });
 
-/*Route::get('/insert', function() {
-    App\Empresa::create(array('razon_social' => 'SIGMIN 2'));
-    return 'category added';
-});
 
-Route::get('/read', function() {
-    $empresa = new App\Empresa();
-    
-    $data = $empresa->all(array('razon_social','id'));
-
-    foreach ($data as $list) {
-        echo $list->id . ' ' . $list->razon_social . ' ';
-    }
-});
-
-Route::get('/hello',function(){
-    return 'Hello World!';
-});
-
-Route::get('empresa', function () {
-    return view('empresa',array('name' => 'The Raven'));
-});
-
-
-
-*/
 Route::get('empresa/{id}', 'Empresa_controller@show');
 //Route::post('crear_empresa', 'Empresa_controller@store')->name('empresa.store');
 Route::post('crear_empresa', 'Empresa_controller@store');
+
+Route::post('filtrar_empresa', 'Empresa_controller@filtrar');
 
 Route::post('crear_evaluacion', 'Evaluacion_controller@store');
 
@@ -60,9 +37,5 @@ Route::get('buscar_empresa', function () {
 
 Route::get('empresa_list', 'Empresa_controller@list');
 
-/*Route::get('empresa_evaluar', function () {
-    return view('empresa_evaluar');buscar_empresa
-});*/
-
-Route::get('/api/v1/buscar_empresa', 'Empresa_controller@get_empresa');
-Route::get('/api/v1/buscar_ubicacion', 'Ciudad_controller@get_ciudad');
+Route::get('/api/v1/encontrar_empresa', 'Empresa_controller@get_empresa');
+Route::get('/api/v1/encontrar_ubicacion', 'Ciudad_controller@get_ciudad');

@@ -23,6 +23,19 @@ class Empresa_controller extends Controller
         $items = Item::all();
         $evaluacion = $empresa->get_score($id);
 
+        /*$total = 0;
+        $count = 0;
+        foreach ($evaluacion as $key => $value) {
+            $total = $total + $value->promedio;
+            $count = $count + 1;
+        }*/
+        $total_puntaje = $this->totalPuntaje($evaluacion); //round($total / $count, 2);
+
+        return view('empresa',  array('empresa' => $empresa, 'categorias' => $categorias, 'items' => $evaluacion, 'total_puntaje' => $total_puntaje));
+    }
+
+    private function totalPuntaje($evaluacion){
+
         $total = 0;
         $count = 0;
         foreach ($evaluacion as $key => $value) {
@@ -31,7 +44,8 @@ class Empresa_controller extends Controller
         }
         $total_puntaje = round($total / $count, 2);
 
-        return view('empresa',  array('empresa' => $empresa, 'categorias' => $categorias, 'items' => $evaluacion, 'total_puntaje' => $total_puntaje));
+        return $total_puntaje;
+
     }
 
     public function store(Request $request){
@@ -68,4 +82,39 @@ class Empresa_controller extends Controller
         return response()->json($results);
     }    
 
+    public function filtrar(Request $request){
+        
+
+        $empresa = $request->input('empresa');
+        $sector_economico = $request->input('sector_economico');
+        
+        $results = array();
+    
+        $dominio = [['razon_social', 'LIKE', '%'.$empresa.'%']];
+        if ($sector_economico != null) {
+            $dominio = [['razon_social', 'LIKE', '%'.$empresa.'%'], ['sector_economico', '=', $sector_economico]];
+        }
+
+        $empresa = new Empresa();
+
+        $queries = $empresa::where($dominio)->get();
+
+        $results = array();
+
+        foreach ($queries as $query)            
+        {
+                                            
+            $total_puntaje = $this->totalPuntaje($empresa->get_score($query->id));
+            $query['total_puntaje'] = $total_puntaje;
+
+            $results[] = $query;
+        }
+
+        
+        
+      
+
+        return view('filtro_empresa',  array('empresas' =>$results));
+                
+    }
 }

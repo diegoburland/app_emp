@@ -46,7 +46,7 @@ $(function() {
 	//$('#categoria_1').addClass('active');
 	
 	$("#empresa").autocomplete({
-      source: "/api/v1/buscar_empresa",
+      source: "/api/v1/encontrar_empresa",
       minLength: 2,
       select: function(event, ui) {
 	  	$('#empresa').val(ui.item.value);
@@ -112,12 +112,12 @@ $(function() {
     	con = con + 1;
 
     	//console.log(con)
-    	if(con == 5){
+    	if(con == 6){
 
     		console.log('guardar datos');
     		$('#form_evaluar_empresa').submit();
 
-    	}else if(con == 4){
+    	}else if(con == 5){
 
     		$('#a_sig').text('Terminar');
     	}

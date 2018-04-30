@@ -207,6 +207,69 @@
 
 					</div>  
 				</div>
+
+				<div class="carousel-item">
+		  			<div class="list-group">
+			  			<a href="#" class="list-group-item list-group-item-action text-light bg-dark">
+							<h5>Cuéntanos algo sobre tu empleador</h5>    	
+						</a>
+						<a href="#" class="list-group-item list-group-item-action">
+						 	<div class="form-group row">
+						    	<div class="col-sm-8">
+						      		<label for="">Propuesta de mejoras (que puede mejorar la empresa)</label>
+						    	  	<textarea class="form-control" name="mejoras"></textarea>
+						  	    </div>
+						  	</div>
+						</a>
+
+						<a href="#" class="list-group-item list-group-item-action">
+							<div class="form-group row">
+						    	<div class="col-sm-8">
+						      		<label for="">Del empleador me gusta:</label>
+						    	  	<textarea class="form-control" name="like"></textarea>
+						  	    </div>
+						  	</div>
+						</a>
+
+						<a href="#" class="list-group-item list-group-item-action">
+							<div class="form-group row">
+						    	<div class="col-sm-8">
+						      		<label for="">Del empleador no me gusta:</label>
+						    	  	<textarea class="form-control" name="no_like"></textarea>
+						  	    </div>
+						  	</div>
+						</a>
+
+						<a href="#" class="list-group-item list-group-item-action">
+							<div class="form-group row">
+						    	<div class="col-sm-8">
+						      		<label for="">¿Recomendarías tu empleador a un amigo? (Si/No)</label>						    	  	
+						  	    </div>
+						  	</div>
+						</a>
+
+						<a href="#" class="list-group-item list-group-item-action">
+							<div class="form-group row">
+						    	<div class="col-sm-8">
+						      		<label for="">¿Cuáles beneficios se te ofrecen en la empresa?</label>						    	  	
+						  	    </div>
+						  	</div>
+						</a>
+
+						<a href="#" class="list-group-item list-group-item-action">
+							<div class="form-group row">
+						    	<div class="col-sm-8">
+						      		<label for="">Correo electrónico (No se publica → Verificación de autenticidad)</label>		
+						      		<input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="" >				    	  	
+						  	    </div>
+						  	</div>
+						</a>
+
+					</div>  
+				</div>
+
+
+
 			</div>
 		</div>
 
