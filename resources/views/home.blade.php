@@ -32,7 +32,7 @@
 	</div>
 
 </div>
-
+<br>
 <div class="container">
 	<h2>Nuestra Misión</h2>
 	<p class="text-justify">
@@ -47,10 +47,21 @@
 	Para que los resultados de las evaluaciones reflejen la realidad queremos pedirte que uses la oportunidad de evaluar a tu empleador de manera anónima y gratuita. Así no solo ayuda a hacer el mercado laboral colombiano más transparente y justo,sino también, aporta un valor agregado para los buscadores actuales y futuros de empleo.	
 	</p>
 
-	<button class="btn btn-outline-warning btn-sm" type="button" onclick="window.location.href='/empresa_evaluar'"><b>EVALUACIÓN ANÓNIMA</b></button>    
+	<div class="mx-auto" style="width: 200px;">
+	  <button class="btn btn-warning btn-sm" type="button" onclick="window.location.href='/empresa_evaluar'"><b>EVALUACIÓN ANÓNIMA</b></button>    
+	</div>
+	<br>
+	<div class="pr-5 pl-5">
+		<div class="embed-responsive embed-responsive-16by9">
+	  		<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+		</div>	
+	</div>
+	
+	
+
+	
 	
 </div>
-<br>
 <br>
 
 

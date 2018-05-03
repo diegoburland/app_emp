@@ -60,19 +60,22 @@
 
         <div class="footer">
 
-          <h3 class="font-italic"><b><span  class="text-light"><span class="fa fa-eercast"></span>cu</span><span class="text-warning">Pasión</span></b></h3>
-          <hr>
+          <div class="p-1 text-center">
+            <h3 class="font-italic"><b><span  class="text-light"><span class="fa fa-eercast"></span>cu</span><span class="text-warning">Pasión</span></b></h3>
+            <hr>
+          </div>                  
 
-          <p>Ocupacion</p>
-          <h1>Description Lists</h1>    
-  <p>The dl element indicates a description list:</p>
-  <dl>
-    <dt>Coffee</dt>
-    <dd>- black hot drink</dd>
-    <dt>Milk</dt>
-    <dd>- white cold drink</dd>
-  </dl>  
+          <div class="text-center"> 
+            <div style="display: inline-flex;">
+              <div class="mr-3"><h5  class="font-italic">¿Quienes somos?</h4></div>
+              <div class="mr-3"><h5  class="font-italic">Preguntas frecuentes</h4></div>
+              <div class="mr-3"><h5  class="font-italic">Contacto</h4></div>
+            </div>
+          </div>
+          
+          
+            <div class="text-left font-italic m-1">Hecho en <a href="https://es.wikipedia.org/wiki/Colombia"><img src="/img/co.png" alt="Colombia"></a></div>  
+          
         </div>
-
     </body>        
 </html>
