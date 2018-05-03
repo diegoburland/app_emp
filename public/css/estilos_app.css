@@ -1,0 +1,36 @@
+.div_img_home{
+    background-image: url(../img/ThinkstockPhotos-508454788.jpg);
+    width: 100%;
+    height: 100%;
+    background-size: auto;
+    padding-top: 200px;
+    width: 100%;
+    height: 100%;
+    padding-top: 200px;
+}
+
+.div_sloga{
+	background: white;
+    border-radius: 5px;
+    width: auto;
+    display: inline-block;
+    height: 24px;
+    background-color: White;
+    width: auto;
+    font-size: 25px;
+    height: auto;
+    font-style: oblique;
+    opacity: 0.8;
+    margin-left: 50px;
+    padding: 5px;
+}
+
+.footer {
+   height: 300px;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #343a40!important;
+   color: white;
+   text-align: center;
+}
