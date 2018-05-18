@@ -9,6 +9,13 @@
 @section('content')
 
 
+<div class="row">
+  
+
+<div class="col-sm">
+  
+
+
 <form class="form-inline" autocomplete='off' method="POST" action="/filtrar_empresa">
 	
 	@method('POST')
@@ -99,6 +106,11 @@
 
 </form>
 
+</div>
+
+<div class="col-sm">
+  
+
 @if(isset($empresas))
 
 <div class="row">
@@ -106,19 +118,49 @@
 
 	@foreach ($empresas as $empresa)
 
+  <div class="card m-1" style="width: 18rem;">
+    <img class="card-img-top" src="/img/download.svg" alt="Card image cap">
+    <div class="card-body">
+      <h4 class="card-title"><b><a href="/empresa/{{$empresa->id}}">{{$empresa->razon_social}}</a></b></h4>          
 
-		<div class="card text-white bg-dark m-3" style="max-width: 18rem;">
-		  <div class="card-header"><a href="/empresa/{{$empresa->id}}">{{$empresa->razon_social}}</a></div>
-		  <div class="card-body">
-		    <h5 class="card-title">Puntaje: {{$empresa->total_puntaje}} </h5>
-		    <p class="card-text">Una foto y algunas cosas sobre la empresa</p>
-		  </div>
-		</div>
+      <i class="fa fa-map-marker"></i> {{$empresa->ubicacion}}<br>
+      <i class="fa fa-tag"></i> {{$empresa->sector_economico}}<br>
+      
+
+      <div class="d-flex bd-highlight">
+        <div class="p-2 flex-fill bd-highlight"><i class="fa fa-eye"></i>1</div>
+        <div class="p-2 flex-fill bd-highlight">
+          <div class="star-rating" >
+            <span class="fa fa-star-o" data-rating="1" ></span>
+            <span class="fa fa-star-o" data-rating="2" ></span>
+            <span class="fa fa-star-o" data-rating="3" ></span>
+            <span class="fa fa-star-o" data-rating="4" ></span>
+            <span class="fa fa-star-o" data-rating="5" ></span>
+            <input type="hidden" name="puntaje" class="rating-value" value="0">
+            <span class="badge badge-primary badge-pill">{{$empresa->total_puntaje}}</span>
+            
+          </div>
+        </div>        
+      </div>
+
+      <div class="d-inline"></div>
+      <div class="d-inline">
+
+                    
+
+      </div>
+      
+
+    </div>
+  </div>
 
 	@endforeach
 
 </div>	
 @endif
 
+</div>
+
+</div>
 
 @endsection

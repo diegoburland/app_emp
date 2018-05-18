@@ -25,6 +25,11 @@
     padding: 5px;
 }
 
+html {
+  height: 100%;
+}
+
+
 .footer {
    height: 140px;
    left: 0;
@@ -32,7 +37,12 @@
    width: 100%;
    background-color: #343a40!important;
    color: white;   
+   position: absolute;
 }
 body {
     background-color: #f1f1f173!important;
+    position: relative;
+    margin: 0;
+    padding-bottom: 140px;
+    min-height: 100%;
 }

@@ -16,4 +16,6 @@ class Ciudad_controller extends Controller
 
         return response()->json($results);
     }
+
+    
 }

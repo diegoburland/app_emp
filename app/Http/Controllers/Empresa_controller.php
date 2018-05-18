@@ -9,6 +9,7 @@ use Illuminate\Http\Response;
 use App\Empresa;
 use App\Item;
 use App\Categoria;
+use App\Ciudad;
 
 
 class Empresa_controller extends Controller
@@ -32,6 +33,13 @@ class Empresa_controller extends Controller
         $total_puntaje = $this->totalPuntaje($evaluacion); //round($total / $count, 2);
 
         return view('empresa',  array('empresa' => $empresa, 'categorias' => $categorias, 'items' => $evaluacion, 'total_puntaje' => $total_puntaje));
+    }
+
+    private function get_ubicacion($id){
+
+        $ciudad = new Ciudad();
+
+        return $ciudad->get_ciudadId($id);
     }
 
     private function totalPuntaje($evaluacion){
@@ -103,11 +111,14 @@ class Empresa_controller extends Controller
 
         foreach ($queries as $query)            
         {
-                                            
+                   
+            $ubicacion = $this->get_ubicacion($query->id);
+            $query['ubicacion'] = $ubicacion;
             $total_puntaje = $this->totalPuntaje($empresa->get_score($query->id));
             $query['total_puntaje'] = $total_puntaje;
 
             $results[] = $query;
+
         }
 
         
