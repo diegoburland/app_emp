@@ -57,8 +57,8 @@ $(function() {
     $('#a_siguiente_solo').click(function(){
     	con = 0;
 
-    	//$('#form_evaluar_empresa')[0].checkValidity()
-    	if(true){
+    	
+    	if($('#form_evaluar_empresa')[0].checkValidity()){
 
     		//botones
     		$('#paginador').removeClass('paginador_none');

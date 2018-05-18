@@ -35,6 +35,10 @@ Route::get('buscar_empresa', function () {
     return view('filtro_empresa');
 });
 
+Route::get('login', function () {
+    return view('login');
+});
+
 Route::get('empresa_list', 'Empresa_controller@list');
 
 Route::get('/api/v1/encontrar_empresa', 'Empresa_controller@get_empresa');

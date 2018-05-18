@@ -63,7 +63,7 @@
 									<div class="form-group row">
 								    	<div class="col-sm-8">
 								      		<label for="">Empresa</label>
-								    	  	<input type="text" class="form-control" id="empresa" v-model="" name="titulo" placeholder="Empresa" required>
+								    	  	<input type="text" class="form-control" id="empresa" v-model="" name="titulo" placeholder="Busca la Empresa / el Empleador" required>
 								    	  	<input type="hidden" name="empresa_id" id="empresa_id" value="">  
 								    	  	<div class="invalid-feedback">
 									          Por favor ingresa una empresa
@@ -73,7 +73,7 @@
 								</a>
 								<a class="list-group-item list-group-item-action">
 								 	<div class="form-group row">
-										<div class="col-sm-4">
+										<div class="col-sm-5">
 										  <label for="">Evalúo mi</label>
 										  <select name="evalua" class="form-control" required>
 										  	<option value=""></option>
@@ -137,7 +137,7 @@
 								</a>
 								<a class="list-group-item list-group-item-action">
 									<div class="form-group row">
-										<div class="col-sm-8">
+										<div class="col-sm-12">
 										  <label for="">Título de tu Evaluación</label>
 										  <input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="" >
 										</div>

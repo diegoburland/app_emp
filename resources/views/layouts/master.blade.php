@@ -30,24 +30,24 @@
 
           <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="/empresa_new">Crear Empresa</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/empresa_list">Lista de Empresas</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Crear Sector</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Crear Categoria</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Administración
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/empresa_new">Crear Empresa</a>
+                  <a class="dropdown-item" href="/empresa_list">Lista de Empresas</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Crear Sector</a>
+                  <a class="dropdown-item" href="#">Crear Categoria</a>
+                </div>
               </li>
             </ul>    
                     
           </div>
 
           <form class="form-inline my-2 my-lg-0">
-             <button type="button" class="btn btn-link btn-sm text-light" onclick="window.location.href='/buscar_empresa'"><b>MI OCUPASIÓN</b></button>
+             <button type="button" class="btn btn-link btn-sm text-light" onclick="window.location.href='/login'"><b>MI OCUPASIÓN</b></button>
             <button type="button" class="btn btn-link btn-sm text-light" onclick="window.location.href='/buscar_empresa'"><span class="fa fa-search"></span> <b>BUSCAR</b></button>
             <button class="btn btn-outline-warning btn-sm" type="button" onclick="window.location.href='/empresa_evaluar'"><b>EVALUACIÓN ANÓNIMA</b></button>                   
           </form>     
