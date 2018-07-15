@@ -32,11 +32,16 @@
     top:3px;
 }
 
+ul.ui-autocomplete {
+    z-index: 1100;
+}
+
 </style>
 
 
 @section('head')
 	<script type="text/javascript" src="/js/empresa/evaluacion.js"></script>
+	<script type="text/javascript" src="/js/empresa/empresa.js"></script>
 @endsection
 
 <div class="row justify-content-md-center">
@@ -66,11 +71,11 @@
 				<div class="form-group row required ">
 			    	<div class="col-sm-6">
 			      		<label class="control-label" >Empresa</label>
-			    	  	<input type="text" class="form-control" id="empresa" v-model="" name="titulo" placeholder="    Busca tu empleador / organización" required>
+			    	  	<input type="text" class="form-control" id="empresa" v-model="" name="titulo" placeholder="Busca tu empresa" required>
 			    	  	<input type="hidden" name="empresa_id" id="empresa_id" value="">  
 			    	  	
 			    	  	<small id="emailHelp" class="form-text text-muted">
-			    	  	<a href="#">	Tu empresa aún no se registado? Sé el primero compartiendo tu experiencia laboral</a>
+			    	  	<a href="#" data-toggle="modal" data-target="#exampleModal">¿No aparece tu empresa?</a>
 			    	  	</small>
 			    	  	
 
@@ -81,16 +86,66 @@
 			  	    </div>
 			  	</div>
 			</div>
+
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Crear empresa</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        
+			      	<div class="form-group row">
+				        <div class="col-sm-12">
+					      <label for="">Nombre de la Empresa</label>
+					      <input type="text" class="form-control" id="razon_social" name="razon_social" placeholder="Nombre de la Empresa" >
+					      <input type="hidden" name="razon_social_id" id="razon_social_id" value="">
+					    </div>
+				    </div>
+				    <div class="form-group row">
+					    <div class="col-sm-12">
+					      <label for="">Ciudad</label>
+					      <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" autocomplete="off">
+					      <input type="hidden" name="ciudad_id" id="ciudad_id" value="">  
+					    </div>
+					</div>
+					<div class="form-group row">
+					    <div class="col-sm-12">
+					    	<label for="">Dirección</label>
+					      <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección">
+					    </div>
+					</div>
+
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+			        <button type="button" class="btn btn-primary">Guardar</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
 			<a class="list-group-item list-group-item-action">
-			 	<div class="form-group row">
+			 	<div class="form-group row required" >
 					<div class="col-sm-4">
-					  <label for="">Evalúo mi</label>
-					  <select name="evalua" class="form-control" required>
+					  	<label for="">Evalúo mi</label>
+
+					  	<div class="btn-group" role="group" aria-label="Basic example">
+						  <button type="button" class="btn-evaluo btn btn-secondary" onclick="evaluo_mi(this)">Trabajo Actual</button>
+						  <button type="button" class="btn-evaluo btn btn-secondary"  onclick="evaluo_mi(this)">Trabajo Pasado</button>
+						  <button type="button" class="btn-evaluo btn btn-secondary"  onclick="evaluo_mi(this)">Práctica</button>
+						</div>
+						<input type="hidden" name="evalua" class="form-control" id="evalua" value="" required>
+
+					  <!--select name="evalua" class="form-control" required>
 					  	<option value="">Selecciona una opción</option>
 					  	<option value="Trabajo Actual">Trabajo Actual</option>
 					  	<option value="Trabajo Pasado">Trabajo Pasado</option>
 					  	<option value="Práctica">Práctica</option>						  	
-					  </select>
+					  </select-->
 					  <div class="invalid-feedback">
 				          Por favor selecciona que evaluas
 				      </div>
@@ -102,12 +157,21 @@
 				<div class="form-group row">
 					<div class="col-sm-4">
 					  <label for="">Elegir Posición</label>
-					  <select name="posicion" class="form-control" required>
+
+					  	<div class="btn-group" role="group" aria-label="Basic example">
+						  <button type="button" class="btn-pos btn btn-secondary" onclick="elegir_pos(this)">Empleado</button>
+						  <button type="button" class="btn-pos btn btn-secondary"  onclick="elegir_pos(this)">Directivo</button>
+						  <button type="button" class="btn-pos btn btn-secondary"  onclick="elegir_pos(this)">Prácticante</button>
+						</div>
+						
+						<input type="hidden" name="posicion" id="posicion" value="">
+
+					  <!--select name="posicion" class="form-control" required>
 					  	<option value="">Selecciona una opción</option>
 					  	<option value="Empleado/Obrero">Empleado/Colaborador</option>
 					  	<option value="Gerente/Directivo">Gerente/Directivo</option>
 					  	<option value="Contrato a tiempo parcial">Prácticante</option>						  	
-					  </select>
+					  </select-->
 					  <div class="invalid-feedback">
 				          Por favor selecciona la posición
 				      </div>
@@ -318,68 +382,103 @@
 				  	@endforeach
 
 				
-			@endforeach
+			@endforeach		
 
-				<a href="#" class="list-group-item list-group-item-action text-light bg-dark">
-				<h5>Tiempo laboral</h5>    	
-			</a>
-			<a href="#" class="list-group-item list-group-item-action">
-			 	<div class="form-group row">
-			    	<div class="col-sm-8">
-			      		<label for="">Horas trabajadas por mes/semana</label>
-			    	  	<input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="" >
-			  	    </div>
-			  	</div>
+			<a  class="list-group-item list-group-item-action text-light bg-dark">
+				<h5>Información adicional</h5>    	
 			</a>
 
-			<a href="#" class="list-group-item list-group-item-action">
+			<a  class="list-group-item list-group-item-action">
 				<div class="form-group row">
-			    	<div class="col-sm-8">
-			      		<label for="">Cantidad de asuetos al año</label>
-			    	  	<input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="" >
+			    	<div class="col-sm-4">
+			      		<label for="">Salario</label>
+			    	  	<input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="$COP Pesos Colombianos" >
 			  	    </div>
 			  	</div>
 			</a>
 
-				<a href="#" class="list-group-item list-group-item-action text-light bg-dark">
+			<a  class="list-group-item list-group-item-action">
+			 	<div class="form-group row">
+			    	<div class="col-sm-4">
+			      		<label for="">Horas trabajadas por semana</label>
+			    	  	<input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="Horas por semana" >
+			  	    </div>
+			  	</div>
+			</a>
+
+			<a  class="list-group-item list-group-item-action">
+			 	<div class="form-group row">
+			    	<div class="col-sm-4">
+			      		<label for="">¿Le ofrecieron un puesto en la empresa después de la practica?</label>
+			    	  	<div class="btn-group" role="group" aria-label="Basic example">
+						  <button type="button" class="btn-ofre btn btn-secondary" onclick="elegir_ofre(this)">Si</button>
+						  <button type="button" class="btn-ofre btn btn-secondary" onclick="elegir_ofre(this)">No</button>
+						</div>
+						<input type="hidden" name="ofrecer" id="ofrecer" value="">
+
+			  	    </div>
+			  	</div>
+			</a>
+
+			<a  class="list-group-item list-group-item-action">
+			 	<div class="form-group row">
+			    	<div class="col-sm-3">
+			      		<label for="">¿Decidió aceptar la oferta de trabajo?</label>
+			    	  	<div class="btn-group" role="group" aria-label="Basic example">
+						  <button type="button" class="btn-oferta btn btn-secondary" onclick="elegir_oferta(this)">Si</button>
+						  <button type="button" class="btn-oferta btn btn-secondary"  onclick="elegir_oferta(this)">No</button>
+						</div>
+						<input type="hidden" name="oferta" id="oferta" value="">
+			  	    </div>
+			  	</div>
+			</a>
+
+			
+
+			<a  class="list-group-item list-group-item-action text-light bg-dark">
 				<h5>Cuéntanos algo sobre tu empleador</h5>    	
 			</a>
-			<a href="#" class="list-group-item list-group-item-action">
+			<a  class="list-group-item list-group-item-action">
 			 	<div class="form-group row">
 			    	<div class="col-sm-8">
-			      		<label for="">Propuesta de mejoras (que puede mejorar la empresa)</label>
+			      		<label for="">¿En qué puede mejorar tu empleador?</label>
 			    	  	<textarea class="form-control" name="mejoras"></textarea>
 			  	    </div>
 			  	</div>
 			</a>
 
-			<a href="#" class="list-group-item list-group-item-action">
+			<a  class="list-group-item list-group-item-action">
 				<div class="form-group row">
 			    	<div class="col-sm-8">
-			      		<label for="">Del empleador me gusta:</label>
+			      		<label for="">¿Qué te gustó de tu empleador?</label>
 			    	  	<textarea class="form-control" name="like"></textarea>
 			  	    </div>
 			  	</div>
 			</a>
 
-			<a href="#" class="list-group-item list-group-item-action">
+			<a  class="list-group-item list-group-item-action">
 				<div class="form-group row">
 			    	<div class="col-sm-8">
-			      		<label for="">Del empleador no me gusta:</label>
+			      		<label for="">¿Qué no te gustó de tu empleador?</label>
 			    	  	<textarea class="form-control" name="no_like"></textarea>
 			  	    </div>
 			  	</div>
 			</a>
 
-			<a href="#" class="list-group-item list-group-item-action">
+			<a  class="list-group-item list-group-item-action">
 				<div class="form-group row">
-			    	<div class="col-sm-8">
-			      		<label for="">¿Recomendarías tu empleador a un amigo? (Si/No)</label>						    	  	
+			    	<div class="col-sm-4">
+			      		<label for="">¿Recomendarías tu empleador a un amigo?</label>				
+			      		<div class="btn-group" role="group" aria-label="Basic example">
+						  <button type="button" class="btn-recomienda btn btn-secondary" onclick="elegir_recomienda(this)">Si</button>
+						  <button type="button" class="btn-recomienda btn btn-secondary"  onclick="elegir_recomienda(this)">No</button>
+						</div>
+						<input type="hidden" name="recomienda" id="recomienda" value="">		    	  	
 			  	    </div>
 			  	</div>
 			</a>
 
-			<a href="#" class="list-group-item list-group-item-action">
+			<a  class="list-group-item list-group-item-action">
 				<div class="form-group row">
 			    	<div class="col-sm-8">
 			      		<label for="">¿Cuáles beneficios se te ofrecen en la empresa?</label>						    	  	
@@ -387,14 +486,28 @@
 			  	</div>
 			</a>
 
-			<a href="#" class="list-group-item list-group-item-action">
+			<div class="list-group-item list-group-item-action">
 				<div class="form-group row">
 			    	<div class="col-sm-8">
-			      		<label for="">Correo electrónico (No se publica → Verificación de autenticidad)</label>		
-			      		<input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="" >				    	  	
+			      		<label for="">Correo electrónico</label>		
+			      		<input type="text" class="form-control" id="" name="titulo" placeholder="" >	
+			      		<small id="emailHelp" class="form-text text-muted">
+			    	  	<a>	Necesitamos tu correo para verificar la autenticidad de tu evaluación. Recibirás un correo de nosotros donde confirmes la creación de tu evaluación. Nunca se publicarán tu correo. </a>
+			    	  	</small>	
+			    	  	<div class="custom-control custom-checkbox">
+						  <input type="checkbox" class="custom-control-input" id="customCheck1">
+						  <label class="custom-control-label" for="customCheck1">Acepto Terminos y Condiciones</label>
+						</div>		    	  	
 			  	    </div>
 			  	</div>
-			</a>
+			</div>			
+
+			<div class="p-2"> 		
+				<button class="btn btn-warning  btn-lg btn-block" type="submit">
+					Finalizar
+				</button>
+			</div>
+			
 
 			  			
 
