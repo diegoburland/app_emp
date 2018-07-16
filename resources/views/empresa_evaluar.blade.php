@@ -44,11 +44,14 @@ ul.ui-autocomplete {
 	<script type="text/javascript" src="/js/empresa/empresa.js"></script>
 @endsection
 
+
 <div class="row justify-content-md-center">
+
+	<form id="form_evaluar_empresa" method="POST" action="/crear_evaluacion" novalidate class="needs-validation">
 
 	<div class="col-sm-11">
 
-		<form id="form_evaluar_empresa" method="POST" action="/crear_evaluacion" novalidate class="needs-validation">
+		
 			
 			
 
@@ -67,11 +70,14 @@ ul.ui-autocomplete {
 				<h5>Datos Generales</h5>    								
 			</a>
 
+			
+
+
 			<div class="list-group-item list-group-item-action">
 				<div class="form-group row required ">
 			    	<div class="col-sm-6">
 			      		<label class="control-label" >Empresa</label>
-			    	  	<input type="text" class="form-control" id="empresa" v-model="" name="titulo" placeholder="Busca tu empresa" required>
+			    	  	<input type="text" class="form-control" id="empresa"  name="titulo" placeholder="Busca tu empresa" required>
 			    	  	<input type="hidden" name="empresa_id" id="empresa_id" value="">  
 			    	  	
 			    	  	<small id="emailHelp" class="form-text text-muted">
@@ -87,47 +93,6 @@ ul.ui-autocomplete {
 			  	</div>
 			</div>
 
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel">Crear empresa</h5>
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			          <span aria-hidden="true">&times;</span>
-			        </button>
-			      </div>
-			      <div class="modal-body">
-			        
-			      	<div class="form-group row">
-				        <div class="col-sm-12">
-					      <label for="">Nombre de la Empresa</label>
-					      <input type="text" class="form-control" id="razon_social" name="razon_social" placeholder="Nombre de la Empresa" >
-					      <input type="hidden" name="razon_social_id" id="razon_social_id" value="">
-					    </div>
-				    </div>
-				    <div class="form-group row">
-					    <div class="col-sm-12">
-					      <label for="">Ciudad</label>
-					      <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" autocomplete="off">
-					      <input type="hidden" name="ciudad_id" id="ciudad_id" value="">  
-					    </div>
-					</div>
-					<div class="form-group row">
-					    <div class="col-sm-12">
-					    	<label for="">Dirección</label>
-					      <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección">
-					    </div>
-					</div>
-
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-			        <button type="button" class="btn btn-primary">Guardar</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-
 			<a class="list-group-item list-group-item-action">
 			 	<div class="form-group row required" >
 					<div class="col-sm-4">
@@ -138,7 +103,8 @@ ul.ui-autocomplete {
 						  <button type="button" class="btn-evaluo btn btn-secondary"  onclick="evaluo_mi(this)">Trabajo Pasado</button>
 						  <button type="button" class="btn-evaluo btn btn-secondary"  onclick="evaluo_mi(this)">Práctica</button>
 						</div>
-						<input type="hidden" name="evalua" class="form-control" id="evalua" value="" required>
+					
+						<input type="hidden" data-validate="true" name="evalua" id="evalua" value="" required>
 
 					  <!--select name="evalua" class="form-control" required>
 					  	<option value="">Selecciona una opción</option>
@@ -146,7 +112,7 @@ ul.ui-autocomplete {
 					  	<option value="Trabajo Pasado">Trabajo Pasado</option>
 					  	<option value="Práctica">Práctica</option>						  	
 					  </select-->
-					  <div class="invalid-feedback">
+					  <div id="validar_evalua" class="invalid-feedback">
 				          Por favor selecciona que evaluas
 				      </div>
 					</div>
@@ -172,7 +138,7 @@ ul.ui-autocomplete {
 					  	<option value="Gerente/Directivo">Gerente/Directivo</option>
 					  	<option value="Contrato a tiempo parcial">Prácticante</option>						  	
 					  </select-->
-					  <div class="invalid-feedback">
+					  <div id="validar_posicion" class="invalid-feedback">
 				          Por favor selecciona la posición
 				      </div>
 					</div>
@@ -326,7 +292,7 @@ ul.ui-autocomplete {
 				<div class="form-group row">
 					<div class="col-sm-8">
 					  <label for="">Título de tu evaluación</label>
-					  <input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="Ponle un título a tu experencia en la empresa/organización" >
+					  <input type="text" class="form-control" id=""  name="titulo" placeholder="Ponle un título a tu experencia en la empresa/organización" >
 					</div>
 				</div>
 			</a>			
@@ -364,16 +330,16 @@ ul.ui-autocomplete {
 								        onclick="evaluar(this, {{$item->id}})"></span>
 								        <span class="p-1 fa fa-star-o fa-2x" data-rating="5" 
 								        onclick="evaluar(this, {{$item->id}})"></span>
-								        <input type="hidden" name="puntaje_{{$item->id}}" class="rating-value" value="0">
+								        <input type="hidden" name="puntaje_{{$item->id}}" id="puntaje_{{$item->id}}" class="rating-value" value="0">
 								      </div>
 								  	</div>
 							  	</div>							  	
-							  			  	
-							      
-
-							      
-
+							  			  								      							      
 							      <textarea name="comentario_{{$item->id}}" id="text_{{$item->id}}" class="text_hide form-control" placeholder="Agrega un comentario"></textarea>
+
+							      <div id="mensaje_{{$item->id}}" class="invalid-feedback">
+							          Debes asignar una estrella
+							      </div>
 							 </a>
 
 						   
@@ -392,7 +358,7 @@ ul.ui-autocomplete {
 				<div class="form-group row">
 			    	<div class="col-sm-4">
 			      		<label for="">Salario</label>
-			    	  	<input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="$COP Pesos Colombianos" >
+			    	  	<input type="text" class="form-control" id="" name="salario" placeholder="$COP Pesos Colombianos" >
 			  	    </div>
 			  	</div>
 			</a>
@@ -401,7 +367,7 @@ ul.ui-autocomplete {
 			 	<div class="form-group row">
 			    	<div class="col-sm-4">
 			      		<label for="">Horas trabajadas por semana</label>
-			    	  	<input type="text" class="form-control" id="" v-model="" name="titulo" placeholder="Horas por semana" >
+			    	  	<input type="text" class="form-control" id="" name="trabajo_tiempo" placeholder="Horas por semana" >
 			  	    </div>
 			  	</div>
 			</a>
@@ -478,31 +444,37 @@ ul.ui-autocomplete {
 			  	</div>
 			</a>
 
-			<a  class="list-group-item list-group-item-action">
+			<!--a  class="list-group-item list-group-item-action">
 				<div class="form-group row">
 			    	<div class="col-sm-8">
 			      		<label for="">¿Cuáles beneficios se te ofrecen en la empresa?</label>						    	  	
 			  	    </div>
 			  	</div>
-			</a>
+			</a-->
 
 			<div class="list-group-item list-group-item-action">
-				<div class="form-group row">
+				<div class="form-group row required">
 			    	<div class="col-sm-8">
 			      		<label for="">Correo electrónico</label>		
-			      		<input type="text" class="form-control" id="" name="titulo" placeholder="" >	
+			      		<input type="email" class="form-control" id="" name="email" placeholder="Correo electrónico" required>	
 			      		<small id="emailHelp" class="form-text text-muted">
-			    	  	<a>	Necesitamos tu correo para verificar la autenticidad de tu evaluación. Recibirás un correo de nosotros donde confirmes la creación de tu evaluación. Nunca se publicarán tu correo. </a>
-			    	  	</small>	
+			    	  	Necesitamos tu correo para verificar la autenticidad de tu evaluación. Recibirás un correo de nosotros donde confirmes la creación de tu evaluación. Nunca se publicarán tu correo.
+			    	  	</small>
+
+			    	  	<div class="invalid-feedback">
+				          Por favor ingresa tu correo
+				        </div>
+
 			    	  	<div class="custom-control custom-checkbox">
-						  <input type="checkbox" class="custom-control-input" id="customCheck1">
-						  <label class="custom-control-label" for="customCheck1">Acepto Terminos y Condiciones</label>
+						  <input type="checkbox" class="custom-control-input" name="terminos" id="terminos" required>
+						  <label class="custom-control-label" for="terminos">Acepto Terminos y Condiciones</label>
 						</div>		    	  	
 			  	    </div>
 			  	</div>
-			</div>			
+			</div>	
+								
 
-			<div class="p-2"> 		
+			<div class="pt-2 mb-2"> 		
 				<button class="btn btn-warning  btn-lg btn-block" type="submit">
 					Finalizar
 				</button>
@@ -514,6 +486,102 @@ ul.ui-autocomplete {
 		</form>
 
 	</div>
+
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Crear empresa</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        
+	        <meta name="csrf-token" content="{{ csrf_token() }}" />
+	        <form id="modal_empresa" novalidate class="needs-validation2" method="POST">
+	        	
+	        
+		      	<div class="form-group row">
+			        <div class="col-sm-12">
+				      <label for="">Nombre de la Empresa</label>
+				      <input type="text" class="form-control" id="razon_social" name="razon_social" placeholder="Nombre de la Empresa" required>
+				      <input type="hidden" name="razon_social_id" id="razon_social_id" value="">
+
+				      <div class="invalid-feedback">
+				          Por favor ingresa el nombre de la empresa
+				      </div>
+				    </div>
+			    </div>
+
+			    <div class="form-group row">
+				    <div class="col-sm-12">
+				    	<label for="">Sector económico</label>
+				      <select class="form-control" id="sector_economico" name="sector_economico" required>
+				        <option></option>
+				        <option value="Administrativa y Financiera">
+				          Administrativa y Financiera
+				        </option>
+				        <option value="Archivo y Documentación">
+				          Archivo y Documentación
+				        </option>
+				        <option value="Auditoría, Contraloría e Interventoría">
+				          Auditoría, Contraloría e Interventoría
+				        </option>
+				        <option value="Calidad (aseguramiento, gestión y afines)">
+				          Calidad (aseguramiento, gestión y afines)
+				        </option>
+				        <option value="Comercial, Ventas y Telemercadeo">
+				          Comercial, Ventas y Telemercadeo
+				        </option>
+				        <option value="Comercio Exterior">
+				          Comercio Exterior
+				        </option>
+				        <option value="Compras e Inventarios">
+				          Compras e Inventarios
+				        </option>
+				        <option value="Construcción y Obra">
+				          Construcción y Obra
+				        </option>
+				        <option value="Docencia">
+				          Docencia
+				        </option>        
+				      </select>   
+				      <div class="invalid-feedback">
+				          Por favor selecciona un sector
+				      </div>   
+				    </div>
+				</div>
+
+			    <div class="form-group row">
+				    <div class="col-sm-12">
+				      <label for="">Ciudad</label>
+				      <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" autocomplete="off" required>
+				      <input type="hidden" name="ciudad_id" id="ciudad_id" value="">  
+				      <div id="validar_ciudad" class="invalid-feedback">
+				          Por favor selecciona una ciudad del listado
+				      </div>
+				    </div>
+				</div>
+				<div class="form-group row">
+				    <div class="col-sm-12">
+				    	<label for="">Dirección</label>
+				      <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección">
+				    </div>
+				</div>
+
+			</form>
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+	        <button type="button" class="btn btn-primary" onclick="save_empresa()" >Guardar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
 </div>
 
 @endsection

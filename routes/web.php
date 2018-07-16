@@ -43,3 +43,5 @@ Route::get('empresa_list', 'Empresa_controller@list');
 
 Route::get('/api/v1/encontrar_empresa', 'Empresa_controller@get_empresa');
 Route::get('/api/v1/encontrar_ubicacion', 'Ciudad_controller@get_ciudad');
+
+Route::post('/api/v1/crear_empresa', 'Empresa_controller@save_empresa');

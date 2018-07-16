@@ -56,6 +56,11 @@ class Empresa_controller extends Controller
 
     }
 
+    public function save_empresa(Request $request){
+
+        return Empresa::create($request->all())->id;
+    }
+
     public function store(Request $request){
 		
 
