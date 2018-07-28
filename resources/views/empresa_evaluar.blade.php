@@ -99,9 +99,9 @@ ul.ui-autocomplete {
 					  	<label for="">Evalúo mi</label>
 
 					  	<div class="btn-group" role="group" aria-label="Basic example">
-						  <button type="button" class="btn-evaluo btn btn-secondary" onclick="evaluo_mi(this)">Trabajo Actual</button>
-						  <button type="button" class="btn-evaluo btn btn-secondary"  onclick="evaluo_mi(this)">Trabajo Pasado</button>
-						  <button type="button" class="btn-evaluo btn btn-secondary"  onclick="evaluo_mi(this)">Práctica</button>
+						  <button type="button" id="btn_actual" class="btn-evaluo btn btn-secondary" onclick="evaluo_mi(this)">Trabajo Actual</button>
+						  <button type="button" id="btn_pasado" class="btn-evaluo btn btn-secondary"  onclick="evaluo_mi(this)">Trabajo Pasado</button>
+						  <button type="button" id="btn_practica" class="btn-evaluo btn btn-secondary"  onclick="evaluo_mi(this)">Práctica</button>
 						</div>
 					
 						<input type="hidden" data-validate="true" name="evalua" id="evalua" value="" required>
@@ -121,13 +121,13 @@ ul.ui-autocomplete {
 
 			<a class="list-group-item list-group-item-action">
 				<div class="form-group row">
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 					  <label for="">Elegir Posición</label>
 
 					  	<div class="btn-group" role="group" aria-label="Basic example">
-						  <button type="button" class="btn-pos btn btn-secondary" onclick="elegir_pos(this)">Empleado</button>
-						  <button type="button" class="btn-pos btn btn-secondary"  onclick="elegir_pos(this)">Directivo</button>
-						  <button type="button" class="btn-pos btn btn-secondary"  onclick="elegir_pos(this)">Prácticante</button>
+						  <button type="button" id="btn_empleado" class="btn-pos btn btn-secondary" onclick="elegir_pos(this)">Empleado</button>
+						  <button type="button" id="btn_directivo" class="btn-pos btn btn-secondary"  onclick="elegir_pos(this)">Directivo</button>
+						  <button type="button" id="btn_practicante" class="btn-pos btn btn-secondary"  onclick="elegir_pos(this)">Prácticante</button>
 						</div>
 						
 						<input type="hidden" name="posicion" id="posicion" value="">
@@ -317,7 +317,7 @@ ul.ui-autocomplete {
 							  		<div class="col-sm-4 h5 mt-2">
 								  		{{$item->nombre}}		
 								  	</div>
-								  	<div class="col-sm-5 ">
+								  	<div class="col-sm-4 ">
 								  		<div class="d-inline-flex star-rating star-rating-{{$item->id}}" 
 								      	onclick="text_show({{$item->id}})">
 								        <span class="p-1 fa fa-star-o fa-2x" data-rating="1" 
@@ -332,6 +332,9 @@ ul.ui-autocomplete {
 								        onclick="evaluar(this, {{$item->id}})"></span>
 								        <input type="hidden" name="puntaje_{{$item->id}}" id="puntaje_{{$item->id}}" class="rating-value" value="0">
 								      </div>
+								  	</div>
+								  	<div class="col-sm-4">
+								  		{{$item->descripcion}}								  		
 								  	</div>
 							  	</div>							  	
 							  			  								      							      
@@ -377,8 +380,8 @@ ul.ui-autocomplete {
 			    	<div class="col-sm-4">
 			      		<label for="">¿Le ofrecieron un puesto en la empresa después de la practica?</label>
 			    	  	<div class="btn-group" role="group" aria-label="Basic example">
-						  <button type="button" class="btn-ofre btn btn-secondary" onclick="elegir_ofre(this)">Si</button>
-						  <button type="button" class="btn-ofre btn btn-secondary" onclick="elegir_ofre(this)">No</button>
+						  <button type="button" id="btn_pra_si" class="btn-ofre btn btn-secondary" onclick="elegir_ofre(this)">Si</button>
+						  <button type="button" id="btn_pra_no" class="btn-ofre btn btn-secondary" onclick="elegir_ofre(this)">No</button>
 						</div>
 						<input type="hidden" name="ofrecer" id="ofrecer" value="">
 
@@ -386,7 +389,7 @@ ul.ui-autocomplete {
 			  	</div>
 			</a>
 
-			<a  class="list-group-item list-group-item-action">
+			<a id="pre_oferta"  class="list-group-item list-group-item-action">
 			 	<div class="form-group row">
 			    	<div class="col-sm-3">
 			      		<label for="">¿Decidió aceptar la oferta de trabajo?</label>

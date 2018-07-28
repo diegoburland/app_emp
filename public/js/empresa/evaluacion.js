@@ -22,6 +22,10 @@ function text_show(item) {
     $('#text_'+item).show();
 }
 
+const BTN_PRACTICANTE = "<button type='button' id='btn_practicante' class='btn-pos btn btn-secondary'  onclick='elegir_pos(this)'>Prácticante</button>";
+const BTN_OTROS = "<button type='button' id='btn_empleado' class='btn-pos btn btn-secondary' onclick='elegir_pos(this)'>Empleado</button><button type='button' id='btn_directivo' class='btn-pos btn btn-secondary'  onclick='elegir_pos(this)'>Directivo</button>";
+
+
 function evaluo_mi(self){
 
     $('.btn-evaluo').removeClass('btn-dark').addClass('btn-secondary');
@@ -29,6 +33,31 @@ function evaluo_mi(self){
     $(self).removeClass('btn-secondary').addClass('btn-dark');
 
     $('#evalua').val($(self).text());
+
+    console.log($(self).attr('id'));
+    if ($(self).attr('id') == "btn_actual" || $(self).attr('id') == "btn_pasado") {
+
+        if (!$("#btn_empleado").is(":visible")) {
+          
+           $("#btn_practicante").before(BTN_OTROS);          
+        }
+       
+        $("#btn_practicante").remove();
+
+    }else{
+
+        
+
+        if (!$("#btn_practicante").is(":visible")) {
+
+          $('#btn_directivo').after(BTN_PRACTICANTE);    
+          elegir_pos($("#btn_practicante"));        
+        }
+
+        $("#btn_empleado").remove();
+        $("#btn_directivo").remove();
+        
+    }
 
     //validar_botones();
 }
@@ -58,6 +87,14 @@ function elegir_ofre(self){
     $(self).removeClass('btn-secondary').addClass('btn-dark');
 
     $('#ofrecer').val($(self).text());
+
+    if ($(self).attr('id') == "btn_pra_no") {
+
+        $("#pre_oferta").hide();
+    }else{
+
+        $("#pre_oferta").show();
+    }
 
 }
 
@@ -132,6 +169,8 @@ function validar_modal(){
 
 $(function() {
 
+     $("#pre_oferta").hide();
+     
 	var forms = document.getElementsByClassName('needs-validation');
 	    // Loop over them and prevent submission
 
