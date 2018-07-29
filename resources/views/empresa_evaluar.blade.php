@@ -95,10 +95,10 @@ ul.ui-autocomplete {
 
 			<a class="list-group-item list-group-item-action">
 			 	<div class="form-group row required" >
-					<div class="col-sm-4">
+					<div class="col-sm-5">
 					  	<label for="">Evalúo mi</label>
 
-					  	<div class="btn-group" role="group" aria-label="Basic example">
+					  	<div class="btn-group flex-wrap" role="group" aria-label="Basic example">
 						  <button type="button" id="btn_actual" class="btn-evaluo btn btn-secondary" onclick="evaluo_mi(this)">Trabajo Actual</button>
 						  <button type="button" id="btn_pasado" class="btn-evaluo btn btn-secondary"  onclick="evaluo_mi(this)">Trabajo Pasado</button>
 						  <button type="button" id="btn_practica" class="btn-evaluo btn btn-secondary"  onclick="evaluo_mi(this)">Práctica</button>
@@ -121,10 +121,13 @@ ul.ui-autocomplete {
 
 			<a class="list-group-item list-group-item-action">
 				<div class="form-group row">
-					<div class="col-sm-3">
-					  <label for="">Elegir Posición</label>
+					<div class="col-sm-5">
+						<div class="row ml-1">
+							<label for="">Elegir Posición</label>		
+						</div>
+					  
 
-					  	<div class="btn-group" role="group" aria-label="Basic example">
+					  	<div class="btn-group flex-wrap" role="group" aria-label="Basic example">
 						  <button type="button" id="btn_empleado" class="btn-pos btn btn-secondary" onclick="elegir_pos(this)">Empleado</button>
 						  <button type="button" id="btn_directivo" class="btn-pos btn btn-secondary"  onclick="elegir_pos(this)">Directivo</button>
 						  <button type="button" id="btn_practicante" class="btn-pos btn btn-secondary"  onclick="elegir_pos(this)">Prácticante</button>
@@ -150,20 +153,21 @@ ul.ui-autocomplete {
 					  <label for="">Departamento de la Empresa</label>
 					  <select name="departamento" class="form-control" required>
 					  	<option value="">Selecciona una opción</option>
-					  	<option value="(Administración/Organización">Administración/Organización</option>
-					  	<option value="Compras/Proveedores">Compras/Proveedores</option>
-					  	<option value="Diseño">Diseño</option>
-					  	<option value="Finanzas/Controlling">Finanzas/Controlling</option>
-					  	<option value="Investigación/Desarrollo">Investigación/Desarrollo</option>
-					  	<option value="Gerencia">Gerencia</option>
-					  	<option value="TI">TI</option>
-					  	<option value="Logística/gestión de existencias">Logística/gestión de existencias</option>
-					  	<option value="Mercadeo/Gerencia de Productos">Mercadeo/Gerencia de Productos</option>
-					  	<option value="Comunicación/Relaciones públicos">Comunicación/Relaciones públicos</option>
-					  	<option value="Personal/formación + educación continua">Personal/formación + educación continua</option>
+					  	<option value="Administración / Organización">Administración / Organización</option>
+					  	<option value="Compras / Proveedores">Compras / Proveedores</option>
+					  	<option value="Control de Gestión">Control de Gestión</option>
+					  	<option value="Finanzas / Contabilidad">Finanzas / Contabilidad</option>
+					  	<option value="Investigación / Desarrollo">Investigación / Desarrollo</option>
+					  	<option value="Gerencia / Dirección">Gerencia / Dirección</option>
+					  	<option value="Sistemas de información / TI">Sistemas de información / TI</option>
+					  	<option value="Logística / Almacén / Inventario">Logística / Almacén / Inventario</option>
+					  	<option value="Mercadeo / Gerencia de Productos">Mercadeo / Gerencia de Productos</option>
+					  	<option value="Comunicación / Relaciones públicas">Comunicación / Relaciones públicas</option>
+					  	<option value="Talento humano">Talento humano</option>
 					  	<option value="Producción">Producción</option>
-					  	<option value="Derecho/Impuesto">Derecho/Impuesto</option>
-					  	<option value="distribución/venta">distribución/ventas</option>
+					  	<option value="Legal / Fiscal">Legal / Fiscal</option>
+					  	<option value="Ventas / Comercial">Ventas / Comercial</option>
+					  	<option value="Gestión de Calidad">Gestión de Calidad</option>
 					  	<option value="Otro">Otro</option>
 					  </select>
 					  <div class="invalid-feedback">
@@ -302,7 +306,7 @@ ul.ui-autocomplete {
 		  		
 				
 		  		
-		  				<a class="list-group-item list-group-item-action text-light bg-dark" >
+		  				<a class="list-group-item list-group-item-action text-light bg-dark dim_{{$categoria->dimension}}" >
 							<h5>{{$categoria->nombre}}</h5>    	
 						</a>	
 		    	
@@ -310,7 +314,7 @@ ul.ui-autocomplete {
 
 			    		@if($item->categoria_id == $categoria->id)
 			    				  
-							  <a class="list-group-item list-group-item-action">
+							  <a class="list-group-item list-group-item-action dim_{{$categoria->dimension}}">
 
 							  	<div class="row">
 							  		
@@ -333,8 +337,9 @@ ul.ui-autocomplete {
 								        <input type="hidden" name="puntaje_{{$item->id}}" id="puntaje_{{$item->id}}" class="rating-value" value="0">
 								      </div>
 								  	</div>
-								  	<div class="col-sm-4">
-								  		{{$item->descripcion}}								  		
+								  	<div class="col-sm-4 mb-2 text_hide " id="desc_{{$item->id}}">
+								  		<small id="emailHelp" class="form-text text-muted font-italic">{{$item->descripcion}}</small>
+								  									  		
 								  	</div>
 							  	</div>							  	
 							  			  								      							      
@@ -375,7 +380,7 @@ ul.ui-autocomplete {
 			  	</div>
 			</a>
 
-			<a  class="list-group-item list-group-item-action">
+			<a  class="list-group-item list-group-item-action dim_practicante">
 			 	<div class="form-group row">
 			    	<div class="col-sm-4">
 			      		<label for="">¿Le ofrecieron un puesto en la empresa después de la practica?</label>
@@ -482,13 +487,11 @@ ul.ui-autocomplete {
 					Finalizar
 				</button>
 			</div>
-			
-
-			  			
-
-		</form>
+						  				
 
 	</div>
+
+	</form>
 
 
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

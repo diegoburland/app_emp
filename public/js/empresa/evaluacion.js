@@ -20,6 +20,7 @@ function evaluar(self, item){
 function text_show(item) {
     $('.text_hide').hide();
     $('#text_'+item).show();
+    $('#desc_'+item).show();
 }
 
 const BTN_PRACTICANTE = "<button type='button' id='btn_practicante' class='btn-pos btn btn-secondary'  onclick='elegir_pos(this)'>Prácticante</button>";
@@ -44,6 +45,9 @@ function evaluo_mi(self){
        
         $("#btn_practicante").remove();
 
+        $(".dim_practicante").hide();
+        $(".dim_empleado").show();
+
     }else{
 
         
@@ -51,12 +55,16 @@ function evaluo_mi(self){
         if (!$("#btn_practicante").is(":visible")) {
 
           $('#btn_directivo').after(BTN_PRACTICANTE);    
-          elegir_pos($("#btn_practicante"));        
+          //elegir_pos($("#btn_practicante"));        
         }
 
         $("#btn_empleado").remove();
         $("#btn_directivo").remove();
+
+        $(".dim_practicante").show();
+        $(".dim_empleado").hide();
         
+        elegir_pos($("#btn_practicante"));        
     }
 
     //validar_botones();
@@ -169,7 +177,9 @@ function validar_modal(){
 
 $(function() {
 
-     $("#pre_oferta").hide();
+    $("#pre_oferta").hide();
+
+    $(".dim_practicante").hide();
      
 	var forms = document.getElementsByClassName('needs-validation');
 	    // Loop over them and prevent submission
@@ -235,6 +245,7 @@ $(function() {
 
 
     $('.text_hide').hide();
+    
 	/*$('#a_anterior').hide();
     
 

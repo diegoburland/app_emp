@@ -19,6 +19,11 @@ class AddCiudadToEmpresasTable extends Migration
             $table->integer('ciudad_id')->after('razon_social');
             $table->foreign('ciudad_id')->references('id')->on('ciudades')->onDelete('cascade');
         });
+
+        DB::table('empresas')->insert([ 'razon_social' => 'Ocupasion', 'sector_economico' => 'Administración / Organización', 'ciudad_id' => 547]);
+        DB::table('empresas')->insert([ 'razon_social' => 'Exito', 'sector_economico' => 'Administración / Organización', 'ciudad_id' => 547]);
+        DB::table('empresas')->insert([ 'razon_social' => 'Bancolombia', 'sector_economico' => 'Administración / Organización', 'ciudad_id' => 547]);
+        DB::table('empresas')->insert([ 'razon_social' => 'Jumbo', 'sector_economico' => 'Administración / Organización', 'ciudad_id' => 547]);
     }
 
     /**

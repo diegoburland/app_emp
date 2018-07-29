@@ -29,6 +29,8 @@ class CreateEmpresasTable extends Migration
 
             $table->timestamps();
         });
+
+        
     }
 
     /**

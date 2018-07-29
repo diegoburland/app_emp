@@ -15,7 +15,9 @@ class Evaluacion_controller extends Controller
     public function store(Request $request){
 		
 
-		$evaluacion = Evaluacion::create($request->all()); //mejorar        
+        $random_hash = md5(uniqid(rand(), true));
+
+		$evaluacion = Evaluacion::create($request->all() + ['confir_code' => $random_hash]); //mejorar        
 
         $items = Item::all();        
 

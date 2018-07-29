@@ -16,14 +16,18 @@ class CreateCategoriasTable extends Migration
         Schema::create('categorias', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre', 255);
-            $table->mediumText('descripcion')->nullable();
+            $table->string('dimension', 15);
+            $table->mediumText('descripcion')->nullable();            
             $table->timestamps();
         });
 
-        DB::table('categorias')->insert([ 'nombre' => 'Cultura empresarial']);
-        DB::table('categorias')->insert([ 'nombre' => 'Diversidad']);
-        DB::table('categorias')->insert([ 'nombre' => 'Ambiente laboral']);
-        DB::table('categorias')->insert([ 'nombre' => 'Carrera profesional']);        
+        DB::table('categorias')->insert([ 'nombre' => 'Ambiente laboral', 'dimension' => 'empleado']);
+        DB::table('categorias')->insert([ 'nombre' => 'Condiciones laborales', 'dimension' => 'empleado']);
+        DB::table('categorias')->insert([ 'nombre' => 'Carrera profesional', 'dimension' => 'empleado']);
+        
+        DB::table('categorias')->insert([ 'nombre' => 'Ambiente laboral', 'dimension' => 'practicante']);
+        DB::table('categorias')->insert([ 'nombre' => 'Condiciones laborales', 'dimension' => 'practicante']);
+        DB::table('categorias')->insert([ 'nombre' => 'Carrera profesional', 'dimension' => 'practicante']);  
 
     }
 

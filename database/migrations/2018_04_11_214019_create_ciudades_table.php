@@ -23,7 +23,7 @@ class CreateCiudadesTable extends Migration
             $table->timestamps();
         });
 
-        DB::unprepared(file_get_contents('/var/www/departamentos-y-municipios-colombia-SQL/municipios.sql'));
+        DB::unprepared(file_get_contents('/var/www/departamentos-y-municipios-colombia-SQL/municipios.sql'));        
     }
 
     /**
