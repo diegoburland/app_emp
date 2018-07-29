@@ -77,7 +77,7 @@ ul.ui-autocomplete {
 				<div class="form-group row required ">
 			    	<div class="col-sm-6">
 			      		<label class="control-label" >Empresa</label>
-			    	  	<input type="text" class="form-control" id="empresa"  name="titulo" placeholder="Busca tu empresa" required>
+			    	  	<input type="text" class="form-control" id="empresa"  name="empresa_nombre" placeholder="Busca tu empresa" required>
 			    	  	<input type="hidden" name="empresa_id" id="empresa_id" value="">  
 			    	  	
 			    	  	<small id="emailHelp" class="form-text text-muted">
@@ -85,8 +85,8 @@ ul.ui-autocomplete {
 			    	  	</small>
 			    	  	
 
-			    	  	<div class="invalid-feedback">
-				          Por favor ingresa una empresa
+			    	  	<div id="validar_empresa" class="invalid-feedback">
+				          Por favor selecciona una empresa, o crea una nueva.
 				        </div>
 
 			  	    </div>
@@ -96,8 +96,9 @@ ul.ui-autocomplete {
 			<a class="list-group-item list-group-item-action">
 			 	<div class="form-group row required" >
 					<div class="col-sm-5">
-					  	<label for="">Evalúo mi</label>
-
+						<div class="row ml-1">
+					  		<label for="">Evalúo mi</label>
+					  	</div>
 					  	<div class="btn-group flex-wrap" role="group" aria-label="Basic example">
 						  <button type="button" id="btn_actual" class="btn-evaluo btn btn-secondary" onclick="evaluo_mi(this)">Trabajo Actual</button>
 						  <button type="button" id="btn_pasado" class="btn-evaluo btn btn-secondary"  onclick="evaluo_mi(this)">Trabajo Pasado</button>
@@ -323,19 +324,18 @@ ul.ui-autocomplete {
 								  	</div>
 								  	<div class="col-sm-4 ">
 								  		<div class="d-inline-flex star-rating star-rating-{{$item->id}}" 
-								      	onclick="text_show({{$item->id}})">
-								        <span class="p-1 fa fa-star-o fa-2x" data-rating="1" 
-								        onclick="evaluar(this, {{$item->id}})"></span>
-								        <span class="p-1 fa fa-star-o fa-2x" data-rating="2" 
-								        onclick="evaluar(this, {{$item->id}})"></span>
-								        <span class="p-1 fa fa-star-o fa-2x" data-rating="3" 
-								        onclick="evaluar(this, {{$item->id}})"></span>
-								        <span class="p-1 fa fa-star-o fa-2x" data-rating="4" 
-								        onclick="evaluar(this, {{$item->id}})"></span>
-								        <span class="p-1 fa fa-star-o fa-2x" data-rating="5" 
-								        onclick="evaluar(this, {{$item->id}})"></span>
-								        <input type="hidden" name="puntaje_{{$item->id}}" id="puntaje_{{$item->id}}" class="rating-value" value="0">
-								      </div>
+									      	onclick="text_show({{$item->id}})">
+									        <span class="p-1 fa fa-star-o fa-2x" data-rating="1" 
+									        onclick="evaluar(this, {{$item->id}})"></span>
+									        <span class="p-1 fa fa-star-o fa-2x" data-rating="2" 
+									        onclick="evaluar(this, {{$item->id}})"></span>
+									        <span class="p-1 fa fa-star-o fa-2x" data-rating="3" 
+									        onclick="evaluar(this, {{$item->id}})"></span>
+									        <span class="p-1 fa fa-star-o fa-2x" data-rating="4" 
+									        onclick="evaluar(this, {{$item->id}})"></span>
+									        <span class="p-1 fa fa-star-o fa-2x" data-rating="5" 
+									        onclick="evaluar(this, {{$item->id}})"></span>								        
+									    </div>
 								  	</div>
 								  	<div class="col-sm-4 mb-2 text_hide " id="desc_{{$item->id}}">
 								  		<small id="emailHelp" class="form-text text-muted font-italic">{{$item->descripcion}}</small>
@@ -348,6 +348,7 @@ ul.ui-autocomplete {
 							      <div id="mensaje_{{$item->id}}" class="invalid-feedback">
 							          Debes asignar una estrella
 							      </div>
+							      <input type="hidden" name="puntaje_{{$item->id}}" id="puntaje_{{$item->id}}" class="rating-value" value="0">
 							 </a>
 
 						   

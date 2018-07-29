@@ -3,13 +3,15 @@ function evaluar(self, item){
 
     
 	//console.log($(self).siblings('input.rating-value').val())
-	$(self).siblings('input.rating-value').val($(self).data('rating'));
+	///$(self).siblings('input.rating-value').val($(self).data('rating'));
 	//console.log($(self).siblings('input.rating-value').val())}
+    $('#puntaje_'+item).val($(self).data('rating'));
+
     $("#mensaje_"+item).css('display', 'none');
 
 	var $star_rating = $('.star-rating-' + item + ' .fa');
 	$star_rating.each(function() {
-		if (parseInt($($star_rating).siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+		if (parseInt($('#puntaje_'+item).val()) >= parseInt($(this).data('rating'))) {
 	      return $(this).removeClass('fa-star-o').addClass('fa-star');
 	    } else {
 	      return $(this).removeClass('fa-star').addClass('fa-star-o');
@@ -146,10 +148,21 @@ function validar_botones(){
         $('#validar_posicion').css('display', 'none');
     }
 
+    if($('#empresa_id').val() == ""){
+
+        $('#validar_empresa').css('display', 'block');
+        $('#empresa').val('');
+        validar = false;
+    }else{
+
+        $('#validar_empresa').css('display', 'none');
+    }    
+
     var $starts = $('.rating-value');
     
     $starts.each(function() {
-        if ($(this).val() == "0") {
+        console.log($(this).parent().is(":visible"));
+        if ($(this).val() == "0" && $(this).parent().is(":visible")) {
 
             $("#mensaje_"+$(this).attr('id').split("_")[1]).css('display', 'block');
             validar = false;

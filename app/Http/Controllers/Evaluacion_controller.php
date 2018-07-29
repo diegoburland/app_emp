@@ -15,7 +15,7 @@ class Evaluacion_controller extends Controller
     public function store(Request $request){
 		
 
-        $random_hash = md5(uniqid(rand(), true));
+        $random_hash = bin2hex(random_bytes(32));
 
 		$evaluacion = Evaluacion::create($request->all() + ['confir_code' => $random_hash]); //mejorar        
 
@@ -32,7 +32,7 @@ class Evaluacion_controller extends Controller
 
 
         //return $request;
-        return redirect('/empresa/' . $request->input('empresa_id'));
+        return redirect('/gracias?email='. $request->input('email') . '&empresa=' . $request->input('empresa_nombre'));
         
     }
 
@@ -41,5 +41,10 @@ class Evaluacion_controller extends Controller
     	$categorias = Categoria::all();
     	$items = Item::all();
     	return view('empresa_evaluar', array('categorias' => $categorias, 'items' => $items));
+    }
+
+    public function gracias(Request $request){
+
+        return view('gracias');
     }    
 }
