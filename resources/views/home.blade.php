@@ -28,24 +28,44 @@
 
 	<div class="div_sloga">
 
-		<b>Califica tu <span style="color: yellow;">pasión</span>. Que tu opinión cuente!</b>
+		<b>Ocupasión – Conoce a las empresas desde adentro</b>
 	</div>
 
 </div>
 <br>
 <div class="container">
-	<h2>Nuestra Misión</h2>
-	<p class="text-justify">
-	En Ocupasión.com trabajamos para el derecho de cada ciudadano de la República de Colombia por un trabajo con condiciones laborales justas, remuneración justa y trato interpersonal justo.
+
+	<p class="text-center">Nosotros desde Ocupasión aspiramos a ayudarte a encontrar la mejor empresa u organización para ti. Conoce aquí lo que los mismos colaboradores dicen sobre su empresa y las condiciones laborales respectivas.
+	</p>
+	
+	<p class="text-center">
+	La satisfacción laboral es uno de los determinantes claves para tu felicidad en la vida.
 	</p>
 
-	<p class="text-justify">
-	Por lo tanto, queremos pedirte francamente que evalúes tu empleador con mayor sinceridad y equidad posible para que buenas empresas tengan la valoración que se merezcan y las malas tengan incentivo a constantemente mejorar.	
+	
+	<p class="text-center">
+	No dejes la decisión más importante en tu vida al azar!
 	</p>
-
-	<p class="text-justify">
-	Para que los resultados de las evaluaciones reflejen la realidad queremos pedirte que uses la oportunidad de evaluar a tu empleador de manera anónima y gratuita. Así no solo ayuda a hacer el mercado laboral colombiano más transparente y justo,sino también, aporta un valor agregado para los buscadores actuales y futuros de empleo.	
+	
+	<center><h2>Nuestra Misión</h2></center>
+	
+	
+	<p class="text-center">
+	Trabajamos para el derecho de cada ciudadano de la República de Colombia por un trabajo
+	en condiciones laborales justas, una remuneración que corresponde a la responsabilidad y
+	esfuerzo del cargo y un respetuoso trato personal entre los actores de una empresa u 
+	organización.
 	</p>
+	<p class="text-center">
+	Por lo tanto, francamente te pedimos que evalúes las condiciones laborales de tu empresa u
+	organización con mayor sinceridad posible para que cada vez hagamos el mercado laboral
+	colombiano más transparente, social y justo.
+	</p>
+	<p class="text-center">
+	La evaluación de tu empleador es 100% anónima y gratuita.
+	</p>
+	
+	
 
 	<div class="mx-auto" style="width: 200px;">
 	  <button class="btn btn-warning btn-sm" type="button" onclick="window.location.href='/empresa_evaluar'"><b>EVALUACIÓN ANÓNIMA</b></button>    
@@ -53,12 +73,10 @@
 	<br>
 	<div class="pr-5 pl-5">
 		<div class="embed-responsive embed-responsive-16by9">
-	  		<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v2AC41dglnM?rel=0" allowfullscreen></iframe>
+	  		<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5JFOPnFazDo?rel=0" allowfullscreen></iframe>
 		</div>	
 	</div>
 	
-	
-
 	
 	
 </div>

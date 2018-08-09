@@ -131,7 +131,7 @@ ul.ui-autocomplete {
 					  	<div class="btn-group flex-wrap" role="group" aria-label="Basic example">
 						  <button type="button" id="btn_empleado" class="btn-pos btn btn-secondary" onclick="elegir_pos(this)">Empleado</button>
 						  <button type="button" id="btn_directivo" class="btn-pos btn btn-secondary"  onclick="elegir_pos(this)">Directivo</button>
-						  <button type="button" id="btn_practicante" class="btn-pos btn btn-secondary"  onclick="elegir_pos(this)">Prácticante</button>
+						  <button type="button" id="btn_practicante" class="btn-pos btn btn-secondary"  onclick="elegir_pos(this)">Practicante</button>
 						</div>
 						
 						<input type="hidden" name="posicion" id="posicion" value="">
@@ -187,8 +187,7 @@ ul.ui-autocomplete {
 			  	<p>Todos juntos aspiramos a hacer más transparente el mercado laboral. 
 				Por favor, evalúe cada dimensión laboral lo más honesto posible. </p>
 
-				<p><b>Recuerda:</b> Somos una plataforma neutral y justa 
-				Por lo tanto te pedimos tomar en cuenta los siguientes aspectos: </p>
+				<p><b>Recuerda:</b> Somos una plataforma neutral y justa. Por lo tanto te pedimos tomar en cuenta los siguientes aspectos: </p>
 
 				<ul>
 					<dl>
@@ -198,16 +197,16 @@ ul.ui-autocomplete {
 						• Se prohíbe publicar información interna, secreta o sensible de la organización. 		
 					</dl>
 					<dl>
-						• Se prohíbe el uso de lenguage discriminatorio, desacreditante, racista o vulgar. 		
+						• Se prohíbe el uso de lenguaje discriminatorio, desacreditante, racista o vulgar. 		
 					</dl>
 				</ul>	
 
-				En ocupasion utilizamos un modo amigable de calificar, sin embargo ten presente el siguiete valor equivalente para las estrellas:		
+				En Ocupasión utilizamos un modo amigable de calificar. Sin embargo, ten presente el siguiente rubro de calificación de estrellas:		
 
 				<div class="row">
 							  		
-			  		<div class="col-sm-2 h5 mt-2">
-				  		Malo
+			  		<div class="col-sm-3 h5 mt-2">
+				  		Muy insatisfecho
 				  	</div>
 				  	<div class="col-sm-5 ">
 				  		<div class="d-inline-flex star-rating" >
@@ -222,8 +221,8 @@ ul.ui-autocomplete {
 
 			  	<div class="row">
 								  		
-			  		<div class="col-sm-2 h5 mt-2">
-				  		Regular
+			  		<div class="col-sm-3 h5 mt-2">
+				  		Insatisfecho
 				  	</div>
 				  	<div class="col-sm-5 ">
 				  		<div class="d-inline-flex star-rating" >
@@ -238,8 +237,8 @@ ul.ui-autocomplete {
 
 			  	<div class="row">
 								  		
-			  		<div class="col-sm-2 h5 mt-2">
-				  		Bueno
+			  		<div class="col-sm-3 h5 mt-2">
+				  		Neutral
 				  	</div>
 				  	<div class="col-sm-5 ">
 				  		<div class="d-inline-flex star-rating" >
@@ -254,8 +253,8 @@ ul.ui-autocomplete {
 
 			  	<div class="row">
 								  		
-			  		<div class="col-sm-2 h5 mt-2">
-				  		Muy bueno
+			  		<div class="col-sm-3 h5 mt-2">
+				  		Satisfecho
 				  	</div>
 				  	<div class="col-sm-5 ">
 				  		<div class="d-inline-flex star-rating" >
@@ -270,8 +269,8 @@ ul.ui-autocomplete {
 
 			  	<div class="row">
 								  		
-			  		<div class="col-sm-2 h5 mt-2">
-				  		Excelente
+			  		<div class="col-sm-3 h5 mt-2">
+				  		Muy satisfecho
 				  	</div>
 				  	<div class="col-sm-5 ">
 				  		<div class="d-inline-flex star-rating" >
@@ -467,7 +466,7 @@ ul.ui-autocomplete {
 			      		<label for="">Correo electrónico</label>		
 			      		<input type="email" class="form-control" id="" name="email" placeholder="Correo electrónico" required>	
 			      		<small id="emailHelp" class="form-text text-muted">
-			    	  	Necesitamos tu correo para verificar la autenticidad de tu evaluación. Recibirás un correo de nosotros donde confirmes la creación de tu evaluación. Nunca se publicarán tu correo.
+			    	  	Necesitamos tu correo para verificar la autenticidad de tu evaluación. Recibirás un correo de nosotros donde confirmes la creación de tu evaluación. Nunca se publicará tu correo.
 			    	  	</small>
 
 			    	  	<div class="invalid-feedback">

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Evaluacion;
 use App\Item;
 use App\Categoria;
+use App\Mail\TestEmail;
+
+use Mail;
 
 use App\Eval_item;
 
@@ -44,6 +47,10 @@ class Evaluacion_controller extends Controller
     }
 
     public function gracias(Request $request){
+
+        $data = ['message' => 'This is a test!'];
+
+        Mail::to('jose1914luis@gmail.com')->send(new TestEmail($data));
 
         return view('gracias');
     }    
