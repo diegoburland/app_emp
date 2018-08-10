@@ -49,7 +49,7 @@ class Evaluacion_controller extends Controller
     	return view('empresa_evaluar', array('categorias' => $categorias, 'items' => $items));
     }
 
-    public function gracias(){
+    public function gracias(Request $request){
         //Request $request
       
         
@@ -57,6 +57,6 @@ class Evaluacion_controller extends Controller
 
         Mail::to('jose1914luis@gmail.com')->send(new TestEmail($data));
         */
-        return view('gracias', ['email' => 'email', 'empresa' => 'empresa']);
+        return view('gracias', ['email' => $request->input('email'), 'empresa' => 'empresa']);
     }    
 }
