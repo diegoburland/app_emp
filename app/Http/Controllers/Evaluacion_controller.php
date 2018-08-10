@@ -20,7 +20,7 @@ class Evaluacion_controller extends Controller
 
         $random_hash = bin2hex(random_bytes(32));
 
-		$evaluacion = Evaluacion::create($request->all() + ['confir_code' => $random_hash]); //mejorar        
+		    $evaluacion = Evaluacion::create($request->all() + ['confir_code' => $random_hash]); //mejorar        
 
         $items = Item::all();        
 
@@ -35,7 +35,10 @@ class Evaluacion_controller extends Controller
 
 
         //return $request;
-        return redirect('/gracias?email='. $request->input('email') . '&empresa=' . $request->input('empresa_nombre'));
+      
+        return redirect()->action('Evaluacion_controller@gracias', ['email' => $request->input('email'), 'empresa' => $request->input('empresa_nombre')]);
+      
+        //return redirect('/gracias?email='. $request->input('email') . '&empresa=' . $request->input('empresa_nombre'));
         
     }
 
@@ -46,12 +49,14 @@ class Evaluacion_controller extends Controller
     	return view('empresa_evaluar', array('categorias' => $categorias, 'items' => $items));
     }
 
-    public function gracias(Request $request){
-
-        $data = ['message' => 'This is a test!'];
+    public function gracias($email, $empresa){
+        //Request $request
+      
+        
+        /*$data = ['message' => 'This is a test!'];
 
         Mail::to('jose1914luis@gmail.com')->send(new TestEmail($data));
-
-        return view('gracias');
+        */
+        return view('gracias', array('email' => $email, 'empresa' => $empresa));
     }    
 }
