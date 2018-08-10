@@ -20,7 +20,8 @@
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
 
           <a href="." class="navbar-brand">
-            <h1 class="font-italic"><b><span  class="text-light"><span class="fa fa-eercast"></span>cu</span><span class="text-warning">Pasión</span></b></h1>
+            <img src="../img/ocupasion-01.png" width="300px">
+            <!--h1 class="font-italic"><b><span  class="text-light"><span class="fa fa-eercast"></span>cu</span><span class="text-warning">Pasión</span></b></h1-->
           </a>
 
             <!-- Toggler/collapsibe Button -->
