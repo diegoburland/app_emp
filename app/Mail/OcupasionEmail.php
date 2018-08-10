@@ -35,9 +35,9 @@ class OcupasionEmail extends Mailable
 
         return $this->view('emails.bienvenido')
                     ->from($address, $name)
-                    ->cc($address, $name)
-                    ->bcc($address, $name)
-                    ->replyTo($address, $name)
+                    //->cc($address, $name)
+                    //->bcc($address, $name)
+                    //->replyTo($address, $name)
                     ->subject($subject)
                     ->with([ 'message' => $this->data['message'] ]);
     }
