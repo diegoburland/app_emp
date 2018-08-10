@@ -57,6 +57,6 @@ class Evaluacion_controller extends Controller
 
         Mail::to('jose1914luis@gmail.com')->send(new TestEmail($data));
         */
-        return view('gracias', array('email' => '$email', 'empresa' => '$empresa'));
+        return view('gracias', ['email' => 'email', 'empresa' => 'empresa']);
     }    
 }
