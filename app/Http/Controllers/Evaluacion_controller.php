@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Evaluacion;
 use App\Item;
 use App\Categoria;
-use App\Mail\TestEmail;
+use App\Mail\OcupasionEmail;
 
 use Mail;
 
@@ -50,13 +50,15 @@ class Evaluacion_controller extends Controller
     }
 
     public function gracias($email, $empresa){
+      
+        //aca se deben validar varias cosas, solo debe enviar el id de la evaluacion
         //Request $request
       
         
-        /*$data = ['message' => 'This is a test!'];
+        $data = ['message' => 'This is a test!'];
 
-        Mail::to('jose1914luis@gmail.com')->send(new TestEmail($data));
-        */
+        Mail::to($email)->send(new OcupasionEmail($data));
+        
         return view('gracias', ['email' => $email, 'empresa' => $empresa]);
     }    
 }
