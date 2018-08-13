@@ -3,7 +3,7 @@
 @section('title', 'Buscar Empresa')
 
 @section('head')
-  <script type="text/javascript" src="/js/empresa/filtro.js"></script>
+  <!--script type="text/javascript" src="/js/empresa/filtro.js"></script-->
 @endsection
 
 @section('content')
