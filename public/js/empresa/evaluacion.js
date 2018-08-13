@@ -49,6 +49,9 @@ function evaluo_mi(self){
 
         $(".dim_practicante").hide();
         $(".dim_empleado").show();
+      
+        $(".bne_practica").hide();
+        $(".bne_empleo").show();
 
     }else{
 
@@ -64,7 +67,10 @@ function evaluo_mi(self){
         $("#btn_directivo").remove();
 
         $(".dim_practicante").show();
+        $(".bne_practica").show();
+        $(".bne_empleo").hide();
         $(".dim_empleado").hide();
+        
         
         elegir_pos($("#btn_practicante"));        
     }
@@ -192,7 +198,9 @@ $(function() {
 
     $("#pre_oferta").hide();
 
-    $(".dim_practicante").hide();
+  $(".dim_practicante").hide();
+  $(".bne_practica").hide();
+  
      
 	var forms = document.getElementsByClassName('needs-validation');
 	    // Loop over them and prevent submission
@@ -258,15 +266,6 @@ $(function() {
 
 
     $('.text_hide').hide();
-    
-	/*$('#a_anterior').hide();
-    
-
-	$('.carousel').carousel({
-    	interval: false
-	});*/		
-
-	//$('#categoria_1').addClass('active');
 	
 	$("#empresa").autocomplete({
       source: "/api/v1/encontrar_empresa",
@@ -286,73 +285,6 @@ $(function() {
       }       
     });
 
-    /*$('#a_siguiente_solo').click(function(){
-    	con = 0;
-
-    	
-    	if($('#form_evaluar_empresa')[0].checkValidity()){
-
-    		//botones
-    		$('#paginador').removeClass('paginador_none');
-    		$('#paginador').addClass('paginador');
-    		$('#a_siguiente_solo').hide();
-
-    		//next carusel
-
-    		$($('.carousel .carousel-inner').children()[0]).removeClass('active');
-    		$($('.carousel .carousel-inner').children()[0]).next().addClass('active');
-    		//$('#categoria_0').removeClass('active');
-
-    		if($('#form_evaluar_empresa').hasClass('was-validated')){
-    			$('#form_evaluar_empresa').removeClass('was-validated')
-    		}
-
-    	}else{
-
-    		$('#form_evaluar_empresa').addClass('was-validated');
-    	}
-    	
-
-    	//$('#form_evaluar_empresa').checkValidity();
-
-    });
-
-    var con = 0;
-    $('#a_pre').click(function(){
-
-    	//console.log($('.carousel .carousel-inner #categoria_0').hasClass('active'))
-    	con = con - 1;
-    	if(con < 0){
-
-    		$('#paginador').removeClass('paginador');
-    		$('#paginador').addClass('paginador_none');
-    		$('#a_siguiente_solo').show();
-    	}
-    	$('#a_sig').text('Siguiente');
-    })
-
-    $('#a_sig').click(function(){
-
-    	//console.log($('.carousel .carousel-inner #categoria_0').hasClass('active'))
-
-    	/*$('.carousel .carousel-inner').children().each(function() {
-
-    		console.log($( this ));
-		  //$( this ).addClass( "foo" );
-		});
-
-    	con = con + 1;
-
-    	//console.log(con)
-    	if(con == 6){
-
-    		console.log('guardar datos');
-    		$('#form_evaluar_empresa').submit();
-
-    	}else if(con == 5){
-
-    		$('#a_sig').text('Terminar');
-    	}
-    })*/
+   
 
 });

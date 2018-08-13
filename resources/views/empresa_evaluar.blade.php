@@ -361,15 +361,55 @@ ul.ui-autocomplete {
       <a  class="list-group-item list-group-item-action text-light bg-dark">
 				<h5>Beneficios</h5>    	
 			</a>
-      <a  class="list-group-item list-group-item-action">
+      <a  class="list-group-item list-group-item-action bne_empleo">
 				<div class="col-sm-12">
           <button type="button" class="btn btn-primary">Auxilio de educación</button>
-          <button type="button" class="btn btn-primary">Primary</button>
-          <button type="button" class="btn btn-primary">Primary</button>
-          <button type="button" class="btn btn-primary">Auxilio de educación</button>
-          <button type="button" class="btn btn-primary">Primary</button>
-          <button type="button" class="btn btn-primary">Primary</button>
-          <button type="button" class="btn btn-primary">Primary</button>
+          <button type="button" class="btn btn-primary">Auxilio por salud (Lentes, Odontología y otros)</button>
+          <button type="button" class="btn btn-primary">Seguro de vida, accidentes o invalidez</button>
+          <button type="button" class="btn btn-primary">Medicina prepagada</button>
+          <button type="button" class="btn btn-primary">Eventos para empleados y familia</button>
+          <button type="button" class="btn btn-primary">Seminarios y talleres pagados</button>
+          <button type="button" class="btn btn-primary">Descansos remunerados</button>
+          <button type="button" class="btn btn-primary">Horario flexible</button>
+          <button type="button" class="btn btn-primary">Teletrabajo</button>
+          <button type="button" class="btn btn-primary">Asignación de vehículo</button>
+          <button type="button" class="btn btn-primary">Celular empresarial</button>
+          <button type="button" class="btn btn-primary">Bono de telefonía móvil</button>
+          <button type="button" class="btn btn-primary">Se permiten mascotas</button>
+          <button type="button" class="btn btn-primary">Subsidio de alimentación</button>
+          <button type="button" class="btn btn-primary">Plan de carrera profesional</button>
+          <button type="button" class="btn btn-primary">Descuentos para empleados</button>
+          <button type="button" class="btn btn-primary">Participación en ganancias</button>
+          <button type="button" class="btn btn-primary">Prima de antigüedad</button>
+          <button type="button" class="btn btn-primary">Primas extralegales</button>
+          <button type="button" class="btn btn-primary">Bonos</button>
+          <button type="button" class="btn btn-primary">Crédito empresarial a tasas blandas</button>
+          <button type="button" class="btn btn-primary">Restaurante empresarial</button>
+          <button type="button" class="btn btn-primary">Posibilidad de traslados</button>
+          <button type="button" class="btn btn-primary">Actividades deportivas y recreativas</button>
+          <button type="button" class="btn btn-primary">Fondo de empleados</button>
+          <button type="button" class="btn btn-primary">Fondo de ahorro para pensión voluntario</button>
+          <button type="button" class="btn btn-primary">Buena conexión de infraestructura de transporte</button>
+          <button type="button" class="btn btn-primary">Transporte empresarial</button>
+          <button type="button" class="btn btn-primary">Parqueadero</button>
+          <button type="button" class="btn btn-primary">Guardería</button>
+			  </div>
+			</a>
+      
+      <a  class="list-group-item list-group-item-action bne_practica">
+				<div class="col-sm-12">
+          <button type="button" class="btn btn-primary">Eventos para empleados y familia</button>    
+          <button type="button" class="btn btn-primary">Seminarios y talleres pagados</button>
+          <button type="button" class="btn btn-primary">Descansos remunerados</button>
+          <button type="button" class="btn btn-primary">Horario flexible</button>
+          <button type="button" class="btn btn-primary">Subsidio de Alimentación</button>
+          <button type="button" class="btn btn-primary">Calzado y vestido de labor</button>
+          <button type="button" class="btn btn-primary">Descuentos para practicantes</button>
+          <button type="button" class="btn btn-primary">Restaurante empresarial</button>
+          <button type="button" class="btn btn-primary">Actividades deportivas y recreativas</button>
+          <button type="button" class="btn btn-primary">Buena conexión de infraestructura de transporte</button>
+          <button type="button" class="btn btn-primary">Transporte empresarial</button>
+          <button type="button" class="btn btn-primary">Parqueadero</button>
 			  </div>
 			</a>
       
