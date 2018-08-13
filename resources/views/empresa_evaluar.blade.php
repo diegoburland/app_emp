@@ -358,6 +358,21 @@ ul.ui-autocomplete {
 				
 			@endforeach		
 
+      <a  class="list-group-item list-group-item-action text-light bg-dark">
+				<h5>Beneficios</h5>    	
+			</a>
+      <a  class="list-group-item list-group-item-action">
+				<div class="col-sm-12">
+          <button type="button" class="btn btn-primary">Auxilio de educación</button>
+          <button type="button" class="btn btn-primary">Primary</button>
+          <button type="button" class="btn btn-primary">Primary</button>
+          <button type="button" class="btn btn-primary">Auxilio de educación</button>
+          <button type="button" class="btn btn-primary">Primary</button>
+          <button type="button" class="btn btn-primary">Primary</button>
+          <button type="button" class="btn btn-primary">Primary</button>
+			  </div>
+			</a>
+      
 			<a  class="list-group-item list-group-item-action text-light bg-dark">
 				<h5>Información adicional</h5>    	
 			</a>
