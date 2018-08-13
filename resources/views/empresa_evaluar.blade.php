@@ -62,7 +62,7 @@ ul.ui-autocomplete {
 
 			
 
-			  <!--button type="submit" class="btn btn-primary">Empezar Evaluación</button-->
+			  <!--button type="submit" btn btn-secondary>Empezar Evaluación</button-->
 
 
 					
@@ -363,53 +363,53 @@ ul.ui-autocomplete {
 			</a>
       <a  class="list-group-item list-group-item-action bne_empleo">
 				<div class="col-sm-12">
-          <button type="button" class="btn btn-primary m-1">Auxilio de educación</button>
-          <button type="button" class="btn btn-primary m-1">Auxilio por salud (Lentes, Odontología y otros)</button>
-          <button type="button" class="btn btn-primary m-1">Seguro de vida, accidentes o invalidez</button>
-          <button type="button" class="btn btn-primary m-1">Medicina prepagada</button>
-          <button type="button" class="btn btn-primary m-1">Eventos para empleados y familia</button>
-          <button type="button" class="btn btn-primary m-1">Seminarios y talleres pagados</button>
-          <button type="button" class="btn btn-primary m-1">Descansos remunerados</button>
-          <button type="button" class="btn btn-primary m-1">Horario flexible</button>
-          <button type="button" class="btn btn-primary m-1">Teletrabajo</button>
-          <button type="button" class="btn btn-primary m-1">Asignación de vehículo</button>
-          <button type="button" class="btn btn-primary m-1">Celular empresarial</button>
-          <button type="button" class="btn btn-primary m-1">Bono de telefonía móvil</button>
-          <button type="button" class="btn btn-primary m-1">Se permiten mascotas</button>
-          <button type="button" class="btn btn-primary m-1">Subsidio de alimentación</button>
-          <button type="button" class="btn btn-primary m-1">Plan de carrera profesional</button>
-          <button type="button" class="btn btn-primary m-1">Descuentos para empleados</button>
-          <button type="button" class="btn btn-primary m-1">Participación en ganancias</button>
-          <button type="button" class="btn btn-primary m-1">Prima de antigüedad</button>
-          <button type="button" class="btn btn-primary m-1">Primas extralegales</button>
-          <button type="button" class="btn btn-primary m-1">Bonos</button>
-          <button type="button" class="btn btn-primary m-1">Crédito empresarial a tasas blandas</button>
-          <button type="button" class="btn btn-primary m-1">Restaurante empresarial</button>
-          <button type="button" class="btn btn-primary m-1">Posibilidad de traslados</button>
-          <button type="button" class="btn btn-primary m-1">Actividades deportivas y recreativas</button>
-          <button type="button" class="btn btn-primary m-1">Fondo de empleados</button>
-          <button type="button" class="btn btn-primary m-1">Fondo de ahorro para pensión voluntario</button>
-          <button type="button" class="btn btn-primary m-1">Buena conexión de infraestructura de transporte</button>
-          <button type="button" class="btn btn-primary m-1">Transporte empresarial</button>
-          <button type="button" class="btn btn-primary m-1">Parqueadero</button>
-          <button type="button" class="btn btn-primary m-1">Guardería</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Auxilio de educación</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Auxilio por salud (Lentes, Odontología y otros)</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Seguro de vida, accidentes o invalidez</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Medicina prepagada</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Eventos para empleados y familia</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Seminarios y talleres pagados</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Descansos remunerados</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Horario flexible</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Teletrabajo</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Asignación de vehículo</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Celular empresarial</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Bono de telefonía móvil</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Se permiten mascotas</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Subsidio de alimentación</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Plan de carrera profesional</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Descuentos para empleados</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Participación en ganancias</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Prima de antigüedad</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Primas extralegales</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Bonos</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Crédito empresarial a tasas blandas</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Restaurante empresarial</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Posibilidad de traslados</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Actividades deportivas y recreativas</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Fondo de empleados</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Fondo de ahorro para pensión voluntario</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Buena conexión de infraestructura de transporte</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Transporte empresarial</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Parqueadero</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Guardería</button>
 			  </div>
 			</a>
       
       <a  class="list-group-item list-group-item-action bne_practica">
 				<div class="col-sm-12">
-          <button type="button" class="btn btn-primary m-1">Eventos para empleados y familia</button>    
-          <button type="button" class="btn btn-primary m-1">Seminarios y talleres pagados</button>
-          <button type="button" class="btn btn-primary m-1">Descansos remunerados</button>
-          <button type="button" class="btn btn-primary m-1">Horario flexible</button>
-          <button type="button" class="btn btn-primary m-1">Subsidio de Alimentación</button>
-          <button type="button" class="btn btn-primary m-1">Calzado y vestido de labor</button>
-          <button type="button" class="btn btn-primary m-1">Descuentos para practicantes</button>
-          <button type="button" class="btn btn-primary m-1">Restaurante empresarial</button>
-          <button type="button" class="btn btn-primary m-1">Actividades deportivas y recreativas</button>
-          <button type="button" class="btn btn-primary m-1">Buena conexión de infraestructura de transporte</button>
-          <button type="button" class="btn btn-primary m-1">Transporte empresarial</button>
-          <button type="button" class="btn btn-primary m-1">Parqueadero</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Eventos para empleados y familia</button>    
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Seminarios y talleres pagados</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Descansos remunerados</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Horario flexible</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Subsidio de Alimentación</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Calzado y vestido de labor</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Descuentos para practicantes</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Restaurante empresarial</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Actividades deportivas y recreativas</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Buena conexión de infraestructura de transporte</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Transporte empresarial</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Parqueadero</button>
 			  </div>
 			</a>
       

@@ -28,6 +28,16 @@ function text_show(item) {
 const BTN_PRACTICANTE = "<button type='button' id='btn_practicante' class='btn-pos btn btn-secondary'  onclick='elegir_pos(this)'>Prácticante</button>";
 const BTN_OTROS = "<button type='button' id='btn_empleado' class='btn-pos btn btn-secondary' onclick='elegir_pos(this)'>Empleado</button><button type='button' id='btn_directivo' class='btn-pos btn btn-secondary'  onclick='elegir_pos(this)'>Directivo</button>";
 
+function beneficio(self){
+  
+     if($(self).hasClass( "btn-secondary" )){
+       
+       $(self).removeClass('btn-secondary').addClass('btn-warning');
+     }else{
+       
+       $(self).removeClass('btn-warning').addClass('btn-secondary');
+     }   
+}
 
 function evaluo_mi(self){
 
