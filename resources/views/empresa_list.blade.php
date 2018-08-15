@@ -5,7 +5,7 @@
 
 @section('content')
 <h4>Empresas</h4>
-<!--href="/empresa/{{$empresa->id}}"-->
+
 <div class="list-group">
   @foreach ($empresas as $empresa)
 
