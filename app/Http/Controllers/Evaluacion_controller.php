@@ -53,31 +53,29 @@ class Evaluacion_controller extends Controller
 
     public function gracias($id){
       
-        //aca se deben validar varias cosas, solo debe enviar el id de la evaluacion
-        //Request $request
-        /*try{
+        try{
           $evaluacion = Evaluacion::find($id);
-          $empresa = Empresa::find($evaluacion->empresa_id);
+      
+          if ($evaluacion === null) {
+             // eval doesn't exist
+            return redirect()->action('Evaluacion_controller@continuar_evaluacion');
+            
+          }else{
+            
+            $empresa = Empresa::find($evaluacion->empresa_id);
         
-          $data = ['email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
+            $data = ['email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
 
-          Mail::to($email)->send(new OcupasionEmail($data));
-        
-          return view('gracias', $data);
+            Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
+
+            return view('gracias', $data);
+          }
+          
           
         }catch (\Exception $e) {
           
           return redirect()->action('Evaluacion_controller@continuar_evaluacion');
-        }*/
-      
-          $evaluacion = Evaluacion::find($id);
-          $empresa = Empresa::find($evaluacion->empresa_id);
-        
-          $data = ['email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
-
-          Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
-        
-          return view('gracias', $data);
-      
+        }
+                      
     }    
 }
