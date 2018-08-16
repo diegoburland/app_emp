@@ -35,9 +35,9 @@ class Evaluacion_controller extends Controller
         }
 
 
-        //return $request;
+        return $request;
       
-        return redirect()->action('Evaluacion_controller@gracias', ['email' => $request->input('email'), 'empresa' => $request->input('empresa_nombre')]);
+        //return redirect()->action('Evaluacion_controller@gracias', ['email' => $request->input('email'), 'empresa' => $request->input('empresa_nombre')]);
       
         //return redirect('/gracias?email='. $request->input('email') . '&empresa=' . $request->input('empresa_nombre'));
         
