@@ -39,6 +39,6 @@ class OcupasionEmail extends Mailable
                     //->bcc($address, $name)
                     //->replyTo($address, $name)
                     ->subject($subject)
-                    ->with([ 'message' => $this->data['message'] ]);
+                    ->with($this->data);
     }
 }

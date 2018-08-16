@@ -4,13 +4,13 @@
       <meta charset="utf-8">
   </head>
   <body>
-    <h2>¡Muchas gracias por tu evaluación anónima sobre Empresa XYZ!</h2>
+    <h2>¡Muchas gracias por tu evaluación anónima sobre la empresa {{$empresa}}!</h2>
     
     <p>
         Dale clic al enlace abajo para confirmar tu correo electrónico:
     </p>
     
-    <p>www.enlacedeverificación.com</p>
+    <p>www.ocupasion.com/code/{{$confir_code}}</p>
     <p>¡Gracias por tu aporte para un mercado laboral más transparente!</p>
     <p>¡Te prometemos un 100% de anonimato y un manejo confiable de tus datos en todo momento!</p>
     

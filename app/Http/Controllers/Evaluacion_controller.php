@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Evaluacion;
 use App\Item;
 use App\Categoria;
+use App\Empresa;
 use App\Mail\OcupasionEmail;
 
 use Mail;
@@ -20,7 +21,7 @@ class Evaluacion_controller extends Controller
 
         $random_hash = bin2hex(random_bytes(32));
         //$random_hash
-        $request->request->add(['confir_code' => 'prueba de codigo generado']);
+        $request->request->add(['confir_code' =>  $random_hash]);
 		    $evaluacion = Evaluacion::create($request->all()); //mejorar        
 
         $items = Item::all();        
@@ -35,9 +36,9 @@ class Evaluacion_controller extends Controller
         }
 
 
-        return $request;
+        //return $request;
       
-        //return redirect()->action('Evaluacion_controller@gracias', ['email' => $request->input('email'), 'empresa' => $request->input('empresa_nombre')]);
+        return redirect()->action('Evaluacion_controller@gracias', ['id' => $evaluacion->id]);
       
         //return redirect('/gracias?email='. $request->input('email') . '&empresa=' . $request->input('empresa_nombre'));
         
@@ -50,16 +51,24 @@ class Evaluacion_controller extends Controller
     	return view('empresa_evaluar', array('categorias' => $categorias, 'items' => $items));
     }
 
-    public function gracias($email, $empresa){
+    public function gracias($id){
       
         //aca se deben validar varias cosas, solo debe enviar el id de la evaluacion
         //Request $request
-      
+        try{
+          $evaluacion = Evaluacion::find($id);
+          $empresa = Empresa::find($evaluacion->empresa_id);
         
-        $data = ['message' => 'This is a test!'];
+          $data = ['email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code]
 
-        Mail::to($email)->send(new OcupasionEmail($data));
+          Mail::to($email)->send(new OcupasionEmail($data));
         
-        return view('gracias', ['email' => $email, 'empresa' => $empresa]);
+          return view('gracias', $data);
+          
+        }catch (\Exception $e) {
+          
+          return redirect()->action('Evaluacion_controller@continuar_evaluacion');
+        }
+      
     }    
 }
