@@ -59,7 +59,7 @@ class Evaluacion_controller extends Controller
           $evaluacion = Evaluacion::find($id);
           $empresa = Empresa::find($evaluacion->empresa_id);
         
-          $data = ['email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code]
+          $data = ['email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
 
           Mail::to($email)->send(new OcupasionEmail($data));
         
