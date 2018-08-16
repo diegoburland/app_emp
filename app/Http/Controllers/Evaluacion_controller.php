@@ -19,8 +19,9 @@ class Evaluacion_controller extends Controller
 		
 
         $random_hash = bin2hex(random_bytes(32));
-
-		    $evaluacion = Evaluacion::create($request->all() + ['confir_code' => $random_hash]); //mejorar        
+        //$random_hash
+        $request->request->add(['confir_code' => 'prueba de codigo generado']);
+		    $evaluacion = Evaluacion::create($request->all()); //mejorar        
 
         $items = Item::all();        
 

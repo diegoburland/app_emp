@@ -9,7 +9,7 @@
 @section('content')
 
 
-<div class="card bg-light mb-3" style="max-width: 18rem;">
+<div class="card bg-light m-3" style="max-width: 18rem;">
   <div class="card-header"><h5>Ingresar</h5></div>
   <div class="card-body">    
     <form>
