@@ -75,7 +75,7 @@ class Evaluacion_controller extends Controller
         
           $data = ['email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
 
-          Mail::to($email)->send(new OcupasionEmail($data));
+          Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
         
           return view('gracias', $data);
       
