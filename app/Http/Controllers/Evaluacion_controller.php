@@ -55,7 +55,7 @@ class Evaluacion_controller extends Controller
       
         //aca se deben validar varias cosas, solo debe enviar el id de la evaluacion
         //Request $request
-        try{
+        /*try{
           $evaluacion = Evaluacion::find($id);
           $empresa = Empresa::find($evaluacion->empresa_id);
         
@@ -68,7 +68,16 @@ class Evaluacion_controller extends Controller
         }catch (\Exception $e) {
           
           return redirect()->action('Evaluacion_controller@continuar_evaluacion');
-        }
+        }*/
+      
+          $evaluacion = Evaluacion::find($id);
+          $empresa = Empresa::find($evaluacion->empresa_id);
+        
+          $data = ['email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
+
+          Mail::to($email)->send(new OcupasionEmail($data));
+        
+          return view('gracias', $data);
       
     }    
 }
