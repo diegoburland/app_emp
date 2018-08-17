@@ -24,6 +24,8 @@ class User_controller extends Controller
       return redirect()->action('Evaluacion_controller@continuar_evaluacion');
     }
     
+    return $evaluacion;
+    /*
     $evaluacion->confirmed = true;
     $evaluacion->save();
     
@@ -50,6 +52,6 @@ class User_controller extends Controller
     
     //redireccionar
     return view('cuenta', $data);
-    
+    */
   }
 }
