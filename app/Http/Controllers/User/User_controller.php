@@ -8,7 +8,7 @@ use App\Evaluacion;
 use App\User;
 use App\Empresa;
 use App\Mail\OcupasionEmail;
-use Illuminate\Support\Facades\Hash;
+//use Illuminate\Support\Facades\Hash;
 use Mail;
 
 class User_controller extends Controller
@@ -33,13 +33,14 @@ class User_controller extends Controller
     
     $empresa = Empresa::find($evaluacion->empresa_id);
     
-    $hashed_random_password = Hash::make(str_random(8));
+    //$hashed_random_password = Hash::make(str_random(8));
+    $pwd = str_random(8);
     
     //crear el usuario
     $subject = 'Subida exitosa de tu evaluación en ocupasion.com';
     $template = 'emails.cuenta';
     
-    $data = ['subject' => $subject, 'template' => $template, 'name' => $evaluacion->email, 'email'=> $evaluacion->email, 'password' => $hashed_random_password, 'empresa' => $empresa->razon_social];
+    $data = ['subject' => $subject, 'template' => $template, 'name' => $evaluacion->email, 'email'=> $evaluacion->email, 'password' => $pwd, 'empresa' => $empresa->razon_social];
     $user = User::create($data);
     
     //falla la creacion
