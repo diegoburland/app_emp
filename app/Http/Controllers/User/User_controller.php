@@ -21,10 +21,10 @@ class User_controller extends Controller
            // eval doesn't exist
       return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
     }
-    /*if($evaluacion->confirmed){
+    if($evaluacion->confirmed){
 
       return redirect()->action('Evaluacion_controller@continuar_evaluacion');
-    }*/
+    }
     
     //return $evaluacion;
     
@@ -41,20 +41,33 @@ class User_controller extends Controller
     $template = 'emails.cuenta';
     
     $data = ['subject' => $subject, 'template' => $template, 'name' => $evaluacion->email, 'email'=> $evaluacion->email, 'password' => $pwd, 'empresa' => $empresa->razon_social];
-    $user = User::create($data);
     
-    //falla la creacion
+    
+    $user = User::where('email', $evaluacion->email)->first();
+    
+    //mirar si ya esta
     if($user === null){
-      $evaluacion->confirmed = false;
-      $evaluacion->save();
-      return redirect()->action('Evaluacion_controller@continuar_evaluacion');
+      
+      //crearlo
+      $user = User::create($data);
+      
+      //si falla volver
+      if($user === null){
+        $evaluacion->confirmed = false;
+        $evaluacion->save();
+        return redirect()->action('Evaluacion_controller@continuar_evaluacion');
+      }      
+    }else{
+      
+      //ya publico
+      return view('cuenta');
     }
        
     //enviar el correo
     Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
     
     //redireccionar
-    return view('cuenta', $data);
+    return view('cuenta');
     
   }
 }
