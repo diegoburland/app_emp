@@ -26,6 +26,8 @@ Route::post('crear_evaluacion', 'Evaluacion_controller@store');
 
 Route::get('gracias/{id}', 'Evaluacion_controller@gracias');
 
+Route::get('code/{code}', 'Evaluacion_controller@code');
+
 Route::get('empresa_evaluar', 'Evaluacion_controller@continuar_evaluacion');
 
 

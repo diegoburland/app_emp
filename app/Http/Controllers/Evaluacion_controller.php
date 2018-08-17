@@ -50,6 +50,22 @@ class Evaluacion_controller extends Controller
     	$items = Item::all();
     	return view('empresa_evaluar', array('categorias' => $categorias, 'items' => $items));
     }
+  
+    public function code($code){
+      
+      $evaluacion = Evaluacion::where('confir_code', $code)->get();
+      if ($evaluacion === null) {
+             // eval doesn't exist
+        return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
+      }
+      if($evaluacion->confirmed){
+            
+        return redirect()->action('Evaluacion_controller@continuar_evaluacion');
+      }
+      
+      $evaluacion->confirmed = true;
+      
+    }
 
     public function gracias($id){
       
@@ -58,19 +74,21 @@ class Evaluacion_controller extends Controller
       
           if ($evaluacion === null) {
              // eval doesn't exist
-            return redirect()->action('Evaluacion_controller@continuar_evaluacion');
-            
-          }else{
-            
-            $empresa = Empresa::find($evaluacion->empresa_id);
-        
-            $data = ['email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
-
-            Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
-
-            return view('gracias', $data);
+            return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
           }
           
+          if($evaluacion->confirmed){
+            
+            return redirect()->action('Evaluacion_controller@continuar_evaluacion');
+          }
+            
+          $empresa = Empresa::find($evaluacion->empresa_id);
+
+          $data = ['email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
+
+          Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
+
+          return view('gracias', $data);
           
         }catch (\Exception $e) {
           
