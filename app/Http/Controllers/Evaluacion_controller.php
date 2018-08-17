@@ -51,21 +51,7 @@ class Evaluacion_controller extends Controller
     	return view('empresa_evaluar', array('categorias' => $categorias, 'items' => $items));
     }
   
-    public function code($code){
-      
-      $evaluacion = Evaluacion::where('confir_code', $code)->get();
-      if ($evaluacion === null) {
-             // eval doesn't exist
-        return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
-      }
-      if($evaluacion->confirmed){
-            
-        return redirect()->action('Evaluacion_controller@continuar_evaluacion');
-      }
-      
-      $evaluacion->confirmed = true;
-      
-    }
+
 
     public function gracias($id){
       
@@ -83,8 +69,11 @@ class Evaluacion_controller extends Controller
           }
             
           $empresa = Empresa::find($evaluacion->empresa_id);
-
-          $data = ['email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
+          
+          $subject = 'Verificación de tu evaluación en ocupasion.com';
+          $template = 'emails.bienvenido';
+          
+          $data = ['subject' => $subject, 'template' => $template, 'email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
 
           Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
 

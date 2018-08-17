@@ -15,8 +15,8 @@
       
     <p>     
       Tu datos para ingresar a tu cuenta en <a href="http://www.ocupasion.com/login">ocupasion.com</a> son:<br>
-      Usuario: {{$empresa}} <br>
-      Contraseña: {{$empresa}}<br>
+      Usuario: {{$email}} <br>
+      Contraseña: {{$password}}<br>
     </p>
     
     <p>
@@ -25,7 +25,7 @@
     </p>
   
     <p>
-      Te invitamos a explorar el mundo de ocupasion.com. Ten una mirada cualitativa y aprende más sobre las condiciones laborales internas de miles de empresas.           
+      Te invitamos a explorar el mundo de <a href="http://www.ocupasion.com/login">ocupasion.com</a>. Ten una mirada cualitativa y aprende más sobre las condiciones laborales internas de miles de empresas.           
     </p>
   
     <p>

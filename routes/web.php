@@ -26,7 +26,8 @@ Route::post('crear_evaluacion', 'Evaluacion_controller@store');
 
 Route::get('gracias/{id}', 'Evaluacion_controller@gracias');
 
-Route::get('code/{code}', 'Evaluacion_controller@code');
+//Route::get('code/{code}', 'Evaluacion_controller@code');
+Route::get('code/{code}', 'User\User_controller@code');
 
 Route::get('empresa_evaluar', 'Evaluacion_controller@continuar_evaluacion');
 
@@ -37,6 +38,10 @@ Route::get('empresa_new', function () {
 
 Route::get('buscar_empresa', function () {
     return view('filtro_empresa');
+});
+
+Route::get('cuenta', function () {
+    return view('cuenta');
 });
 
 Route::get('login', function () {
