@@ -24,7 +24,7 @@ class User_controller extends Controller
       return redirect()->action('Evaluacion_controller@continuar_evaluacion');
     }
     
-    return $evaluacion;
+    //return $evaluacion;
     
     $evaluacion->confirmed = true;
     $evaluacion->save();
