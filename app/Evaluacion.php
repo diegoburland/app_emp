@@ -8,5 +8,9 @@ class Evaluacion extends Model
 {
     protected $table = 'evaluaciones';
     protected $fillable = array('empresa_id', 'evalua', 'trabajo_tiempo', 'posicion', 'departamento', 'titulo', 'comentarios', 'mejoras', 'like', 'no_like', 'recomienda', 'beneficios', 'email', 'salario', 'ofrecer', 'oferta', 'confir_code');
-    protected $guarded = ['confirmed'];
+  
+    public function setConfirmedAttribute($confirmed)
+    {
+        $this->attributes['confirmed'] = $confirmed;
+    }
 }
