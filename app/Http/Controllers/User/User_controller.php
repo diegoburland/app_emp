@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Evaluacion;
 use App\User;
+use App\Empresa;
 use App\Mail\OcupasionEmail;
 use Illuminate\Support\Facades\Hash;
 
