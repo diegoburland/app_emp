@@ -20,10 +20,10 @@ class User_controller extends Controller
            // eval doesn't exist
       return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
     }
-    if($evaluacion->confirmed){
+    /*if($evaluacion->confirmed){
 
       return redirect()->action('Evaluacion_controller@continuar_evaluacion');
-    }
+    }*/
     
     //return $evaluacion;
     
