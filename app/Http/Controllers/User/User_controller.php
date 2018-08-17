@@ -52,6 +52,6 @@ class User_controller extends Controller
     
     //redireccionar
     return view('cuenta', $data);
-    */
+    
   }
 }
