@@ -9,6 +9,7 @@ use App\User;
 use App\Empresa;
 use App\Mail\OcupasionEmail;
 use Illuminate\Support\Facades\Hash;
+use Mail;
 
 class User_controller extends Controller
 {
