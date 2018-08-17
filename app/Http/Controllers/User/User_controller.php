@@ -14,7 +14,7 @@ class User_controller extends Controller
 
   public function code($code){
       
-    $evaluacion = Evaluacion::where('confir_code', $code)->get();
+    $evaluacion = Evaluacion::where('confir_code', $code)->first();
     if ($evaluacion === null) {
            // eval doesn't exist
       return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
@@ -25,7 +25,7 @@ class User_controller extends Controller
     }
     
     return $evaluacion;
-    /*
+    
     $evaluacion->confirmed = true;
     $evaluacion->save();
     
