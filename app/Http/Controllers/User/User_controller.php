@@ -67,7 +67,7 @@ class User_controller extends Controller
       
       //ya publico
       Log::info('-----------------entro 5 -------------');
-      return view('cuenta');
+      return redirect('/cuenta');
     }
        
     //enviar el correo
@@ -75,7 +75,7 @@ class User_controller extends Controller
     
     //redireccionar
     Log::info('-----------------entro finaliza -------------');
-    return view('cuenta');
+    return redirect('/cuenta');
     
   }
 }
