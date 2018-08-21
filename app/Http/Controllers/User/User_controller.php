@@ -45,7 +45,7 @@ class User_controller extends Controller
     
     $user = User::where('email', $evaluacion->email)->first();
     
-    //mirar si ya esta
+    //mirar no esta lo creo
     if($user === null){
       
       //crearlo
