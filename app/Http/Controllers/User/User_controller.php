@@ -23,6 +23,7 @@ class User_controller extends Controller
       Log::info('-----------------entro 1 -------------');
       return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
     }
+    log::info('valor de confirmacion:' . $evaluacion->confirmed)
     if($evaluacion->confirmed){
       
       Log::info('-----------------entro 2 -------------');
