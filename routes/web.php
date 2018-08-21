@@ -42,7 +42,7 @@ Route::get('buscar_empresa', function () {
 
 Route::get('cuenta', function () {
     return view('cuenta');
-});
+})->name('cuenta');
 
 Route::get('login', function () {
     return view('login');
