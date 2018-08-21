@@ -9,7 +9,7 @@ use App\Item;
 use App\Categoria;
 use App\Empresa;
 use App\Mail\OcupasionEmail;
-use Illuminate\Support\Facades\Log;
+
 use Mail;
 
 use App\Eval_item;
@@ -46,7 +46,7 @@ class Evaluacion_controller extends Controller
 
     public function continuar_evaluacion(){
 
-      Log::info('------------------------------funciona');
+      
     	$categorias = Categoria::all();
     	$items = Item::all();
     	return view('empresa_evaluar', array('categorias' => $categorias, 'items' => $items));

@@ -9,6 +9,7 @@ use App\User;
 use App\Empresa;
 use App\Mail\OcupasionEmail;
 //use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Mail;
 
 class User_controller extends Controller
@@ -18,11 +19,13 @@ class User_controller extends Controller
       
     $evaluacion = Evaluacion::where('confir_code', $code)->first();
     if ($evaluacion === null) {
-           // eval doesn't exist
+      
+      Log::info('-----------------entro 1 -------------');
       return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
     }
     if($evaluacion->confirmed){
-
+      
+      Log::info('-----------------entro 2 -------------');
       return redirect()->action('Evaluacion_controller@continuar_evaluacion');
     }
     
@@ -52,7 +55,10 @@ class User_controller extends Controller
       $user = User::create($data);
       
       //si falla volver
+      Log::info('-----------------entro 3 -------------');
       if($user === null){
+        
+        Log::info('-----------------entro 4 -------------');
         $evaluacion->confirmed = false;
         $evaluacion->save();
         return redirect()->action('Evaluacion_controller@continuar_evaluacion');
@@ -60,6 +66,7 @@ class User_controller extends Controller
     }else{
       
       //ya publico
+      Log::info('-----------------entro 5 -------------');
       return view('cuenta');
     }
        
@@ -67,6 +74,7 @@ class User_controller extends Controller
     Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
     
     //redireccionar
+    Log::info('-----------------entro finaliza -------------');
     return view('cuenta');
     
   }
