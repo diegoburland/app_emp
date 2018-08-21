@@ -92,6 +92,19 @@ ul.ui-autocomplete {
 			  	    </div>
 			  	</div>
 			</div>
+    
+      <div class="list-group-item list-group-item-action">
+				<div class="form-group row required ">
+				    <div class="col-sm-6">
+				      <label for="">Ciudad</label>
+				      <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" autocomplete="off" required>
+				      <input type="hidden" name="ciudad_id" id="ciudad_id" value="">  
+				      <div id="validar_ciudad" class="invalid-feedback">
+				          Por favor selecciona una ciudad del listado
+				      </div>
+				    </div>
+				</div>
+      </div>
 
 			<a class="list-group-item list-group-item-action">
 			 	<div class="form-group row required" >
@@ -185,9 +198,9 @@ ul.ui-autocomplete {
 			<div class="alert alert-secondary" role="alert">
 		  	
 			  	<p>Todos juntos aspiramos a hacer más transparente el mercado laboral. 
-				Por favor, evalúe cada dimensión laboral lo más honesto posible. </p>
+				Por favor, evalúa cada dimensión laboral lo más honesto posible. </p>
 
-				<p><b>Recuerda:</b> Somos una plataforma neutral y justa. Por lo tanto te pedimos tomar en cuenta los siguientes aspectos: </p>
+				<p><b>Recuerda:</b> Somos una plataforma neutral y justa. Por lo tanto, te pedimos tomar en cuenta los siguientes aspectos: </p>
 
 				<ul>
 					<dl>
