@@ -15,6 +15,12 @@ class CreateEvalBenesTable extends Migration
     {
         Schema::create('eval_benes', function (Blueprint $table) {
             $table->increments('id');
+            
+            $table->unsignedInteger('evaluacion_id');
+            $table->foreign('evaluacion_id')->references('id')->on('evaluaciones');
+            $table->unsignedInteger('bene_id');
+            $table->foreign('bene_id')->references('id')->on('benes');
+          
             $table->timestamps();
         });
     }
