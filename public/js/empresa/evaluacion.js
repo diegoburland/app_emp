@@ -277,8 +277,13 @@ $(function() {
 
 
 
-    $('.text_hide').hide();
+  $('.text_hide').hide();
   $('#cambiar_emp').hide();
+  $("#cambiar_emp a").click(function() {
+        $('#empresa').prop("readonly", false);
+        $('#cambiar_emp').hide();
+        $('#buscar_emp').show();
+  });
 	
 	$("#empresa").autocomplete({
       source: "/api/v1/encontrar_empresa",

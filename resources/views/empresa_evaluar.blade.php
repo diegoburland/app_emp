@@ -85,7 +85,7 @@ ul.ui-autocomplete {
 			    	  	</small>
               
                 <small id="cambiar_emp" class="form-text text-muted">
-			    	  	<a href="#" id="cambiar_action">Cambiar Empresa</a>
+			    	  	<a href="#" id="cambiar_action">Cambiar Empresa!</a>
 			    	  	</small>
 			    	  	
 
