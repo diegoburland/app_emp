@@ -77,7 +77,7 @@ ul.ui-autocomplete {
 				<div class="form-group row required ">
 			    	<div class="col-sm-6">
 			      		<label class="control-label" >Empresa</label>
-			    	  	<input type="text" class="form-control" id="empresa"  name="empresa_nombre" placeholder="Busca tu empresa" required>
+			    	  	<input type="text" class="form-control" id="empresa" readonly='false'  name="empresa_nombre" placeholder="Busca tu empresa" required>
 			    	  	<input type="hidden" name="empresa_id" id="empresa_id" value="">  
 			    	  	
 			    	  	<small id="emailHelp" class="form-text text-muted">
@@ -88,12 +88,6 @@ ul.ui-autocomplete {
 			    	  	<div id="validar_empresa" class="invalid-feedback">
 				          Por favor selecciona una empresa, o crea una nueva.
 				        </div>
-
-			  	    </div>
-          
-              <div class="col-sm-6">
-			      		<label class="control-label" >Empresa</label>
-			    	  	<span class="empre_sel">Prueba</span>
 
 			  	    </div>
           

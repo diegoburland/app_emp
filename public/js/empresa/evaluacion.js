@@ -284,6 +284,7 @@ $(function() {
       minLength: 2,
       select: function(event, ui) {
 	  	$('#empresa').val(ui.item.value);
+      $('#empresa').prop("readonly", true);
 	  	$('#empresa_id').val(ui.item.id);
 	  }	      
     });
