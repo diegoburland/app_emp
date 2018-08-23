@@ -294,6 +294,15 @@ $(function() {
         $('#razon_social_id').val(ui.item.id);
       }       
     });
+  
+  $("#empresa").focusout(function() {
+    //console.log('ejecutar funciones');
+    if($('#empresa_id').val() == "" || $('#empresa_id').val() == null){
+      
+      //$("#empresa").
+          //border-color: #dc3545
+    }
+  })
 
    
 
