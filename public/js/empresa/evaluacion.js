@@ -278,6 +278,7 @@ $(function() {
 
 
     $('.text_hide').hide();
+  $('#cambiar_emp').hide();
 	
 	$("#empresa").autocomplete({
       source: "/api/v1/encontrar_empresa",
@@ -286,6 +287,9 @@ $(function() {
 	  	$('#empresa').val(ui.item.value);
       $('#empresa').prop("readonly", true);
 	  	$('#empresa_id').val(ui.item.id);
+      $('#cambiar_emp').show();
+        $('#buscar_emp').hide();
+        
 	  }	      
     });
 

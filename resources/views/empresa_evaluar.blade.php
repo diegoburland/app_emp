@@ -80,8 +80,12 @@ ul.ui-autocomplete {
 			    	  	<input type="text" class="form-control" id="empresa" name="empresa_nombre" placeholder="Busca tu empresa" required>
 			    	  	<input type="hidden" name="empresa_id" id="empresa_id" value="">  
 			    	  	
-			    	  	<small id="emailHelp" class="form-text text-muted">
+			    	  	<small id="buscar_emp" class="form-text text-muted">
 			    	  	<a href="#" data-toggle="modal" data-target="#exampleModal">¿No aparece tu empresa?</a>
+			    	  	</small>
+              
+                <small id="cambiar_emp" class="form-text text-muted">
+			    	  	<a href="#" id="cambiar_action">Cambiar Empresa</a>
 			    	  	</small>
 			    	  	
 
