@@ -16,6 +16,8 @@ use Mail;
 use App\Eval_item;
 use App\Eval_bene;
 
+use Illuminate\Support\Facades\Log;
+
 class Evaluacion_controller extends Controller
 {
     public function store(Request $request){
@@ -28,8 +30,9 @@ class Evaluacion_controller extends Controller
 
         $items = Item::all();
       
-        $benes = Benes::all();
+        
 
+         Log::info('-----------------entro 1 -------------');
         foreach ($items as $item) {
             
             if($request->input('puntaje_' . $item->id) != null){
@@ -40,11 +43,13 @@ class Evaluacion_controller extends Controller
         }
       
       
-
+        $benes = Benes::all();
+      
+        Log::info('-----------------entro 2 -------------');
         foreach ($benes as $bene) {
-            
+            Log::info('-----------------entro 3 -------------');
             if($request->input('bene_' . $bene->id) != null && $request->input('bene_' . $bene->id) != ""){
-
+                Log::info('-----------------entro 4 -------------');
                 Eval_bene::create(array('evaluacion_id' => $evaluacion->id, 'bene_id' => $bene->id));
 
             }
@@ -52,7 +57,7 @@ class Evaluacion_controller extends Controller
 
 
         //return $request;
-      
+       Log::info('-----------------entro 5 -------------');
         return redirect()->action('Evaluacion_controller@gracias', ['id' => $evaluacion->id]);
       
         //return redirect('/gracias?email='. $request->input('email') . '&empresa=' . $request->input('empresa_nombre'));
