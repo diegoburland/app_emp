@@ -14,7 +14,7 @@ use App\Mail\OcupasionEmail;
 use Mail;
 
 use App\Eval_item;
-use App\Eval_item;
+use App\Eval_bene;
 
 class Evaluacion_controller extends Controller
 {
@@ -43,9 +43,9 @@ class Evaluacion_controller extends Controller
 
         foreach ($benes as $bene) {
             
-            if($request->input('puntaje_' . $bene->id) != null){
+            if($request->input('bene_' . $bene->id) != null && $request->input('bene_' . $bene->id) != ""){
 
-                Eval_bene::create(array('evaluacion_id' => $evaluacion->id, 'bene_id' => $bene->id, 'puntaje' => $request->input('puntaje_' . $bene->id), 'comentario' => $request->input('comentario_' . $bene->id)));
+                Eval_bene::create(array('evaluacion_id' => $evaluacion->id, 'bene_id' => $bene->id));
 
             }
         }

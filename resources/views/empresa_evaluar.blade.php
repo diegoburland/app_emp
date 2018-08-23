@@ -378,7 +378,7 @@ ul.ui-autocomplete {
 				<div class="col-sm-12">
           @foreach ($benes as $bene)
             @if($bene->tipo == 1)
-              <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">{{$bene->nombre}}</button>
+              <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this, {{$bene->id}})">{{$bene->nombre}}</button>
               <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
             @endif
           @endforeach          
@@ -389,7 +389,7 @@ ul.ui-autocomplete {
 				<div class="col-sm-12">
            @foreach ($benes as $bene)
             @if($bene->tipo == 2)
-              <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">{{$bene->nombre}}</button>
+              <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this, {{$bene->id}})">{{$bene->nombre}}</button>
               <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
             @endif
           @endforeach          
