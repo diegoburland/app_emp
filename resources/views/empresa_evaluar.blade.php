@@ -90,6 +90,13 @@ ul.ui-autocomplete {
 				        </div>
 
 			  	    </div>
+          
+              <div class="col-sm-6">
+			      		<label class="control-label" >Empresa</label>
+			    	  	<span class="empre_sel">Prueba</span>
+
+			  	    </div>
+          
 			  	</div>
 			</div>
     
