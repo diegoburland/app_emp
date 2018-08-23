@@ -376,53 +376,23 @@ ul.ui-autocomplete {
 			</a>
       <a  class="list-group-item list-group-item-action bne_empleo">
 				<div class="col-sm-12">
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Auxilio de educación</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Auxilio por salud (Lentes, Odontología y otros)</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Seguro de vida, accidentes o invalidez</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Medicina prepagada</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Eventos para empleados y familia</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Seminarios y talleres pagados</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Descansos remunerados</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Horario flexible</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Teletrabajo</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Asignación de vehículo</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Celular empresarial</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Bono de telefonía móvil</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Se permiten mascotas</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Subsidio de alimentación</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Plan de carrera profesional</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Descuentos para empleados</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Participación en ganancias</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Prima de antigüedad</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Primas extralegales</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Bonos</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Crédito empresarial a tasas blandas</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Restaurante empresarial</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Posibilidad de traslados</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Actividades deportivas y recreativas</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Fondo de empleados</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Fondo de ahorro para pensión voluntario</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Buena conexión de infraestructura de transporte</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Transporte empresarial</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Parqueadero</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Guardería</button>
+          @foreach ($benes as $bene)
+            @if($bene->tipo == 1)
+              <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">{{$bene->nombre}}</button>
+              <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
+            @endif
+          @endforeach          
 			  </div>
 			</a>
       
       <a  class="list-group-item list-group-item-action bne_practica">
 				<div class="col-sm-12">
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Eventos para empleados y familia</button>    
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Seminarios y talleres pagados</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Descansos remunerados</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Horario flexible</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Subsidio de Alimentación</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Calzado y vestido de labor</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Descuentos para practicantes</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Restaurante empresarial</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Actividades deportivas y recreativas</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Buena conexión de infraestructura de transporte</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Transporte empresarial</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Parqueadero</button>
+           @foreach ($benes as $bene)
+            @if($bene->tipo == 2)
+              <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">{{$bene->nombre}}</button>
+              <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
+            @endif
+          @endforeach          
 			  </div>
 			</a>
       

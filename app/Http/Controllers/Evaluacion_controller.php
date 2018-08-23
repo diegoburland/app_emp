@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Evaluacion;
 use App\Item;
 use App\Categoria;
+use App\Benes;
 use App\Empresa;
 use App\Mail\OcupasionEmail;
 
@@ -49,7 +50,10 @@ class Evaluacion_controller extends Controller
       
     	$categorias = Categoria::all();
     	$items = Item::all();
-    	return view('empresa_evaluar', array('categorias' => $categorias, 'items' => $items));
+      
+      $benes = Benes::all();
+      
+    	return view('empresa_evaluar', array('categorias' => $categorias, 'items' => $items, 'benes'=>$benes));
     }
   
 
