@@ -57,8 +57,9 @@ class Evaluacion_controller extends Controller
 
 
         //return $request;
-       Log::info('-----------------entro 5 -------------');
-        return redirect()->action('Evaluacion_controller@gracias', ['id' => $evaluacion->id]);
+        Log::info('-----------------entro 5 -------------');
+        //return redirect()->action('Evaluacion_controller@gracias', ['id' => $evaluacion->id]);
+        return redirect()->route('gracias', [$evaluacion->id]);
       
         //return redirect('/gracias?email='. $request->input('email') . '&empresa=' . $request->input('empresa_nombre'));
         

@@ -24,7 +24,7 @@ Route::post('filtrar_empresa', 'Empresa_controller@filtrar');
 
 Route::post('crear_evaluacion', 'Evaluacion_controller@store');
 
-Route::get('gracias/{id}', 'Evaluacion_controller@gracias');
+Route::get('gracias/{id}', 'Evaluacion_controller@gracias')->name('gracias');
 
 //Route::get('code/{code}', 'Evaluacion_controller@code');
 Route::get('code/{code}', 'User\User_controller@code');
