@@ -283,6 +283,9 @@ $(function() {
         $('#empresa').prop("readonly", false);
         $('#cambiar_emp').hide();
         $('#buscar_emp').show();
+        $('#empresa').val(null);
+        $('#empresa_id').val(null);
+        $('#empresa').focus();
   });
 	
 	$("#empresa").autocomplete({
