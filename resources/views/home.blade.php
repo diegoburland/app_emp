@@ -71,7 +71,7 @@
 	  <button class="btn btn-warning btn-sm" type="button" onclick="window.location.href='/empresa_evaluar'"><b>EVALUACIÓN ANÓNIMA</b></button>    
 	</div>
 	<br>
-	<div class="pr-5 pl-5">
+	<div class="video">
 		<div class="embed-responsive embed-responsive-16by9">
 	  		<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5JFOPnFazDo?rel=0" allowfullscreen></iframe>
 		</div>	
