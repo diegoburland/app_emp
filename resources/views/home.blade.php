@@ -33,7 +33,7 @@
 
 </div>
 <br>
-<div class="container" style="margin-top: 400px;">
+<div class="container" style="margin-top: 500px;">
 
 	<p class="text-center">Nosotros desde Ocupasión aspiramos a ayudarte a encontrar la mejor empresa u organización para ti. Conoce aquí lo que los mismos colaboradores dicen sobre su empresa y las condiciones laborales respectivas.
 	</p>
