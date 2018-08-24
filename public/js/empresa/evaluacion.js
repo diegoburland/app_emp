@@ -287,6 +287,14 @@ $(function() {
         $('#empresa_id').val(null);
         $('#empresa').focus();
   });
+  
+  $("#empresa").focusout(function() {
+    if($('#empresa_id').val() == "" || $('#empresa_id').val() == null){
+        
+      $('#empresa').val(null);
+      $('#empresa').focus();
+    }
+  });
 	
 	$("#empresa").autocomplete({
       source: "/api/v1/encontrar_empresa",

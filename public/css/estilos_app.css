@@ -43,8 +43,8 @@ html {
 }
 @media only screen and (max-width: 600px) {
     .video{
-          padding-left: 1rem!important;
-          padding-right: 1rem!important;
+          padding-left: 0rem!important;
+          padding-right: 0rem!important;
     }
 }
 
