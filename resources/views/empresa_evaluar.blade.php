@@ -376,7 +376,30 @@ ul.ui-autocomplete {
 				
 			@endforeach		
 
-
+      <a  class="list-group-item list-group-item-action text-light bg-dark">
+				<h5>Beneficios</h5>    	
+			</a>
+      <a  class="list-group-item list-group-item-action bne_empleo">
+				<div class="col-sm-12">
+          @foreach ($benes as $bene)
+            @if($bene->tipo == 1)
+              <button type="button" class="btn btn-sm btn-secondary m-1" onclick="beneficio(this, {{$bene->id}})">{{$bene->nombre}}</button>
+              <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
+            @endif
+          @endforeach          
+			  </div>
+			</a>
+      
+      <a  class="list-group-item list-group-item-action bne_practica">
+				<div class="col-sm-12">
+           @foreach ($benes as $bene)
+            @if($bene->tipo == 2)
+              <button type="button" class="btn btn-sm btn-secondary m-1" onclick="beneficio(this, {{$bene->id}})">{{$bene->nombre}}</button>
+              <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
+            @endif
+          @endforeach          
+			  </div>
+			</a>
       
 			<a  class="list-group-item list-group-item-action text-light bg-dark">
 				<h5>Información adicional</h5>    	
