@@ -29,9 +29,10 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           
-          @if(session('tipo') == 'admin')
+         
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
               <ul class="navbar-nav">
+                 @if(session('tipo') == 'admin')
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Administración
@@ -44,9 +45,10 @@
                     <a class="dropdown-item" href="#">Crear Categoria</a>
                   </div>
                 </li>
+                 @endif
               </ul> 
             
-          @endif
+         
                     
           </div>
 
