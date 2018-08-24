@@ -18,12 +18,19 @@ class User_controller extends Controller
   public function login(Request $request){
     
     $user = User::where('email', $request->input('email'))->first();
-    if($user->password == $request->input('password')){
-      session(['tipo' => $user->tipo]);
-      return redirect('/');
+    if($user !== null){
+      
+      if($user->password == $request->input('password')){
+        session(['tipo' => $user->tipo]);
+        return redirect('/');
+      }else{
+        return redirect('login');
+      }
     }else{
-      return redirect('login');
+      return redirect('/');
     }
+    
+    
   }
   
   public function code($code){
