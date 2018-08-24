@@ -42,7 +42,7 @@ class User_controller extends Controller
       return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
     }
     log::info('valor de confirmacion:' . $evaluacion->confirmed);
-    if($evaluacion->confirmed){
+    if($evaluacion->confirmed == 'SI'){
       
       //Log::info('-----------------entro 2 -------------');
       return redirect()->action('Evaluacion_controller@continuar_evaluacion');
@@ -50,7 +50,7 @@ class User_controller extends Controller
     
     //return $evaluacion;
     
-    $evaluacion->confirmed = true;
+    $evaluacion->confirmed = 'SI';
     $evaluacion->save();
     
     $empresa = Empresa::find($evaluacion->empresa_id);
