@@ -76,7 +76,7 @@ ul.ui-autocomplete {
 			<div class="list-group-item list-group-item-action">
 				<div class="form-group row required ">
 			    	<div class="col-sm-6">
-              <label class="control-label" ><b>1° Paso:</b> Busca y selecciona la Empresa</label>
+              <label class="control-label" ><b>Busca y selecciona la empresa</b></label>
 			    	  	<input type="text" class="form-control" id="empresa" name="empresa_nombre" placeholder="Busca y selecciona la empresa" required>
 			    	  	<input type="hidden" name="empresa_id" id="empresa_id" value="">  
 			    	  	
