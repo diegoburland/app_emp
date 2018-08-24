@@ -12,14 +12,16 @@
 <div class="card bg-light m-3" style="max-width: 18rem;">
   <div class="card-header"><h5>Ingresar</h5></div>
   <div class="card-body">    
-    <form>
+    <form id="login" method="POST" action="/login_usuario" novalidate class="needs-validation">
+      @method('POST')
+			@csrf
       <div class="form-group">
         <label for="exampleInputEmail1">Correo electrónico</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa tu correo">        
+        <input type="email" name="email" class="form-control" id="exampleInputEmail1" required aria-describedby="emailHelp" placeholder="Ingresa tu correo">        
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Contraseña</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" required>
         <small id="emailHelp" class="form-text text-muted">Tu contraseña se envian a tu correo luego de realizar la primera evaluación.</small>
       </div>
       <div class="form-group form-check">

@@ -18,9 +18,12 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('tipo');
             $table->rememberToken();
             $table->timestamps();
         });
+       DB::table('users')->insert([ 'name' => 'jose luis', 'email' => 'jose@ocupasion.com', 'password' => 'admin', 'tipo' => 'admin']);
+        
     }
 
     /**
