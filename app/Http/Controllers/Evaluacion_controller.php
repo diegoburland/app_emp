@@ -25,14 +25,14 @@ class Evaluacion_controller extends Controller
 
         $random_hash = bin2hex(random_bytes(32));
         //$random_hash
-        $request->request->add(['confir_code' =>  $random_hash]);
+        $request->request->add(['confir_code' =>  $random_hash, 'ip' => $request->ip()]);
 		    $evaluacion = Evaluacion::create($request->all()); //mejorar        
 
         $items = Item::all();
       
         
 
-         Log::info('-----------------entro 1 -------------');
+         //Log::info('-----------------entro 1 -------------');
         foreach ($items as $item) {
             
             if($request->input('puntaje_' . $item->id) != null){
@@ -45,11 +45,11 @@ class Evaluacion_controller extends Controller
       
         $benes = Benes::all();
       
-        Log::info('-----------------entro 2 -------------');
+        //Log::info('-----------------entro 2 -------------');
         foreach ($benes as $bene) {
-            Log::info('-----------------entro 3 -------------');
+            //Log::info('-----------------entro 3 -------------');
             if($request->input('bene_' . $bene->id) != null && $request->input('bene_' . $bene->id) != ""){
-                Log::info('-----------------entro 4 -------------');
+                //Log::info('-----------------entro 4 -------------');
                 Eval_bene::create(array('evaluacion_id' => $evaluacion->id, 'bene_id' => $bene->id));
 
             }
@@ -57,7 +57,7 @@ class Evaluacion_controller extends Controller
 
 
         //return $request;
-        Log::info('-----------------entro 5 -------------');
+        //Log::info('-----------------entro 5 -------------');
         //return redirect()->action('Evaluacion_controller@gracias', ['id' => $evaluacion->id]);
         return redirect()->route('gracias', [$evaluacion->id]);
       
