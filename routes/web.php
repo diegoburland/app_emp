@@ -43,6 +43,8 @@ Route::get('login', function () {
 
 Route::get('empresa_list', 'Empresa_controller@list');
 
+Route::get('evaluacion_list', 'Evaluacion_controller@list');
+
 Route::get('/api/v1/encontrar_empresa', 'Empresa_controller@get_empresa');
 Route::get('/api/v1/encontrar_ubicacion', 'Ciudad_controller@get_ciudad');
 

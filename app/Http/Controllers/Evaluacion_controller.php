@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Evaluacion;
+use App\Empresa;
 use App\Item;
 use App\Categoria;
 use App\Mail\OcupasionEmail;
@@ -41,6 +42,25 @@ class Evaluacion_controller extends Controller
         //return redirect('/gracias?email='. $request->input('email') . '&empresa=' . $request->input('empresa_nombre'));
         
     }
+
+    public function list(){
+
+
+        $empresa = new Empresa();
+        $evaluacion = Evaluacion::all()->toArray();
+        for ($i=0; $i < count($evaluacion); $i++) { 
+            $empresa = $empresa->find($evaluacion[$i]['empresa_id']);
+            $evaluacion[$i]['empresa'] = $empresa->razon_social;
+          
+        } 
+
+        $results = array();
+
+        $results[] = $evaluacion;
+
+
+        return view('evaluacion_list', array('evaluaciones' => $results));
+    }  
 
     public function continuar_evaluacion(){
 

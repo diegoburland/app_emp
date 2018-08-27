@@ -41,6 +41,8 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Crear Sector</a>
                   <a class="dropdown-item" href="#">Crear Categoria</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/evaluacion_list">Lista de Evaluaciones</a>
                 </div>
               </li>
             </ul>    
