@@ -24,7 +24,12 @@ Route::post('filtrar_empresa', 'Empresa_controller@filtrar');
 
 Route::post('crear_evaluacion', 'Evaluacion_controller@store');
 
-Route::get('gracias/{email}/{empresa}', 'Evaluacion_controller@gracias');
+Route::post('login_usuario', 'User\User_controller@login');
+
+Route::get('gracias/{id}', 'Evaluacion_controller@gracias')->name('gracias');
+
+//Route::get('code/{code}', 'Evaluacion_controller@code');
+Route::get('code/{code}', 'User\User_controller@code');
 
 Route::get('empresa_evaluar', 'Evaluacion_controller@continuar_evaluacion');
 
@@ -37,9 +42,13 @@ Route::get('buscar_empresa', function () {
     return view('filtro_empresa');
 });
 
+Route::get('cuenta', function () {
+    return view('cuenta');
+})->name('cuenta');
+
 Route::get('login', function () {
     return view('login');
-});
+})->name('login');
 
 Route::get('empresa_list', 'Empresa_controller@list');
 

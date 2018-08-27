@@ -31,9 +31,14 @@ class CreateEvaluacionesTable extends Migration
             $table->boolean('recomienda')->nullable();
             $table->mediumText('beneficios')->nullable();
 
-            $table->string('confir_code', 50)->nullable();
-
-            $table->boolean('confirmed')->default(false);
+            $table->string('confir_code', 250)->nullable();            
+            
+            $table->string('confirmed', 50)->default('NO');
+            $table->string('contenido', 50)->nullable();
+            $table->string('flag_empresa', 50)->nullable();
+          
+            $table->string('publicada', 50)->default('NO');
+            $table->string('ip', 100)->nullable();
 
             $table->timestamps();
 

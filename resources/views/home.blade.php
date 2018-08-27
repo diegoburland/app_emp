@@ -33,7 +33,7 @@
 
 </div>
 <br>
-<div class="container">
+<div class="container" style="margin-top: 500px;">
 
 	<p class="text-center">Nosotros desde Ocupasión aspiramos a ayudarte a encontrar la mejor empresa u organización para ti. Conoce aquí lo que los mismos colaboradores dicen sobre su empresa y las condiciones laborales respectivas.
 	</p>
@@ -71,7 +71,7 @@
 	  <button class="btn btn-warning btn-sm" type="button" onclick="window.location.href='/empresa_evaluar'"><b>EVALUACIÓN ANÓNIMA</b></button>    
 	</div>
 	<br>
-	<div class="pr-5 pl-5">
+	<div class="video">
 		<div class="embed-responsive embed-responsive-16by9">
 	  		<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5JFOPnFazDo?rel=0" allowfullscreen></iframe>
 		</div>	

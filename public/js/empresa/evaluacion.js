@@ -28,14 +28,16 @@ function text_show(item) {
 const BTN_PRACTICANTE = "<button type='button' id='btn_practicante' class='btn-pos btn btn-secondary'  onclick='elegir_pos(this)'>Prácticante</button>";
 const BTN_OTROS = "<button type='button' id='btn_empleado' class='btn-pos btn btn-secondary' onclick='elegir_pos(this)'>Empleado</button><button type='button' id='btn_directivo' class='btn-pos btn btn-secondary'  onclick='elegir_pos(this)'>Directivo</button>";
 
-function beneficio(self){
+function beneficio(self, id){
   
      if($(self).hasClass( "btn-secondary" )){
        
        $(self).removeClass('btn-secondary').addClass('btn-warning');
+       $('#bene_' + id).val(id);
      }else{
        
        $(self).removeClass('btn-warning').addClass('btn-secondary');
+       $('#bene_' + id).val(null);
      }   
 }
 
@@ -275,14 +277,35 @@ $(function() {
 
 
 
-    $('.text_hide').hide();
+  $('.text_hide').hide();
+  $('#cambiar_emp').hide();
+  $("#cambiar_emp a").click(function() {
+        $('#empresa').prop("readonly", false);
+        $('#cambiar_emp').hide();
+        $('#buscar_emp').show();
+        $('#empresa').val(null);
+        $('#empresa_id').val(null);
+        $('#empresa').focus();
+  });
+  
+  $("#empresa").focusout(function() {
+    if($('#empresa_id').val() == "" || $('#empresa_id').val() == null){
+        
+      $('#empresa').val(null);
+      $('#empresa').focus();
+    }
+  });
 	
 	$("#empresa").autocomplete({
       source: "/api/v1/encontrar_empresa",
       minLength: 2,
       select: function(event, ui) {
 	  	$('#empresa').val(ui.item.value);
+      $('#empresa').prop("readonly", true);
 	  	$('#empresa_id').val(ui.item.id);
+      $('#cambiar_emp').show();
+        $('#buscar_emp').hide();
+        
 	  }	      
     });
 
@@ -294,6 +317,15 @@ $(function() {
         $('#razon_social_id').val(ui.item.id);
       }       
     });
+  
+  $("#empresa").focusout(function() {
+    //console.log('ejecutar funciones');
+    if($('#empresa_id').val() == "" || $('#empresa_id').val() == null){
+      
+      //$("#empresa").
+          //border-color: #dc3545
+    }
+  })
 
    
 

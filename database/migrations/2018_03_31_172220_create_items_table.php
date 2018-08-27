@@ -48,7 +48,7 @@ class CreateItemsTable extends Migration
          DB::table('items')->insert([ 'nombre' => 'Relación con el jefe inmediato ', 'categoria_id' => 4, 'descripcion' => 'Trato interpersonal / Comunicación asertiva / Consideración de desempeño / Valoración de opinión personal / Interés y Atención / Liderazgo']);
          DB::table('items')->insert([ 'nombre' => 'Reconocimiento', 'categoria_id' => 4, 'descripcion' => 'Reconocimiento personal / Reconocimiento laboral / Parte del equipo / Participación']);
 
-         DB::table('items')->insert([ 'nombre' => 'Tareas', 'categoria_id' => 5, 'descripcion' => 'Planificación y Dirección / Tareas diversas, amenas e interesantes / Claridad de las tareas / Satisfacción con las tareas / Rareas acorde al área de estudio / Promoción de crecimiento laboral']);
+         DB::table('items')->insert([ 'nombre' => 'Tareas', 'categoria_id' => 5, 'descripcion' => 'Planificación y Dirección / Tareas diversas, amenas e interesantes / Claridad de las tareas / Satisfacción con las tareas / Tareas acorde al área de estudio / Promoción de crecimiento laboral']);
          DB::table('items')->insert([ 'nombre' => 'Responsabilidad', 'categoria_id' => 5, 'descripcion' => 'Autonomía / Proyectos propios / Objetivos asignados para la práctica']);
          DB::table('items')->insert([ 'nombre' => 'Carga laboral', 'categoria_id' => 5, 'descripcion' => 'Nivel de carga laboral acorde al horario / Exigencia del supervisor']);
          DB::table('items')->insert([ 'nombre' => 'Condiciones del lugar de trabajo', 'categoria_id' => 5, 'descripcion' => 'Seguridad laboral / Condiciones de trabajo adecuadas / Calidad de los equipos de trabajo / Zonas de recreación y descanso / Grado de riesgos']);

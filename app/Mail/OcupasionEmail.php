@@ -30,15 +30,15 @@ class OcupasionEmail extends Mailable
         //return $this->view('view.name');
 
         $address = 'ocupasion2018@gmail.com';
-        $subject = 'Verificación de tu evaluación en ocupasion.com';
+        $subject = $this->data['subject'];
         $name = 'Ocupasion.com';
 
-        return $this->view('emails.bienvenido')
+        return $this->view($this->data['template'])
                     ->from($address, $name)
                     //->cc($address, $name)
                     //->bcc($address, $name)
                     //->replyTo($address, $name)
                     ->subject($subject)
-                    ->with([ 'message' => $this->data['message'] ]);
+                    ->with($this->data);
     }
 }

@@ -8,11 +8,16 @@ use App\Evaluacion;
 use App\Empresa;
 use App\Item;
 use App\Categoria;
+use App\Benes;
+use App\Empresa;
 use App\Mail\OcupasionEmail;
 
 use Mail;
 
 use App\Eval_item;
+use App\Eval_bene;
+
+use Illuminate\Support\Facades\Log;
 
 class Evaluacion_controller extends Controller
 {
@@ -20,11 +25,15 @@ class Evaluacion_controller extends Controller
 		
 
         $random_hash = bin2hex(random_bytes(32));
+        //$random_hash
+        $request->request->add(['confir_code' =>  $random_hash, 'ip' => $request->ip()]);
+		    $evaluacion = Evaluacion::create($request->all()); //mejorar        
 
-		    $evaluacion = Evaluacion::create($request->all() + ['confir_code' => $random_hash]); //mejorar        
+        $items = Item::all();
+      
+        
 
-        $items = Item::all();        
-
+         //Log::info('-----------------entro 1 -------------');
         foreach ($items as $item) {
             
             if($request->input('puntaje_' . $item->id) != null){
@@ -33,11 +42,25 @@ class Evaluacion_controller extends Controller
 
             }
         }
+      
+      
+        $benes = Benes::all();
+      
+        //Log::info('-----------------entro 2 -------------');
+        foreach ($benes as $bene) {
+            //Log::info('-----------------entro 3 -------------');
+            if($request->input('bene_' . $bene->id) != null && $request->input('bene_' . $bene->id) != ""){
+                //Log::info('-----------------entro 4 -------------');
+                Eval_bene::create(array('evaluacion_id' => $evaluacion->id, 'bene_id' => $bene->id));
+
+            }
+        }
 
 
         //return $request;
-      
-        return redirect()->action('Evaluacion_controller@gracias', ['email' => $request->input('email'), 'empresa' => $request->input('empresa_nombre')]);
+        //Log::info('-----------------entro 5 -------------');
+        //return redirect()->action('Evaluacion_controller@gracias', ['id' => $evaluacion->id]);
+        return redirect()->route('gracias', [$evaluacion->id]);
       
         //return redirect('/gracias?email='. $request->input('email') . '&empresa=' . $request->input('empresa_nombre'));
         
@@ -64,21 +87,47 @@ class Evaluacion_controller extends Controller
 
     public function continuar_evaluacion(){
 
+      
     	$categorias = Categoria::all();
     	$items = Item::all();
-    	return view('empresa_evaluar', array('categorias' => $categorias, 'items' => $items));
+      
+      $benes = Benes::all();
+      
+    	return view('empresa_evaluar', array('categorias' => $categorias, 'items' => $items, 'benes'=>$benes));
     }
+  
 
-    public function gracias($email, $empresa){
-      
-        //aca se deben validar varias cosas, solo debe enviar el id de la evaluacion
-        //Request $request
-      
-        
-        $data = ['message' => 'This is a test!'];
 
-        Mail::to($email)->send(new OcupasionEmail($data));
-        
-        return view('gracias', ['email' => $email, 'empresa' => $empresa]);
+    public function gracias($id){
+      
+        try{
+          $evaluacion = Evaluacion::find($id);
+      
+          if ($evaluacion === null) {
+             // eval doesn't exist
+            return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
+          }
+          
+          if($evaluacion->confirmed == 'SI'){
+            
+            return redirect()->action('Evaluacion_controller@continuar_evaluacion');
+          }
+            
+          $empresa = Empresa::find($evaluacion->empresa_id);
+          
+          $subject = 'Verificación de tu evaluación en ocupasion.com';
+          $template = 'emails.bienvenido';
+          
+          $data = ['subject' => $subject, 'template' => $template, 'email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
+
+          Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
+
+          return view('gracias', $data);
+          
+        }catch (\Exception $e) {
+          
+          return redirect()->action('Evaluacion_controller@continuar_evaluacion');
+        }
+                      
     }    
 }

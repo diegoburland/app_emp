@@ -76,12 +76,16 @@ ul.ui-autocomplete {
 			<div class="list-group-item list-group-item-action">
 				<div class="form-group row required ">
 			    	<div class="col-sm-6">
-			      		<label class="control-label" >Empresa</label>
-			    	  	<input type="text" class="form-control" id="empresa"  name="empresa_nombre" placeholder="Busca tu empresa" required>
+              <label class="control-label" ><b>Busca y selecciona la empresa</b></label>
+			    	  	<input type="text" class="form-control" id="empresa" name="empresa_nombre" placeholder="Busca y selecciona la empresa" required>
 			    	  	<input type="hidden" name="empresa_id" id="empresa_id" value="">  
 			    	  	
-			    	  	<small id="emailHelp" class="form-text text-muted">
+			    	  	<small id="buscar_emp" class="form-text text-muted">
 			    	  	<a href="#" data-toggle="modal" data-target="#exampleModal">¿No aparece tu empresa?</a>
+			    	  	</small>
+              
+                <small id="cambiar_emp" class="form-text text-muted">
+			    	  	<a href="#" id="cambiar_action">Cambiar Empresa!</a>
 			    	  	</small>
 			    	  	
 
@@ -90,8 +94,22 @@ ul.ui-autocomplete {
 				        </div>
 
 			  	    </div>
+          
 			  	</div>
 			</div>
+    
+      <div class="list-group-item list-group-item-action">
+				<div class="form-group row required ">
+				    <div class="col-sm-6">
+				      <label for="">Ciudad</label>
+				      <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" autocomplete="off" required>
+				      <input type="hidden" name="ciudad_id" id="ciudad_id" value="">  
+				      <div id="validar_ciudad" class="invalid-feedback">
+				          Por favor selecciona una ciudad del listado
+				      </div>
+				    </div>
+				</div>
+      </div>
 
 			<a class="list-group-item list-group-item-action">
 			 	<div class="form-group row required" >
@@ -185,9 +203,9 @@ ul.ui-autocomplete {
 			<div class="alert alert-secondary" role="alert">
 		  	
 			  	<p>Todos juntos aspiramos a hacer más transparente el mercado laboral. 
-				Por favor, evalúe cada dimensión laboral lo más honesto posible. </p>
+				Por favor, evalúa cada dimensión laboral lo más honesto posible. </p>
 
-				<p><b>Recuerda:</b> Somos una plataforma neutral y justa. Por lo tanto te pedimos tomar en cuenta los siguientes aspectos: </p>
+				<p><b>Recuerda:</b> Somos una plataforma neutral y justa. Por lo tanto, te pedimos tomar en cuenta los siguientes aspectos: </p>
 
 				<ul>
 					<dl>
@@ -363,53 +381,23 @@ ul.ui-autocomplete {
 			</a>
       <a  class="list-group-item list-group-item-action bne_empleo">
 				<div class="col-sm-12">
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Auxilio de educación</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Auxilio por salud (Lentes, Odontología y otros)</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Seguro de vida, accidentes o invalidez</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Medicina prepagada</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Eventos para empleados y familia</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Seminarios y talleres pagados</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Descansos remunerados</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Horario flexible</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Teletrabajo</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Asignación de vehículo</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Celular empresarial</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Bono de telefonía móvil</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Se permiten mascotas</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Subsidio de alimentación</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Plan de carrera profesional</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Descuentos para empleados</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Participación en ganancias</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Prima de antigüedad</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Primas extralegales</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Bonos</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Crédito empresarial a tasas blandas</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Restaurante empresarial</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Posibilidad de traslados</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Actividades deportivas y recreativas</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Fondo de empleados</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Fondo de ahorro para pensión voluntario</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Buena conexión de infraestructura de transporte</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Transporte empresarial</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Parqueadero</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Guardería</button>
+          @foreach ($benes as $bene)
+            @if($bene->tipo == 1)
+              <button type="button" style="white-space: normal;width: 200px;" class="btn btn-sm btn-secondary m-1" onclick="beneficio(this, {{$bene->id}})">{{$bene->nombre}}</button>
+              <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
+            @endif
+          @endforeach          
 			  </div>
 			</a>
       
       <a  class="list-group-item list-group-item-action bne_practica">
 				<div class="col-sm-12">
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Eventos para empleados y familia</button>    
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Seminarios y talleres pagados</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Descansos remunerados</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Horario flexible</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Subsidio de Alimentación</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Calzado y vestido de labor</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Descuentos para practicantes</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Restaurante empresarial</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Actividades deportivas y recreativas</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Buena conexión de infraestructura de transporte</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Transporte empresarial</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="beneficio(this)">Parqueadero</button>
+           @foreach ($benes as $bene)
+            @if($bene->tipo == 2)
+              <button type="button" style="white-space: normal;width: 200px;" class="btn btn-sm btn-secondary m-1" onclick="beneficio(this, {{$bene->id}})">{{$bene->nombre}}</button>
+              <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
+            @endif
+          @endforeach          
 			  </div>
 			</a>
       

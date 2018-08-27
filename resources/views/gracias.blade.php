@@ -11,7 +11,7 @@
 
 <div class="row justify-content-center mt-5">
 	<div class="col-10">
-	  <div class="alert alert-success" role="alert">
+	  <div class="alert alert-warning" role="alert">
 		  <h4 class="alert-heading">¡Tú evaluación se ha guardado con éxito!</h4>
 		 	<p>¡Muchas gracias por tu evaluación anónima sobre {{ $empresa }}!</p>
 
