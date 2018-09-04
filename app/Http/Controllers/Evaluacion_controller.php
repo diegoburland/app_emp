@@ -9,7 +9,6 @@ use App\Empresa;
 use App\Item;
 use App\Categoria;
 use App\Benes;
-use App\Empresa;
 use App\Mail\OcupasionEmail;
 
 use Mail;
@@ -70,19 +69,22 @@ class Evaluacion_controller extends Controller
 
 
         $empresa = new Empresa();
-        $evaluacion = Evaluacion::all()->toArray();
-        for ($i=0; $i < count($evaluacion); $i++) { 
-            $empresa = $empresa->find($evaluacion[$i]['empresa_id']);
+        $empresaArr = Empresa::all()->toArray();
+        $evaluacionArr = Evaluacion::all()->toArray();
+        $evaluacion = Evaluacion::all();
+        $cont = 0;
+        for ($i=0; $i < count($evaluacionArr); $i++) { 
+            $empresa = $empresa->find($evaluacionArr[$i]['empresa_id']);
             $evaluacion[$i]['empresa'] = $empresa->razon_social;
-          
-        } 
+            $evaluacion[$i]['statusEmpresa'] = $empresa->verificada;
+            if($evaluacionArr[$i]['publicada'] == 'SI'){
+              $cont ++;
+            }  
+        }
 
-        $results = array();
+        
 
-        $results[] = $evaluacion;
-
-
-        return view('evaluacion_list', array('evaluaciones' => $results));
+        return view('evaluacion_list', array('evaluaciones' => $evaluacion, 'totalPublicadas' => $cont, 'totalEvaluaciones' => count($evaluacionArr), 'totalEmpresas' => count($empresaArr)));
     }  
 
     public function continuar_evaluacion(){
