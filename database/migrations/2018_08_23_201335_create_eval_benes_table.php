@@ -24,7 +24,7 @@ class CreateEvalBenesTable extends Migration
             $table->timestamps();
           
           
-            DB::table('evaluacion')->insert([ 'empresa_id' => 1, 'evalua' => 'cualquier cosa', 'trabajo_tiempo' => 1, 'departamento' => 'cualquiera', 'titulo' => 'cualquiera', 'confir_code' => 'xyz', 'confirmed' => 'SI']);
+            DB::table('evaluaciones')->insert([ 'empresa_id' => 1, 'evalua' => 'cualquier cosa', 'trabajo_tiempo' => 1, 'departamento' => 'cualquiera', 'titulo' => 'cualquiera', 'confir_code' => 'xyz', 'confirmed' => 'SI']);
         
         });
     }
