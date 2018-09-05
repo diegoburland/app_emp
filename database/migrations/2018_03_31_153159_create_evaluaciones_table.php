@@ -39,6 +39,8 @@ class CreateEvaluacionesTable extends Migration
           
             $table->string('publicada', 50)->default('NO');
             $table->string('ip', 100)->nullable();
+          
+            $table->string('ies', 500)->nullable();
 
             $table->timestamps();
 
