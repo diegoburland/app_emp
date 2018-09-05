@@ -22,6 +22,10 @@ class CreateEvalBenesTable extends Migration
             $table->foreign('bene_id')->references('id')->on('benes');
           
             $table->timestamps();
+          
+          
+            DB::table('evaluacion')->insert([ 'empresa_id' => 1, 'evalua' => 'cualquier cosa', 'trabajo_tiempo' => 1, 'departamento' => 'cualquiera', 'titulo' => 'cualquiera', 'confir_code' => 'xyz', 'confirmed' => 'SI']);
+        
         });
     }
 
