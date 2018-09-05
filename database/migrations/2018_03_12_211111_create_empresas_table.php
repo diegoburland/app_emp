@@ -75,7 +75,7 @@ class CreateEmpresasTable extends Migration
           $table->string('cel_contacto', 15)->nullable();
           $table->string('email_contacto', 255)->nullable();
 
-          $table->string('verificada', 10)->nullable();
+          $table->string('verificada', 30)->nullable();
 
           $table->timestamps();
         });
