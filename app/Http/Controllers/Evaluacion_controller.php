@@ -73,6 +73,8 @@ class Evaluacion_controller extends Controller
         $evaluacionArr = Evaluacion::all()->toArray();
         $evaluacion = Evaluacion::all();
         $cont = 0;
+        $empCont = 0;
+        $contenidoCont = 0;
         for ($i=0; $i < count($evaluacionArr); $i++) { 
             $empresa = $empresa->find($evaluacionArr[$i]['empresa_id']);
             $evaluacion[$i]['empresa'] = $empresa->razon_social;
@@ -80,11 +82,19 @@ class Evaluacion_controller extends Controller
             if($evaluacionArr[$i]['publicada'] == 'SI'){
               $cont ++;
             }  
+            if($evaluacionArr[$i]['contenido'] == 'POR VERIFICAR'){
+              $contenidoCont ++;
+            }  
+        }
+
+        for ($i=0; $i < count($empresaArr); $i++) { 
+          if($empresaArr[$i]['verificada'] == 'POR VERIFICAR' )
+            $empCont ++;
         }
 
         
 
-        return view('evaluacion_list', array('evaluaciones' => $evaluacion, 'totalPublicadas' => $cont, 'totalEvaluaciones' => count($evaluacionArr), 'totalEmpresas' => count($empresaArr)));
+        return view('evaluacion_list', array('evaluaciones' => $evaluacion, 'totalPublicadas' => $cont, 'totalEvaluaciones' => count($evaluacionArr), 'totalEmpresas' => count($empresaArr), 'totalEmpPorVerif' => $empCont, 'contenidoCont' => $contenidoCont));
     }  
 
     public function continuar_evaluacion(){

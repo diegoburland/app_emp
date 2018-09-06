@@ -24,7 +24,7 @@
    <td valign=top><font face="verdana, arial, helvetica" size=1>*</font></td> 
    <td><font face="verdana, arial, helvetica" size=2> 
 
-Total de empresas por verificar: 
+Total de empresas por verificar: {{$totalEmpPorVerif}} 
 
       </font></td> 
    </tr> 
@@ -32,7 +32,7 @@ Total de empresas por verificar:
       <td valign=top><font face="verdana, arial, helvetica" size=1>*</font></td> 
    <td><font face="verdana, arial, helvetica" size=2> 
 
-Total contenido por verificar: 
+Total contenido por verificar: {{$contenidoCont}} 
 
       </font></td> 
    </tr> 
@@ -66,6 +66,7 @@ Total evaluaciones: {{$totalEvaluaciones}}
 </tr> 
 </table>
 <p>
+  <h1> Listado de evaluaciones </h1>
 <table id="listEvaluacion" class="display" style="width:100%">
        <thead>
           <tr>
@@ -93,9 +94,9 @@ Total evaluaciones: {{$totalEvaluaciones}}
               <td>{{$evaluacion->created_at->format('Y-m-d')}}</td>
               <td>{{$evaluacion->ip}}</td>
               <td>{{$evaluacion->evalua}}</td>
-              <td>-</td>
+              <td>{{$evaluacion->ies}}</td>
               <td>Normal</td>
-              <td>{{$evaluacion->statusCorreo}}</td>
+              <td>{{$evaluacion->confirmed}}</td>
               <td>{{$evaluacion->statusEmpresa}}</td>
               <td>{{$evaluacion->contenido}}</td>
               <td>{{$evaluacion->publicada}}</td>
@@ -104,53 +105,5 @@ Total evaluaciones: {{$totalEvaluaciones}}
           </tbody>
     </table>
 </p>
-
-
-
-
-<!--<h4>Lista de evaluaciones</h4>
-  <div class="table-responsive-xl">
-  <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th>Empresa</th>
-      <th scope="col">Correo</th>
-      <th width="120">Fecha</th>
-      <th scope="col">IP</th>
-      <th width="150">Tipo de trabajo</th>
-      <th scope="col">Status de evaluación</th>
-      <th scope="col">Status Correo</th>
-      <th scope="col">Status Empresa</th>
-      <th scope="col">Status Contenido</th>
-      <th scope="col">Status Publicación</th>
-    </tr>
-  </thead>
-  <tbody>
-  	@foreach ($evaluaciones as $evaluacion)
-
-    <tr>
-      <th scope="row">{{$evaluacion->id}}</th>
-      <td>{{$evaluacion->empresa}}</td>
-      <td>{{$evaluacion->email}}</td>
-      <td>{{$evaluacion->created_at->format('Y-m-d')}}</td>
-      <td>{{$evaluacion->ip}}</td>
-      <td>{{$evaluacion->evalua}}</td>
-      <td>Normal</td>
-      <td>{{$evaluacion->statusCorreo || '-' }}</td>
-      <td>{{$evaluacion->statusEmpresa || '-' }}</td>
-      <td>{{$evaluacion->empresa_id}}</td>
-      <td>{{$evaluacion->empresa_id}}</td>
-    </tr>
-	@endforeach
-  </tbody>
-</table>
-</div>
-
-<div class="col-md-12 text-center">
-<ul class="pagination pagination-lg pager" id="developer_page"></ul>
-</div>
-
-    <a class="list-group-item list-group-item-action" href="/evaluacion/{{$evaluacion->id}}" >{{$evaluacion->departamento}},{{$evaluacion->id}}</a>-->
 
 @endsection
