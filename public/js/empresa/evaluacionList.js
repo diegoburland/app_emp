@@ -17,4 +17,11 @@ $(document).ready(function() {
       ]
 	  	
     });
+
+    var table = $('#listEvaluacion').DataTable();
+     
+    $('#listEvaluacion tbody').on('click', 'tr', function () {
+        var data = table.row( this ).data();
+        window.location.href = "/empresa_editar/"+data[0];
+    } );
 });

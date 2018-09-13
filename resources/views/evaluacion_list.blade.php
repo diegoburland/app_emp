@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Evaluaciones')
+@section('title', 'Listado de evaluaciones')
 
 @section('head')
   <script type="text/javascript" src="/js/empresa/evaluacionList.js"></script>
