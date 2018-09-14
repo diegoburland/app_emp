@@ -1,3 +1,23 @@
+$(document).ready(function() {
+  
+  if($('#tipoEvaluacion')[0].value == "Trabajo Pasado")
+    $('#btn_pasado').click();
+  else if($('#tipoEvaluacion')[0].value == "Trabajo Actual")
+    $('#btn_actual').click();
+  else
+    $('#btn_practica').click();
+
+  if($('#tipoCargo')[0].value == "Empleado")
+    $('#btn_empleado').click();
+  else if($('#tipoCargo')[0].value == "Directivo")
+    $('#btn_directivo').click();
+  else
+    $('#btn_practicante').click();
+
+  $("#departamento").val($('#depatarmentoEmp')[0].value);
+
+});
+
 
 function evaluar(self, item){
 

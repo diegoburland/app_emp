@@ -112,6 +112,7 @@ ul.ui-autocomplete {
 
 			<a class="list-group-item list-group-item-action">
 			 	<div class="form-group row required" >
+			 		<input type="hidden" name="tipoEvaluacion" id="tipoEvaluacion" value="{{$evaluacion->evalua}}"> 
 					<div class="col-sm-5">
 						<div class="row ml-1">
 					  		<label for="">Evalúo mi</label>
@@ -123,15 +124,8 @@ ul.ui-autocomplete {
 						</div>
 					
 						<input type="hidden" data-validate="true" name="evalua" id="evalua" value="" required>
-
-					  <!--select name="evalua" class="form-control" required>
-					  	<option value="">Selecciona una opción</option>
-					  	<option value="Trabajo Actual">Trabajo Actual</option>
-					  	<option value="Trabajo Pasado">Trabajo Pasado</option>
-					  	<option value="Práctica">Práctica</option>						  	
-					  </select-->
 					  <div id="validar_evalua" class="invalid-feedback">
-				          Por favor selecciona que evaluas
+				          Por favor seleccione una opción
 				      </div>
 					</div>
 				</div>
@@ -144,7 +138,7 @@ ul.ui-autocomplete {
 							<label for="">Elegir Posición</label>		
 						</div>
 					  
-
+						<input type="hidden" name="tipoCargo" id="tipoCargo" value="{{$evaluacion->posicion}}"> 
 					  	<div class="btn-group flex-wrap" role="group" aria-label="Basic example">
 						  <button type="button" id="btn_empleado" class="btn-pos btn btn-secondary" onclick="elegir_pos(this)">Empleado</button>
 						  <button type="button" id="btn_directivo" class="btn-pos btn btn-secondary"  onclick="elegir_pos(this)">Directivo</button>
@@ -152,13 +146,6 @@ ul.ui-autocomplete {
 						</div>
 						
 						<input type="hidden" name="posicion" id="posicion" value="">
-
-					  <!--select name="posicion" class="form-control" required>
-					  	<option value="">Selecciona una opción</option>
-					  	<option value="Empleado/Obrero">Empleado/Colaborador</option>
-					  	<option value="Gerente/Directivo">Gerente/Directivo</option>
-					  	<option value="Contrato a tiempo parcial">Prácticante</option>						  	
-					  </select-->
 					  <div id="validar_posicion" class="invalid-feedback">
 				          Por favor selecciona la posición
 				      </div>
@@ -168,8 +155,9 @@ ul.ui-autocomplete {
 			<a class="list-group-item list-group-item-action">
 				<div class="form-group row">
 					<div class="col-sm-6">
+					  <input type="hidden" name="depatarmentoEmp" id="depatarmentoEmp" value="{{$evaluacion->departamento}}">
 					  <label for="">Departamento de la Empresa</label>
-					  <select name="departamento" class="form-control" required>
+					  <select name="departamento" id="departamento" class="form-control" required>
 					  	<option value="">Selecciona una opción</option>
 					  	<option value="Administración / Organización">Administración / Organización</option>
 					  	<option value="Compras / Proveedores">Compras / Proveedores</option>
@@ -197,7 +185,7 @@ ul.ui-autocomplete {
 
 		</div>
 
-		<div class="col-sm-11">
+		<div class="col-sm-11" style="margin-left: 4%;">
 		
 			<div class="alert alert-secondary" role="alert">
 		  	
@@ -305,7 +293,7 @@ ul.ui-autocomplete {
 		</div>
 		
 
-		<div class="col-sm-11">
+		<div class="col-sm-11" style="margin-left: 4%;">
 
 			
 
