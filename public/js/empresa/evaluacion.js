@@ -208,11 +208,26 @@ function validar_modal(){
 
 $(function() {
 
-    $("#pre_oferta").hide();
+  $("#pre_oferta").hide();
 
   $(".dim_practicante").hide();
   $(".bne_practica").hide();
+
+  //sector_economico
   
+  const url_sector = '/json/sectores_economicos.json';
+
+  // Populate dropdown with list of provinces
+  let dropdown = $('#sector_economico');
+  //console.log('esta entrando');
+  $.getJSON(url_sector, function (data) {
+    
+    $.each(data, function (key, entry) {
+      
+      dropdown.append($('<option></option>').attr('value', entry.value).text(entry.text));
+    })
+  });
+
      
 	var forms = document.getElementsByClassName('needs-validation');
 	    // Loop over them and prevent submission
@@ -326,6 +341,32 @@ $(function() {
           //border-color: #dc3545
     }
   })
+
+
+  var cache_ies = [];
+  const url_ies = '/json/ies.json';
+  $.getJSON( url_ies, function( data, status, xhr ) {
+    
+    $.each(data, function (key, entry) {
+      
+      cache_ies.push(entry.value);
+    })
+    console.log(cache_ies);
+  });
+
+  
+  $( "#ies_campo" ).autocomplete({
+    minLength: 3,
+    source: function(request, response) {
+        var results = $.ui.autocomplete.filter(cache_ies, request.term);
+
+        response(results.slice(0, 10));
+    },
+    select: function(event, ui) {
+      $('#ies').val(ui.item.value);
+        
+    } 
+  });
 
    
 

@@ -138,6 +138,19 @@ ul.ui-autocomplete {
 				</div>
 			</a>
 
+			<div class="list-group-item list-group-item-action">
+				<div class="form-group row required ">
+				    <div class="col-sm-6">
+				      <label for="">Institución Educativa</label>
+				      <input type="text" class="form-control" id="ies_campo" name="ies_campo" placeholder="Institución Educativa" autocomplete="off" required>
+				      <input type="hidden" name="ies" id="ies" value="">  
+				      <div id="validar_ciudad" class="invalid-feedback">
+				          Por favor selecciona una institución educativa del listado
+				      </div>
+				    </div>
+				</div>
+      		</div>
+
 			<a class="list-group-item list-group-item-action">
 				<div class="form-group row">
 					<div class="col-sm-5">
@@ -568,34 +581,7 @@ ul.ui-autocomplete {
 				    <div class="col-sm-12">
 				    	<label for="">Sector económico</label>
 				      <select class="form-control" id="sector_economico" name="sector_economico" required>
-				        <option></option>
-				        <option value="Administrativa y Financiera">
-				          Administrativa y Financiera
-				        </option>
-				        <option value="Archivo y Documentación">
-				          Archivo y Documentación
-				        </option>
-				        <option value="Auditoría, Contraloría e Interventoría">
-				          Auditoría, Contraloría e Interventoría
-				        </option>
-				        <option value="Calidad (aseguramiento, gestión y afines)">
-				          Calidad (aseguramiento, gestión y afines)
-				        </option>
-				        <option value="Comercial, Ventas y Telemercadeo">
-				          Comercial, Ventas y Telemercadeo
-				        </option>
-				        <option value="Comercio Exterior">
-				          Comercio Exterior
-				        </option>
-				        <option value="Compras e Inventarios">
-				          Compras e Inventarios
-				        </option>
-				        <option value="Construcción y Obra">
-				          Construcción y Obra
-				        </option>
-				        <option value="Docencia">
-				          Docencia
-				        </option>        
+				        <option></option>				        
 				      </select>   
 				      <div class="invalid-feedback">
 				          Por favor selecciona un sector

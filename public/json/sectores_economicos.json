@@ -1,0 +1,146 @@
+[
+  {
+    "value": "Agropecuario / Silvicultura / Pesca",
+    "text": "Agropecuario / Silvicultura / Pesca"
+  },
+  {
+    "value": "Alimentos / Bebidas / Tabaco",
+    "text": "Alimentos / Bebidas / Tabaco"
+  },
+  {
+    "value": "Arte / Cultura / Entretenimiento / Eventos",
+    "text": "Arte / Cultura / Entretenimiento / Eventos"
+  },
+  {
+    "value": "Banca / Seguros / Servicios financieros",
+    "text": "Banca / Seguros / Servicios financieros"
+  },
+  {
+    "value": "Comercio al por mayor / Consumo masivo",
+    "text": "Comercio al por mayor / Consumo masivo"
+  },
+  {
+    "value": "Comercio al por menor / Retail",
+    "text": "Comercio al por menor / Retail"
+  },
+  {
+    "value": "Construcción / Obras civiles / Arquitectura",
+    "text": "Construcción / Obras civiles / Arquitectura"
+  },
+  {
+    "value": "Consultoría / Asesoría",
+    "text": "Consultoría / Asesoría"
+  },
+  {
+    "value": "Deporte / Belleza / Recreación",
+    "text": "Deporte / Belleza / Recreación"
+  },
+  {
+    "value": "Editorial / Impresión",
+    "text": "Editorial / Impresión"
+  },
+  {
+    "value": "Educación",
+    "text": "Educación"
+  },
+  {
+    "value": "Electrónica / Electrodoméstico",
+    "text": "Electrónica / Electrodoméstico"
+  },
+  {
+    "value": "Energía / Agua / Minería",
+    "text": "Energía / Agua / Minería"
+  },
+  {
+    "value": "Entidades públicas / Administración pública",
+    "text": "Entidades públicas / Administración pública"
+  },
+  {
+    "value": "Fotografía / Video / Diseño / Música",
+    "text": "Fotografía / Video / Diseño / Música"
+  },
+  {
+    "value": "Hospitales / Clínicas",
+    "text": "Hospitales / Clínicas"
+  },
+  {
+    "value": "Industrial / Producción",
+    "text": "Industrial / Producción"
+  },
+  {
+    "value": "Inmobiliaria",
+    "text": "Inmobiliaria"
+  },
+  {
+    "value": "Investigación / Desarrollo / Ciencia",
+    "text": "Investigación / Desarrollo / Ciencia"
+  },
+  {
+    "value": "Legal / Fiscal / Auditoría / Contabilidad",
+    "text": "Legal / Fiscal / Auditoría / Contabilidad"
+  },
+  {
+    "value": "Manufactura / Artesanía",
+    "text": "Manufactura / Artesanía"
+  },
+  {
+    "value": "Marketing / Publicidad / Relaciones públicas",
+    "text": "Marketing / Publicidad / Relaciones públicas"
+  },
+  {
+    "value": "Medios de Comunicación",
+    "text": "Medios de Comunicación"
+  },
+  {
+    "value": "ONG / Fundaciones / Corporaciones",
+    "text": "ONG / Fundaciones / Corporaciones"
+  },
+  {
+    "value": "Química / Farmacéutica",
+    "text": "Química / Farmacéutica"
+  },
+  {
+    "value": "Salud / Medicina / Asistencia",
+    "text": "Salud / Medicina / Asistencia"
+  },
+  {
+    "value": "Seguridad / Defensa",
+    "text": "Seguridad / Defensa"
+  },
+  {
+    "value": "Servicios profesionales",
+    "text": "Servicios profesionales"
+  },
+  {
+    "value": "Sistemas / Tecnología  / Informática",
+    "text": "Sistemas / Tecnología  / Informática"
+  },
+  {
+    "value": "Talento Humano / RR.HH.",
+    "text": "Talento Humano / RR.HH."
+  },
+  {
+    "value": "Telecomunicaciones",
+    "text": "Telecomunicaciones"
+  },
+  {
+    "value": "Textil / Confección / Calzado",
+    "text": "Textil / Confección / Calzado"
+  },
+  {
+    "value": "Transporte / Logística / Almacenamiento",
+    "text": "Transporte / Logística / Almacenamiento"
+  },
+  {
+    "value": "Turismo / Hotel / Gastronomía",
+    "text": "Turismo / Hotel / Gastronomía"
+  },
+  {
+    "value": "Vehículos / Equipo de Transporte / Partes / Mantenimiento",
+    "text": "Vehículos / Equipo de Transporte / Partes / Mantenimiento"
+  },
+  {
+    "value": "Otros",
+    "text": "Otros"
+  }
+]

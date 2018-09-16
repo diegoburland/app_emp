@@ -95,11 +95,42 @@ Total evaluaciones: {{$totalEvaluaciones}}
               <td>{{$evaluacion->ip}}</td>
               <td>{{$evaluacion->evalua}}</td>
               <td>{{$evaluacion->ies}}</td>
-              <td>Normal</td>
-              <td>{{$evaluacion->confirmed}}</td>
-              <td>{{$evaluacion->statusEmpresa}}</td>
-              <td>{{$evaluacion->contenido}}</td>
-              <td>{{$evaluacion->publicada}}</td>
+              @if($evaluacion->estado == 'INVALIDA')
+                 <td style="background: indianred;">{{$evaluacion->estado}}</td>
+              @endif
+              @if($evaluacion->estado == 'NORMAL')
+                 <td style="background: lightgreen;">{{$evaluacion->estado}}</td>
+              @endif
+              @if($evaluacion->estado != 'INVALIDA' && $evaluacion->estado != 'NORMAL')
+                 <td>{{$evaluacion->estado}}</td>
+              @endif
+              @if($evaluacion->confirmed == 'NO')
+                <td style="background: indianred;">{{$evaluacion->confirmed}}</td>
+              @endif
+              @if($evaluacion->confirmed == 'SI')
+                 <td style="background: lightgreen;">{{$evaluacion->confirmed}}</td>
+              @endif
+              @if($evaluacion->confirmed != 'SI' && $evaluacion->confirmed != 'NO')
+                 <td>{{$evaluacion->confirmed}}</td>
+              @endif
+              @if($evaluacion->statusEmpresa == 'SIN REVISION' || $evaluacion->statusEmpresa == 'NO VERIFICADA')
+                 <td style="background: indianred;">{{$evaluacion->statusEmpresa}}</td>
+              @endif
+              @if($evaluacion->statusEmpresa != 'SIN REVISION' && $evaluacion->statusEmpresa != 'NO VERIFICADA')
+                 <td>{{$evaluacion->statusEmpresa}}</td>
+              @endif
+              @if($evaluacion->contenido == 'SIN REVISION')
+                 <td style="background: indianred;">{{$evaluacion->contenido}}</td>
+              @endif
+              @if($evaluacion->contenido != 'SIN REVISION')
+                 <td>{{$evaluacion->contenido}}</td>
+              @endif
+              @if($evaluacion->publicada == 'NO')
+                 <td style="background: indianred;">{{$evaluacion->publicada}}</td>
+              @endif
+              @if($evaluacion->publicada != 'NO')
+                 <td>{{$evaluacion->publicada}}</td>
+              @endif
             </tr>
           @endforeach
           </tbody>
