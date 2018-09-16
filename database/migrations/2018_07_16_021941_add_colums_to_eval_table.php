@@ -20,7 +20,10 @@ class AddColumsToEvalTable extends Migration
             $table->string('terminos', 5);
             $table->string('salario', 15);
             $table->string('ofrecer', 5);
-            $table->string('oferta', 5);                        
+            $table->string('oferta', 5); 
+
+            $table->integer('ciudad_eval_id')->after('empresa_id');
+            $table->foreign('ciudad_eval_id')->references('id')->on('ciudades')->onDelete('cascade');                       
             
         });
     }

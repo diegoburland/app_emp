@@ -102,8 +102,8 @@ ul.ui-autocomplete {
 				<div class="form-group row required ">
 				    <div class="col-sm-6">
 				      <label for="">Ciudad</label>
-				      <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" autocomplete="off" required>
-				      <input type="hidden" name="ciudad_id" id="ciudad_id" value="">  
+				      <input type="text" class="form-control" id="ciudad_eval" name="ciudad_eval" placeholder="Ciudad" autocomplete="off" required>
+				      <input type="hidden" name="ciudad_eval_id" id="ciudad_eval_id" value="">  
 				      <div id="validar_ciudad" class="invalid-feedback">
 				          Por favor selecciona una ciudad del listado
 				      </div>
@@ -601,8 +601,8 @@ ul.ui-autocomplete {
 				</div>
 				<div class="form-group row">
 				    <div class="col-sm-12">
-				    	<label for="">Dirección</label>
-				      <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección">
+				    	<label for="">Página web</label>
+				      <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Página web">
 				    </div>
 				</div>
 

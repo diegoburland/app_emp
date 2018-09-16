@@ -354,6 +354,14 @@ $(function() {
     console.log(cache_ies);
   });
 
+$("#ciudad_eval").autocomplete({
+      source: "/api/v1/encontrar_ubicacion",
+      minLength: 2,
+      select: function(event, ui) {
+      $('#ciudad_eval').val(ui.item.value);
+      $('#ciudad_eval_id').val(ui.item.id);
+    }       
+  });
   
   $( "#ies_campo" ).autocomplete({
     minLength: 3,
