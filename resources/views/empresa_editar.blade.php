@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Evaluación')
+@section('title', ' Verificación de evaluación')
 
 
 @section('content')
@@ -58,7 +58,7 @@ ul.ui-autocomplete {
 			@method('POST')
 			@csrf
 			
-			<h4>Editar evaluación</h4>
+			<h4>Verificar evaluación</h4>
 
 			
 
@@ -77,7 +77,7 @@ ul.ui-autocomplete {
 				<div class="form-group row required ">
 			    	<div class="col-sm-6">
               <label class="control-label" ><b>Empresa</b></label>
-			    	  	<input type="text" class="form-control" id="empresa" name="empresa_nombre" placeholder="Busca y selecciona la empresa" value="{{$empresa->razon_social}}" required>
+			    	  	<input type="text" class="form-control" id="empresa" name="empresa_nombre" placeholder="Busca y selecciona la empresa" disabled="true" value="{{$empresa->razon_social}}" required>
 			    	  	<input type="hidden" name="empresa_id" id="empresa_id" value="">  
 			    	  	<small id="buscar_emp" class="form-text text-muted">
 			    	  	<a href="#" data-toggle="modal" data-target="#exampleModal">¿Asignar una empresa no registrada?</a>
@@ -101,7 +101,7 @@ ul.ui-autocomplete {
 				<div class="form-group row required ">
 				    <div class="col-sm-6">
 				      <label for="">Ciudad</label>
-				      <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" autocomplete="off" value="{{$empresa->ciudad}}" required>
+				      <input type="text" disabled="true" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" autocomplete="off" value="{{$empresa->ciudad}}" required>
 				      <input type="hidden" name="ciudad_id" id="ciudad_id" value="">  
 				      <div id="validar_ciudad" class="invalid-feedback">
 				          Por favor selecciona una ciudad del listado
@@ -119,8 +119,8 @@ ul.ui-autocomplete {
 					  	</div>
 					  	<div class="btn-group flex-wrap" role="group" aria-label="Basic example">
 						  <button type="button" id="btn_actual" class="btn-evaluo btn btn-secondary" onclick="evaluo_mi(this)">Trabajo Actual</button>
-						  <button type="button" id="btn_pasado" class="btn-evaluo btn btn-secondary"  onclick="evaluo_mi(this)">Trabajo Pasado</button>
-						  <button type="button" id="btn_practica" class="btn-evaluo btn btn-secondary"  onclick="evaluo_mi(this)">Práctica</button>
+						  <button type="button" id="btn_pasado" class="btn-evaluo btn btn-secondary" onclick="evaluo_mi(this)">Trabajo Pasado</button>
+						  <button type="button" id="btn_practica" class="btn-evaluo btn btn-secondary" onclick="evaluo_mi(this)">Práctica</button>
 						</div>
 					
 						<input type="hidden" data-validate="true" name="evalua" id="evalua" value="" required>
@@ -141,8 +141,8 @@ ul.ui-autocomplete {
 						<input type="hidden" name="tipoCargo" id="tipoCargo" value="{{$evaluacion->posicion}}"> 
 					  	<div class="btn-group flex-wrap" role="group" aria-label="Basic example">
 						  <button type="button" id="btn_empleado" class="btn-pos btn btn-secondary" onclick="elegir_pos(this)">Empleado</button>
-						  <button type="button" id="btn_directivo" class="btn-pos btn btn-secondary"  onclick="elegir_pos(this)">Directivo</button>
-						  <button type="button" id="btn_practicante" class="btn-pos btn btn-secondary"  onclick="elegir_pos(this)">Practicante</button>
+						  <button type="button" id="btn_directivo" class="btn-pos btn btn-secondary" onclick="elegir_pos(this)">Directivo</button>
+						  <button type="button" id="btn_practicante" class="btn-pos btn btn-secondary" onclick="elegir_pos(this)">Practicante</button>
 						</div>
 						
 						<input type="hidden" name="posicion" id="posicion" value="">
@@ -326,33 +326,95 @@ ul.ui-autocomplete {
 							  		<div class="col-sm-4 h5 mt-2">
 								  		{{$item->nombre}}		
 								  	</div>
+								  	@foreach ($calificaciones as $calificacion)
+								  	@if($item->id == $calificacion->id)
+								  	@if($calificacion->puntaje == "1")
 								  	<div class="col-sm-4 ">
-								  		<div class="d-inline-flex star-rating star-rating-{{$item->id}}" 
-									      	onclick="text_show({{$item->id}})">
-									        <span class="p-1 fa fa-star-o fa-2x" data-rating="1" 
-									        onclick="evaluar(this, {{$item->id}})"></span>
-									        <span class="p-1 fa fa-star-o fa-2x" data-rating="2" 
-									        onclick="evaluar(this, {{$item->id}})"></span>
-									        <span class="p-1 fa fa-star-o fa-2x" data-rating="3" 
-									        onclick="evaluar(this, {{$item->id}})"></span>
-									        <span class="p-1 fa fa-star-o fa-2x" data-rating="4" 
-									        onclick="evaluar(this, {{$item->id}})"></span>
-									        <span class="p-1 fa fa-star-o fa-2x" data-rating="5" 
-									        onclick="evaluar(this, {{$item->id}})"></span>								        
+								  		<div class="d-inline-flex star-rating star-rating-{{$item->id}}">
+									        <span class="p-1 fa fa-star fa-2x" data-rating="1"></span>
+									        <span class="p-1 fa fa-star-o fa-2x" data-rating="2"></span>
+									        <span class="p-1 fa fa-star-o fa-2x" data-rating="3"></span>
+									        <span class="p-1 fa fa-star-o fa-2x" data-rating="4"></span>
+									        <span class="p-1 fa fa-star-o fa-2x" data-rating="5"></span>								        
 									    </div>
 								  	</div>
 								  	<div class="col-sm-4 mb-2 text_hide " id="desc_{{$item->id}}">
 								  		<small id="emailHelp" class="form-text text-muted font-italic">{{$item->descripcion}}</small>
 								  									  		
 								  	</div>
-							  	</div>							  	
-							  			  								      							      
-							      <textarea name="comentario_{{$item->id}}" id="text_{{$item->id}}" class="text_hide form-control" placeholder="Agrega un comentario"></textarea>
-
+								  	@endif
+								  	@if($calificacion->puntaje == "2")
+								  	<div class="col-sm-4 ">
+								  		<div class="d-inline-flex star-rating star-rating-{{$item->id}}">
+									        <span class="p-1 fa fa-star fa-2x" data-rating="1"></span>
+									        <span class="p-1 fa fa-star fa-2x" data-rating="2"></span>
+									        <span class="p-1 fa fa-star-o fa-2x" data-rating="3"></span>
+									        <span class="p-1 fa fa-star-o fa-2x" data-rating="4"></span>
+									        <span class="p-1 fa fa-star-o fa-2x" data-rating="5"></span>								        
+									    </div>
+								  	</div>
+								  	<div class="col-sm-4 mb-2 text_hide " id="desc_{{$item->id}}">
+								  		<small id="emailHelp" class="form-text text-muted font-italic">{{$item->descripcion}}</small>
+								  									  		
+								  	</div>
+								  	@endif
+								  	@if($calificacion->puntaje == "3")
+								  	<div class="col-sm-4 ">
+								  		<div class="d-inline-flex star-rating star-rating-{{$item->id}}">
+									        <span class="p-1 fa fa-star fa-2x" data-rating="1"></span>
+									        <span class="p-1 fa fa-star fa-2x" data-rating="2"></span>
+									        <span class="p-1 fa fa-star fa-2x" data-rating="3"></span>
+									        <span class="p-1 fa fa-star-o fa-2x" data-rating="4"></span>
+									        <span class="p-1 fa fa-star-o fa-2x" data-rating="5"></span>								        
+									    </div>
+								  	</div>
+								  	<div class="col-sm-4 mb-2 text_hide " id="desc_{{$item->id}}">
+								  		<small id="emailHelp" class="form-text text-muted font-italic">{{$item->descripcion}}</small>
+								  									  		
+								  	</div>
+								  	@endif
+								  	@if($calificacion->puntaje == "4")
+								  	<div class="col-sm-4 ">
+								  		<div class="d-inline-flex star-rating star-rating-{{$item->id}}">
+									        <span class="p-1 fa fa-star fa-2x" data-rating="1"></span>
+									        <span class="p-1 fa fa-star fa-2x" data-rating="2"></span>
+									        <span class="p-1 fa fa-star fa-2x" data-rating="3"></span>
+									        <span class="p-1 fa fa-star fa-2x" data-rating="4"></span>
+									        <span class="p-1 fa fa-star-o fa-2x" data-rating="5"></span>								        
+									    </div>
+								  	</div>
+								  	<div class="col-sm-4 mb-2 text_hide " id="desc_{{$item->id}}">
+								  		<small id="emailHelp" class="form-text text-muted font-italic">{{$item->descripcion}}</small>
+								  									  		
+								  	</div>
+								  	@endif
+								  	@if($calificacion->puntaje == "5")
+								  	<div class="col-sm-4 ">
+								  		<div class="d-inline-flex star-rating star-rating-{{$item->id}}">
+									        <span class="p-1 fa fa-star fa-2x" data-rating="1"></span>
+									        <span class="p-1 fa fa-star fa-2x" data-rating="2"></span>
+									        <span class="p-1 fa fa-star fa-2x" data-rating="3"></span>
+									        <span class="p-1 fa fa-star fa-2x" data-rating="4"></span>
+									        <span class="p-1 fa fa-star fa-2x" data-rating="5"></span>								        
+									    </div>
+								  	</div>
+								  	<div class="col-sm-4 mb-2 text_hide " id="desc_{{$item->id}}">
+								  		<small id="emailHelp" class="form-text text-muted font-italic">{{$item->descripcion}}</small>
+								  									  		
+								  	</div>
+								  	@endif
+								  	
+							  	</div>						  	
+							  	  @if($calificacion->comentario != "")					      
+							      	<textarea name="comentario_{{$item->id}}" id="text_{{$item->id}}" class="form-control" placeholder="Agrega un comentario">{{$calificacion->comentario}}</textarea>
+							      @endif
 							      <div id="mensaje_{{$item->id}}" class="invalid-feedback">
 							          Debes asignar una estrella
 							      </div>
 							      <input type="hidden" name="puntaje_{{$item->id}}" id="puntaje_{{$item->id}}" class="rating-value" value="0">
+
+							      @endif
+							      @endforeach
 							 </a>
 
 						   
@@ -396,7 +458,7 @@ ul.ui-autocomplete {
 				<div class="form-group row">
 			    	<div class="col-sm-4">
 			      		<label for="">Salario</label>
-			    	  	<input type="text" class="form-control" id="" name="salario" placeholder="$COP Pesos Colombianos" >
+			    	  	<input type="number" class="form-control" id="" name="salario" value="{{$evaluacion->salario}}" placeholder="$COP Pesos Colombianos" >
 			  	    </div>
 			  	</div>
 			</a>
@@ -405,7 +467,7 @@ ul.ui-autocomplete {
 			 	<div class="form-group row">
 			    	<div class="col-sm-4">
 			      		<label for="">Horas trabajadas por semana</label>
-			    	  	<input type="text" class="form-control" id="" name="trabajo_tiempo" placeholder="Horas por semana" >
+			    	  	<input type="number" class="form-control" id="" name="trabajo_tiempo" value="{{$evaluacion->trabajo_tiempo}}" placeholder="Horas por semana" >
 			  	    </div>
 			  	</div>
 			</a>
@@ -446,7 +508,7 @@ ul.ui-autocomplete {
 			 	<div class="form-group row">
 			    	<div class="col-sm-8">
 			      		<label for="">¿En qué puede mejorar tu empleador?</label>
-			    	  	<textarea class="form-control" name="mejoras"></textarea>
+			    	  	<textarea class="form-control" name="mejoras">{{$evaluacion->mejoras}}</textarea>
 			  	    </div>
 			  	</div>
 			</a>
@@ -455,7 +517,7 @@ ul.ui-autocomplete {
 				<div class="form-group row">
 			    	<div class="col-sm-8">
 			      		<label for="">¿Qué te gustó de tu empleador?</label>
-			    	  	<textarea class="form-control" name="like"></textarea>
+			    	  	<textarea class="form-control" name="like">{{$evaluacion->like}}</textarea>
 			  	    </div>
 			  	</div>
 			</a>
@@ -464,7 +526,7 @@ ul.ui-autocomplete {
 				<div class="form-group row">
 			    	<div class="col-sm-8">
 			      		<label for="">¿Qué no te gustó de tu empleador?</label>
-			    	  	<textarea class="form-control" name="no_like"></textarea>
+			    	  	<textarea class="form-control" name="no_like">{{$evaluacion->no_like}}</textarea>
 			  	    </div>
 			  	</div>
 			</a>
@@ -493,20 +555,11 @@ ul.ui-autocomplete {
 			<div class="list-group-item list-group-item-action">
 				<div class="form-group row required">
 			    	<div class="col-sm-8">
-			      		<label for="">Correo electrónico</label>		
-			      		<input type="email" class="form-control" id="" name="email" placeholder="Correo electrónico" required>	
-			      		<small id="emailHelp" class="form-text text-muted">
-			    	  	Necesitamos tu correo para verificar la autenticidad de tu evaluación. Recibirás un correo de nosotros donde confirmes la creación de tu evaluación. Nunca se publicará tu correo.
-			    	  	</small>
-
+			      		<label for="">Correo electrónico del evaluador</label>		
+			      		<input type="email" class="form-control" id="" disabled="true" name="email" placeholder="Correo electrónico" value="{{$evaluacion->email}}" required>
 			    	  	<div class="invalid-feedback">
 				          Por favor ingresa tu correo
-				        </div>
-
-			    	  	<div class="custom-control custom-checkbox">
-						  <input type="checkbox" class="custom-control-input" name="terminos" id="terminos" required>
-						  <label class="custom-control-label" for="terminos">Acepto Terminos y Condiciones</label>
-						</div>		    	  	
+				        </div>		    	  	
 			  	    </div>
 			  	</div>
 			</div>	

@@ -1,20 +1,43 @@
 $(document).ready(function() {
-  
-  if($('#tipoEvaluacion')[0].value == "Trabajo Pasado")
-    $('#btn_pasado').click();
-  else if($('#tipoEvaluacion')[0].value == "Trabajo Actual")
-    $('#btn_actual').click();
-  else
-    $('#btn_practica').click();
 
-  if($('#tipoCargo')[0].value == "Empleado")
-    $('#btn_empleado').click();
-  else if($('#tipoCargo')[0].value == "Directivo")
-    $('#btn_directivo').click();
-  else
-    $('#btn_practicante').click();
+  var URLactual = window.location;
 
-  $("#departamento").val($('#depatarmentoEmp')[0].value);
+  if(/empresa_editar/.test(URLactual)){
+    var btn_actual = document.getElementById('btn_actual');
+    var btn_practica = document.getElementById('btn_practica');
+    var btn_pasado = document.getElementById('btn_pasado');
+    var btn_empleado = document.getElementById('btn_empleado');
+    var btn_directivo = document.getElementById('btn_directivo');
+    
+    if($('#tipoEvaluacion')[0].value == "Trabajo Pasado"){
+      $('#btn_pasado').click();
+      btn_actual.disabled = true;
+      btn_practica.disabled = true;
+    }
+
+    else if($('#tipoEvaluacion')[0].value == "Trabajo Actual"){
+      $('#btn_actual').click();
+      btn_pasado.disabled = true;
+      btn_practica.disabled = true;
+    }
+    else{
+      $('#btn_practica').click();
+      btn_pasado.disabled = true;
+      btn_actual.disabled = true;
+    }
+    if($('#tipoCargo')[0].value == "Empleado"){
+      $('#btn_empleado').click();
+      btn_directivo.disabled = true;
+    }
+    else if($('#tipoCargo')[0].value == "Directivo"){
+      $('#btn_directivo').click();
+      btn_empleado.disabled = true;
+    }
+    else
+      $('#btn_practicante').click();
+
+    $("#departamento").val($('#depatarmentoEmp')[0].value);
+  }
 
 });
 

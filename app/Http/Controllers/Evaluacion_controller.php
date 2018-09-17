@@ -117,10 +117,13 @@ class Evaluacion_controller extends Controller
 
       $categorias = Categoria::all();
       $items = Item::all();
-      
       $benes = Benes::all();
+
+      $eval_item = new Eval_item();
+
+      $calificaciones = $eval_item->getItemByEvaluation($idEvaluacion);
       
-      return view('empresa_editar', array('categorias' => $categorias, 'items' => $items, 'benes'=>$benes, 'evaluacion' => $evaluacion, 'empresa' => $empresa));
+      return view('empresa_editar', array('categorias' => $categorias, 'items' => $items, 'benes'=>$benes, 'evaluacion' => $evaluacion, 'empresa' => $empresa, 'calificaciones' => $calificaciones));
     }
   
 
