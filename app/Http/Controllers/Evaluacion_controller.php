@@ -8,6 +8,7 @@ use App\Evaluacion;
 use App\Empresa;
 use App\Item;
 use App\Categoria;
+use App\Ciudad;
 use App\Benes;
 use App\Mail\OcupasionEmail;
 
@@ -106,6 +107,23 @@ class Evaluacion_controller extends Controller
       $benes = Benes::all();
       
     	return view('empresa_evaluar', array('categorias' => $categorias, 'items' => $items, 'benes'=>$benes));
+    }
+
+    public function mostrar_evaluacion($idEvaluacion){
+
+      $evaluacion = Evaluacion::find($idEvaluacion);
+      $empresa = Empresa::find($evaluacion->empresa_id);
+      $empresa->ciudad = (Ciudad::find($empresa->ciudad_id))->nombre;
+
+      $categorias = Categoria::all();
+      $items = Item::all();
+      $benes = Benes::all();
+
+      $eval_item = new Eval_item();
+
+      $calificaciones = $eval_item->getItemByEvaluation($idEvaluacion);
+      
+      return view('empresa_editar', array('categorias' => $categorias, 'items' => $items, 'benes'=>$benes, 'evaluacion' => $evaluacion, 'empresa' => $empresa, 'calificaciones' => $calificaciones));
     }
   
 

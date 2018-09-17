@@ -33,6 +33,8 @@ Route::get('code/{code}', 'User\User_controller@code');
 
 Route::get('empresa_evaluar', 'Evaluacion_controller@continuar_evaluacion');
 
+Route::get('empresa_editar/{idEvaluacion}', 'Evaluacion_controller@mostrar_evaluacion');
+
 
 Route::get('empresa_new', function () {
     return view('empresa_new');
