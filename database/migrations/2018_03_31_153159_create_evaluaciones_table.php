@@ -33,7 +33,7 @@ class CreateEvaluacionesTable extends Migration
 
             $table->string('confir_code', 250)->nullable();            
             
-            $table->string('confirmed', 50)->default('NO');
+            $table->string('confirmed', 50)->default('PENDIENTE');
             $table->string('contenido', 50)->nullable();
             $table->string('flag_empresa', 50)->nullable();
           
