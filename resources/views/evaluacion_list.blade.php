@@ -4,9 +4,11 @@
 
 @section('head')
   <script type="text/javascript" src="/js/empresa/evaluacionList.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
-  <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script> 
+  
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+  <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
+
 @endsection
 
 
@@ -65,7 +67,7 @@ Total evaluaciones: {{$totalEvaluaciones}}
    </td> 
 </tr> 
 </table>
-<p>
+<p class="prueba">
   <h1> Listado de evaluaciones </h1>
 <table id="listEvaluacion" class="display" style="width:100%">
        <thead>

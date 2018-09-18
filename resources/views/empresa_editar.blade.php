@@ -59,12 +59,10 @@ ul.ui-autocomplete {
 			@csrf
 			
 			<h4>Verificar evaluación</h4>
-
-			
-
-			  <button type="submit" btn btn-secondary style="margin-left: 95%;">Atrás</button>
-
-
+		
+			  <button type="button" class="btn btn-warning" onclick="history.go(-1); return false;" style="margin-left: 93%;"> 
+			  	Atrás
+			  </button>
 					
 			<a class="list-group-item list-group-item-action text-light bg-dark">
 				<h5>Datos Generales</h5>    								
@@ -425,26 +423,41 @@ ul.ui-autocomplete {
 				
 			@endforeach		
 
-      <a  class="list-group-item list-group-item-action text-light bg-dark">
+      <a class="list-group-item list-group-item-action text-light bg-dark">
 				<h5>Beneficios</h5>    	
 			</a>
-      <a  class="list-group-item list-group-item-action bne_empleo">
+      <a class="list-group-item list-group-item-action bne_empleo">
 				<div class="col-sm-12">
           @foreach ($benes as $bene)
             @if($bene->tipo == 1)
-              <button type="button" style="white-space: normal;width: 200px;" class="btn btn-sm btn-secondary m-1" onclick="beneficio(this, {{$bene->id}})">{{$bene->nombre}}</button>
-              <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
+            	@foreach ($beneficios as $beneficio)
+         
+            		@if($beneficio->bene_id == $bene->id)
+		              <button type="button" style="white-space: normal;width: 200px;" class="btn btn-warning m-1">{{$bene->nombre}}</button>
+		              <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
+	              	@endif
+	            
+	             @endforeach 
             @endif
           @endforeach          
 			  </div>
 			</a>
       
-      <a  class="list-group-item list-group-item-action bne_practica">
+      <a class="list-group-item list-group-item-action bne_practica">
 				<div class="col-sm-12">
-           @foreach ($benes as $bene)
+
+           @foreach ($benes as $benef)
+        
             @if($bene->tipo == 2)
-              <button type="button" style="white-space: normal;width: 200px;" class="btn btn-sm btn-secondary m-1" onclick="beneficio(this, {{$bene->id}})">{{$bene->nombre}}</button>
-              <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
+
+              @foreach ($beneficios as $beneficio)
+
+            		@if($beneficio->bene_id == $bene->id)
+		              <button type="button" style="white-space: normal;width: 200px;" class="btn btn-warning m-1">{{$bene->nombre}}</button>
+		              <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
+	              	@endif
+	            
+	             @endforeach 
             @endif
           @endforeach          
 			  </div>
@@ -534,10 +547,11 @@ ul.ui-autocomplete {
 			<a  class="list-group-item list-group-item-action">
 				<div class="form-group row">
 			    	<div class="col-sm-4">
+			    		<input type="hidden" name="recomendacion" id="recomendacion" value="{{$evaluacion->recomienda}}">
 			      		<label for="">¿Recomendarías tu empleador a un amigo?</label>				
 			      		<div class="btn-group" role="group" aria-label="Basic example">
-						  <button type="button" class="btn-recomienda btn btn-secondary" onclick="elegir_recomienda(this)">Si</button>
-						  <button type="button" class="btn-recomienda btn btn-secondary"  onclick="elegir_recomienda(this)">No</button>
+						  <button type="button" class="btn-recomienda btn btn-secondary" id="btn_SiRecomienda" onclick="elegir_recomienda(this)">Si</button>
+						  <button type="button" class="btn-recomienda btn btn-secondary" id="btn_NoRecomienda"  onclick="elegir_recomienda(this)">No</button>
 						</div>
 						<input type="hidden" name="recomienda" id="recomienda" value="">		    	  	
 			  	    </div>
@@ -567,7 +581,7 @@ ul.ui-autocomplete {
 
 			<div class="pt-2 mb-2"> 		
 				<button class="btn btn-warning  btn-lg btn-block" type="submit">
-					Finalizar
+					Finalizar verificación
 				</button>
 			</div>
 						  				
@@ -575,101 +589,6 @@ ul.ui-autocomplete {
 	</div>
 
 	</form>
-
-
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Crear empresa</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-	        
-	        <meta name="csrf-token" content="{{ csrf_token() }}" />
-	        <form id="modal_empresa" novalidate class="needs-validation2" method="POST">
-	        	
-	        
-		      	<div class="form-group row">
-			        <div class="col-sm-12">
-				      <label for="">Nombre de la Empresa</label>
-				      <input type="text" class="form-control" id="razon_social" name="razon_social" placeholder="Nombre de la Empresa" required>
-				      <input type="hidden" name="razon_social_id" id="razon_social_id" value="">
-
-				      <div class="invalid-feedback">
-				          Por favor ingresa el nombre de la empresa
-				      </div>
-				    </div>
-			    </div>
-
-			    <div class="form-group row">
-				    <div class="col-sm-12">
-				    	<label for="">Sector económico</label>
-				      <select class="form-control" id="sector_economico" name="sector_economico" required>
-				        <option></option>
-				        <option value="Administrativa y Financiera">
-				          Administrativa y Financiera
-				        </option>
-				        <option value="Archivo y Documentación">
-				          Archivo y Documentación
-				        </option>
-				        <option value="Auditoría, Contraloría e Interventoría">
-				          Auditoría, Contraloría e Interventoría
-				        </option>
-				        <option value="Calidad (aseguramiento, gestión y afines)">
-				          Calidad (aseguramiento, gestión y afines)
-				        </option>
-				        <option value="Comercial, Ventas y Telemercadeo">
-				          Comercial, Ventas y Telemercadeo
-				        </option>
-				        <option value="Comercio Exterior">
-				          Comercio Exterior
-				        </option>
-				        <option value="Compras e Inventarios">
-				          Compras e Inventarios
-				        </option>
-				        <option value="Construcción y Obra">
-				          Construcción y Obra
-				        </option>
-				        <option value="Docencia">
-				          Docencia
-				        </option>        
-				      </select>   
-				      <div class="invalid-feedback">
-				          Por favor selecciona un sector
-				      </div>   
-				    </div>
-				</div>
-
-			    <div class="form-group row">
-				    <div class="col-sm-12">
-				      <label for="">Ciudad</label>
-				      <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" autocomplete="off" required>
-				      <input type="hidden" name="ciudad_id" id="ciudad_id" value="">  
-				      <div id="validar_ciudad" class="invalid-feedback">
-				          Por favor selecciona una ciudad del listado
-				      </div>
-				    </div>
-				</div>
-				<div class="form-group row">
-				    <div class="col-sm-12">
-				    	<label for="">Dirección</label>
-				      <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección">
-				    </div>
-				</div>
-
-			</form>
-
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-	        <button type="button" class="btn btn-primary" onclick="save_empresa()" >Guardar</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
 
 </div>
 

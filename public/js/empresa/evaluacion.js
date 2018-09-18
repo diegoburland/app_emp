@@ -8,6 +8,8 @@ $(document).ready(function() {
     var btn_pasado = document.getElementById('btn_pasado');
     var btn_empleado = document.getElementById('btn_empleado');
     var btn_directivo = document.getElementById('btn_directivo');
+    var btn_SiRecomienda = document.getElementById('btn_SiRecomienda');
+    var btn_NoRecomienda = document.getElementById('btn_NoRecomienda');
     
     if($('#tipoEvaluacion')[0].value == "Trabajo Pasado"){
       $('#btn_pasado').click();
@@ -37,6 +39,15 @@ $(document).ready(function() {
       $('#btn_practicante').click();
 
     $("#departamento").val($('#depatarmentoEmp')[0].value);
+
+    if($('#recomendacion')[0].value == "Si"){
+      $('#btn_SiRecomienda').click();
+      btn_NoRecomienda.disabled = true;
+    }
+    else{
+      $('#btn_NoRecomienda').click();
+      btn_SiRecomienda.disabled = true;
+    }
   }
 
 });

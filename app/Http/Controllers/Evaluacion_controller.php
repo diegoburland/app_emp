@@ -120,10 +120,12 @@ class Evaluacion_controller extends Controller
       $benes = Benes::all();
 
       $eval_item = new Eval_item();
+      $eval_bene = new Eval_bene();
 
       $calificaciones = $eval_item->getItemByEvaluation($idEvaluacion);
+      $beneficios = $eval_bene->getBeneByEvaluation($idEvaluacion);
       
-      return view('empresa_editar', array('categorias' => $categorias, 'items' => $items, 'benes'=>$benes, 'evaluacion' => $evaluacion, 'empresa' => $empresa, 'calificaciones' => $calificaciones));
+      return view('empresa_editar', array('categorias' => $categorias, 'items' => $items, 'benes'=>$benes, 'evaluacion' => $evaluacion, 'empresa' => $empresa, 'calificaciones' => $calificaciones, 'beneficios' => $beneficios));
     }
   
 
