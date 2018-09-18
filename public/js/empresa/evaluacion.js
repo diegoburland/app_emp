@@ -107,11 +107,16 @@ function evaluo_mi(self){
       
         $(".bne_practica").hide();
         $(".bne_empleo").show();
+        $("#pre_ies").hide();
+      
+        if($(self).attr('id') == "btn_pasado"){
+           $("#pre_motivo").show();
+        }else{
+          $("#pre_motivo").hide();
+        }
 
     }else{
-
-        
-
+      
         if (!$("#btn_practicante").is(":visible")) {
 
           $('#btn_directivo').after(BTN_PRACTICANTE);    
@@ -122,10 +127,11 @@ function evaluo_mi(self){
         $("#btn_directivo").remove();
 
         $(".dim_practicante").show();
+        $("#pre_ies").show();
         $(".bne_practica").show();
         $(".bne_empleo").hide();
         $(".dim_empleado").hide();
-        
+        $("#pre_motivo").hide();
         
         elegir_pos($("#btn_practicante"));        
     }
@@ -162,6 +168,7 @@ function elegir_ofre(self){
     if ($(self).attr('id') == "btn_pra_no") {
 
         $("#pre_oferta").hide();
+        $("#pre_porque").hide();
     }else{
 
         $("#pre_oferta").show();
@@ -175,7 +182,15 @@ function elegir_oferta(self){
 
     $(self).removeClass('btn-secondary').addClass('btn-dark');
 
-    $('#oferta').val($(self).text());
+    var text = $(self).text().toUpperCase();
+    $('#oferta').val(text);
+    
+    if(text == "NO"){
+      $("#pre_porque").show();
+    }else{
+      $("#pre_porque").hide();
+    }
+      
 }
 
 function elegir_recomienda(self){
@@ -252,9 +267,14 @@ function validar_modal(){
 $(function() {
 
   $("#pre_oferta").hide();
+  
+  $("#pre_porque").hide();
 
   $(".dim_practicante").hide();
   $(".bne_practica").hide();
+  $("#pre_motivo").hide();
+  $("#pre_ies").hide();   
+  
 
   //sector_economico
   

@@ -101,7 +101,7 @@ ul.ui-autocomplete {
       <div class="list-group-item list-group-item-action">
 				<div class="form-group row required ">
 				    <div class="col-sm-6">
-				      <label for="">Ciudad</label>
+				      <label class="control-label" for="">Ciudad</label>
 				      <input type="text" class="form-control" id="ciudad_eval" name="ciudad_eval" placeholder="Ciudad" autocomplete="off" required>
 				      <input type="hidden" name="ciudad_eval_id" id="ciudad_eval_id" value="">  
 				      <div id="validar_ciudad" class="invalid-feedback">
@@ -115,7 +115,7 @@ ul.ui-autocomplete {
 			 	<div class="form-group row required" >
 					<div class="col-sm-5">
 						<div class="row ml-1">
-					  		<label for="">Evalúo mi</label>
+					  		<label class="control-label" for="">Evalúo mi</label>
 					  	</div>
 					  	<div class="btn-group flex-wrap" role="group" aria-label="Basic example">
 						  <button type="button" id="btn_actual" class="btn-evaluo btn btn-secondary" onclick="evaluo_mi(this)">Trabajo Actual</button>
@@ -138,10 +138,10 @@ ul.ui-autocomplete {
 				</div>
 			</a>
 
-			<div class="list-group-item list-group-item-action">
+			<div class="list-group-item list-group-item-action" id="pre_ies">
 				<div class="form-group row required ">
 				    <div class="col-sm-6">
-				      <label for="">Institución Educativa</label>
+				      <label class="control-label" for="">Institución Educativa</label>
 				      <input type="text" class="form-control" id="ies_campo" name="ies_campo" placeholder="Institución Educativa" autocomplete="off" required>
 				      <input type="hidden" name="ies" id="ies" value="">  
 				      <div id="validar_ciudad" class="invalid-feedback">
@@ -155,7 +155,7 @@ ul.ui-autocomplete {
 				<div class="form-group row">
 					<div class="col-sm-5">
 						<div class="row ml-1">
-							<label for="">Elegir Posición</label>		
+							<label class="control-label" for="">Elegir Posición</label>		
 						</div>
 					  
 
@@ -182,17 +182,17 @@ ul.ui-autocomplete {
 			<a class="list-group-item list-group-item-action">
 				<div class="form-group row">
 					<div class="col-sm-6">
-					  <label for="">Departamento de la Empresa</label>
+					  <label class="control-label" for="">Departamento de la Empresa</label>
 					  <select name="departamento" class="form-control" required>
 					  	<option value="">Selecciona una opción</option>
 					  	<option value="Administración / Organización">Administración / Organización</option>
 					  	<option value="Compras / Proveedores">Compras / Proveedores</option>
 					  	<option value="Control de Gestión">Control de Gestión</option>
 					  	<option value="Finanzas / Contabilidad">Finanzas / Contabilidad</option>
-					  	<option value="Investigación / Desarrollo">Investigación / Desarrollo</option>
+					  	<option value="Investigación / Desarrollo/ Innovación">Investigación / Desarrollo/ Innovación</option>
 					  	<option value="Gerencia / Dirección">Gerencia / Dirección</option>
 					  	<option value="Sistemas de información / TI">Sistemas de información / TI</option>
-					  	<option value="Logística / Almacén / Inventario">Logística / Almacén / Inventario</option>
+					  	<option value="Logística y Abastecimiento">Logística y Abastecimiento</option>
 					  	<option value="Mercadeo / Gerencia de Productos">Mercadeo / Gerencia de Productos</option>
 					  	<option value="Comunicación / Relaciones públicas">Comunicación / Relaciones públicas</option>
 					  	<option value="Talento humano">Talento humano</option>
@@ -211,7 +211,7 @@ ul.ui-autocomplete {
 
 		</div>
 
-		<div class="col-sm-11">
+		<div class="col-sm-11 mt-3">
 		
 			<div class="alert alert-secondary" role="alert">
 		  	
@@ -326,7 +326,7 @@ ul.ui-autocomplete {
 			<a class="list-group-item list-group-item-action">
 				<div class="form-group row">
 					<div class="col-sm-8">
-					  <label for="">Título de tu evaluación</label>
+					  <label class="control-label" for="">Título de tu evaluación</label>
 					  <input type="text" class="form-control" id=""  name="titulo" placeholder="Ponle un título a tu experencia en la empresa/organización" >
 					</div>
 				</div>
@@ -393,6 +393,10 @@ ul.ui-autocomplete {
 				<h5>Beneficios</h5>    	
 			</a>
       <a  class="list-group-item list-group-item-action bne_empleo">
+        <div class="alert alert-secondary" role="alert">
+              <p>Selecciona los beneficios que te ofrece tu empleador</p>			
+        </div>
+        
 				<div class="col-sm-12">
           @foreach ($benes as $bene)
             @if($bene->tipo == 1)
@@ -404,6 +408,11 @@ ul.ui-autocomplete {
 			</a>
       
       <a  class="list-group-item list-group-item-action bne_practica">
+        
+        <div class="alert alert-secondary" role="alert">
+              <p>Selecciona los beneficios que te ofrece tu empleador</p>			
+        </div>
+      
 				<div class="col-sm-12">
            @foreach ($benes as $bene)
             @if($bene->tipo == 2)
@@ -462,6 +471,15 @@ ul.ui-autocomplete {
 			  	    </div>
 			  	</div>
 			</a>
+      
+      <a  id="pre_porque" class="list-group-item list-group-item-action">
+				<div class="form-group row">
+			    	<div class="col-sm-8">
+			      		<label for="">¿Que lo motivo a no aceptar la oferta?</label>
+			    	  	<textarea class="form-control" name="porque"></textarea>
+			  	    </div>
+			  	</div>
+			</a>
 
 			
 
@@ -494,11 +512,20 @@ ul.ui-autocomplete {
 			  	    </div>
 			  	</div>
 			</a>
-
+      
+      <a  class="list-group-item list-group-item-action" id="pre_motivo">
+				<div class="form-group row">
+			    	<div class="col-sm-8">
+			      		<label for="">¿Cuál fue el motivo de tu retiro?</label>
+			    	  	<textarea class="form-control" name="motivo"></textarea>
+			  	    </div>
+			  	</div>
+			</a>      
+      
 			<a  class="list-group-item list-group-item-action">
 				<div class="form-group row">
 			    	<div class="col-sm-4">
-			      		<label for="">¿Recomendarías tu empleador a un amigo?</label>				
+			      		<label class="control-label" for="">¿Recomendarías tu empleador a un amigo?</label>				
 			      		<div class="btn-group" role="group" aria-label="Basic example">
 						  <button type="button" class="btn-recomienda btn btn-secondary" onclick="elegir_recomienda(this)">Si</button>
 						  <button type="button" class="btn-recomienda btn btn-secondary"  onclick="elegir_recomienda(this)">No</button>
@@ -519,7 +546,7 @@ ul.ui-autocomplete {
 			<div class="list-group-item list-group-item-action">
 				<div class="form-group row required">
 			    	<div class="col-sm-8">
-			      		<label for="">Correo electrónico</label>		
+			      		<label class="control-label" for="">Correo electrónico</label>		
 			      		<input type="email" class="form-control" id="" name="email" placeholder="Correo electrónico" required>	
 			      		<small id="emailHelp" class="form-text text-muted">
 			    	  	Necesitamos tu correo para verificar la autenticidad de tu evaluación. Recibirás un correo de nosotros donde confirmes la creación de tu evaluación. Nunca se publicará tu correo.
@@ -567,8 +594,8 @@ ul.ui-autocomplete {
 	        
 		      	<div class="form-group row">
 			        <div class="col-sm-12">
-				      <label for="">Nombre de la Empresa</label>
-				      <input type="text" class="form-control" id="razon_social" name="razon_social" placeholder="Nombre de la Empresa" required>
+				      <label for="">Nombre de la Empresa (Razón Social)</label>
+				      <input type="text" class="form-control" id="razon_social" name="razon_social" placeholder="Nombre de la empresa (Razón Social)" required>
 				      <input type="hidden" name="razon_social_id" id="razon_social_id" value="">
 
 				      <div class="invalid-feedback">

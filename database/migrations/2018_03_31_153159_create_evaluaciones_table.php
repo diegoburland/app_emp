@@ -26,6 +26,8 @@ class CreateEvaluacionesTable extends Migration
             $table->mediumText('comentarios')->nullable();
 
             $table->mediumText('mejoras')->nullable();
+            $table->mediumText('motivo')->nullable();
+            $table->mediumText('porque')->nullable();
             $table->mediumText('like')->nullable();
             $table->mediumText('no_like')->nullable();
             $table->boolean('recomienda')->nullable();

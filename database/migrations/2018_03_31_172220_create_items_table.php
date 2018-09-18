@@ -42,21 +42,21 @@ class CreateItemsTable extends Migration
          DB::table('items')->insert([ 'nombre' => 'Crecimiento profesional', 'categoria_id' => 3, 'descripcion' => 'Crecimiento personal / Entorno potencial para el uso y desarrollo de competencias y conocimiento / Adquisición de conocimiento específico del sector/ámbito']);
 
 
-         DB::table('items')->insert([ 'nombre' => 'Cultura organizacional', 'categoria_id' => 4, 'descripcion' => 'Confianza y Respeto / Vivencia de calidad humana / Identificación con la organización / Valores compartidos dentro de la organización']);
-         DB::table('items')->insert([ 'nombre' => 'Relación entre compañeros', 'categoria_id' => 4, 'descripcion' => 'Relaciones interpersonales / Trabajo colaborativo / Asistencia / Compañerismo / Receptividad de los compañeros / Integración al equipo']);
+         DB::table('items')->insert([ 'nombre' => 'Cultura organizacional', 'categoria_id' => 4, 'descripcion' => 'Confianza y Respeto / Vivencia de calidad humana / Sentido de pertenencia / Valores compartidos dentro de la organización']);
+         DB::table('items')->insert([ 'nombre' => 'Relación entre compañeros', 'categoria_id' => 4, 'descripcion' => 'Relaciones interpersonales / trabajo en equipo / Acompañamiento / Compañerismo / Receptividad de los compañeros / Integración al equipo']);
          DB::table('items')->insert([ 'nombre' => 'Inducción y preparación laboral', 'categoria_id' => 4, 'descripcion' => 'Reconocimiento de la estrategia organizacional / Preparación a las funciones del cargo/tareas de la práctica / Acompañamiento y Retroalimentación']);
-         DB::table('items')->insert([ 'nombre' => 'Relación con el jefe inmediato ', 'categoria_id' => 4, 'descripcion' => 'Trato interpersonal / Comunicación asertiva / Consideración de desempeño / Valoración de opinión personal / Interés y Atención / Liderazgo']);
-         DB::table('items')->insert([ 'nombre' => 'Reconocimiento', 'categoria_id' => 4, 'descripcion' => 'Reconocimiento personal / Reconocimiento laboral / Parte del equipo / Participación']);
+         DB::table('items')->insert([ 'nombre' => 'Relación con el jefe inmediato ', 'categoria_id' => 4, 'descripcion' => 'Trato interpersonal / Comunicación asertiva / Consideración de desempeño / Valoración de opinión personal / Interés y Atención / Capacidad de liderazgo / Resolución de conflictos']);
+         DB::table('items')->insert([ 'nombre' => 'Reconocimiento', 'categoria_id' => 4, 'descripcion' => 'Reconocimiento personal / Reconocimiento laboral / Integración al equipo / Participación']);
 
-         DB::table('items')->insert([ 'nombre' => 'Tareas', 'categoria_id' => 5, 'descripcion' => 'Planificación y Dirección / Tareas diversas, amenas e interesantes / Claridad de las tareas / Satisfacción con las tareas / Tareas acorde al área de estudio / Promoción de crecimiento laboral']);
+         DB::table('items')->insert([ 'nombre' => 'Tareas', 'categoria_id' => 5, 'descripcion' => 'Planificación y Dirección / Satisfacción con el desempeño de las tareas / Claridad de las tareas / Tareas acorde al área de estudio / Promoción de crecimiento laboral']);
          DB::table('items')->insert([ 'nombre' => 'Responsabilidad', 'categoria_id' => 5, 'descripcion' => 'Autonomía / Proyectos propios / Objetivos asignados para la práctica']);
          DB::table('items')->insert([ 'nombre' => 'Carga laboral', 'categoria_id' => 5, 'descripcion' => 'Nivel de carga laboral acorde al horario / Exigencia del supervisor']);
-         DB::table('items')->insert([ 'nombre' => 'Condiciones del lugar de trabajo', 'categoria_id' => 5, 'descripcion' => 'Seguridad laboral / Condiciones de trabajo adecuadas / Calidad de los equipos de trabajo / Zonas de recreación y descanso / Grado de riesgos']);
+         DB::table('items')->insert([ 'nombre' => 'Condiciones del lugar de trabajo', 'categoria_id' => 5, 'descripcion' => 'Seguridad física en el espacio de trabajo / Condiciones de trabajo adecuadas / Calidad de los equipos de trabajo / Zonas de recreación y descanso / Grado de riesgos']);
 
-         DB::table('items')->insert([ 'nombre' => 'Crecimiento laboral', 'categoria_id' => 6, 'descripcion' => 'Desarrollo de habilidades laborales / Profundización de conocimientos del área de estudio / Adquisición de conocimiento específico del sector/ámbito / Promoción del crecimiento laboral']);
-         DB::table('items')->insert([ 'nombre' => 'Crecimiento personal', 'categoria_id' => 6, 'descripcion' => 'Desarrollo de habilidades personales y sociales / Oportunidad de establecer contactos / Calidad de referencias de parte de la empresa / Promoción del crecimiento personal']);
-         DB::table('items')->insert([ 'nombre' => 'Remuneración', 'categoria_id' => 6, 'descripcion' => 'Remuneración satisfactoria / Pago puntual / Beneficios extralegales / Pago de horas extras']);
-         DB::table('items')->insert([ 'nombre' => 'Tiempo laboral', 'categoria_id' => 6, 'descripcion' => 'Cumplimiento de horas establecidas por el contrato / Respeto por el espacio y la vida personal / Vacaciones y Descansos / Horas extra']);
+         DB::table('items')->insert([ 'nombre' => 'Crecimiento laboral', 'categoria_id' => 6, 'descripcion' => 'Desarrollo de habilidades laborales / Profundización de conocimientos del área de estudio / Adquisición de conocimiento específico del sector/ámbito / Fomento de crecimiento personal']);
+         DB::table('items')->insert([ 'nombre' => 'Crecimiento personal', 'categoria_id' => 6, 'descripcion' => 'Desarrollo de habilidades personales y sociales / Oportunidad de establecer contactos / Calidad de referencias de parte de la empresa / Fomento de crecimiento personal / Retroalimentación']);
+         DB::table('items')->insert([ 'nombre' => 'Apoyo de sostenimiento', 'categoria_id' => 6, 'descripcion' => 'Remuneración satisfactoria / Pago puntual / Beneficios extralegales']);
+         DB::table('items')->insert([ 'nombre' => 'Tiempo laboral', 'categoria_id' => 6, 'descripcion' => 'Cumplimiento de horas establecidas por el contrato / Respeto por el espacio y la vida personal']);
          
     }
 

@@ -26,7 +26,7 @@ class CreateBenesTable extends Migration
         DB::table('benes')->insert([ 'nombre' => 'Auxilio por salud (Lentes, Odontología y otros)', 'tipo' => 1]);
         DB::table('benes')->insert([ 'nombre' => 'Bono de telefonía móvil', 'tipo' => 1]);
         DB::table('benes')->insert([ 'nombre' => 'Bonos', 'tipo' => 1]);
-        DB::table('benes')->insert([ 'nombre' => 'Buena conexión de infraestructura de transporte', 'tipo' => 1]);
+        DB::table('benes')->insert([ 'nombre' => 'Accesibilidad vial y geográfica', 'tipo' => 1]);
         DB::table('benes')->insert([ 'nombre' => 'Celular empresarial', 'tipo' => 1]);
         DB::table('benes')->insert([ 'nombre' => 'Crédito empresarial a tasas blandas', 'tipo' => 1]);
         DB::table('benes')->insert([ 'nombre' => 'Descansos remunerados', 'tipo' => 1]);
@@ -53,7 +53,8 @@ class CreateBenesTable extends Migration
       
 
         DB::table('benes')->insert([ 'nombre' => 'Actividades deportivas y recreativas', 'tipo' => 2]);
-        DB::table('benes')->insert([ 'nombre' => 'Buena conexión de infraestructura de transporte', 'tipo' => 2]);
+        DB::table('benes')->insert([ 'nombre' => 'Bonos', 'tipo' => 2]);
+        DB::table('benes')->insert([ 'nombre' => 'Buena conexión de infraestructura de transporte', 'tipo' => 2]);        
         DB::table('benes')->insert([ 'nombre' => 'Calzado y vestido de labor', 'tipo' => 2]);
         DB::table('benes')->insert([ 'nombre' => 'Descansos remunerados', 'tipo' => 2]);
         DB::table('benes')->insert([ 'nombre' => 'Descuentos para practicantes', 'tipo' => 2]);
