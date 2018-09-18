@@ -62,7 +62,7 @@ class User_controller extends Controller
     $subject = 'Subida exitosa de tu evaluación en ocupasion.com';
     $template = 'emails.cuenta';
     
-    $data = ['subject' => $subject, 'template' => $template, 'name' => $evaluacion->email, 'email'=> $evaluacion->email, 'password' => $pwd, 'empresa' => $empresa->razon_social, , 'tipo' => 'cliente'];
+    $data = ['subject' => $subject, 'template' => $template, 'name' => $evaluacion->email, 'email'=> $evaluacion->email, 'password' => $pwd, 'empresa' => $empresa->razon_social, 'tipo' => 'cliente'];
     
     
     $user = User::where('email', $evaluacion->email)->first();
