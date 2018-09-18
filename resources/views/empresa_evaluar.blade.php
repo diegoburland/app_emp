@@ -558,7 +558,8 @@ ul.ui-autocomplete {
 
 			    	  	<div class="custom-control custom-checkbox">
 						  <input type="checkbox" class="custom-control-input" name="terminos" id="terminos" required>
-						  <label class="custom-control-label" for="terminos">Acepto Terminos y Condiciones</label>
+              <a href="http://vidaandwork.com/terminos-y-condiciones/" class="custom-control-label" target="_blank" for="terminos">Acepto Terminos y Condiciones</a>
+						  
 						</div>		    	  	
 			  	    </div>
 			  	</div>
