@@ -74,7 +74,7 @@ class User_controller extends Controller
       $user = User::create($data);
       
       //si falla volver
-     /Log::info('-----------------entro 3 -------------');
+     Log::info('-----------------entro 3 -------------');
       if($user === null){
         
         Log::info('-----------------entro 4 -------------');
