@@ -10,13 +10,16 @@ $(document).ready(function() {
     var btn_directivo = document.getElementById('btn_directivo');
     var btn_SiRecomienda = document.getElementById('btn_SiRecomienda');
     var btn_NoRecomienda = document.getElementById('btn_NoRecomienda');
+    var btn_SiOfrece = document.getElementById('btn_pra_si');
+    var btn_NoOfrece = document.getElementById('btn_pra_no');
+    var btn_SiAcepta = document.getElementById('btn_si_acepta');
+    var btn_NoAcepta = document.getElementById('btn_no_acepta');
     
     if($('#tipoEvaluacion')[0].value == "Trabajo Pasado"){
       $('#btn_pasado').click();
       btn_actual.disabled = true;
       btn_practica.disabled = true;
     }
-
     else if($('#tipoEvaluacion')[0].value == "Trabajo Actual"){
       $('#btn_actual').click();
       btn_pasado.disabled = true;
@@ -27,6 +30,7 @@ $(document).ready(function() {
       btn_pasado.disabled = true;
       btn_actual.disabled = true;
     }
+
     if($('#tipoCargo')[0].value == "Empleado"){
       $('#btn_empleado').click();
       btn_directivo.disabled = true;
@@ -47,6 +51,25 @@ $(document).ready(function() {
     else{
       $('#btn_NoRecomienda').click();
       btn_SiRecomienda.disabled = true;
+    }
+
+    if($('#puestoempresa')[0].value == "Si"){
+      $('#btn_pra_si').click();
+
+      btn_NoOfrece.disabled = true;
+    }
+    else{
+      $('#btn_pra_no').click();
+      btn_SiOfrece.disabled = true;
+    }
+
+    if($('#aceptaoferta')[0].value == "Si"){
+      $('#btn_si_acepta').click();
+      btn_NoAcepta.disabled = true;
+    }
+    else{
+      $('#btn_no_acepta').click();
+      btn_SiAcepta.disabled = true;
     }
   }
 
@@ -121,11 +144,10 @@ function evaluo_mi(self){
 
     }else{
 
-        
-
         if (!$("#btn_practicante").is(":visible")) {
 
-          $('#btn_directivo').after(BTN_PRACTICANTE);    
+          $('#btn_directivo').after(BTN_PRACTICANTE);
+
           //elegir_pos($("#btn_practicante"));        
         }
 
@@ -261,12 +283,6 @@ function validar_modal(){
 }
 
 $(function() {
-
-    $("#pre_oferta").hide();
-
-  $(".dim_practicante").hide();
-  $(".bne_practica").hide();
-  
      
 	var forms = document.getElementsByClassName('needs-validation');
 	    // Loop over them and prevent submission

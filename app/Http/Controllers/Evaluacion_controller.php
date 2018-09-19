@@ -66,6 +66,41 @@ class Evaluacion_controller extends Controller
         
     }
 
+    public function edit(Request $request){
+
+        $evaluacion = Evaluacion::create($request->all()); //mejorar        
+
+        $items = Item::all();
+      
+        
+
+         //Log::info('-----------------entro 1 -------------');
+        foreach ($items as $item) {
+            
+            if($request->input('puntaje_' . $item->id) != null){
+
+                Eval_item::create(array('evaluacion_id' => $evaluacion->id, 'item_id' => $item->id, 'puntaje' => $request->input('puntaje_' . $item->id), 'comentario' => $request->input('comentario_' . $item->id)));
+
+            }
+        }
+      
+      
+        $benes = Benes::all();
+      
+        //Log::info('-----------------entro 2 -------------');
+        foreach ($benes as $bene) {
+            //Log::info('-----------------entro 3 -------------');
+            if($request->input('bene_' . $bene->id) != null && $request->input('bene_' . $bene->id) != ""){
+                //Log::info('-----------------entro 4 -------------');
+                Eval_bene::create(array('evaluacion_id' => $evaluacion->id, 'bene_id' => $bene->id));
+
+            }
+        }
+
+        return redirect()->route('gracias', [$evaluacion->id]);
+        
+    }
+
     public function list(){
 
 

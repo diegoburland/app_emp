@@ -51,10 +51,6 @@ ul.ui-autocomplete {
 
 	<div class="col-sm-11" style="margin-left: 4%;">
 
-		
-			
-			
-
 			@method('POST')
 			@csrf
 			
@@ -77,18 +73,6 @@ ul.ui-autocomplete {
               <label class="control-label" ><b>Empresa</b></label>
 			    	  	<input type="text" class="form-control" id="empresa" name="empresa_nombre" placeholder="Busca y selecciona la empresa" disabled="true" value="{{$empresa->razon_social}}" required>
 			    	  	<input type="hidden" name="empresa_id" id="empresa_id" value="">  
-			    	  	<small id="buscar_emp" class="form-text text-muted">
-			    	  	<a href="#" data-toggle="modal" data-target="#exampleModal">¿Asignar una empresa no registrada?</a>
-			    	  	</small>
-              
-                <small id="cambiar_emp" class="form-text text-muted">
-			    	  	<a href="#" id="cambiar_action">Cambiar Empresa!</a>
-			    	  	</small>
-			    	  	
-
-			    	  	<div id="validar_empresa" class="invalid-feedback">
-				          Por favor selecciona una empresa, o crea una nueva.
-				        </div>
 
 			  	    </div>
           
@@ -122,9 +106,6 @@ ul.ui-autocomplete {
 						</div>
 					
 						<input type="hidden" data-validate="true" name="evalua" id="evalua" value="" required>
-					  <div id="validar_evalua" class="invalid-feedback">
-				          Por favor seleccione una opción
-				      </div>
 					</div>
 				</div>
 			</a>
@@ -406,9 +387,6 @@ ul.ui-autocomplete {
 							  	  @if($calificacion->comentario != "")					      
 							      	<textarea name="comentario_{{$item->id}}" id="text_{{$item->id}}" class="form-control" placeholder="Agrega un comentario">{{$calificacion->comentario}}</textarea>
 							      @endif
-							      <div id="mensaje_{{$item->id}}" class="invalid-feedback">
-							          Debes asignar una estrella
-							      </div>
 							      <input type="hidden" name="puntaje_{{$item->id}}" id="puntaje_{{$item->id}}" class="rating-value" value="0">
 
 							      @endif
@@ -439,24 +417,19 @@ ul.ui-autocomplete {
 	            
 	             @endforeach 
             @endif
-          @endforeach          
+         @endforeach 
 			  </div>
 			</a>
       
       <a class="list-group-item list-group-item-action bne_practica">
 				<div class="col-sm-12">
-
-           @foreach ($benes as $benef)
-        
+		@foreach ($benes as $bene)
             @if($bene->tipo == 2)
-
               @foreach ($beneficios as $beneficio)
-
             		@if($beneficio->bene_id == $bene->id)
 		              <button type="button" style="white-space: normal;width: 200px;" class="btn btn-warning m-1">{{$bene->nombre}}</button>
 		              <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
 	              	@endif
-	            
 	             @endforeach 
             @endif
           @endforeach          
@@ -488,6 +461,7 @@ ul.ui-autocomplete {
 			<a  class="list-group-item list-group-item-action dim_practicante">
 			 	<div class="form-group row">
 			    	<div class="col-sm-4">
+			    		<input type="hidden" name="puestoempresa" id="puestoempresa" value="{{$evaluacion->ofrecer}}">
 			      		<label for="">¿Le ofrecieron un puesto en la empresa después de la practica?</label>
 			    	  	<div class="btn-group" role="group" aria-label="Basic example">
 						  <button type="button" id="btn_pra_si" class="btn-ofre btn btn-secondary" onclick="elegir_ofre(this)">Si</button>
@@ -499,13 +473,14 @@ ul.ui-autocomplete {
 			  	</div>
 			</a>
 
-			<a id="pre_oferta"  class="list-group-item list-group-item-action">
+			<a id="pre_oferta" class="list-group-item list-group-item-action">
 			 	<div class="form-group row">
 			    	<div class="col-sm-3">
+			    		<input type="hidden" name="aceptaoferta" id="aceptaoferta" value="{{$evaluacion->oferta}}">
 			      		<label for="">¿Decidió aceptar la oferta de trabajo?</label>
 			    	  	<div class="btn-group" role="group" aria-label="Basic example">
-						  <button type="button" class="btn-oferta btn btn-secondary" onclick="elegir_oferta(this)">Si</button>
-						  <button type="button" class="btn-oferta btn btn-secondary"  onclick="elegir_oferta(this)">No</button>
+						  <button type="button" id="btn_si_acepta" class="btn-oferta btn btn-secondary" onclick="elegir_oferta(this)">Si</button>
+						  <button type="button" id="btn_no_acepta" class="btn-oferta btn btn-secondary"  onclick="elegir_oferta(this)">No</button>
 						</div>
 						<input type="hidden" name="oferta" id="oferta" value="">
 			  	    </div>
@@ -544,7 +519,7 @@ ul.ui-autocomplete {
 			  	</div>
 			</a>
 
-			<a  class="list-group-item list-group-item-action">
+			<a class="list-group-item list-group-item-action">
 				<div class="form-group row">
 			    	<div class="col-sm-4">
 			    		<input type="hidden" name="recomendacion" id="recomendacion" value="{{$evaluacion->recomienda}}">
@@ -557,14 +532,6 @@ ul.ui-autocomplete {
 			  	    </div>
 			  	</div>
 			</a>
-
-			<!--a  class="list-group-item list-group-item-action">
-				<div class="form-group row">
-			    	<div class="col-sm-8">
-			      		<label for="">¿Cuáles beneficios se te ofrecen en la empresa?</label>						    	  	
-			  	    </div>
-			  	</div>
-			</a-->
 
 			<div class="list-group-item list-group-item-action">
 				<div class="form-group row required">

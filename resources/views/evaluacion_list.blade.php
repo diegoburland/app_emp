@@ -67,12 +67,48 @@ Total evaluaciones: {{$totalEvaluaciones}}
    </td> 
 </tr> 
 </table>
-<p class="prueba">
+
+
+
   <h1> Listado de evaluaciones </h1>
+  <hr>
+  <h5> Filtros de búsqueda </h5>
+  <div id="izquierdo">
+    Empresa:
+    <div class="empresa"> </div>
+    <p></p>
+    Correo:
+    <div class="correo"> </div>
+    <p></p>
+    Tipo de trabajo:
+    <div class="trabajo"> </div>
+ </div>
+ <div id="center">
+      Institución:
+     <div class="institucion"> </div>
+     <p></p>
+     Status evaluacion:
+     <div class="statusevaluacion"> </div>
+     <p></p>
+     Status correo:
+     <div class="statuscorreo"> </div>
+   </div>
+  <div id="derecho">
+      Status empresa:
+     <div class="statusempresa"> </div>
+     <p></p>
+     Status contenido:
+     <div class="statuscontenido"> </div>
+     <p></p>
+     Status publicacion:
+     <div class="statuspublicacion"> </div>
+   </div>
+
+
 <table id="listEvaluacion" class="display" style="width:100%">
        <thead>
           <tr>
-            <th width="20">Id</th>
+            <th width="10">Id</th>
             <th>Empresa</th>
             <th>Correo</th>
             <th width="150">Fecha</th>
@@ -137,6 +173,5 @@ Total evaluaciones: {{$totalEvaluaciones}}
           @endforeach
           </tbody>
     </table>
-</p>
 
 @endsection
