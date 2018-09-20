@@ -18,8 +18,8 @@
 }
 
 .bunus{
-  white-space: normal;
-  width: 200px;
+  white-space: normal !important;
+  width: 200px !important;
   min-height: 52px;
 }
 
