@@ -408,7 +408,7 @@
 			 	<div class="form-group row">
 			    	<div class="col-sm-4">
 			      		<label for="">Horas trabajadas por semana</label>
-			    	  	<input type="text" class="form-control" id="" name="trabajo_tiempo" placeholder="Horas por semana" >
+			    	  	<input type="text" class="form-control" id="trabajo_tiempo" name="trabajo_tiempo" placeholder="Horas por semana" >
 			  	    </div>
 			  	</div>
 			</a>

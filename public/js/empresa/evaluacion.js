@@ -282,7 +282,8 @@ $(function() {
   $("#pre_motivo").hide();
   $("#pre_ies").hide();   
   
-  $('#salario').numeric({ negative: true, decimal: false })
+  $('#salario').numeric({ negative: true, decimal: false });
+  $('#trabajo_tiempo').numeric({ negative: true, decimal: false })
   
 
   //sector_economico
