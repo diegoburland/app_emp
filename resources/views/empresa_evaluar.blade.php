@@ -4,44 +4,12 @@
 
 
 @section('content')
-<style type="text/css">
-.star-rating {
-	line-height:32px;
-	font-size:1.25em;
-}
-
-.star-rating .fa-star{color: yellow;}
-
-.evalua {
-	width: 200px;
-}
-
-.paginador_none{
-	width: 100%; visibility: hidden; display: none;
-}
-
-.paginador{
-	width: 100%;
-}
-
-.form-group.required .control-label:after { 
-    color: #d00;
-    content: "*";
-    position: absolute;
-    margin-left: 8px;
-    top:3px;
-}
-
-ul.ui-autocomplete {
-    z-index: 1100;
-}
-
-</style>
 
 
 @section('head')
-	<script type="text/javascript" src="/js/empresa/evaluacion.js"></script>
-	<script type="text/javascript" src="/js/empresa/empresa.js"></script>
+  <script type="text/javascript" src="/js/jquery.numeric-min.js?v={{ time() }}"></script>
+	<script type="text/javascript" src="/js/empresa/evaluacion.js?v={{ time() }}"></script>
+	<script type="text/javascript" src="/js/empresa/empresa.js?v={{ time() }}"></script>
 @endsection
 
 
@@ -400,7 +368,7 @@ ul.ui-autocomplete {
 				<div class="col-sm-12">
           @foreach ($benes as $bene)
             @if($bene->tipo == 1)
-              <button type="button" style="white-space: normal;width: 200px;" class="btn btn-sm btn-secondary m-1" onclick="beneficio(this, {{$bene->id}})">{{$bene->nombre}}</button>
+              <button type="button" class="bonus" class="btn btn-sm btn-secondary m-1" onclick="beneficio(this, {{$bene->id}})">{{$bene->nombre}}</button>
               <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
             @endif
           @endforeach          
@@ -416,7 +384,7 @@ ul.ui-autocomplete {
 				<div class="col-sm-12">
            @foreach ($benes as $bene)
             @if($bene->tipo == 2)
-              <button type="button" style="white-space: normal;width: 200px;" class="btn btn-sm btn-secondary m-1" onclick="beneficio(this, {{$bene->id}})">{{$bene->nombre}}</button>
+              <button type="button" class="bonus" class="btn btn-sm btn-secondary m-1" onclick="beneficio(this, {{$bene->id}})">{{$bene->nombre}}</button>
               <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
             @endif
           @endforeach          
@@ -430,8 +398,8 @@ ul.ui-autocomplete {
 			<a  class="list-group-item list-group-item-action">
 				<div class="form-group row">
 			    	<div class="col-sm-4">
-			      		<label for="">Salario</label>
-			    	  	<input type="text" class="form-control" id="" name="salario" placeholder="$COP Pesos Colombianos" >
+			      		<label id="label_salario" for="">Salario</label>
+			    	  	<input type="text" class="form-control" id="salario" name="salario" placeholder="$COP Pesos Colombianos" >
 			  	    </div>
 			  	</div>
 			</a>
@@ -475,7 +443,7 @@ ul.ui-autocomplete {
       <a  id="pre_porque" class="list-group-item list-group-item-action">
 				<div class="form-group row">
 			    	<div class="col-sm-8">
-			      		<label for="">¿Que lo motivo a no aceptar la oferta?</label>
+			      		<label for="">¿Que lo motivó a no aceptar la oferta?</label>
 			    	  	<textarea class="form-control" name="porque"></textarea>
 			  	    </div>
 			  	</div>
@@ -523,7 +491,7 @@ ul.ui-autocomplete {
 			</a>      
       
 			<a  class="list-group-item list-group-item-action">
-				<div class="form-group row">
+				<div class="form-group required row">
 			    	<div class="col-sm-4">
 			      		<label class="control-label" for="">¿Recomendarías tu empleador a un amigo?</label>				
 			      		<div class="btn-group" role="group" aria-label="Basic example">

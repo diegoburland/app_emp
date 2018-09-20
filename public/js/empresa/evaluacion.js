@@ -108,14 +108,21 @@ function evaluo_mi(self){
         $(".bne_practica").hide();
         $(".bne_empleo").show();
         $("#pre_ies").hide();
+        $("#pre_porque").hide();
+        $("#pre_oferta").hide();
+      
       
         if($(self).attr('id') == "btn_pasado"){
            $("#pre_motivo").show();
         }else{
           $("#pre_motivo").hide();
         }
+      
+        $("#label_salario").text('Salario');
 
     }else{
+      
+        $("#label_salario").text('Apoyo de sostenimiento');
       
         if (!$("#btn_practicante").is(":visible")) {
 
@@ -274,6 +281,8 @@ $(function() {
   $(".bne_practica").hide();
   $("#pre_motivo").hide();
   $("#pre_ies").hide();   
+  
+  $('#salario').numeric({ negative: true, decimal: false })
   
 
   //sector_economico

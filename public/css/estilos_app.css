@@ -1,3 +1,39 @@
+.star-rating {
+	line-height:32px;
+	font-size:1.25em;
+}
+
+.star-rating .fa-star{color: yellow;}
+
+.evalua {
+	width: 200px;
+}
+
+.paginador_none{
+	width: 100%; visibility: hidden; display: none;
+}
+
+.paginador{
+	width: 100%;
+}
+
+.bunus{
+  white-space: normal;
+  width: 200px;
+  min-height: 52px;
+}
+
+.form-group.required .control-label:after { 
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 8px;
+    top:3px;
+}
+
+ul.ui-autocomplete {
+    z-index: 1100;
+}
 .div_img_home{
     background-image: url(../img/5-fists-1920x1080.jpg);
     background-position: top center;
