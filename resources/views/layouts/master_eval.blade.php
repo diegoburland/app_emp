@@ -19,7 +19,7 @@
 
         <nav class="navbar navbar-expand-lg">
 
-          <a href="." class="navbar-brand">
+          <a href="http://vidaandwork.com/" class="navbar-brand">
             <img src="/img/transparente1-k.png" width="180px">
             <!--h1 class="font-italic"><b><span  class="text-light"><span class="fa fa-eercast"></span>cu</span><span class="text-warning">Pasión</span></b></h1-->
           </a>
