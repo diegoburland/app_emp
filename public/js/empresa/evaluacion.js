@@ -68,8 +68,8 @@ function text_show(item) {
     $('#desc_'+item).show();
 }
 
-const BTN_PRACTICANTE = "<button type='button' id='btn_practicante' class='btn-pos btn btn-secondary'  onclick='elegir_pos(this)'>Prácticante</button>";
-const BTN_OTROS = "<button type='button' id='btn_empleado' class='btn-pos btn btn-secondary' onclick='elegir_pos(this)'>Empleado</button><button type='button' id='btn_directivo' class='btn-pos btn btn-secondary'  onclick='elegir_pos(this)'>Directivo</button>";
+const BTN_PRACTICANTE = "<button type='button' id='btn_practicante' class='btn-pos btn btn-dark'  onclick='elegir_pos(this)'>Prácticante</button>";
+const BTN_OTROS = "<button type='button' id='btn_empleado' class='btn-pos btn btn-dark' onclick='elegir_pos(this)'>Empleado</button><button type='button' id='btn_directivo' class='btn-pos btn btn-dark'  onclick='elegir_pos(this)'>Directivo</button>";
 
 function beneficio(self, id){
   
@@ -86,9 +86,9 @@ function beneficio(self, id){
 
 function evaluo_mi(self){
 
-    $('.btn-evaluo').removeClass('btn-dark').addClass('btn-secondary');
+    $('.btn-evaluo').removeClass('btn-warning').addClass('btn-dark');
 
-    $(self).removeClass('btn-secondary').addClass('btn-dark');
+    $(self).removeClass('btn-dark').addClass('btn-warning');
 
     $('#evalua').val($(self).text());
 
@@ -114,15 +114,19 @@ function evaluo_mi(self){
       
         if($(self).attr('id') == "btn_pasado"){
            $("#pre_motivo").show();
+           $("#label_gusto").text("¿Qué te gustó de tu empleador?");
+           $("#label_nogusto").text("¿Qué no te gustó de tu empleador?");
         }else{
           $("#pre_motivo").hide();
+          $("#label_gusto").text("¿Qué te gusta de tu empleador?");
+          $("#label_nogusto").text("¿Qué no te gusta de tu empleador?");
         }
       
-        $("#label_salario").text('Salario');
+        $("#label_salario").text('Salario mensual');
 
     }else{
       
-        $("#label_salario").text('Apoyo de sostenimiento');
+        $("#label_salario").text('Apoyo de sostenimiento mensual');
       
         if (!$("#btn_practicante").is(":visible")) {
 
@@ -148,9 +152,9 @@ function evaluo_mi(self){
 
 function elegir_pos(self){
 
-    $('.btn-pos').removeClass('btn-dark').addClass('btn-secondary');
+    $('.btn-pos').removeClass('btn-warning').addClass('btn-dark');
 
-    $(self).removeClass('btn-secondary').addClass('btn-dark');
+    $(self).removeClass('btn-dark').addClass('btn-warning');
 
     $('#posicion').val($(self).text());
 
@@ -166,9 +170,9 @@ function save_empresa(){
 
 function elegir_ofre(self){
 
-    $('.btn-ofre').removeClass('btn-dark').addClass('btn-secondary');
+    $('.btn-ofre').removeClass('btn-warning').addClass('btn-dark');
 
-    $(self).removeClass('btn-secondary').addClass('btn-dark');
+    $(self).removeClass('btn-dark').addClass('btn-warning');
 
     $('#ofrecer').val($(self).text());
 
@@ -185,9 +189,9 @@ function elegir_ofre(self){
 
 function elegir_oferta(self){
 
-    $('.btn-oferta').removeClass('btn-dark').addClass('btn-secondary');
+    $('.btn-oferta').removeClass('btn-warning').addClass('btn-dark');
 
-    $(self).removeClass('btn-secondary').addClass('btn-dark');
+    $(self).removeClass('btn-dark').addClass('btn-warning');
 
     var text = $(self).text().toUpperCase();
     $('#oferta').val(text);
@@ -202,9 +206,9 @@ function elegir_oferta(self){
 
 function elegir_recomienda(self){
 
-    $('.btn-recomienda').removeClass('btn-dark').addClass('btn-secondary');
+    $('.btn-recomienda').removeClass('btn-warning').addClass('btn-dark');
 
-    $(self).removeClass('btn-secondary').addClass('btn-dark');
+    $(self).removeClass('btn-dark').addClass('btn-warning');
 
     $('#recomienda').val($(self).text());
 }

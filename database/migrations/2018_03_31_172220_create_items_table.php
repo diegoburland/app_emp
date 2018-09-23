@@ -22,26 +22,28 @@ class CreateItemsTable extends Migration
             $table->timestamps();
         });
 
-         DB::table('items')->insert([ 'nombre' => 'Cultura organizacional', 'categoria_id' => 1, 'descripcion' => 'Confianza y Respeto / Vivencia de calidad humana / Identificación con la organización / Valores compartidos dentro de la organización']);
-         DB::table('items')->insert([ 'nombre' => 'Inducción al trabajo ', 'categoria_id' => 1, 'descripcion' => 'Preparación a las funciones del cargo / Adaptación y Dominio del cargo / Acompañamiento laboral']);         
-         DB::table('items')->insert([ 'nombre' => 'Relación entre compañeros ', 'categoria_id' => 1, 'descripcion' => 'Trabajo colaborativo / Integridad / Competitividad / Relaciones interpersonales / Compañerismo']);
-         DB::table('items')->insert([ 'nombre' => 'Relación con el jefe inmediato', 'categoria_id' => 1, 'descripcion' => 'Metas demandantes y alcanzables / Comunicación asertiva / Disposición de escucha y conciliación / Trato interpersonal / Apoyo y Reconocimiento por desempeño / Liderazgo']);
-         DB::table('items')->insert([ 'nombre' => 'Comunicación', 'categoria_id' => 1, 'descripcion' => 'Accesibilidad de Información / Flujo de información / Clara organización y planificación de objetivos / Transparencia']);
-         DB::table('items')->insert([ 'nombre' => 'Trato equitativo', 'categoria_id' => 1, 'descripcion' => 'Igualdad de derechos, géneros y edades / Oportunidades equitativas de ascenso / Coherencia salarial conforme al cargo']);
-
-
-         DB::table('items')->insert([ 'nombre' => 'Carga laboral', 'categoria_id' => 2, 'descripcion' => 'Nivel de carga laboral / Exigencia del supervisor']);
-         DB::table('items')->insert([ 'nombre' => 'Tareas', 'categoria_id' => 2, 'descripcion' => 'Tareas diversas, amenas e interesantes / Diversidad en el contenido de las tareas y con los contactos sociales / Claridad de las tareas / Satisfacción con las tareas / Tareas que conllevan responsabilidad']);
-         DB::table('items')->insert([ 'nombre' => 'Equilibrio trabajo-vida', 'categoria_id' => 2, 'descripcion' => 'Equilibrio entre carga laboral y tiempo libre / Cumplimiento de horas establecidas por el contrato / Respeto por el espacio y la vida personal / Vacaciones y Descansos / Hora extras']);
-         DB::table('items')->insert([ 'nombre' => 'Condiciones del puesto de trabajo', 'categoria_id' => 2, 'descripcion' => 'Seguridad laboral / Condiciones de trabajo adecuadas / Calidad de los equipos de trabajo / Zonas de recreación y descanso / Grado de riesgos']);
-         DB::table('items')->insert([ 'nombre' => 'Responsabilidad social', 'categoria_id' => 2, 'descripcion' => 'Consciencia ambiental y social de la empresa']);
-
-         DB::table('items')->insert([ 'nombre' => 'Remuneración', 'categoria_id' => 3, 'descripcion' => 'Remuneración corresponde a responsabilidad y esfuerzo / Retribución satisfactoria / Pago puntual / Beneficios extralegales / Periodo de pago / Pago de horas extras']);
+         DB::table('items')->insert([ 'nombre' => 'Cultura organizacional', 'categoria_id' => 1, 'descripcion' => 'Confianza y Respeto / Normas, valores y creencias compartidos dentro de la organización / Cultura compartida/ Ética / Vivencia de calidad humana']);
+         DB::table('items')->insert([ 'nombre' => 'Sentido de Pertenencia', 'categoria_id' => 1, 'descripcion' => 'Identificación con la organización / Orgullo de trabajar en la organización/ Participación']);
+         DB::table('items')->insert([ 'nombre' => 'Reconocimiento ', 'categoria_id' => 1, 'descripcion' => 'Reconocimiento personal y laboral ']);
+         DB::table('items')->insert([ 'nombre' => 'Relación entre compañeros ', 'categoria_id' => 1, 'descripcion' => 'Trabajo en equipo / Integridad / Competitividad / Relaciones interpersonales / Compañerismo']);
+         DB::table('items')->insert([ 'nombre' => 'Liderazgo', 'categoria_id' => 1, 'descripcion' => 'Relación con Jefe inmediato / Capacidad de liderar y motivar / Metas retadoras alcanzables / Comunicación asertiva / Disposición de escucha y conciliación / Trato interpersonal/ Retroalimentación']);
+         DB::table('items')->insert([ 'nombre' => 'Comunicación', 'categoria_id' => 1, 'descripcion' => 'Accesibilidad y flujo de información / Misión y visión clara / Clara organización y planificación de objetivos / Transparencia/ Información sobre metas, desafíos y logros de la organización/ Reuniones recurrentes']);
+         DB::table('items')->insert([ 'nombre' => 'Confianza', 'categoria_id' => 1, 'descripcion' => 'Respeto y confianza existente entre colaboradores y líderes/ Posibilidad de asumir responsabilidad y tomar decisiones / Cultura de control o de confianza ']);
+         DB::table('items')->insert([ 'nombre' => 'Trato equitativo', 'categoria_id' => 1, 'descripcion' => 'Igualdad de derechos, géneros y edades / Oportunidades equitativas de ascenso / Coherencia salarial conforme al cargo/ Equidad en la remuneración / Ausencia de favoritismo']);
+         DB::table('items')->insert([ 'nombre' => 'Responsabilidad social y ambiental', 'categoria_id' => 1, 'descripcion' => 'Igualdad de derechos, géneros y edades / Oportunidades equitativas de ascenso / Coherencia salarial conforme al cargo/ Equidad en la remuneración / Ausencia de favoritismo']);         
+         
+         //DB::table('items')->insert([ 'nombre' => 'Relación con el jefe inmediato', 'categoria_id' => 1, 'descripcion' => 'Metas demandantes y alcanzables / Comunicación asertiva / Disposición de escucha y conciliación / Trato interpersonal / Apoyo y Reconocimiento por desempeño / Liderazgo']);                 
+         DB::table('items')->insert([ 'nombre' => 'Carga laboral', 'categoria_id' => 2, 'descripcion' => 'Intensidad laboral / Exigencia del supervisor']);
+         DB::table('items')->insert([ 'nombre' => 'Tareas', 'categoria_id' => 2, 'descripcion' => 'Diversidad en el contenido de las tareas/ Claridad de las tareas / Satisfacción con el desempeño de las tareas / Tareas que conllevan responsabilidad/ Monotonía']);
+         DB::table('items')->insert([ 'nombre' => 'Equilibrio trabajo-vida', 'categoria_id' => 2, 'descripcion' => 'Equilibrio entre carga laboral y tiempo libre / Cumplimiento de horas establecidas por el contrato / Respeto por el espacio y la vida personal / Vacaciones y Descansos / Hora extras laboradas']);
+         DB::table('items')->insert([ 'nombre' => 'Condiciones del lugar de trabajo', 'categoria_id' => 2, 'descripcion' => 'Seguridad laboral / Condiciones de trabajo adecuadas / Calidad de los equipos de trabajo / Zonas de recreación y descanso / Grado de riesgos / Ergonomía']);
+         
+         DB::table('items')->insert([ 'nombre' => 'Inducción al trabajo ', 'categoria_id' => 3, 'descripcion' => 'Preparación a las funciones del cargo / Adaptación al cargo / Acompañamiento laboral/ Talleres de Inducción']);                  
          DB::table('items')->insert([ 'nombre' => 'Estabilidad laboral', 'categoria_id' => 3, 'descripcion' => 'Tipo de contrato/ Cambio de personal']);
          DB::table('items')->insert([ 'nombre' => 'Oportunidades de ascenso', 'categoria_id' => 3, 'descripcion' => 'Posibilidad de ascenso / Transparencia de condiciones para ascender / Visualización de oportunidades a futuro']);
-         DB::table('items')->insert([ 'nombre' => 'Crecimiento profesional', 'categoria_id' => 3, 'descripcion' => 'Crecimiento personal / Entorno potencial para el uso y desarrollo de competencias y conocimiento / Adquisición de conocimiento específico del sector/ámbito']);
-
-
+         DB::table('items')->insert([ 'nombre' => 'Crecimiento profesional', 'categoria_id' => 3, 'descripcion' => 'Se promueve el crecimiento personal y laboral / Entorno favorable para el uso y desarrollo de competencias y conocimiento / Adquisición de conocimiento específico del sector y ámbito/ Desarrollo de habilidades personales y sociales']);         
+         DB::table('items')->insert([ 'nombre' => 'Remuneración', 'categoria_id' => 3, 'descripcion' => 'Remuneración corresponde a responsabilidad y esfuerzo / Retribución satisfactoria / Pago puntual / Beneficios extralegales / Periodo de pago / Pago de horas extras']);
+                         
          DB::table('items')->insert([ 'nombre' => 'Cultura organizacional', 'categoria_id' => 4, 'descripcion' => 'Confianza y Respeto / Vivencia de calidad humana / Sentido de pertenencia / Valores compartidos dentro de la organización']);
          DB::table('items')->insert([ 'nombre' => 'Relación entre compañeros', 'categoria_id' => 4, 'descripcion' => 'Relaciones interpersonales / trabajo en equipo / Acompañamiento / Compañerismo / Receptividad de los compañeros / Integración al equipo']);
          DB::table('items')->insert([ 'nombre' => 'Inducción y preparación laboral', 'categoria_id' => 4, 'descripcion' => 'Reconocimiento de la estrategia organizacional / Preparación a las funciones del cargo/tareas de la práctica / Acompañamiento y Retroalimentación']);

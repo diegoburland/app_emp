@@ -23,6 +23,24 @@
   min-height: 52px;
 }
 
+.asteris{
+    color: #d00;
+    content: "*";
+    margin-left: 8px;
+    top:3px;
+}
+
+.star-rating .fa-star {
+    color: f6a42f !important;
+}
+
+.btn-warning {
+    /*color: #212529;*/
+    background-color: f6a42f !important;
+    /*border-color: #ffc107;*/
+}
+
+
 .form-group.required .control-label:after { 
     color: #d00;
     content: "*";
@@ -96,6 +114,8 @@ html {
    position: absolute;
 }
 body {
+    font-family: 'Source Sans Pro', sans-serif !important;
+    -webkit-font-smoothing: antialiased !important;
     background-color: #f1f1f173!important;
     position: relative;
     margin: 0;
