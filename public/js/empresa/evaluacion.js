@@ -115,11 +115,15 @@ function evaluo_mi(self){
         if($(self).attr('id') == "btn_pasado"){
            $("#pre_motivo").show();
            $("#label_gusto").text("¿Qué te gustó de tu empleador?");
-           $("#label_nogusto").text("¿Qué no te gustó de tu empleador?");
+           $("#label_nogusto").text("¿Qué no te gustó de tu empleador?");           
+           $("#label_bene").text("Selecciona los beneficios que te ofreció tu empleador");
+                      
         }else{
           $("#pre_motivo").hide();
           $("#label_gusto").text("¿Qué te gusta de tu empleador?");
-          $("#label_nogusto").text("¿Qué no te gusta de tu empleador?");
+          $("#label_nogusto").text("¿Qué no te gusta de tu empleador?");          
+          $("#label_bene").text("Selecciona los beneficios que te ofrece tu empleador");
+          
         }
       
         $("#label_salario").text('Salario mensual');
