@@ -73,13 +73,13 @@ const BTN_OTROS = "<button type='button' id='btn_empleado' class='btn-pos btn bt
 
 function beneficio(self, id){
   
-     if($(self).hasClass( "btn-secondary" )){
+     if($(self).hasClass( "btn-outline-secondary" )){
        
-       $(self).removeClass('btn-secondary').addClass('btn-warning');
+       $(self).removeClass('btn-outline-secondary').addClass('btn-warning');
        $('#bene_' + id).val(id);
      }else{
        
-       $(self).removeClass('btn-warning').addClass('btn-secondary');
+       $(self).removeClass('btn-warning').addClass('btn-outline-secondary');
        $('#bene_' + id).val(null);
      }   
 }

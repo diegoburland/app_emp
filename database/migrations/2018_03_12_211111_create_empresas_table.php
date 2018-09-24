@@ -16,20 +16,34 @@ class CreateEmpresasTable extends Migration
         Schema::create('empresas', function (Blueprint $table) {
           $table->increments('id');
 
-          $table->string('nur', 20)->nullable();
-          $table->string('camara', 200)->nullable();
-          $table->string('tipo_iden', 20)->nullable();
+          //$table->string('nur', 20)->nullable();
+          //$table->string('camara', 200)->nullable();
+          //$table->string('tipo_iden', 20)->nullable();
           $table->string('nit', 30)->nullable();
-          $table->string('razon_social', 300);  
-          $table->string('org_juridica', 100)->nullable();
+          $table->string('razon_social', 300); 
+          $table->string('repre_nombre', 200)->nullable();
+          $table->string('direccion', 200)->nullable();
+          $table->string('tel1', 30)->nullable();
+          //$table->string('tel2', 20)->nullable();          
+          $table->string('provincia', 200)->nullable();
+          $table->string('ciudad', 200)->nullable();
+          $table->date('fecha_fun')->nullable();
+          $table->string('email', 255)->nullable();
+          $table->string('web', 255)->nullable();
+          $table->string('ciiu', 20)->nullable();
+          $table->string('sector_economico', 300);
+          $table->string('ciiu_des', 300)->nullable();
+          $table->string('total_empleados', 30)->nullable();
+          
+          /*$table->string('org_juridica', 100)->nullable();
           $table->string('categoria', 30)->nullable();
           $table->string('estado', 30)->nullable();
-          $table->date('fecha_con')->nullable();
+          
           $table->date('fecha_mat')->nullable();
           $table->date('fecha_ult')->nullable();
           $table->string('ult_ano', 10)->nullable();
-          $table->string('direccion', 200)->nullable();
-          $table->string('ciudad', 200)->nullable();
+          
+          
           $table->string('postal', 20)->nullable();
           $table->string('barrio', 300)->nullable();
           $table->string('localidad', 300)->nullable();
@@ -39,16 +53,15 @@ class CreateEmpresasTable extends Migration
           $table->string('tel3', 20)->nullable();
           $table->string('fax', 20)->nullable();
           $table->string('cel', 20)->nullable();
-          $table->string('email', 255)->nullable();
           $table->string('pagina_w', 20)->nullable();
-          $table->string('ciiu', 20)->nullable();
+          
           $table->string('ciiu_des', 300)->nullable();
 
-          $table->string('sector_economico', 300);
+          
 
           $table->string('tipo_id_repre', 20)->nullable();
           $table->string('id_repre', 20)->nullable();
-          $table->string('repre_nombre', 20)->nullable();
+          
           $table->string('personal', 20)->nullable();
           $table->string('clasificacion', 20)->nullable();
           $table->string('activo_total', 50)->nullable();
@@ -73,7 +86,7 @@ class CreateEmpresasTable extends Migration
           $table->string('apellidos_contacto', 100)->nullable();
           $table->string('tel_contacto', 15)->nullable();
           $table->string('cel_contacto', 15)->nullable();
-          $table->string('email_contacto', 255)->nullable();
+          $table->string('email_contacto', 255)->nullable();*/
 
           $table->string('verificada', 30)->nullable();
 
