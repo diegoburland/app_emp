@@ -105,11 +105,11 @@ html {
 
 
 .footer {
-   height: 164px;
+   height: 100px;
    left: 0;
    bottom: 0;
    width: 100%;
-   background-color: #343a40!important;
+   /*background-color: #343a40!important;*/
    color: white;   
    position: absolute;
 }
@@ -119,6 +119,6 @@ body {
     background-color: #f1f1f173!important;
     position: relative;
     margin: 0;
-    padding-bottom: 164px;
+    padding-bottom: 100px;
     min-height: 100%;
 }

@@ -33,7 +33,7 @@ class Evaluacion_controller extends Controller
       
         
 
-         //Log::info('-----------------entro 1 -------------');
+         Log::info('-----------------entro 1 -------------');
         foreach ($items as $item) {
             
             if($request->input('puntaje_' . $item->id) != null){
@@ -46,11 +46,11 @@ class Evaluacion_controller extends Controller
       
         $benes = Benes::all();
       
-        //Log::info('-----------------entro 2 -------------');
+        Log::info('-----------------entro 2 -------------');
         foreach ($benes as $bene) {
-            //Log::info('-----------------entro 3 -------------');
+            Log::info('-----------------entro 3 -------------');
             if($request->input('bene_' . $bene->id) != null && $request->input('bene_' . $bene->id) != ""){
-                //Log::info('-----------------entro 4 -------------');
+                Log::info('-----------------entro 4 -------------');
                 Eval_bene::create(array('evaluacion_id' => $evaluacion->id, 'bene_id' => $bene->id));
 
             }
@@ -58,7 +58,7 @@ class Evaluacion_controller extends Controller
 
 
         //return $request;
-        //Log::info('-----------------entro 5 -------------');
+        Log::info('-----------------entro 5 -------------');
         //return redirect()->action('Evaluacion_controller@gracias', ['id' => $evaluacion->id]);
         return redirect()->route('gracias', [$evaluacion->id]);
       
@@ -132,7 +132,8 @@ class Evaluacion_controller extends Controller
       
         try{
           $evaluacion = Evaluacion::find($id);
-      
+          
+          Log::info('-----------------entro gracias 1 -------------');
           if ($evaluacion === null) {
              // eval doesn't exist
             return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
@@ -142,7 +143,9 @@ class Evaluacion_controller extends Controller
             
             return redirect()->action('Evaluacion_controller@continuar_evaluacion');
           }
-            
+          
+          Log::info('-----------------entro gracias 2 -------------');
+          
           $empresa = Empresa::find($evaluacion->empresa_id);
           
           $subject = 'Verificación de tu evaluación en ocupasion.com';
@@ -150,8 +153,10 @@ class Evaluacion_controller extends Controller
           
           $data = ['subject' => $subject, 'template' => $template, 'email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
 
+          Log::info('-----------------entro gracias 3 -------------');
           Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
 
+          Log::info('-----------------entro gracias 6 -------------');
           return view('gracias', $data);
           
         }catch (\Exception $e) {

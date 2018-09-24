@@ -92,7 +92,7 @@ function evaluo_mi(self){
 
     $('#evalua').val($(self).text());
 
-    console.log($(self).attr('id'));
+    //console.log($(self).attr('id'));
     if ($(self).attr('id') == "btn_actual" || $(self).attr('id') == "btn_pasado") {
 
         if (!$("#btn_empleado").is(":visible")) {
@@ -187,6 +187,13 @@ function elegir_ofre(self){
 
 }
 
+function abandonar(){
+    var res = confirm("¿Realmente quieres abandonar la evaluación?");
+    if(res){        
+        window.location.href = "http://vidaandwork.com/";
+    }
+}
+
 function elegir_oferta(self){
 
     $('.btn-oferta').removeClass('btn-warning').addClass('btn-dark');
@@ -248,7 +255,7 @@ function validar_botones(){
     var $starts = $('.rating-value');
     
     $starts.each(function() {
-        console.log($(this).parent().is(":visible"));
+        //console.log($(this).parent().is(":visible"));
         if ($(this).val() == "0" && $(this).parent().is(":visible")) {
 
             $("#mensaje_"+$(this).attr('id').split("_")[1]).css('display', 'block');
@@ -276,6 +283,10 @@ function validar_modal(){
 }
 
 $(function() {
+
+  $(".retornar").on('click', function() {
+     abandonar();
+  });
 
   $("#pre_oferta").hide();
   
@@ -428,7 +439,7 @@ $(function() {
       
       cache_ies.push(entry.value);
     })
-    console.log(cache_ies);
+    //console.log(cache_ies);
   });
 
 $("#ciudad_eval").autocomplete({

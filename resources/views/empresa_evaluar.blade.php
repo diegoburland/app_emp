@@ -28,7 +28,7 @@
 
             
             
-            <h4>Evalua tu empleador</h4>
+            <h4>Evalúa tu empleador</h4>
             <div class="alert alert-secondary" role="alert">                
                     <p>Gracias por aportar tu experiencia laboral. Así otros pueden tener una
                         mejor idea de como es realmente trabajar para una empresa como la tuya.
@@ -117,9 +117,9 @@
                 <div class="form-group row required ">
                     <div class="col-sm-6">
                         <label class="control-label" for="">Institución Educativa</label>
-                        <input type="text" class="form-control" id="ies_campo" name="ies_campo" placeholder="Institución Educativa" autocomplete="off" required>
+                        <input type="text" class="form-control" id="ies_campo" name="ies_campo" placeholder="Institución Educativa" autocomplete="off">
                         <input type="hidden" name="ies" id="ies" value="">  
-                        <div id="validar_ciudad" class="invalid-feedback">
+                        <div class="invalid-feedback">
                             Por favor selecciona una institución educativa del listado
                         </div>
                     </div>
@@ -190,24 +190,17 @@
 
             <div class="alert alert-secondary" role="alert">
 
-                <p>Todos juntos aspiramos a hacer más transparente el mercado laboral. 
-                    Por favor, evalúa cada dimensión laboral lo más honesto posible. </p>
-
                 <p><b>Recuerda:</b> Somos una plataforma neutral y justa. Por lo tanto, te pedimos tomar en cuenta los siguientes aspectos: </p>
-
-                <ul>
-                    <dl>
+                    
+                
                         • No mencionar personas específicas ni nombres.	
-                    </dl>
-                    <dl>
+                    <br>
                         • Se prohíbe publicar información interna, secreta o sensible de la organización. 		
-                    </dl>
-                    <dl>
+                   <br>
                         • Se prohíbe el uso de lenguaje discriminatorio, desacreditante, racista o vulgar. 		
-                    </dl>
-                </ul>	
-
-                En Ocupasión utilizamos un modo amigable de calificar. Sin embargo, ten presente el siguiente rubro de calificación de estrellas:		
+                    
+                        <br><br>
+                            En Vida and Work utilizamos un modo amigable de calificar. Sin embargo, ten presente el siguiente rubro de calificación de estrellas:
 
                 <div class="row">
 
@@ -533,7 +526,7 @@
 
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" name="terminos" id="terminos" required>
-                            <label class="custom-control-label" for="terminos"><a href="http://vidaandwork.com/terminos-y-condiciones/">Acepto Términos y Condiciones</a></label>
+                            <label class="custom-control-label" for="terminos"><a href="http://vidaandwork.com/terminos-y-condiciones/" target="_blank">Acepto Términos y Condiciones</a></label>
                             <!--a  class="custom-control-label" target="_blank" for="terminos">Acepto Terminos y Condiciones</a-->
 
                         </div>		    	  	

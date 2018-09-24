@@ -1,15 +1,8 @@
-@extends('layouts.master')
-
-@section('title', 'OcuPasion')
-
-@section('head')
-  <script type="text/javascript" src="/js/empresa/home.js"></script>
-@endsection
-
-@section('content')
 
 
-<div class="row justify-content-center mt-5">
+<meta http-equiv="refresh" content="0; url=https://vidaandwork.com/preguntas-adicionales" />
+
+<!--div class="row justify-content-center mt-5">
 	<div class="col-10">
 	  <div class="alert alert-warning" role="alert">
 		  <h4 class="alert-heading">¡Tú evaluación se ha guardado con éxito!</h4>
@@ -26,8 +19,5 @@
 		  </p>
 		</div>
 	</div>
-</div>
+</div-->
 
-
-
-@endsection
