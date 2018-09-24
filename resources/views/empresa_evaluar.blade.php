@@ -362,7 +362,7 @@
             </a>
             <a  class="list-group-item list-group-item-action bne_empleo">
                 <div class="alert alert-secondary" role="alert">
-                    <p class="label_bene">Selecciona los beneficios que te ofrece tu empleador</p>			
+                    <p id="label_bene">Selecciona los beneficios que te ofrece tu empleador</p>			
                 </div>
 
                 <div class="col-sm-12">
