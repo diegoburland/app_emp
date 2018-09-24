@@ -44,10 +44,9 @@ ul.ui-autocomplete {
 	<script type="text/javascript" src="/js/empresa/empresa.js"></script>
 @endsection
 
-
 <div class="row justify-content-md-center">
-
-	<form id="form_evaluacion" method="POST" action="/editar_evaluacion" novalidate class="needs-validation">
+	<meta name="csrf-token" content="{{ csrf_token() }}" />
+	<form id="form_evaluacion" novalidate class="needs-validation">
 
 	<div class="col-sm-11" style="margin-left: 4%;">
 
@@ -65,14 +64,14 @@ ul.ui-autocomplete {
 			</a>
 
 			
-
+			<input type="hidden" name="id_evaluacion" id="id_evaluacion" value="{{$evaluacion->id}}"> 
 
 			<div class="list-group-item list-group-item-action">
 				<div class="form-group row required ">
 			    	<div class="col-sm-6">
               <label class="control-label" ><b>Empresa</b></label>
 			    	  	<input type="text" class="form-control" id="empresa" name="empresa_nombre" placeholder="Busca y selecciona la empresa" disabled="true" value="{{$empresa->razon_social}}" required>
-			    	  	<input type="hidden" name="empresa_id" id="empresa_id" value="">  
+			    	  	<input type="hidden" name="empresa_id" id="empresa_id" value="{{$empresa->id}}">  
 
 			  	    </div>
           
@@ -105,7 +104,7 @@ ul.ui-autocomplete {
 						  <button type="button" id="btn_practica" class="btn-evaluo btn btn-secondary" onclick="evaluo_mi(this)">Práctica</button>
 						</div>
 					
-						<input type="hidden" data-validate="true" name="evalua" id="evalua" value="" required>
+						<input type="hidden" data-validate="true" name="evalua" id="evalua" value="{{$evaluacion->evalua}}" required>
 					</div>
 				</div>
 			</a>
@@ -134,7 +133,7 @@ ul.ui-autocomplete {
 			<a class="list-group-item list-group-item-action">
 				<div class="form-group row">
 					<div class="col-sm-6">
-					  <input type="hidden" name="depatarmentoEmp" id="depatarmentoEmp" value="{{$evaluacion->departamento}}">
+					  <input type="hidden" name="depatarmentoEmp" id="depatarmentoEmp" value="{{$evaluacion->departamento}}" onChange="actualiza('true')">
 					  <label for="">Departamento de la Empresa</label>
 					  <select name="departamento" id="departamento" class="form-control" required>
 					  	<option value="">Selecciona una opción</option>
@@ -280,11 +279,10 @@ ul.ui-autocomplete {
 				<div class="form-group row">
 					<div class="col-sm-8">
 					  <label for="">Título de tu evaluación</label>
-					  <input type="text" class="form-control" id="" value='{{$evaluacion->titulo}}' name="titulo" placeholder="Ponle un título a tu experencia en la empresa/organización" >
+					  <input type="text" class="form-control" value='{{$evaluacion->titulo}}' name="titulo" id="titulo" onChange="actualiza('true')" placeholder="Ponle un título a tu experencia en la empresa/organización" >
 					</div>
 				</div>
-			</a>			
-										
+			</a>								
 			
 		  	@foreach ($categorias as $categoria)
 		  		
@@ -306,6 +304,7 @@ ul.ui-autocomplete {
 								  		{{$item->nombre}}		
 								  	</div>
 								  	@foreach ($calificaciones as $calificacion)
+								  	<input type="hidden" name="calificaciones" id="calificaciones" value="{{$calificaciones}}">
 								  	@if($item->id == $calificacion->id)
 								  	@if($calificacion->puntaje == "1")
 								  	<div class="col-sm-4 ">
@@ -385,7 +384,7 @@ ul.ui-autocomplete {
 								  	
 							  	</div>						  	
 							  	  @if($calificacion->comentario != "")					      
-							      	<textarea name="comentario_{{$item->id}}" id="text_{{$item->id}}" class="form-control" placeholder="Agrega un comentario">{{$calificacion->comentario}}</textarea>
+							      	<textarea name="comentario_{{$item->id}}" id="text_{{$item->id}}" class="form-control" onChange="actualiza('true')" placeholder="Agrega un comentario">{{$calificacion->comentario}}</textarea>
 							      @endif
 							      <input type="hidden" name="puntaje_{{$item->id}}" id="puntaje_{{$item->id}}" class="rating-value" value="0">
 
@@ -444,7 +443,7 @@ ul.ui-autocomplete {
 				<div class="form-group row">
 			    	<div class="col-sm-4">
 			      		<label for="">Salario</label>
-			    	  	<input type="number" class="form-control" id="" name="salario" value="{{$evaluacion->salario}}" placeholder="$COP Pesos Colombianos" >
+			    	  	<input type="number" class="form-control" id="salario" name="salario" value="{{$evaluacion->salario}}" onChange="actualiza('true')" placeholder="$COP Pesos Colombianos" >
 			  	    </div>
 			  	</div>
 			</a>
@@ -453,7 +452,7 @@ ul.ui-autocomplete {
 			 	<div class="form-group row">
 			    	<div class="col-sm-4">
 			      		<label for="">Horas trabajadas por semana</label>
-			    	  	<input type="number" class="form-control" id="" name="trabajo_tiempo" value="{{$evaluacion->trabajo_tiempo}}" placeholder="Horas por semana" >
+			    	  	<input type="number" class="form-control" id="trabajo_tiempo" name="trabajo_tiempo" value="{{$evaluacion->trabajo_tiempo}}" onChange="actualiza('true')" placeholder="Horas por semana" >
 			  	    </div>
 			  	</div>
 			</a>
@@ -496,7 +495,7 @@ ul.ui-autocomplete {
 			 	<div class="form-group row">
 			    	<div class="col-sm-8">
 			      		<label for="">¿En qué puede mejorar tu empleador?</label>
-			    	  	<textarea class="form-control" name="mejoras">{{$evaluacion->mejoras}}</textarea>
+			    	  	<textarea class="form-control" onChange="actualiza('true')" name="mejoras" id="mejoras">{{$evaluacion->mejoras}}</textarea>
 			  	    </div>
 			  	</div>
 			</a>
@@ -505,7 +504,7 @@ ul.ui-autocomplete {
 				<div class="form-group row">
 			    	<div class="col-sm-8">
 			      		<label for="">¿Qué te gustó de tu empleador?</label>
-			    	  	<textarea class="form-control" name="like">{{$evaluacion->like}}</textarea>
+			    	  	<textarea class="form-control" onChange="actualiza('true')" name="like" id="like">{{$evaluacion->like}}</textarea>
 			  	    </div>
 			  	</div>
 			</a>
@@ -514,7 +513,7 @@ ul.ui-autocomplete {
 				<div class="form-group row">
 			    	<div class="col-sm-8">
 			      		<label for="">¿Qué no te gustó de tu empleador?</label>
-			    	  	<textarea class="form-control" name="no_like">{{$evaluacion->no_like}}</textarea>
+			    	  	<textarea class="form-control" onChange="actualiza('true')" name="no_like" id="no_like">{{$evaluacion->no_like}}</textarea>
 			  	    </div>
 			  	</div>
 			</a>
@@ -547,16 +546,14 @@ ul.ui-autocomplete {
 								
 
 			<div class="pt-2 mb-2"> 		
-				<button class="btn btn-warning  btn-lg btn-block" type="submit">
-					Finalizar verificación
+				<button class="btn btn-warning  btn-lg btn-block" onclick="editar()">
+					Aceptar
 				</button>
 			</div>
 						  				
 
 	</div>
-
 	</form>
-
 </div>
 
 @endsection

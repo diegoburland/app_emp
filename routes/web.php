@@ -24,7 +24,7 @@ Route::post('filtrar_empresa', 'Empresa_controller@filtrar');
 
 Route::post('crear_evaluacion', 'Evaluacion_controller@store');
 
-Route::post('editar_evaluacion', 'Evaluacion_controller@edit');
+Route::post('empresa_editar/editar_evaluacion', 'Evaluacion_controller@editar');
 
 Route::post('login_usuario', 'User\User_controller@login');
 

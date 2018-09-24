@@ -66,7 +66,63 @@ class Evaluacion_controller extends Controller
         
     }
 
-    public function edit(Request $request){
+    public function editar(Request $request){
+
+      $evaluacion = Evaluacion::find($request->id);
+      $evaluacion->departamento = $request->departamento;
+      $evaluacion->titulo = $request->titulo;
+      $evaluacion->salario = $request->salario;
+      $evaluacion->trabajo_tiempo = $request->horas; 
+      $evaluacion->mejoras = $request->mejoras;
+      $evaluacion->like = $request->like;
+      $evaluacion->no_like = $request->no_like;
+      $calificaciones = $request->calificaciones;
+
+
+
+      for ($i=0; $i < count($calificaciones); $i++) { 
+        $item = Eval_item::find($calificaciones[$i]['id']);
+        $item->comentario = $calificaciones[$i]['comentario'];
+        $item->save();
+      } 
+
+      if($request->cambio == "true"){
+        $request->id_padre = $request->id;
+  //      $request->id_padre = $request->id;
+    //    $edad = $request->input("id_padre", $request->id);
+      //  $request->id_padre = $edad;
+         $request->contenido = 'EDITADO';
+        $evaluacion = Evaluacion::create($request->all());
+      }
+      else{
+        $evaluacion->contenido = "ACEPTADO";
+        $evaluacion->save();
+      }
+
+       return redirect()->route('gracias', [$evaluacion->id]);
+      
+
+   //   $calificaciones = $evaluacion->updateEval($evaluacion->id, $evaluacion->titulo);
+
+      /* 
+
+      $update = TechnicalInvoice::find( $invoice[0]->id );
+                    $update->cost = $total;
+                    $update->sale = $sale;    
+                    $update->cost_effectiveness = $cost_effectiveness;
+                    $update->gross_margin = $objData['gross_margin'];
+//                    $update->opening_date = $objData['opening_date'];
+                    $update->bill_number = $objData['bill_number'];
+                    $update->invoice_value = $sale;
+                    $update->modified_user_id = $this->getUser()->id;
+                    $update->save();
+
+      */
+             /*   return redirect('movie');
+
+
+                $evaluacion = Evaluacion::find($idEvaluacion);
+
 
         $evaluacion = Evaluacion::create($request->all()); //mejorar        
 
@@ -96,8 +152,8 @@ class Evaluacion_controller extends Controller
 
             }
         }
-
-        return redirect()->route('gracias', [$evaluacion->id]);
+*/
+ //       return redirect()->route('gracias', [$evaluacion->id]);
         
     }
 

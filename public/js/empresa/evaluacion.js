@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  
+
   var URLactual = window.location;
 
   if(/empresa_editar/.test(URLactual)){
@@ -75,13 +77,52 @@ $(document).ready(function() {
 
 });
 
+var cambio = false;
+
+function editar(){
+
+  var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+  var id = $('#id_evaluacion').val();
+  var departamento = $('#departamento').val();
+  var titulo = $('#titulo').val();
+  var calificaciones = $('#calificaciones').val();
+  var salario = $('#salario').val();
+  var horas = $('#trabajo_tiempo').val(); 
+  var mejoras = $('#mejoras').val();
+  var like = $('#like').val();
+  var no_like = $('#no_like').val(); 
+  var empresa = $('#empresa_id').val();
+  var evalua = $('#tipoEvaluacion').val();
+  var tipocargo = $('#tipoCargo').val(); 
+
+  console.log(evalua);
+
+  var calificaciones = $.parseJSON(calificaciones);
+        
+        $.ajax({
+            
+            url: 'editar_evaluacion',
+            type: 'POST',
+            
+            data: {_method: 'POST',  _token: CSRF_TOKEN, id: id, departamento: departamento, titulo: titulo, salario: salario,
+                    horas: horas, calificaciones: calificaciones, mejoras: mejoras, like: like, no_like: no_like, cambio: cambio, 
+                    empresa_id: empresa, evalua: evalua, posicion: tipocargo, id_padre: id},
+            dataType: 'JSON',
+            
+            success: function (data) { 
+                alert("Edito");
+            }
+        });
+} 
+
+function actualiza(status){
+  cambio = status;
+}
+
 
 function evaluar(self, item){
 
-    
-	//console.log($(self).siblings('input.rating-value').val())
-	///$(self).siblings('input.rating-value').val($(self).data('rating'));
-	//console.log($(self).siblings('input.rating-value').val())}
+
     $('#puntaje_'+item).val($(self).data('rating'));
 
     $("#mensaje_"+item).css('display', 'none');
@@ -126,7 +167,6 @@ function evaluo_mi(self){
 
     $('#evalua').val($(self).text());
 
-    console.log($(self).attr('id'));
     if ($(self).attr('id') == "btn_actual" || $(self).attr('id') == "btn_pasado") {
 
         if (!$("#btn_empleado").is(":visible")) {
@@ -255,7 +295,7 @@ function validar_botones(){
     var $starts = $('.rating-value');
     
     $starts.each(function() {
-        console.log($(this).parent().is(":visible"));
+
         if ($(this).val() == "0" && $(this).parent().is(":visible")) {
 
             $("#mensaje_"+$(this).attr('id').split("_")[1]).css('display', 'block');
@@ -306,9 +346,9 @@ $(function() {
 
 	        }
 
-            $('html, body').animate({                
+  /*          $('html, body').animate({                
             scrollTop: $(errorElements[0]).offset().top-50
-            }, 2000);
+            }, 2000); */
 
 	        form.classList.add('was-validated');
 	    }, false);
