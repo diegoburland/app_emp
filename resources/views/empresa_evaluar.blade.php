@@ -17,7 +17,7 @@
 
     <form id="form_evaluar_empresa" method="POST" action="/crear_evaluacion" novalidate class="needs-validation">
 
-        <div class="col-sm-11">
+        <div class="col-sm-11 centrar_div">
 
 
 
@@ -28,7 +28,7 @@
 
             
             
-            <h4>Evalúa tu empleador</h4>
+            <h4>Evalúa a tu empleador</h4>
             <div class="alert alert-secondary" role="alert">                
                     <p>Gracias por aportar tu experiencia laboral. Así otros pueden tener una
                         mejor idea de como es realmente trabajar para una empresa como la tuya.
@@ -186,7 +186,7 @@
 
         </div>
 
-        <div class="col-sm-11 mt-3">
+        <div class="col-sm-11 mt-3 centrar_div">
 
             <div class="alert alert-secondary" role="alert">
 
@@ -287,7 +287,7 @@
         </div>
 
 
-        <div class="col-sm-11">
+        <div class="col-sm-11 centrar_div">
 
 
 

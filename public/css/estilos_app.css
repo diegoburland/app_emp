@@ -3,6 +3,12 @@
 	font-size:1.25em;
 }
 
+.centrar_div{
+  float: none; 
+  margin: 0 auto;  
+}
+
+
 .star-rating .fa-star{color: yellow;}
 
 .evalua {
