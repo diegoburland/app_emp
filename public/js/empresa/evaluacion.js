@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-  
-
   var URLactual = window.location;
 
   if(/empresa_editar/.test(URLactual)){
@@ -74,18 +72,20 @@ $(document).ready(function() {
       btn_SiAcepta.disabled = true;
     }
   }
+  calificaciones = $.parseJSON($('#calificaciones').val());
 
 });
 
 var cambio = false;
+var calificaciones;
 
-function editar(){
+
+function editar(opc){
 
   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
   var id = $('#id_evaluacion').val();
   var departamento = $('#departamento').val();
   var titulo = $('#titulo').val();
-  var calificaciones = $('#calificaciones').val();
   var salario = $('#salario').val();
   var horas = $('#trabajo_tiempo').val(); 
   var mejoras = $('#mejoras').val();
@@ -95,28 +95,66 @@ function editar(){
   var evalua = $('#tipoEvaluacion').val();
   var tipocargo = $('#tipoCargo').val(); 
 
-  console.log(evalua);
-
-  var calificaciones = $.parseJSON(calificaciones);
-        
+  if(opc == 'true'){
+    swal({
+      title: "¿Seguro desea rechazar la evaluación?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
         $.ajax({
-            
             url: 'editar_evaluacion',
             type: 'POST',
             
             data: {_method: 'POST',  _token: CSRF_TOKEN, id: id, departamento: departamento, titulo: titulo, salario: salario,
                     horas: horas, calificaciones: calificaciones, mejoras: mejoras, like: like, no_like: no_like, cambio: cambio, 
-                    empresa_id: empresa, evalua: evalua, posicion: tipocargo, id_padre: id},
+                    empresa_id: empresa, evalua: evalua, posicion: tipocargo, id_padre: id, rechazado: opc },
             dataType: 'JSON',
             
             success: function (data) { 
                 alert("Edito");
             }
         });
+        swal("Ud ha rechazado esta evaluación", {
+          icon: "success",
+        });
+      }
+    });
+    window.location.href = "/evaluacion_list";
+  }
+  else{
+    swal({
+      title: "¡Evaluación verificada exitosamente!",
+      icon: "success",
+      button: "Cerrar",
+    });
+
+    $.ajax({
+        url: 'editar_evaluacion',
+        type: 'POST',
+            
+        data: {_method: 'POST',  _token: CSRF_TOKEN, id: id, departamento: departamento, titulo: titulo, salario: salario,
+                horas: horas, calificaciones: calificaciones, mejoras: mejoras, like: like, no_like: no_like, cambio: cambio, 
+                empresa_id: empresa, evalua: evalua, posicion: tipocargo, id_padre: id, rechazado: opc },
+        dataType: 'JSON',
+            
+        success: function (data) { 
+            alert("Edito");
+        }
+    })
+    window.location.href = "/evaluacion_list";
+  }
 } 
 
 function actualiza(status){
   cambio = status;
+}
+
+function cambioComentario(id){  
+   calificaciones[id-1].comentario = $('#text_'+id).val();
+   actualiza('true');
 }
 
 

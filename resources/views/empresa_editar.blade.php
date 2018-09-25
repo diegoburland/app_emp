@@ -42,6 +42,7 @@ ul.ui-autocomplete {
 @section('head')
 	<script type="text/javascript" src="/js/empresa/evaluacion.js"></script>
 	<script type="text/javascript" src="/js/empresa/empresa.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection
 
 <div class="row justify-content-md-center">
@@ -384,7 +385,7 @@ ul.ui-autocomplete {
 								  	
 							  	</div>						  	
 							  	  @if($calificacion->comentario != "")					      
-							      	<textarea name="comentario_{{$item->id}}" id="text_{{$item->id}}" class="form-control" onChange="actualiza('true')" placeholder="Agrega un comentario">{{$calificacion->comentario}}</textarea>
+							      	<textarea name="comentario_{{$item->id}}" id="text_{{$item->id}}" class="form-control" onChange="cambioComentario('{{$calificacion->id}}')" placeholder="Agrega un comentario">{{$calificacion->comentario}}</textarea>
 							      @endif
 							      <input type="hidden" name="puntaje_{{$item->id}}" id="puntaje_{{$item->id}}" class="rating-value" value="0">
 
@@ -542,12 +543,15 @@ ul.ui-autocomplete {
 				        </div>		    	  	
 			  	    </div>
 			  	</div>
-			</div>	
-								
+			</div>								
 
-			<div class="pt-2 mb-2"> 		
-				<button class="btn btn-warning  btn-lg btn-block" onclick="editar()">
+			<div class="card-body d-flex justify-content-between align-items-center">
+				<button class="btn btn-warning btn-lg" onclick="editar('false')" style="width: 40%;">
 					Aceptar
+				</button>
+		
+				<button class="btn btn-danger btn-lg" onclick="editar('true')" style="width: 40%;">
+					Rechazar
 				</button>
 			</div>
 						  				

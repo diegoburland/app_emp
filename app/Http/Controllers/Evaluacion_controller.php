@@ -68,92 +68,64 @@ class Evaluacion_controller extends Controller
 
     public function editar(Request $request){
 
-      $evaluacion = Evaluacion::find($request->id);
-      $evaluacion->departamento = $request->departamento;
-      $evaluacion->titulo = $request->titulo;
-      $evaluacion->salario = $request->salario;
-      $evaluacion->trabajo_tiempo = $request->horas; 
-      $evaluacion->mejoras = $request->mejoras;
-      $evaluacion->like = $request->like;
-      $evaluacion->no_like = $request->no_like;
-      $calificaciones = $request->calificaciones;
-
-
-
-      for ($i=0; $i < count($calificaciones); $i++) { 
-        $item = Eval_item::find($calificaciones[$i]['id']);
-        $item->comentario = $calificaciones[$i]['comentario'];
-        $item->save();
-      } 
-
-      if($request->cambio == "true"){
-        $request->id_padre = $request->id;
-  //      $request->id_padre = $request->id;
-    //    $edad = $request->input("id_padre", $request->id);
-      //  $request->id_padre = $edad;
-         $request->contenido = 'EDITADO';
-        $evaluacion = Evaluacion::create($request->all());
+      if($request->rechazado == 'true'){
+        $evaluacion = Evaluacion::find($request->id);
+        $evaluacion->contenido = "RECHAZADO";
+        $evaluacion->save();
       }
       else{
-        $evaluacion->contenido = "ACEPTADO";
-        $evaluacion->save();
+        $calificaciones = $request->calificaciones; 
+
+        if($request->cambio == "true"){
+
+          $eval = Evaluacion::find($request->id);
+          $evaluacion = new Evaluacion();
+          $evaluacion->empresa_id = $request->empresa_id;
+          $evaluacion->evalua = $eval->evalua;
+          $evaluacion->posicion = $eval->posicion;
+          $evaluacion->recomienda = $eval->recomienda;
+          $evaluacion->beneficios = $eval->beneficios;
+          $evaluacion->ip = $eval->ip;
+          $evaluacion->estado = $eval->estado;
+          $evaluacion->ies = $eval->ies;
+          $evaluacion->email = $eval->email;
+          $evaluacion->terminos = $eval->terminos;
+          $evaluacion->ofrecer = $eval->ofrecer;
+          $evaluacion->oferta = $eval->oferta;
+          $evaluacion->confir_code = bin2hex(random_bytes(32));
+          $evaluacion->departamento = $request->departamento;
+          $evaluacion->titulo = $request->titulo;
+          $evaluacion->salario = $request->salario;
+          $evaluacion->trabajo_tiempo = $request->horas; 
+          $evaluacion->mejoras = $request->mejoras;
+          $evaluacion->like = $request->like;
+          $evaluacion->no_like = $request->no_like;
+          $evaluacion->id_padre = $eval->id;
+          $evaluacion->contenido = 'EDITADO';
+          $evaluacion->save();
+          for ($i=0; $i < count($calificaciones); $i++) { 
+            $item = Eval_item::find($calificaciones[$i]['id']);
+            $item->evaluacion_id = $evaluacion->id;
+            $item->comentario = $calificaciones[$i]['comentario'];
+            $item->save();
+          }
+          $beneficio = Eval_bene::where('evaluacion_id', '=', $request->id)->get();
+          $bene = new Eval_bene();
+          for ($i=0; $i < count($beneficio); $i++) { 
+             $beneficio[$i]->evaluacion_id = 225;
+             $bene = $beneficio[$i];
+             $bene->save();
+          }
+
+        }
+        else{
+          $evaluacion = Evaluacion::find($request->id);
+          $evaluacion->contenido = "ACEPTADO";
+          $evaluacion->save();
+        }
       }
 
        return redirect()->route('gracias', [$evaluacion->id]);
-      
-
-   //   $calificaciones = $evaluacion->updateEval($evaluacion->id, $evaluacion->titulo);
-
-      /* 
-
-      $update = TechnicalInvoice::find( $invoice[0]->id );
-                    $update->cost = $total;
-                    $update->sale = $sale;    
-                    $update->cost_effectiveness = $cost_effectiveness;
-                    $update->gross_margin = $objData['gross_margin'];
-//                    $update->opening_date = $objData['opening_date'];
-                    $update->bill_number = $objData['bill_number'];
-                    $update->invoice_value = $sale;
-                    $update->modified_user_id = $this->getUser()->id;
-                    $update->save();
-
-      */
-             /*   return redirect('movie');
-
-
-                $evaluacion = Evaluacion::find($idEvaluacion);
-
-
-        $evaluacion = Evaluacion::create($request->all()); //mejorar        
-
-        $items = Item::all();
-      
-        
-
-         //Log::info('-----------------entro 1 -------------');
-        foreach ($items as $item) {
-            
-            if($request->input('puntaje_' . $item->id) != null){
-
-                Eval_item::create(array('evaluacion_id' => $evaluacion->id, 'item_id' => $item->id, 'puntaje' => $request->input('puntaje_' . $item->id), 'comentario' => $request->input('comentario_' . $item->id)));
-
-            }
-        }
-      
-      
-        $benes = Benes::all();
-      
-        //Log::info('-----------------entro 2 -------------');
-        foreach ($benes as $bene) {
-            //Log::info('-----------------entro 3 -------------');
-            if($request->input('bene_' . $bene->id) != null && $request->input('bene_' . $bene->id) != ""){
-                //Log::info('-----------------entro 4 -------------');
-                Eval_bene::create(array('evaluacion_id' => $evaluacion->id, 'bene_id' => $bene->id));
-
-            }
-        }
-*/
- //       return redirect()->route('gracias', [$evaluacion->id]);
         
     }
 
