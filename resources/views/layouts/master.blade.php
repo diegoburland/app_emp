@@ -17,10 +17,10 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <nav class="navbar navbar-expand-lg">
 
           <a href="/" class="navbar-brand">
-            <img src="http://www.ocupasion.com/img/ocupasion-01.png" width="300px">
+            <img src="/img/transparente1-k.png" width="180px">
             <!--h1 class="font-italic"><b><span  class="text-light"><span class="fa fa-eercast"></span>cu</span><span class="text-warning">Pasión</span></b></h1>-->
           </a>
 
@@ -67,11 +67,13 @@
         <div class="footer">
 
           <div class="p-1 text-center">
-            <h3 class="font-italic"><b><span  class="text-light"><span class="fa fa-eercast"></span>cu</span><span class="text-warning">Pasión</span></b></h3>
-            <hr>
+              <a  href="javascript:void(0)" class="navbar-brand retornar">
+            <img src="/img/transparente1-k.png" width="180px">
+            <!--h1 class="font-italic"><b><span  class="text-light"><span class="fa fa-eercast"></span>cu</span><span class="text-warning">Pasión</span></b></h1-->
+            </a>
           </div>                  
 
-          <div class="text-center"> 
+          <!--div class="text-center"> 
             <div style="display: inline-flex;">
               <div class="mr-3"><h5  class="font-italic">¿Quienes somos?</h4></div>
               <div class="mr-3"><h5  class="font-italic">Preguntas frecuentes</h4></div>
@@ -80,7 +82,7 @@
           </div>
           
           
-            <div class="text-left font-italic m-1">Hecho en <a href="https://es.wikipedia.org/wiki/Colombia"><img src="/img/co.png" alt="Colombia"></a></div>  
+            <div class="text-left font-italic m-1">Hecho en <a href="https://es.wikipedia.org/wiki/Colombia"><img src="/img/co.png" alt="Colombia"></a></div-->  
           
         </div>
     </body>        
