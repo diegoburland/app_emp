@@ -44,6 +44,7 @@ class CreateEvaluacionesTable extends Migration
             $table->string('estado', 100)->nullable();
           
             $table->string('ies', 500)->nullable();
+            $table->integer('id_padre')->nullable();
 
             $table->timestamps();
 
