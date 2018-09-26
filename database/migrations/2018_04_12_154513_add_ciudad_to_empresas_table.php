@@ -16,8 +16,8 @@ class AddCiudadToEmpresasTable extends Migration
         
         Schema::table('empresas', function (Blueprint $table) {
 
-            $table->integer('ciudad_id')->after('razon_social');
-            $table->foreign('ciudad_id')->references('id')->on('ciudades')->onDelete('cascade');
+            //$table->integer('ciudad_id')->after('razon_social');
+            //$table->foreign('ciudad_id')->references('id')->on('ciudades')->onDelete('cascade');
         });
 
         DB::table('empresas')->insert([ 'razon_social' => 'Ocupasion', 'sector_economico' => 'Administración / Organización', 'ciudad_id' => 547, 'verificada'=>'SI']);
