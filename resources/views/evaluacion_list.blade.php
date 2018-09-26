@@ -4,11 +4,9 @@
 
 @section('head')
   <script type="text/javascript" src="/js/empresa/evaluacionList.js"></script>
-  
-  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
-  <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script> 
 @endsection
 
 
@@ -67,48 +65,12 @@ Total evaluaciones: {{$totalEvaluaciones}}
    </td> 
 </tr> 
 </table>
-
-
-
+<p>
   <h1> Listado de evaluaciones </h1>
-  <hr>
-  <h5> Filtros de búsqueda </h5>
-  <div id="izquierdo">
-    Empresa:
-    <div class="empresa"> </div>
-    <p></p>
-    Correo:
-    <div class="correo"> </div>
-    <p></p>
-    Tipo de trabajo:
-    <div class="trabajo"> </div>
- </div>
- <div id="center">
-      Institución:
-     <div class="institucion"> </div>
-     <p></p>
-     Status evaluacion:
-     <div class="statusevaluacion"> </div>
-     <p></p>
-     Status correo:
-     <div class="statuscorreo"> </div>
-   </div>
-  <div id="derecho">
-      Status empresa:
-     <div class="statusempresa"> </div>
-     <p></p>
-     Status contenido:
-     <div class="statuscontenido"> </div>
-     <p></p>
-     Status publicacion:
-     <div class="statuspublicacion"> </div>
-   </div>
-
-
 <table id="listEvaluacion" class="display" style="width:100%">
        <thead>
           <tr>
-            <th width="10">Id</th>
+            <th width="20">Id</th>
             <th>Empresa</th>
             <th>Correo</th>
             <th width="150">Fecha</th>
@@ -173,5 +135,6 @@ Total evaluaciones: {{$totalEvaluaciones}}
           @endforeach
           </tbody>
     </table>
+</p>
 
 @endsection

@@ -77,21 +77,6 @@ ul.ui-autocomplete {
     height: 600px;
 }
 
-#izquierdo{ 
-    margin: 17px 0 13px 12px;
-    float:left;
-} 
-
-#center{ 
-    margin: 17px 0 13px 221px;
-    float:left;
-} 
-#derecho{ 
-    margin: 17px 0 13px 300px;
-    float:left;
-} 
-
-
 .div_sloga{
       margin-right: 15px;
 	background: white;
