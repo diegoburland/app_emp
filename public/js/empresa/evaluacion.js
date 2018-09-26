@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
 
   var URLactual = window.location;
 
@@ -39,7 +39,7 @@ $(document).ready(function() {
     $("#departamento").val($('#depatarmentoEmp')[0].value);
   }
 
-});
+});*/
 
 
 function evaluar(self, item){
