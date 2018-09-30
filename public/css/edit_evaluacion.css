@@ -1,63 +1,3 @@
-.star-rating {
-	line-height:32px;
-	font-size:1.25em;
-}
-
-.centrar_div{
-  float: none; 
-  margin: 0 auto;  
-}
-
-
-.star-rating .fa-star{color: yellow;}
-
-.evalua {
-	width: 200px;
-}
-
-.paginador_none{
-	width: 100%; visibility: hidden; display: none;
-}
-
-.paginador{
-	width: 100%;
-}
-
-.bunus{
-  white-space: normal !important;
-  width: 200px !important;
-  min-height: 52px;
-}
-
-.asteris{
-    color: #d00;
-    content: "*";
-    margin-left: 8px;
-    top:3px;
-}
-
-.star-rating .fa-star {
-    color: f6a42f !important;
-}
-
-.btn-warning {
-    /*color: #212529;*/
-    background-color: f6a42f !important;
-    /*border-color: #ffc107;*/
-}
-
-
-.form-group.required .control-label:after { 
-    color: #d00;
-    content: "*";
-    position: absolute;
-    margin-left: 8px;
-    top:3px;
-}
-
-ul.ui-autocomplete {
-    z-index: 1100;
-}
 .div_img_home{
     background-image: url(../img/5-fists-1920x1080.jpg);
     background-position: top center;
@@ -77,9 +17,24 @@ ul.ui-autocomplete {
     height: 600px;
 }
 
+#izquierdo{ 
+    margin: 17px 0 13px 12px;
+    float:left;
+} 
+
+#center{ 
+    margin: 17px 0 13px 221px;
+    float:left;
+} 
+#derecho{ 
+    margin: 17px 0 13px 300px;
+    float:left;
+} 
+
+
 .div_sloga{
       margin-right: 15px;
-  background: white;
+	background: white;
     border-radius: 5px;
     width: auto;
     display: inline-block;
@@ -111,20 +66,18 @@ html {
 
 
 .footer {
-   height: 100px;
+   height: 164px;
    left: 0;
    bottom: 0;
    width: 100%;
-   /*background-color: #343a40!important;*/
+   background-color: #343a40!important;
    color: white;   
    position: absolute;
 }
 body {
-    font-family: 'Source Sans Pro', sans-serif !important;
-    -webkit-font-smoothing: antialiased !important;
     background-color: #f1f1f173!important;
     position: relative;
     margin: 0;
-    padding-bottom: 100px;
+    padding-bottom: 164px;
     min-height: 100%;
 }

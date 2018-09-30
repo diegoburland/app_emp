@@ -40,8 +40,8 @@ ul.ui-autocomplete {
 
 
 @section('head')
-	<script type="text/javascript" src="/js/empresa/evaluacion.js"></script>
-	<script type="text/javascript" src="/js/empresa/empresa.js"></script>
+	<script type="text/javascript" src="/js/empresa/editarEvaluacion.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection
 
 

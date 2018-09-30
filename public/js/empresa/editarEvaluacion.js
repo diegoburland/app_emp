@@ -1,4 +1,4 @@
-/*$(document).ready(function() {
+$(document).ready(function() {
 
   var URLactual = window.location;
 
@@ -8,6 +8,13 @@
     var btn_pasado = document.getElementById('btn_pasado');
     var btn_empleado = document.getElementById('btn_empleado');
     var btn_directivo = document.getElementById('btn_directivo');
+    var btn_SiRecomienda = document.getElementById('btn_SiRecomienda');
+    var btn_NoRecomienda = document.getElementById('btn_NoRecomienda');
+    var btn_SiOfrece = document.getElementById('btn_pra_si');
+    var btn_NoOfrece = document.getElementById('btn_pra_no');
+    var btn_SiAcepta = document.getElementById('btn_si_acepta');
+    var btn_NoAcepta = document.getElementById('btn_no_acepta');
+
     
     if($('#tipoEvaluacion')[0].value == "Trabajo Pasado"){
       $('#btn_pasado').click();
@@ -35,11 +42,130 @@
     }
     else
       $('#btn_practicante').click();
+    if($('#recomendacion')[0].value == "Si"){
+      $('#btn_SiRecomienda').click();
+      btn_NoRecomienda.disabled = true;
+    }
+    else{
+      $('#btn_NoRecomienda').click();
+      btn_SiRecomienda.disabled = true;
+    }
 
     $("#departamento").val($('#depatarmentoEmp')[0].value);
-  }
 
-});*/
+    if($('#recomendacion')[0].value == "Si"){
+      $('#btn_SiRecomienda').click();
+      btn_NoRecomienda.disabled = true;
+    }
+    else{
+      $('#btn_NoRecomienda').click();
+      btn_SiRecomienda.disabled = true;
+    }
+
+    if($('#puestoempresa')[0].value == "Si"){
+      $('#btn_pra_si').click();
+
+      btn_NoOfrece.disabled = true;
+    }
+    else{
+      $('#btn_pra_no').click();
+      btn_SiOfrece.disabled = true;
+    }
+
+    if($('#aceptaoferta')[0].value == "Si"){
+      $('#btn_si_acepta').click();
+      btn_NoAcepta.disabled = true;
+    }
+    else{
+      $('#btn_no_acepta').click();
+      btn_SiAcepta.disabled = true;
+    }
+  }
+  calificaciones = $.parseJSON($('#calificaciones').val());
+
+});
+
+var cambio = false;
+var calificaciones;
+
+
+function editar(opc){
+
+  var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+  var id = $('#id_evaluacion').val();
+  var departamento = $('#departamento').val();
+  var titulo = $('#titulo').val();
+  var salario = $('#salario').val();
+  var horas = $('#trabajo_tiempo').val(); 
+  var mejoras = $('#mejoras').val();
+  var like = $('#like').val();
+  var no_like = $('#no_like').val(); 
+  var empresa = $('#empresa_id').val();
+  var evalua = $('#tipoEvaluacion').val();
+  var tipocargo = $('#tipoCargo').val(); 
+
+  if(opc == 'true'){
+    swal({
+      title: "¿Seguro desea rechazar la evaluación?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        $.ajax({
+            url: 'editar_evaluacion',
+            type: 'POST',
+            
+            data: {_method: 'POST',  _token: CSRF_TOKEN, id: id, departamento: departamento, titulo: titulo, salario: salario,
+                    horas: horas, calificaciones: calificaciones, mejoras: mejoras, like: like, no_like: no_like, cambio: cambio, 
+                    empresa_id: empresa, evalua: evalua, posicion: tipocargo, id_padre: id, rechazado: opc },
+            dataType: 'JSON',
+            
+            success: function (data) { 
+                alert("Edito");
+            }
+        });
+        swal("Ud ha rechazado esta evaluación", {
+          icon: "success",
+        });
+      }
+    });
+    window.location.href = "/evaluacion_list";
+  }
+  else{
+    swal({
+      title: "¡Evaluación verificada exitosamente!",
+      icon: "success",
+      button: "Cerrar",
+    });
+
+    $.ajax({
+        url: 'editar_evaluacion',
+        type: 'POST',
+            
+        data: {_method: 'POST',  _token: CSRF_TOKEN, id: id, departamento: departamento, titulo: titulo, salario: salario,
+                horas: horas, calificaciones: calificaciones, mejoras: mejoras, like: like, no_like: no_like, cambio: cambio, 
+                empresa_id: empresa, evalua: evalua, posicion: tipocargo, id_padre: id, rechazado: opc },
+        dataType: 'JSON',
+            
+        success: function (data) { 
+            alert("Edito");
+        }
+    })
+    window.location.href = "/evaluacion_list";
+  }
+} 
+
+function actualiza(status){
+  cambio = status;
+}
+
+function cambioComentario(id){  
+   calificaciones[id-1].comentario = $('#text_'+id).val();
+   actualiza('true');
+}
+
 
 
 function evaluar(self, item){
@@ -68,31 +194,31 @@ function text_show(item) {
     $('#desc_'+item).show();
 }
 
-const BTN_PRACTICANTE = "<button type='button' id='btn_practicante' class='btn-pos btn btn-dark'  onclick='elegir_pos(this)'>Prácticante</button>";
-const BTN_OTROS = "<button type='button' id='btn_empleado' class='btn-pos btn btn-dark' onclick='elegir_pos(this)'>Empleado</button><button type='button' id='btn_directivo' class='btn-pos btn btn-dark'  onclick='elegir_pos(this)'>Directivo</button>";
+const BTN_PRACTICANTE = "<button type='button' id='btn_practicante' class='btn-pos btn btn-secondary'  onclick='elegir_pos(this)'>Prácticante</button>";
+const BTN_OTROS = "<button type='button' id='btn_empleado' class='btn-pos btn btn-secondary' onclick='elegir_pos(this)'>Empleado</button><button type='button' id='btn_directivo' class='btn-pos btn btn-secondary'  onclick='elegir_pos(this)'>Directivo</button>";
 
 function beneficio(self, id){
   
-     if($(self).hasClass( "btn-outline-secondary" )){
+     if($(self).hasClass( "btn-secondary" )){
        
-       $(self).removeClass('btn-outline-secondary').addClass('btn-warning');
+       $(self).removeClass('btn-secondary').addClass('btn-warning');
        $('#bene_' + id).val(id);
      }else{
        
-       $(self).removeClass('btn-warning').addClass('btn-outline-secondary');
+       $(self).removeClass('btn-warning').addClass('btn-secondary');
        $('#bene_' + id).val(null);
      }   
 }
 
 function evaluo_mi(self){
 
-    $('.btn-evaluo').removeClass('btn-warning').addClass('btn-dark');
+    $('.btn-evaluo').removeClass('btn-dark').addClass('btn-secondary');
 
-    $(self).removeClass('btn-dark').addClass('btn-warning');
+    $(self).removeClass('btn-secondary').addClass('btn-dark');
 
     $('#evalua').val($(self).text());
 
-    //console.log($(self).attr('id'));
+    console.log($(self).attr('id'));
     if ($(self).attr('id') == "btn_actual" || $(self).attr('id') == "btn_pasado") {
 
         if (!$("#btn_empleado").is(":visible")) {
@@ -107,31 +233,11 @@ function evaluo_mi(self){
       
         $(".bne_practica").hide();
         $(".bne_empleo").show();
-        $("#pre_ies").hide();
-        $("#pre_porque").hide();
-        $("#pre_oferta").hide();
-      
-      
-        if($(self).attr('id') == "btn_pasado"){
-           $("#pre_motivo").show();
-           $("#label_gusto").text("¿Qué te gustó de tu empleador?");
-           $("#label_nogusto").text("¿Qué no te gustó de tu empleador?");           
-           $("#label_bene").text("Selecciona los beneficios que te ofreció tu empleador");
-                      
-        }else{
-          $("#pre_motivo").hide();
-          $("#label_gusto").text("¿Qué te gusta de tu empleador?");
-          $("#label_nogusto").text("¿Qué no te gusta de tu empleador?");          
-          $("#label_bene").text("Selecciona los beneficios que te ofrece tu empleador");
-          
-        }
-      
-        $("#label_salario").text('Salario mensual');
 
     }else{
-      
-        $("#label_salario").text('Apoyo de sostenimiento mensual');
-      
+
+        
+
         if (!$("#btn_practicante").is(":visible")) {
 
           $('#btn_directivo').after(BTN_PRACTICANTE);    
@@ -142,11 +248,10 @@ function evaluo_mi(self){
         $("#btn_directivo").remove();
 
         $(".dim_practicante").show();
-        $("#pre_ies").show();
         $(".bne_practica").show();
         $(".bne_empleo").hide();
         $(".dim_empleado").hide();
-        $("#pre_motivo").hide();
+        
         
         elegir_pos($("#btn_practicante"));        
     }
@@ -156,9 +261,9 @@ function evaluo_mi(self){
 
 function elegir_pos(self){
 
-    $('.btn-pos').removeClass('btn-warning').addClass('btn-dark');
+    $('.btn-pos').removeClass('btn-dark').addClass('btn-secondary');
 
-    $(self).removeClass('btn-dark').addClass('btn-warning');
+    $(self).removeClass('btn-secondary').addClass('btn-dark');
 
     $('#posicion').val($(self).text());
 
@@ -174,16 +279,15 @@ function save_empresa(){
 
 function elegir_ofre(self){
 
-    $('.btn-ofre').removeClass('btn-warning').addClass('btn-dark');
+    $('.btn-ofre').removeClass('btn-dark').addClass('btn-secondary');
 
-    $(self).removeClass('btn-dark').addClass('btn-warning');
+    $(self).removeClass('btn-secondary').addClass('btn-dark');
 
     $('#ofrecer').val($(self).text());
 
     if ($(self).attr('id') == "btn_pra_no") {
 
         $("#pre_oferta").hide();
-        $("#pre_porque").hide();
     }else{
 
         $("#pre_oferta").show();
@@ -191,35 +295,20 @@ function elegir_ofre(self){
 
 }
 
-function abandonar(){
-    var res = confirm("¿Realmente quieres abandonar la evaluación?");
-    if(res){        
-        window.location.href = "http://vidaandwork.com/";
-    }
-}
-
 function elegir_oferta(self){
 
-    $('.btn-oferta').removeClass('btn-warning').addClass('btn-dark');
+    $('.btn-oferta').removeClass('btn-dark').addClass('btn-secondary');
 
-    $(self).removeClass('btn-dark').addClass('btn-warning');
+    $(self).removeClass('btn-secondary').addClass('btn-dark');
 
-    var text = $(self).text().toUpperCase();
-    $('#oferta').val(text);
-    
-    if(text == "NO"){
-      $("#pre_porque").show();
-    }else{
-      $("#pre_porque").hide();
-    }
-      
+    $('#oferta').val($(self).text());
 }
 
 function elegir_recomienda(self){
 
-    $('.btn-recomienda').removeClass('btn-warning').addClass('btn-dark');
+    $('.btn-recomienda').removeClass('btn-dark').addClass('btn-secondary');
 
-    $(self).removeClass('btn-dark').addClass('btn-warning');
+    $(self).removeClass('btn-secondary').addClass('btn-dark');
 
     $('#recomienda').val($(self).text());
 }
@@ -259,6 +348,7 @@ function validar_botones(){
     var $starts = $('.rating-value');
     
     $starts.each(function() {
+        console.log($(this).parent().is(":visible"));
         if ($(this).val() == "0" && $(this).parent().is(":visible")) {
 
             $("#mensaje_"+$(this).attr('id').split("_")[1]).css('display', 'block');
@@ -287,7 +377,11 @@ function validar_modal(){
 
 $(function() {
 
-        //console.log($(this).parent().is(":visible"));
+    $("#pre_oferta").hide();
+
+  $(".dim_practicante").hide();
+  $(".bne_practica").hide();
+  
      
 	var forms = document.getElementsByClassName('needs-validation');
 	    // Loop over them and prevent submission
@@ -311,9 +405,9 @@ $(function() {
 
 	        }
 
-            $('html, body').animate({                
+        /*    $('html, body').animate({                
             scrollTop: $(errorElements[0]).offset().top-50
-            }, 2000);
+            }, 2000);*/
 
 	        form.classList.add('was-validated');
 	    }, false);
@@ -402,72 +496,6 @@ $(function() {
     }
   })
 
-
-  var cache_ies = [];
-  const url_ies = '/json/ies.json';
-  $.getJSON( url_ies, function( data, status, xhr ) {
-    
-    $.each(data, function (key, entry) {
-      
-      cache_ies.push(entry.value);
-    })
-    //console.log(cache_ies);
-  });
-
-$("#ciudad_eval").autocomplete({
-      source: "/api/v1/encontrar_ubicacion",
-      minLength: 2,
-      select: function(event, ui) {
-      $('#ciudad_eval').val(ui.item.value);
-      $('#ciudad_eval_id').val(ui.item.id);
-    }       
-  });
-  
-  $( "#ies_campo" ).autocomplete({
-    minLength: 3,
-    source: function(request, response) {
-        var results = $.ui.autocomplete.filter(cache_ies, request.term);
-
-        response(results.slice(0, 10));
-    },
-    select: function(event, ui) {
-      $('#ies').val(ui.item.value);
-        
-    } 
-  });
-
    
 
 });
-  $(".retornar").on('click', function() {
-     abandonar();
-  });
-
-  $("#pre_oferta").hide();
-  
-  $("#pre_porque").hide();
-
-  $(".dim_practicante").hide();
-  $(".bne_practica").hide();
-  $("#pre_motivo").hide();
-  $("#pre_ies").hide();   
-  
-  $('#salario').numeric({ negative: true, decimal: false });
-  $('#trabajo_tiempo').numeric({ negative: true, decimal: false })
-  
-
-  //sector_economico
-  
-  const url_sector = '/json/sectores_economicos.json';
-
-  // Populate dropdown with list of provinces
-  let dropdown = $('#sector_economico');
-  //console.log('esta entrando');
-  $.getJSON(url_sector, function (data) {
-    
-    $.each(data, function (key, entry) {
-      
-      dropdown.append($('<option></option>').attr('value', entry.value).text(entry.text));
-    })
-  });
-
