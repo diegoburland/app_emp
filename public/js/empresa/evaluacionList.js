@@ -6,7 +6,7 @@ $(document).ready(function() {
     	"language": {
     		"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json",
 		    "paginate": {
-		      "first": "Primero",
+		    "first": "Primero",
             "last": "Ultimo",
             "next": "Siguiente",
             "previous": "Anterior"
@@ -24,7 +24,6 @@ $(document).ready(function() {
         var data = table.row( this ).data();
         window.location.href = "/empresa_editar/"+data[0];
     } );
-
 
     var filter1 = createFilter(table, [1]);
     var filter2 = createFilter(table, [2]);
@@ -72,3 +71,4 @@ function createFilter(table, columns) {
 
   return input;
 }
+

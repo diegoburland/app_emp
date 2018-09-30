@@ -8,6 +8,13 @@ $(document).ready(function() {
     var btn_pasado = document.getElementById('btn_pasado');
     var btn_empleado = document.getElementById('btn_empleado');
     var btn_directivo = document.getElementById('btn_directivo');
+    var btn_SiRecomienda = document.getElementById('btn_SiRecomienda');
+    var btn_NoRecomienda = document.getElementById('btn_NoRecomienda');
+    var btn_SiOfrece = document.getElementById('btn_pra_si');
+    var btn_NoOfrece = document.getElementById('btn_pra_no');
+    var btn_SiAcepta = document.getElementById('btn_si_acepta');
+    var btn_NoAcepta = document.getElementById('btn_no_acepta');
+
     
     if($('#tipoEvaluacion')[0].value == "Trabajo Pasado"){
       $('#btn_pasado').click();
@@ -35,11 +42,130 @@ $(document).ready(function() {
     }
     else
       $('#btn_practicante').click();
+    if($('#recomendacion')[0].value == "Si"){
+      $('#btn_SiRecomienda').click();
+      btn_NoRecomienda.disabled = true;
+    }
+    else{
+      $('#btn_NoRecomienda').click();
+      btn_SiRecomienda.disabled = true;
+    }
 
     $("#departamento").val($('#depatarmentoEmp')[0].value);
+
+    if($('#recomendacion')[0].value == "Si"){
+      $('#btn_SiRecomienda').click();
+      btn_NoRecomienda.disabled = true;
+    }
+    else{
+      $('#btn_NoRecomienda').click();
+      btn_SiRecomienda.disabled = true;
+    }
+
+    if($('#puestoempresa')[0].value == "Si"){
+      $('#btn_pra_si').click();
+
+      btn_NoOfrece.disabled = true;
+    }
+    else{
+      $('#btn_pra_no').click();
+      btn_SiOfrece.disabled = true;
+    }
+
+    if($('#aceptaoferta')[0].value == "Si"){
+      $('#btn_si_acepta').click();
+      btn_NoAcepta.disabled = true;
+    }
+    else{
+      $('#btn_no_acepta').click();
+      btn_SiAcepta.disabled = true;
+    }
   }
+  calificaciones = $.parseJSON($('#calificaciones').val());
 
 });
+
+var cambio = false;
+var calificaciones;
+
+
+function editar(opc){
+
+  var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+  var id = $('#id_evaluacion').val();
+  var departamento = $('#departamento').val();
+  var titulo = $('#titulo').val();
+  var salario = $('#salario').val();
+  var horas = $('#trabajo_tiempo').val(); 
+  var mejoras = $('#mejoras').val();
+  var like = $('#like').val();
+  var no_like = $('#no_like').val(); 
+  var empresa = $('#empresa_id').val();
+  var evalua = $('#tipoEvaluacion').val();
+  var tipocargo = $('#tipoCargo').val(); 
+
+  if(opc == 'true'){
+    swal({
+      title: "¿Seguro desea rechazar la evaluación?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        $.ajax({
+            url: 'editar_evaluacion',
+            type: 'POST',
+            
+            data: {_method: 'POST',  _token: CSRF_TOKEN, id: id, departamento: departamento, titulo: titulo, salario: salario,
+                    horas: horas, calificaciones: calificaciones, mejoras: mejoras, like: like, no_like: no_like, cambio: cambio, 
+                    empresa_id: empresa, evalua: evalua, posicion: tipocargo, id_padre: id, rechazado: opc },
+            dataType: 'JSON',
+            
+            success: function (data) { 
+                alert("Edito");
+            }
+        });
+        swal("Ud ha rechazado esta evaluación", {
+          icon: "success",
+        });
+      }
+    });
+    window.location.href = "/evaluacion_list";
+  }
+  else{
+    swal({
+      title: "¡Evaluación verificada exitosamente!",
+      icon: "success",
+      button: "Cerrar",
+    });
+
+    $.ajax({
+        url: 'editar_evaluacion',
+        type: 'POST',
+            
+        data: {_method: 'POST',  _token: CSRF_TOKEN, id: id, departamento: departamento, titulo: titulo, salario: salario,
+                horas: horas, calificaciones: calificaciones, mejoras: mejoras, like: like, no_like: no_like, cambio: cambio, 
+                empresa_id: empresa, evalua: evalua, posicion: tipocargo, id_padre: id, rechazado: opc },
+        dataType: 'JSON',
+            
+        success: function (data) { 
+            alert("Edito");
+        }
+    })
+    window.location.href = "/evaluacion_list";
+  }
+} 
+
+function actualiza(status){
+  cambio = status;
+}
+
+function cambioComentario(id){  
+   calificaciones[id-1].comentario = $('#text_'+id).val();
+   actualiza('true');
+}
+
 
 
 function evaluar(self, item){
@@ -279,9 +405,9 @@ $(function() {
 
 	        }
 
-            $('html, body').animate({                
+        /*    $('html, body').animate({                
             scrollTop: $(errorElements[0]).offset().top-50
-            }, 2000);
+            }, 2000);*/
 
 	        form.classList.add('was-validated');
 	    }, false);
