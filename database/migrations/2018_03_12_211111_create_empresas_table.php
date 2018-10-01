@@ -20,13 +20,14 @@ class CreateEmpresasTable extends Migration
           //$table->string('camara', 200)->nullable();
           //$table->string('tipo_iden', 20)->nullable();
           $table->string('nit', 30)->nullable();
-          $table->string('razon_social', 300); 
+          $table->string('razon_social', 300);
+          $table->string('nicknames', 300)->nullable();
           $table->string('repre_nombre', 200)->nullable();
           $table->string('direccion', 200)->nullable();
-          $table->string('tel1', 30)->nullable();
-          //$table->string('tel2', 20)->nullable();          
-          $table->string('provincia', 200)->nullable();
-          $table->string('ciudad', 200)->nullable();
+          $table->string('tel1', 200)->nullable();
+          $table->string('tel2', 20)->nullable();          
+          /*$table->string('provincia', 200)->nullable();
+          $table->string('ciudad', 200)->nullable();*/
           $table->date('fecha_fun')->nullable();
           $table->string('email', 255)->nullable();
           $table->string('web', 255)->nullable();
