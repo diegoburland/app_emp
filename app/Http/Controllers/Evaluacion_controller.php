@@ -148,7 +148,7 @@ class Evaluacion_controller extends Controller
           
           $empresa = Empresa::find($evaluacion->empresa_id);
           
-          $subject = 'Verificación de tu evaluación en vidaandwork.com';
+          $subject = 'Verificación de tu evaluación en VidaAndWork.com';
           $template = 'emails.bienvenido';
           
           $data = ['subject' => $subject, 'template' => $template, 'email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
