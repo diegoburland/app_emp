@@ -130,8 +130,9 @@ function editar(opc){
           icon: "success",
         });
       }
+       window.location.href = "/evaluacion_list";
     });
-    window.location.href = "/evaluacion_list";
+   
   }
   else{
     swal({

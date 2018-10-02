@@ -83,6 +83,7 @@ class Evaluacion_controller extends Controller
           $eval = Evaluacion::find($request->id);
           $evaluacion = new Evaluacion();
           $evaluacion->empresa_id = $request->empresa_id;
+          $evaluacion->ciudad_eval_id = $eval->ciudad_eval_id;
           $evaluacion->evalua = $eval->evalua;
           $evaluacion->posicion = $eval->posicion;
           $evaluacion->recomienda = $eval->recomienda;
@@ -116,7 +117,7 @@ class Evaluacion_controller extends Controller
           $beneficio = Eval_bene::where('evaluacion_id', '=', $request->id)->get();
           $bene = new Eval_bene();
           for ($i=0; $i < count($beneficio); $i++) { 
-             $beneficio[$i]->evaluacion_id = 225;
+             $beneficio[$i]->evaluacion_id = $evaluacion->id;
              $bene = $beneficio[$i];
              $bene->save();
           }
@@ -132,7 +133,7 @@ class Evaluacion_controller extends Controller
         }
       }
 
-       return redirect()->route('gracias', [$evaluacion->id]);
+       return redirect('evaluacion_list');
         
     }
 

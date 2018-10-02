@@ -83,7 +83,7 @@ ul.ui-autocomplete {
 				    <div class="col-sm-6">
 				      <label for="">Ciudad</label>
 				      <input type="text" disabled="true" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" autocomplete="off" value="{{$empresa->ciudad}}" required>
-				      <input type="hidden" name="ciudad_id" id="ciudad_id" value="">  
+				      <input type="hidden" name="ciudad_eval_id" id="ciudad_eval_id" value="">  
 				      <div id="validar_ciudad" class="invalid-feedback">
 				          Por favor selecciona una ciudad del listado
 				      </div>
