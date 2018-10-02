@@ -71,7 +71,9 @@ class Evaluacion_controller extends Controller
       if($request->rechazado == 'true'){
         $evaluacion = Evaluacion::find($request->id);
         $evaluacion->contenido = "RECHAZADO";
+        $evaluacion->publicada = "NO";
         $evaluacion->save();
+        // Acá envias el correo diciendole que su evaluacion esta rechazada
       }
       else{
         $calificaciones = $request->calificaciones; 
@@ -102,7 +104,9 @@ class Evaluacion_controller extends Controller
           $evaluacion->no_like = $request->no_like;
           $evaluacion->id_padre = $eval->id;
           $evaluacion->contenido = 'EDITADO';
+          $evaluacion->publicada = "SI";
           $evaluacion->save();
+
           for ($i=0; $i < count($calificaciones); $i++) { 
             $item = Eval_item::find($calificaciones[$i]['id']);
             $item->evaluacion_id = $evaluacion->id;
@@ -116,12 +120,15 @@ class Evaluacion_controller extends Controller
              $bene = $beneficio[$i];
              $bene->save();
           }
+          // Acá envias el correo diciendole que su evaluacion esta editada
 
         }
         else{
           $evaluacion = Evaluacion::find($request->id);
           $evaluacion->contenido = "ACEPTADO";
+          $evaluacion->publicada = "SI";
           $evaluacion->save();
+          // Acá envias el correo diciendole que su evaluacion esta aceptada
         }
       }
 
