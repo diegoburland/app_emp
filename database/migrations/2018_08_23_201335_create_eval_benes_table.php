@@ -24,7 +24,7 @@ class CreateEvalBenesTable extends Migration
             $table->timestamps();
           
           
-            /*DB::table('evaluaciones')->insert([ 'empresa_id' => 1, 'evalua' => 'cualquier cosa', 'posicion' => 'practicante', 'departamento' => 'cualquiera', 'titulo' => 'cualquiera', 'confir_code' => 'xyz', 'confirmed' => 'SI', 'ip'=>'1.1.1.1.1', 'created_at' => date('Y-m-d H:i:s'), 'email'=>'jose@gmail.com', 'contenido'=>'POR VERIFICAR', 'ies' => 'udea', 'ciudad_eval_id' =>'239']);
+            DB::table('evaluaciones')->insert([ 'empresa_id' => 1, 'evalua' => 'cualquier cosa', 'posicion' => 'practicante', 'departamento' => 'cualquiera', 'titulo' => 'cualquiera', 'confir_code' => 'xyz', 'confirmed' => 'SI', 'ip'=>'1.1.1.1.1', 'created_at' => date('Y-m-d H:i:s'), 'email'=>'jose@gmail.com', 'contenido'=>'POR VERIFICAR', 'ies' => 'udea', 'ciudad_eval_id' =>'239']);
             DB::table('evaluaciones')->insert([ 'empresa_id' => 1, 'evalua' => 'cualquier cosa', 'posicion' => 'practicante', 'departamento' => 'cualquiera', 'titulo' => 'cualquiera', 'confir_code' => 'xyz', 'confirmed' => 'NO', 'ip'=>'1.1.1.1.1', 'created_at' => date('Y-m-d H:i:s'), 'email'=>'jose2@gmail.com', 'contenido'=>'ACEPTADO', 'publicada'=>'SI', 'ies' => 'udea', 'ciudad_eval_id' =>'239']);
             DB::table('evaluaciones')->insert([ 'empresa_id' => 1, 'evalua' => 'cualquier cosa', 'posicion' => 'practicante', 'departamento' => 'cualquiera', 'titulo' => 'cualquiera', 'confir_code' => 'xyz', 'confirmed' => 'PENDIENTE', 'ip'=>'1.1.1.1.1', 'created_at' => date('Y-m-d H:i:s'), 'email'=>'jos3e@gmail.com', 'contenido'=>'EDITADO', 'ies' => 'udea', 'ciudad_eval_id' =>'239']);
             DB::table('evaluaciones')->insert([ 'empresa_id' => 1, 'evalua' => 'cualquier cosa', 'posicion' => 'practicante', 'departamento' => 'cualquiera', 'titulo' => 'cualquiera', 'confir_code' => 'xyz', 'confirmed' => 'PENDIENTE', 'ip'=>'1.1.1.1.1', 'created_at' => date('Y-m-d H:i:s'), 'email'=>'jos3e@gmail.com', 'contenido'=>'RECHAZADO', 'ies' => 'udea', 'ciudad_eval_id' =>'239']);
@@ -32,8 +32,14 @@ class CreateEvalBenesTable extends Migration
             DB::table('evaluaciones')->insert([ 'empresa_id' => 2, 'evalua' => 'cualquier cosa', 'posicion' => 'practicante', 'departamento' => 'cualquiera', 'titulo' => 'cualquiera', 'confir_code' => 'xyz', 'confirmed' => 'PENDIENTE', 'ip'=>'1.1.1.1.1', 'created_at' => date('Y-m-d H:i:s'), 'email'=>'jos3e@gmail.com', 'contenido'=>'ESPERANDO', 'ies' => 'udea', 'estado'=>'INVALIDA', 'ciudad_eval_id' =>'239']);
             
             for($i = 1; $i < 200; $i++){
-              DB::table('evaluaciones')->insert([ 'empresa_id' => 1, 'evalua' => 'cualquier cosa', 'posicion' => 'practicante', 'departamento' => 'cualquiera', 'titulo' => 'cualquiera', 'confir_code' => 'xyz', 'confirmed' => 'SI', 'ip'=>'1.1.1.1.1', 'created_at' => date('Y-m-d H:i:s'), 'email'=>'jose@gmail'. $i .'.com', 'contenido'=>'POR VERIFICAR', 'ies' => 'udea', 'estado'=>'POR CONTROLAR', 'ciudad_eval_id' =>'239']);
-            }*/
+              
+                for($k = 1; $k < 32; $k++){
+                    
+                    DB::table('eval_items')->insert([ 'evaluacion_id' => $i, 'item_id' => $k, 'puntaje' => rand(1, 5) , 'comentario' => 'comentario de prueba']);
+                }
+              
+              DB::table('evaluaciones')->insert([ 'empresa_id' => rand(1, 20), 'evalua' => 'cualquier cosa', 'posicion' => 'practicante', 'departamento' => 'cualquiera', 'titulo' => 'cualquiera', 'confir_code' => 'xyz', 'confirmed' => 'SI', 'ip'=>'1.1.1.1.1', 'created_at' => date('Y-m-d H:i:s'), 'email'=>'jose@gmail'. $i .'.com', 'contenido'=>'POR VERIFICAR', 'ies' => 'udea', 'estado'=>'POR CONTROLAR', 'ciudad_eval_id' =>'239']);
+            }
         
         });
     }
