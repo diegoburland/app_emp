@@ -34,7 +34,7 @@ class CreateEvalBenesTable extends Migration
             DB::table('evaluaciones')->insert([ 'empresa_id' => 2, 'evalua' => 'Práctica', 'posicion' => 'practicante', 'departamento' => 'cualquiera', 'titulo' => 'cualquiera', 'confir_code' => 'xyz', 'confirmed' => 'PENDIENTE', 'ip'=>'1.1.1.1.1', 'created_at' => date('Y-m-d H:i:s'), 'email'=>'jos3e@gmail.com', 'contenido'=>'SIN REVISION', 'ies' => 'udea', 'estado'=>'NORMAL', 'ciudad_eval_id' =>'239']);
             DB::table('evaluaciones')->insert([ 'empresa_id' => 2, 'evalua' => 'Práctica', 'posicion' => 'practicante', 'departamento' => 'cualquiera', 'titulo' => 'cualquiera', 'confir_code' => 'xyz', 'confirmed' => 'PENDIENTE', 'ip'=>'1.1.1.1.1', 'created_at' => date('Y-m-d H:i:s'), 'email'=>'jos3e@gmail.com', 'contenido'=>'ESPERANDO', 'ies' => 'udea', 'estado'=>'INVALIDA', 'ciudad_eval_id' =>'239']);
             
-            for($i = 1; $i < 500; $i++){
+            for($i = 1; $i < 4000; $i++){
               
                 for($k = 1; $k < 32; $k++){
                     
