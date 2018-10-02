@@ -66,6 +66,69 @@ class Evaluacion_controller extends Controller
         
     }
 
+    public function editar(Request $request){
+
+      if($request->rechazado == 'true'){
+        $evaluacion = Evaluacion::find($request->id);
+        $evaluacion->contenido = "RECHAZADO";
+        $evaluacion->save();
+      }
+      else{
+        $calificaciones = $request->calificaciones; 
+
+        if($request->cambio == "true"){
+
+          $eval = Evaluacion::find($request->id);
+          $evaluacion = new Evaluacion();
+          $evaluacion->empresa_id = $request->empresa_id;
+          $evaluacion->evalua = $eval->evalua;
+          $evaluacion->posicion = $eval->posicion;
+          $evaluacion->recomienda = $eval->recomienda;
+          $evaluacion->beneficios = $eval->beneficios;
+          $evaluacion->ip = $eval->ip;
+          $evaluacion->estado = $eval->estado;
+          $evaluacion->ies = $eval->ies;
+          $evaluacion->email = $eval->email;
+          $evaluacion->terminos = $eval->terminos;
+          $evaluacion->ofrecer = $eval->ofrecer;
+          $evaluacion->oferta = $eval->oferta;
+          $evaluacion->confir_code = bin2hex(random_bytes(32));
+          $evaluacion->departamento = $request->departamento;
+          $evaluacion->titulo = $request->titulo;
+          $evaluacion->salario = $request->salario;
+          $evaluacion->trabajo_tiempo = $request->horas; 
+          $evaluacion->mejoras = $request->mejoras;
+          $evaluacion->like = $request->like;
+          $evaluacion->no_like = $request->no_like;
+          $evaluacion->id_padre = $eval->id;
+          $evaluacion->contenido = 'EDITADO';
+          $evaluacion->save();
+          for ($i=0; $i < count($calificaciones); $i++) { 
+            $item = Eval_item::find($calificaciones[$i]['id']);
+            $item->evaluacion_id = $evaluacion->id;
+            $item->comentario = $calificaciones[$i]['comentario'];
+            $item->save();
+          }
+          $beneficio = Eval_bene::where('evaluacion_id', '=', $request->id)->get();
+          $bene = new Eval_bene();
+          for ($i=0; $i < count($beneficio); $i++) { 
+             $beneficio[$i]->evaluacion_id = 225;
+             $bene = $beneficio[$i];
+             $bene->save();
+          }
+
+        }
+        else{
+          $evaluacion = Evaluacion::find($request->id);
+          $evaluacion->contenido = "ACEPTADO";
+          $evaluacion->save();
+        }
+      }
+
+       return redirect()->route('gracias', [$evaluacion->id]);
+        
+    }
+
     public function list(){
 
 
@@ -93,8 +156,6 @@ class Evaluacion_controller extends Controller
             $empCont ++;
         }
 
-        
-
         return view('evaluacion_list', array('evaluaciones' => $evaluacion, 'totalPublicadas' => $cont, 'totalEvaluaciones' => count($evaluacionArr), 'totalEmpresas' => count($empresaArr), 'totalEmpPorVerif' => $empCont, 'contenidoCont' => $contenidoCont));
     }  
 
@@ -120,10 +181,12 @@ class Evaluacion_controller extends Controller
       $benes = Benes::all();
 
       $eval_item = new Eval_item();
+      $eval_bene = new Eval_bene();
 
       $calificaciones = $eval_item->getItemByEvaluation($idEvaluacion);
+      $beneficios = $eval_bene->getBeneByEvaluation($idEvaluacion);
       
-      return view('empresa_editar', array('categorias' => $categorias, 'items' => $items, 'benes'=>$benes, 'evaluacion' => $evaluacion, 'empresa' => $empresa, 'calificaciones' => $calificaciones));
+      return view('empresa_editar', array('categorias' => $categorias, 'items' => $items, 'benes'=>$benes, 'evaluacion' => $evaluacion, 'empresa' => $empresa, 'calificaciones' => $calificaciones, 'beneficios' => $beneficios));
     }
   
 
