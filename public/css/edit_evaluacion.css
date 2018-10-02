@@ -14,7 +14,7 @@
     position: absolute;
     width: 100%;
     left: 0;
-    height: 600px;
+    height: 550px;
 }
 
 #izquierdo{ 
@@ -52,10 +52,10 @@
 html {
   height: 100%;
 }
-.video{
+/*.video{
       padding-left: 3rem!important;
       padding-right: 3rem!important;
-}
+}*/
 @media only screen and (max-width: 600px) {
     .video{
           padding-left: 0rem!important;
@@ -65,7 +65,7 @@ html {
 
 
 
-.footer {
+/*.footer {
    height: 164px;
    left: 0;
    bottom: 0;
@@ -73,11 +73,12 @@ html {
    background-color: #343a40!important;
    color: white;   
    position: absolute;
-}
-body {
+}*/
+
+/*body {
     background-color: #f1f1f173!important;
     position: relative;
     margin: 0;
     padding-bottom: 164px;
     min-height: 100%;
-}
+}*/
