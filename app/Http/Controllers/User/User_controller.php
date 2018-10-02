@@ -59,7 +59,7 @@ class User_controller extends Controller
     $pwd = str_random(8);
     
     //crear el usuario
-    $subject = 'Subida exitosa de tu evaluación en ocupasion.com';
+    $subject = 'Subida exitosa de tu evaluación en VidaAndWork.com';
     $template = 'emails.cuenta';
     
     $data = ['subject' => $subject, 'template' => $template, 'name' => $evaluacion->email, 'email'=> $evaluacion->email, 'password' => $pwd, 'empresa' => $empresa->razon_social, 'tipo' => 'cliente'];
