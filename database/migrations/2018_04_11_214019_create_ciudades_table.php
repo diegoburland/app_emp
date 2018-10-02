@@ -24,7 +24,7 @@ class CreateCiudadesTable extends Migration
         });
 
         //DB::unprepared(file_get_contents('/var/www/departamentos-y-municipios-colombia-SQL/municipios.sql'));        
-        DB::unprepared(file_get_contents(__DIR__ . '\\..\\..\\script\\municipios.sql'));
+        DB::unprepared(file_get_contents(__DIR__ . '/script/municipios.sql'));
     }
 
     /**

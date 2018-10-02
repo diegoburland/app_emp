@@ -65,7 +65,7 @@ class Evaluacion_controller extends Controller
         //return redirect('/gracias?email='. $request->input('email') . '&empresa=' . $request->input('empresa_nombre'));
         
     }
-
+    
     public function list(){
 
 
