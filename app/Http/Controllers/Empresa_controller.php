@@ -83,11 +83,11 @@ class Empresa_controller extends Controller
         
         $results = array();
     
-        $queries = Empresa::where('razon_social', 'LIKE', '%'.$term.'%')->take(5)->get();
+        $queries = Empresa::where('razon_social', 'LIKE', '%'.$term.'%')->orWhere('nicknames', 'LIKE', '%'.$term.'%')->take(5)->get();
         
         foreach ($queries as $query)
         {
-            $results[] = [ 'id' => $query->id, 'value' => $query->razon_social ];
+            $results[] = [ 'id' => $query->id, 'value' => ((($query->nicknames != null)?$query->nicknames . " - ":"") . $query->razon_social) ];
         }
 
         
