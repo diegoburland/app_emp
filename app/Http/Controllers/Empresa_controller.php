@@ -87,7 +87,7 @@ class Empresa_controller extends Controller
         
         foreach ($queries as $query)
         {
-            $results[] = [ 'id' => $query->id, 'value' => ((($query->nicknames != null)?$query->nicknames . " - ":"") . $query->razon_social) ];
+            $results[] = [ 'id' => $query->id, 'value' => ((($query->nicknames != null)?strtoupper($query->nicknames) . " - ":"") . $query->razon_social) ];
         }
 
         
