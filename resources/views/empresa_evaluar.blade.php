@@ -1,6 +1,6 @@
 @extends('layouts.master_eval')
 
-@section('title', 'Evaluar Empresa')
+@section('title', 'Evaluar Empresa - VidAndWork.com')
 
 
 @section('content')
