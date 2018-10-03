@@ -32,6 +32,7 @@ class AddCiudadToEmpresasTable extends Migration
         }else{
             DB::unprepared(file_get_contents(__DIR__ . '/script/empresas.sql'));   
         } */
+        //DB::unprepared(file_get_contents(__DIR__ . '/script/pruebas.sql'));
         DB::unprepared(file_get_contents(__DIR__ . '/script/empresas.sql'));
     }
 
