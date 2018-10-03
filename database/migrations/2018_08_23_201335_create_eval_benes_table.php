@@ -23,7 +23,7 @@ class CreateEvalBenesTable extends Migration
           
             $table->timestamps();
           
-            if(env('APP_DEBUG') == true){
+            /*if(env('APP_DEBUG') == true){
                 $evalua = ['Trabajo Actual', 'Trabajo Pasado', 'Práctica'];
                 $contenido = ['POR VERIFICAR','ACEPTADO','RECHAZADO', 'SIN REVISION', 'ESPERANDO'];
                 $confirmed = ['SI', 'NO', 'PENDIENTE'];
@@ -45,7 +45,7 @@ class CreateEvalBenesTable extends Migration
 
                     DB::table('evaluaciones')->insert([ 'empresa_id' => rand(1, 20), 'evalua' => $evalua[rand(0, 2)], 'posicion' => $posicion[rand(0,2)], 'departamento' => 'cualquiera', 'titulo' => 'cualquiera', 'confir_code' => 'xyz', 'confirmed' => $confirmed[rand(0,2)], 'ip'=>$i .'.' . ($i+1) . '.1.1.' . $i, 'created_at' => date('Y-m-d H:i:s'), 'email'=>'jose@gmail'. $i .'.com', 'contenido'=>$contenido[rand(0,4)], 'ies' => 'udea', 'estado'=>$estado[rand(0,2)], 'ciudad_eval_id' =>'239']);
                 }
-            }
+            }*/
             
         
         });
