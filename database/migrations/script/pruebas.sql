@@ -177,4 +177,4 @@ insert into `empresas` (`nit`, `razon_social`, `nicknames`,
 ('830080779','MUNDIAL DE PERFILES LTDA',null,'Vargas Angulo Miguel Angel','Cl 51 Sur No. 80-44','+57-1-450-5940',112,'2001-01-11','mundiperfiles@cable.net.co',null,'C2410','Industrial / Produccion','Industrias básicas de hierro y de acero',null);
 
 
-select concat(COALESCE(nicknames, ''),razon_social) as nombre from empresas where concat(razon_social,nicknames) like '%nacajo%' limit 5;
+--select concat(COALESCE(nicknames, ''),razon_social) as nombre from empresas where concat(razon_social,nicknames) like '%nacajo%' limit 5;
