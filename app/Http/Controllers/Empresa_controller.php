@@ -82,9 +82,14 @@ class Empresa_controller extends Controller
         $term = $request->input('term');
         
         $results = array();
-    
-        $queries_union = Empresa::select('id','nicknames', 'razon_social')->where('nicknames', 'LIKE', '%'.$term.'%');
-        $queries = Empresa::select('id','nicknames', 'razon_social')->where('razon_social', 'LIKE', '%'.$term.'%')->union($queries_union)->take(5)->get();        
+        
+        //$empresa = new Empresa();
+        
+        $queries1 = Empresa::select('id','nicknames', 'razon_social')->where('nicknames', 'LIKE', '%'.$term.'%')->take(5)->get();
+        $queries2 = Empresa::select('id','nicknames', 'razon_social')->where('razon_social', 'LIKE', '%'.$term.'%')->take(5)->get();
+        
+        $queries = $queries1->merge($queries2);
+        //$queries = $empresa->get_nombre($term);
         foreach ($queries as $query)
         {
             $results[] = [ 'id' => $query->id, 'value' => ((($query->nicknames != null)?strtoupper($query->nicknames) . " - ":"") . $query->razon_social) ];
