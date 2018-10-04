@@ -175,3 +175,6 @@ insert into `empresas` (`nit`, `razon_social`, `nicknames`,
 ('900369977','NACAJO INVERSIONES S.A.S.',null,null,'Cr 19 A No. 116 19 Piso 3','+57-1-214-7613',112,'2010-07-12','opcion2000@cable.net.co',null,'F4111','Construcción / Obras civiles / Arquitectura','Construcción de edificios residenciales','1'),
 ('900104056','N A R Y COMPAÑIA S.A.S.',null,'Raad Raad Teofilo','Cr 13 No. 81 52 P 4','+57-1-635-0335',112,'2006-09-01','invraad@cable.net.co','cable.net.co','L6810','Inmobiliaria','Actividades inmobiliarias realizadas con bienes propios o arrendados',null),
 ('830080779','MUNDIAL DE PERFILES LTDA',null,'Vargas Angulo Miguel Angel','Cl 51 Sur No. 80-44','+57-1-450-5940',112,'2001-01-11','mundiperfiles@cable.net.co',null,'C2410','Industrial / Produccion','Industrias básicas de hierro y de acero',null);
+
+
+select concat(COALESCE(nicknames, ''),razon_social) as nombre from empresas where concat(razon_social,nicknames) like '%nacajo%' limit 5;

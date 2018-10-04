@@ -83,7 +83,7 @@ class Empresa_controller extends Controller
         
         $results = array();
     
-        $queries = Empresa::where('razon_social', 'LIKE', '%'.$term.'%')->orWhere('nicknames', 'LIKE', '%'.$term.'%')->take(5)->get();
+        $queries = Empresa::select('id','nicknames', 'razon_social')->whereRaw('CONCAT(COALESCE(nicknames, ""), razon_social) LIKE "%'.$term.'%"')->take(5)->get();
         
         foreach ($queries as $query)
         {
