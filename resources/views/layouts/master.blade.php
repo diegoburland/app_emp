@@ -56,9 +56,9 @@
           </div>
 
           <form class="form-inline my-2 my-lg-0">
-             <button type="button" class="btn btn-link btn-sm text-light" onclick="window.location.href='/login'"><b>MI OCUPASIÓN</b></button>
-            <button type="button" class="btn btn-link btn-sm text-light" onclick="window.location.href='/buscar_empresa'"><span class="fa fa-search"></span> <b>BUSCAR</b></button>
-            <button class="btn btn-warning btn-sm" type="button" onclick="window.location.href='/empresa_evaluar'"><b>EVALUACIÓN ANÓNIMA</b></button>                   
+             <button type="button" class="btn btn-link text-warning" onclick="window.location.href='/login'"><b>MI CUENTA</b></button>
+            <!--button type="button" class="btn btn-link btn-sm text-light" onclick="window.location.href='/buscar_empresa'"><span class="fa fa-search"></span> <b>BUSCAR</b></button-->
+            <button class="btn btn-warning " type="button" onclick="window.location.href='/empresa_evaluar'"><b>EVALUACIÓN ANÓNIMA</b></button>                   
           </form>     
 
         </nav>  
