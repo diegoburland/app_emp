@@ -190,9 +190,9 @@
 
             <div class="alert alert-secondary" role="alert">
 
-                <p><b>Recuerda:</b> Somos una plataforma neutral y justa. Por lo tanto, te pedimos ser respetuoso en tus comentarios y no mensionar información sencible para empresas o personas. <!-- tomar en cuenta los siguientes aspectos: </p>
+                <p><b>Recuerda:</b> Somos una plataforma neutral y justa. Por lo tanto, te pedimos ser respetuoso en tus comentarios, no mencionar personas específicas ni información sensible de la organización. 
                     
-                
+                    <!--
                         • No mencionar personas específicas ni nombres.	
                     <br>
                         • Se prohíbe publicar información interna, secreta o sensible de la organización. 		
