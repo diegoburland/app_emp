@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Support\Facades\Log;
 
 use DB;
 
@@ -31,5 +32,13 @@ class Empresa extends Model
        
 
         return $evaluaciones;
+    }
+    
+    public function get_nombre($term){
+        
+        $result = DB::select("select id, razon_social, nicknames from empresas where nicknames like '%:term%' union select id, razon_social, nicknames from empresas where razon_social like '%:term%' limit 5", ['term'=>$term]);
+        
+        Log::info($result);
+        return $result;
     }
 }

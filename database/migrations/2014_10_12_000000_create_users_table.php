@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-       //DB::table('users')->insert([ 'name' => 'jose luis', 'email' => 'jose@ocupasion.com', 'password' => 'admin', 'tipo' => 'admin']);
+       DB::table('users')->insert([ 'name' => 'jose luis', 'email' => 'jose@vw.com', 'password' => 'admin', 'tipo' => 'admin']);
         
     }
 

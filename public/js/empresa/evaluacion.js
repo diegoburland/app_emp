@@ -259,6 +259,7 @@ function validar_botones(){
     var $starts = $('.rating-value');
     
     $starts.each(function() {
+        //console.log($(this).parent().is(":visible"));
         if ($(this).val() == "0" && $(this).parent().is(":visible")) {
 
             $("#mensaje_"+$(this).attr('id').split("_")[1]).css('display', 'block');
@@ -287,7 +288,38 @@ function validar_modal(){
 
 $(function() {
 
-        //console.log($(this).parent().is(":visible"));
+  $(".retornar").on('click', function() {
+     abandonar();
+  });
+
+  $("#pre_oferta").hide();
+  
+  $("#pre_porque").hide();
+
+  $(".dim_practicante").hide();
+  $(".bne_practica").hide();
+  $("#pre_motivo").hide();
+  $("#pre_ies").hide();   
+  
+  $('#salario').numeric({ negative: true, decimal: false });
+  $('#trabajo_tiempo').numeric({ negative: true, decimal: false })
+  
+
+  //sector_economico
+  
+  const url_sector = '/json/sectores_economicos.json';
+
+  // Populate dropdown with list of provinces
+  let dropdown = $('#sector_economico');
+  //console.log('esta entrando');
+  $.getJSON(url_sector, function (data) {
+    
+    $.each(data, function (key, entry) {
+      
+      dropdown.append($('<option></option>').attr('value', entry.value).text(entry.text));
+    })
+  });
+
      
 	var forms = document.getElementsByClassName('needs-validation');
 	    // Loop over them and prevent submission
@@ -439,35 +471,3 @@ $("#ciudad_eval").autocomplete({
    
 
 });
-  $(".retornar").on('click', function() {
-     abandonar();
-  });
-
-  $("#pre_oferta").hide();
-  
-  $("#pre_porque").hide();
-
-  $(".dim_practicante").hide();
-  $(".bne_practica").hide();
-  $("#pre_motivo").hide();
-  $("#pre_ies").hide();   
-  
-  $('#salario').numeric({ negative: true, decimal: false });
-  $('#trabajo_tiempo').numeric({ negative: true, decimal: false })
-  
-
-  //sector_economico
-  
-  const url_sector = '/json/sectores_economicos.json';
-
-  // Populate dropdown with list of provinces
-  let dropdown = $('#sector_economico');
-  //console.log('esta entrando');
-  $.getJSON(url_sector, function (data) {
-    
-    $.each(data, function (key, entry) {
-      
-      dropdown.append($('<option></option>').attr('value', entry.value).text(entry.text));
-    })
-  });
-

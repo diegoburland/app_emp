@@ -27,7 +27,11 @@ class AddCiudadToEmpresasTable extends Migration
         DB::table('empresas')->insert([ 'razon_social' => 'Jumbo', 'sector_economico' => 'Administración / Organización', 'ciudad_id' => 547, 'verificada'=>'NO VERIFICADA']);
         DB::table('empresas')->insert([ 'razon_social' => 'Jumbo', 'sector_economico' => 'Administración / Organización', 'ciudad_id' => 547, 'verificada'=>'SIN REVISION']);*/
         //DB::unprepared(file_get_contents('/var/www/departamentos-y-municipios-colombia-SQL/municipios.sql'));   
-        DB::unprepared(file_get_contents(__DIR__ . '/script/empresas.sql'));   
+        if(env('APP_DEBUG') == true){
+            DB::unprepared(file_get_contents(__DIR__ . '/script/pruebas.sql'));   
+        }else{
+            DB::unprepared(file_get_contents(__DIR__ . '/script/empresas.sql'));   
+        }
     }
 
     /**

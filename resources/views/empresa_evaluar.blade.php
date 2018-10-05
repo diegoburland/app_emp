@@ -1,6 +1,6 @@
 @extends('layouts.master_eval')
 
-@section('title', 'Evaluar Empresa')
+@section('title', 'Evaluar Empresa - VidAndWork.com')
 
 
 @section('content')
@@ -190,7 +190,7 @@
 
             <div class="alert alert-secondary" role="alert">
 
-                <p><b>Recuerda:</b> Somos una plataforma neutral y justa. Por lo tanto, te pedimos tomar en cuenta los siguientes aspectos: </p>
+                <p><b>Recuerda:</b> Somos una plataforma neutral y justa. Por lo tanto, te pedimos ser respetuoso en tus comentarios y no mensionar información sencible para empresas o personas. <!-- tomar en cuenta los siguientes aspectos: </p>
                     
                 
                         • No mencionar personas específicas ni nombres.	
@@ -200,12 +200,12 @@
                         • Se prohíbe el uso de lenguaje discriminatorio, desacreditante, racista o vulgar. 		
                     
                         <br><br>
-                            En Vida and Work utilizamos un modo amigable de calificar. Sin embargo, ten presente el siguiente rubro de calificación de estrellas:
+                            En Vida and Work utilizamos un modo amigable de calificar. Sin embargo,--> Ten presente el siguiente valor en la calificación por estrellas:
 
                 <div class="row">
 
-                    <div class="col-sm-3 h5 mt-2">
-                        Muy insatisfecho
+                    <div class="col-sm-3 mt-2">
+                        Muy insatisfecho:
                     </div>
                     <div class="col-sm-5 ">
                         <div class="d-inline-flex star-rating" >
@@ -268,8 +268,8 @@
 
                 <div class="row">
 
-                    <div class="col-sm-3 h5 mt-2">
-                        Muy satisfecho
+                    <div class="col-sm-3 mt-2">
+                        Muy satisfecho:
                     </div>
                     <div class="col-sm-5 ">
                         <div class="d-inline-flex star-rating" >
