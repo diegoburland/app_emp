@@ -10,11 +10,15 @@
 <script type="text/javascript" src="/js/jquery.numeric-min.js?v={{ time() }}"></script>
 <script type="text/javascript" src="/js/empresa/evaluacion.js?v={{ time() }}"></script>
 <script type="text/javascript" src="/js/empresa/empresa.js?v={{ time() }}"></script>
+
 @endsection
 
+<div id="public_div" class="loader_div">
+    <div id="public_label"  class="loader"><b>Guardando...</b><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>
+</div>
 
 <div class="row justify-content-md-center">
-
+    
     <form id="form_evaluar_empresa" method="POST" action="/crear_evaluacion" novalidate class="needs-validation">
 
         <div class="col-sm-11 centrar_div">
@@ -190,9 +194,9 @@
 
             <div class="alert alert-secondary" role="alert">
 
-                <p><b>Recuerda:</b> Somos una plataforma neutral y justa. Por lo tanto, te pedimos ser respetuoso en tus comentarios y no mensionar información sencible para empresas o personas. <!-- tomar en cuenta los siguientes aspectos: </p>
+                <p><b>Recuerda:</b> Somos una plataforma neutral y justa. Por lo tanto, te pedimos ser respetuoso en tus comentarios, no mencionar personas específicas ni información sensible de la organización. 
                     
-                
+                    <!--
                         • No mencionar personas específicas ni nombres.	
                     <br>
                         • Se prohíbe publicar información interna, secreta o sensible de la organización. 		

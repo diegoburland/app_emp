@@ -4,7 +4,7 @@
       <meta charset="utf-8">
   </head>
   <body>
-    <h2>¡Muchas gracias por tu evaluación anónima sobre la empresa {{$empresa}}!</h2>
+    <h3>¡Muchas gracias por tu evaluación anónima sobre la empresa {{$empresa}}!</h3>
     
     <p>
         Dale clic al enlace abajo para confirmar tu correo electrónico:
