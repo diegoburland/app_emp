@@ -142,29 +142,36 @@ class Evaluacion_controller extends Controller
 
         $empresa = new Empresa();
         $empresaArr = Empresa::all()->toArray();
-        $evaluacionArr = Evaluacion::all()->toArray();
-        $evaluacion = Evaluacion::all();
-        $cont = 0;
-        $empCont = 0;
+        $evaluacionArr = Evaluacion::paginate(50);
+   //     $evaluacion = Evaluacion::all();
+        $evaluacion = Evaluacion::paginate(50);
+        $totalPublicadas = 0;
+        $totalEmpPorVerif = 0;
         $contenidoCont = 0;
-        for ($i=0; $i < count($evaluacionArr); $i++) { 
+
+        $totalEvaluaciones = count($evaluacionArr);
+        $totalEmpresas = count($empresaArr);
+
+        for ($i=0; $i < $totalEvaluaciones; $i++) { 
             $empresa = $empresa->find($evaluacionArr[$i]['empresa_id']);
             $evaluacion[$i]['empresa'] = $empresa->razon_social;
             $evaluacion[$i]['statusEmpresa'] = $empresa->verificada;
             if($evaluacionArr[$i]['publicada'] == 'SI'){
-              $cont ++;
+              $totalPublicadas ++;
             }  
             if($evaluacionArr[$i]['contenido'] == 'POR VERIFICAR'){
               $contenidoCont ++;
             }  
         }
 
+     
         for ($i=0; $i < count($empresaArr); $i++) { 
           if($empresaArr[$i]['verificada'] == 'POR VERIFICAR' )
-            $empCont ++;
+            $totalEmpPorVerif ++;
         }
+        
 
-        return view('evaluacion_list', array('evaluaciones' => $evaluacion, 'totalPublicadas' => $cont, 'totalEvaluaciones' => count($evaluacionArr), 'totalEmpresas' => count($empresaArr), 'totalEmpPorVerif' => $empCont, 'contenidoCont' => $contenidoCont));
+        return view('evaluacion_list', compact('evaluacion', 'totalPublicadas', 'contenidoCont', 'totalEmpPorVerif', 'totalEvaluaciones', 'totalEmpresas'));
     }  
 
     public function continuar_evaluacion(){

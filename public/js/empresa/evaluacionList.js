@@ -1,7 +1,8 @@
 $(document).ready(function() {
     $('#listEvaluacion').DataTable({
-        "processing": true,
         "searching": true,
+        "paging": false,
+        "info": false,
        "lengthMenu": [[50,70,80,100], [50,70,80,100]],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json",
@@ -19,11 +20,16 @@ $(document).ready(function() {
     });
 
     var table = $('#listEvaluacion').DataTable();
+
+    $('#listEvaluacion').on('draw.dt', function() { 
+        var data = table.data();
+        var info = table.page.info();
+    });  
      
-    $('#listEvaluacion tbody').on('click', 'tr', function () {
+     $('#listEvaluacion tbody').on(function () {
         var data = table.row( this ).data();
         window.location.href = "/empresa_editar/"+data[0];
-    } );
+   } );
 
     var filter1 = createFilter(table, [1]);
     var filter2 = createFilter(table, [2]);
@@ -43,11 +49,11 @@ $(document).ready(function() {
     filter6.appendTo(".statuscorreo");
     filter7.appendTo(".statusempresa");
     filter8.appendTo(".statuscontenido");
-    filter9.appendTo(".statuspublicacion");
+    filter9.appendTo(".statuspublicacion"); 
 });
 
 function createFilter(table, columns) {
-  var input = $('<input type="text"/ style="width: 120%;">').on("keyup", function() {
+  var input = $('<input class="form-control" type="text"/ style="width: 120%;">').on("keyup", function() {
     table.draw();
   });
 

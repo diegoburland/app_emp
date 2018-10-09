@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Listado de evaluaciones')
+@section('title', 'Listado de evaluacion')
 
 @section('head')
   <script type="text/javascript" src="/js/empresa/evaluacionList.js"></script>
@@ -42,7 +42,7 @@ Total contenido por verificar: {{$contenidoCont}}
       <td valign=top><font face="verdana, arial, helvetica" size=1>*</font></td> 
       <td><font face="verdana, arial, helvetica" size=2> 
 
-Total evaluaciones publicadas: {{$totalPublicadas}}
+Total evaluacion publicadas: {{$totalPublicadas}}
 
       </font></td> 
    </tr> 
@@ -58,7 +58,7 @@ Cantidad de empresas: {{$totalEmpresas}}
       <td valign=top><font face="verdana, arial, helvetica" size=1>*</font></td> 
       <td><font face="verdana, arial, helvetica" size=2> 
 
-Total evaluaciones: {{$totalEvaluaciones}}
+Total evaluacion: {{$totalEvaluaciones}}
 
       </font></td> 
    </tr>  
@@ -70,7 +70,7 @@ Total evaluaciones: {{$totalEvaluaciones}}
 
 
 
-  <h1> Listado de evaluaciones </h1>
+  <h1> Listado de evaluacion </h1>
   <hr>
   <h5> Filtros de búsqueda </h5>
   <div id="izquierdo">
@@ -87,7 +87,7 @@ Total evaluaciones: {{$totalEvaluaciones}}
       Institución:
      <div class="institucion"> </div>
      <p></p>
-     Status evaluacion:
+     Status eval:
      <div class="statusevaluacion"> </div>
      <p></p>
      Status correo:
@@ -109,6 +109,7 @@ Total evaluaciones: {{$totalEvaluaciones}}
        <thead>
           <tr>
             <th width="10">Id</th>
+            <th><i class="fa fa-check"></i></th>
             <th>Empresa</th>
             <th>Correo</th>
             <th width="150">Fecha</th>
@@ -123,56 +124,102 @@ Total evaluaciones: {{$totalEvaluaciones}}
           </tr>
         </thead>
         <tbody>
-            @foreach ($evaluaciones as $evaluacion)
+            @foreach ($evaluacion as $eval)
 
             <tr>
-              <td>{{$evaluacion->id}}</td>
-              <td>{{$evaluacion->empresa}}</td>
-              <td>{{$evaluacion->email}}</td>
-              <td>{{$evaluacion->created_at->format('Y-m-d')}}</td>
-              <td>{{$evaluacion->ip}}</td>
-              <td>{{$evaluacion->evalua}}</td>
-              <td>{{$evaluacion->ies}}</td>
-              @if($evaluacion->estado == 'INVALIDA')
-                 <td style="background: indianred;">{{$evaluacion->estado}}</td>
+              <td>{{$eval->id}}</td>
+              <td><a target="_blank" href="{{URL::action('Evaluacion_controller@mostrar_evaluacion',$eval->id)}} ">
+              <button class="btn btn-info"><i class="fa fa-check-circle"></i></button></a></td>
+              <td>{{$eval->empresa}}</td>
+              <td>{{$eval->email}}</td>
+              <td>{{$eval->created_at->format('Y-m-d')}}</td>
+              <td>{{$eval->ip}}</td>
+              <td>{{$eval->evalua}}</td>
+              <td>{{$eval->ies}}</td>
+                    @if($eval->estado == 'INVALIDA')
+                 <td style="background: indianred;">{{$eval->estado}}</td>
               @endif
-              @if($evaluacion->estado == 'NORMAL')
-                 <td style="background: lightgreen;">{{$evaluacion->estado}}</td>
+              @if($eval->estado == 'NORMAL')
+                 <td style="background: lightgreen;">{{$eval->estado}}</td>
               @endif
-              @if($evaluacion->estado != 'INVALIDA' && $evaluacion->estado != 'NORMAL')
-                 <td>{{$evaluacion->estado}}</td>
+              @if($eval->estado == 'POR CONTROLAR')
+                 <td style="background: yellow;">{{$eval->estado}}</td>
               @endif
-              @if($evaluacion->confirmed == 'NO')
-                <td style="background: indianred;">{{$evaluacion->confirmed}}</td>
+              @if($eval->estado != 'INVALIDA' && $eval->estado != 'NORMAL' && $eval->estado != 'POR CONTROLAR')
+                 <td>{{$eval->estado}}</td>
               @endif
-              @if($evaluacion->confirmed == 'SI')
-                 <td style="background: lightgreen;">{{$evaluacion->confirmed}}</td>
+              @if($eval->confirmed == 'NO')
+                <td style="background: indianred;">{{$eval->confirmed}}</td>
               @endif
-              @if($evaluacion->confirmed != 'SI' && $evaluacion->confirmed != 'NO')
-                 <td>{{$evaluacion->confirmed}}</td>
+              @if($eval->confirmed == 'SI')
+                 <td style="background: lightgreen;">{{$eval->confirmed}}</td>
               @endif
-              @if($evaluacion->statusEmpresa == 'SIN REVISION' || $evaluacion->statusEmpresa == 'NO VERIFICADA')
-                 <td style="background: indianred;">{{$evaluacion->statusEmpresa}}</td>
+              @if($eval->confirmed == 'PENDIENTE')
+                 <td style="background: #2350E3;">{{$eval->confirmed}}</td>
               @endif
-              @if($evaluacion->statusEmpresa != 'SIN REVISION' && $evaluacion->statusEmpresa != 'NO VERIFICADA')
-                 <td>{{$evaluacion->statusEmpresa}}</td>
+              @if($eval->confirmed != 'SI' && $eval->confirmed != 'NO' && $eval->confirmed != 'PENDIENTE')
+                 <td>{{$eval->confirmed}}</td>
               @endif
-              @if($evaluacion->contenido == 'SIN REVISION')
-                 <td style="background: indianred;">{{$evaluacion->contenido}}</td>
+              @if($eval->flag_empresa == 'SIN REVISION')
+                 <td style="background: indianred;">{{$eval->flag_empresa}}</td>
               @endif
-              @if($evaluacion->contenido != 'SIN REVISION')
-                 <td>{{$evaluacion->contenido}}</td>
+              @if($eval->flag_empresa == 'NO VERIFICADA')
+                 <td style="background: indianred;">{{$eval->flag_empresa}}</td>
               @endif
-              @if($evaluacion->publicada == 'NO')
-                 <td style="background: indianred;">{{$evaluacion->publicada}}</td>
+              @if($eval->flag_empresa == 'SI')
+                 <td style="background: lightgreen;">{{$eval->flag_empresa}}</td>
               @endif
-              @if($evaluacion->publicada != 'NO')
-                 <td>{{$evaluacion->publicada}}</td>
+              @if($eval->flag_empresa == 'ESPERANDO')
+                 <td style="background: orange;">{{$eval->flag_empresa}}</td>
+              @endif
+              @if($eval->flag_empresa == 'POR VERIFICAR')
+                 <td style="background: yellow;">{{$eval->flag_empresa}}</td>
+              @endif
+              @if($eval->flag_empresa == 'PENDIENTE')
+                 <td style="background: #2350E3;">{{$eval->flag_empresa}}</td>
+              @endif
+              @if($eval->flag_empresa != 'SIN REVISION' && $eval->flag_empresa != 'NO VERIFICADA' && $eval->flag_empresa != 'SI' && $eval->flag_empresa != 'ESPERANDO' && $eval->flag_empresa != 'POR VERIFICAR' && $eval->flag_empresa != 'PENDIENTE')
+                 <td>{{$eval->flag_empresa}}</td>
+              @endif
+              @if($eval->contenido == 'SIN REVISION')
+                 <td style="background: indianred;">{{$eval->contenido}}</td>
+              @endif
+              @if($eval->contenido == 'RECHAZADO')
+                 <td style="background: indianred;">{{$eval->contenido}}</td>
+              @endif
+              @if($eval->contenido == 'POR VERIFICAR')
+                 <td style="background: yellow;">{{$eval->contenido}}</td>
+              @endif
+              @if($eval->contenido == 'ACEPTADO')
+                 <td style="background: lightgreen;">{{$eval->contenido}}</td>
+              @endif
+              @if($eval->contenido == 'EDITADO')
+                 <td style="background: lightgreen;">{{$eval->contenido}}</td>
+              @endif
+              @if($eval->contenido == 'ESPERANDO')
+                 <td style="background: orange;">{{$eval->contenido}}</td>
+              @endif
+              @if($eval->contenido != 'SIN REVISION' && $eval->contenido != 'ESPERANDO' && $eval->contenido != 'EDITADO' 
+              && $eval->contenido != 'ACEPTADO' && $eval->contenido != 'POR VERIFICAR' && $eval->contenido != 'RECHAZADO')
+                 <td>{{$eval->contenido}}</td>
+              @endif
+              @if($eval->publicada == 'NO')
+                 <td style="background: indianred;">{{$eval->publicada}}</td>
+              @endif
+              @if($eval->publicada == 'SI')
+                 <td style="background: lightgreen;">{{$eval->publicada}}</td>
+              @endif
+              @if($eval->publicada != 'NO' && $eval->publicada != 'SI')
+                 <td>{{$eval->publicada}}</td>
               @endif
             </tr>
+
           @endforeach
           </tbody>
     </table>
+    <div style="margin-left: 31%;">
+      {!! $evaluacion->render() !!}
+    </div>
 
 
 @endsection
