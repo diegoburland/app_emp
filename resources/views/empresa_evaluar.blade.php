@@ -1,4 +1,4 @@
-@extends('layouts.master_eval')
+@extends('layouts.master')
 
 @section('title', 'Evaluar Empresa - VidAndWork.com')
 
@@ -81,7 +81,7 @@
                 <div class="form-group row required ">
                     <div class="col-sm-6">
                         <label class="control-label" for="">Ciudad</label>
-                        <input type="text" class="form-control" id="ciudad_eval" name="ciudad_eval" placeholder="Ciudad" autocomplete="off" required>
+                        <input type="text" class="form-control" id="ciudad_eval" name="ciudad_eval" placeholder="Busca y selecciona la ciudad" autocomplete="off" required>
                         <input type="hidden" name="ciudad_eval_id" id="ciudad_eval_id" value="">  
                         <div id="validar_ciudad" class="invalid-feedback">
                             Por favor selecciona una ciudad del listado
@@ -195,96 +195,7 @@
             <div class="alert alert-secondary" role="alert">
 
                 <p><b>Recuerda:</b> Somos una plataforma neutral y justa. Por lo tanto, te pedimos ser respetuoso en tus comentarios, no mencionar personas específicas ni información sensible de la organización. 
-                    
-                    <!--
-                        • No mencionar personas específicas ni nombres.	
-                    <br>
-                        • Se prohíbe publicar información interna, secreta o sensible de la organización. 		
-                   <br>
-                        • Se prohíbe el uso de lenguaje discriminatorio, desacreditante, racista o vulgar. 		
-                    
-                        <br><br>
-                            En Vida and Work utilizamos un modo amigable de calificar. Sin embargo,--> Ten presente el siguiente valor en la calificación por estrellas:
-
-                <div class="row">
-
-                    <div class="col-sm-3 mt-2">
-                        Muy insatisfecho:
-                    </div>
-                    <div class="col-sm-5 ">
-                        <div class="d-inline-flex star-rating" >
-                            <span class="p-1 fa fa-star fa-2x" data-rating="1" ></span>
-                            <span class="p-1 fa fa-star-o fa-2x" data-rating="2" ></span>
-                            <span class="p-1 fa fa-star-o fa-2x" data-rating="3" ></span>
-                            <span class="p-1 fa fa-star-o fa-2x" data-rating="4" ></span>
-                            <span class="p-1 fa fa-star-o fa-2x" data-rating="5" ></span>				        
-                        </div>
-                    </div>
-                </div>
-
-                <!--div class="row">
-
-                    <div class="col-sm-3 h5 mt-2">
-                        Insatisfecho
-                    </div>
-                    <div class="col-sm-5 ">
-                        <div class="d-inline-flex star-rating" >
-                            <span class="p-1 fa fa-star fa-2x" data-rating="1" ></span>
-                            <span class="p-1 fa fa-star fa-2x" data-rating="2" ></span>
-                            <span class="p-1 fa fa-star-o fa-2x" data-rating="3" ></span>
-                            <span class="p-1 fa fa-star-o fa-2x" data-rating="4" ></span>
-                            <span class="p-1 fa fa-star-o fa-2x" data-rating="5" ></span>				        
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-sm-3 h5 mt-2">
-                        Neutral
-                    </div>
-                    <div class="col-sm-5 ">
-                        <div class="d-inline-flex star-rating" >
-                            <span class="p-1 fa fa-star fa-2x" data-rating="1" ></span>
-                            <span class="p-1 fa fa-star fa-2x" data-rating="2" ></span>
-                            <span class="p-1 fa fa-star fa-2x" data-rating="3" ></span>
-                            <span class="p-1 fa fa-star-o fa-2x" data-rating="4" ></span>
-                            <span class="p-1 fa fa-star-o fa-2x" data-rating="5" ></span>				        
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-sm-3 h5 mt-2">
-                        Satisfecho
-                    </div>
-                    <div class="col-sm-5 ">
-                        <div class="d-inline-flex star-rating" >
-                            <span class="p-1 fa fa-star fa-2x" data-rating="1" ></span>
-                            <span class="p-1 fa fa-star fa-2x" data-rating="2" ></span>
-                            <span class="p-1 fa fa-star fa-2x" data-rating="3" ></span>
-                            <span class="p-1 fa fa-star fa-2x" data-rating="4" ></span>
-                            <span class="p-1 fa fa-star-o fa-2x" data-rating="5" ></span>				        
-                        </div>
-                    </div>
-                </div-->
-
-                <div class="row">
-
-                    <div class="col-sm-3 mt-2">
-                        Muy satisfecho:
-                    </div>
-                    <div class="col-sm-5 ">
-                        <div class="d-inline-flex star-rating" >
-                            <span class="p-1 fa fa-star fa-2x" data-rating="1" ></span>
-                            <span class="p-1 fa fa-star fa-2x" data-rating="2" ></span>
-                            <span class="p-1 fa fa-star fa-2x" data-rating="3" ></span>
-                            <span class="p-1 fa fa-star fa-2x" data-rating="4" ></span>
-                            <span class="p-1 fa fa-star fa-2x" data-rating="5" ></span>				        
-                        </div>
-                    </div>
-                </div>
+                         
             </div>	
 
 
@@ -299,7 +210,7 @@
                 <div class="form-group row">
                     <div class="col-sm-8">
                         <label class="control-label" for="">Título de tu evaluación</label>
-                        <input type="text" class="form-control" id=""  name="titulo" placeholder="Ponle un título a tu experencia en la empresa/organización" >
+                        <input type="text" class="form-control" id=""  name="titulo" placeholder="Resume tu experiencia en la empresa" >
                     </div>
                 </div>
             </a>			
@@ -325,19 +236,32 @@
                         {{$item->nombre}}		
                     </div>
                     <div class="col-sm-4 ">
+                        @if ($item == $items[0])
+                        <div>   
+                            <i class="far fa-frown-open fa-2x" style="color: #ff3100;"></i>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            
+                            <i class="far fa-grin-alt fa-2x" aria-hidden="true" style="color: green"></i>
+                        </div>
+                        @endif
+                        
                         <div class="d-inline-flex star-rating star-rating-{{$item->id}}" 
                              onclick="text_show({{$item -> id}})">
-                            <span class="p-1 fa fa-star-o fa-2x" data-rating="1" 
+                            <!--i class="far fa-star"></i-->
+                            <span class="p-1 far fa-star fa-2x" data-rating="1" 
                                   onclick="evaluar(this, {{$item -> id}})"></span>
-                            <span class="p-1 fa fa-star-o fa-2x" data-rating="2" 
+                            <span class="p-1 far fa-star fa-2x" data-rating="2" 
                                   onclick="evaluar(this, {{$item -> id}})"></span>
-                            <span class="p-1 fa fa-star-o fa-2x" data-rating="3" 
+                            <span class="p-1 far fa-star fa-2x" data-rating="3" 
                                   onclick="evaluar(this, {{$item -> id}})"></span>
-                            <span class="p-1 fa fa-star-o fa-2x" data-rating="4" 
+                            <span class="p-1 far fa-star fa-2x" data-rating="4" 
                                   onclick="evaluar(this, {{$item -> id}})"></span>
-                            <span class="p-1 fa fa-star-o fa-2x" data-rating="5" 
+                            <span class="p-1 far fa-star fa-2x" data-rating="5" 
                                   onclick="evaluar(this, {{$item -> id}})"></span>								        
-                        </div>
+                        </div>                        
+                        
                     </div>
                     <div class="col-sm-4 mb-2 text_hide " id="desc_{{$item->id}}">
                         <small id="emailHelp" class="form-text text-muted font-italic">{{$item->descripcion}}</small>
@@ -447,7 +371,7 @@
             <a  id="pre_porque" class="list-group-item list-group-item-action">
                 <div class="form-group row">
                     <div class="col-sm-8">
-                        <label for="">¿Que lo motivó a no aceptar la oferta?</label>
+                        <label for="">¿Qué lo motivó a no aceptar la oferta?</label>
                         <textarea class="form-control" name="porque"></textarea>
                     </div>
                 </div>
@@ -521,7 +445,7 @@
                         <label class="control-label" for="">Correo electrónico</label>		
                         <input type="email" class="form-control" id="" name="email" placeholder="Correo electrónico" required>	
                         <small id="emailHelp" class="form-text text-muted">
-                            Necesitamos tu correo para verificar la autenticidad de tu evaluación. Recibirás un correo de nosotros donde confirmes la creación de tu evaluación. Nunca se publicará tu correo.
+                            Necesitamos tu correo para verificar la autenticidad de tu evaluación. Te enviamos un correo para confirmar tu evaluación. Nunca se publicará tu correo.
                         </small>
 
                         <div class="invalid-feedback">
@@ -569,7 +493,7 @@
                         <div class="form-group required row">
                             <div class="col-sm-12">
                                 <label class="control-label" for="">Nombre de la Empresa (Razón Social)</label>
-                                <input type="text" class="form-control" id="razon_social" name="razon_social" placeholder="Nombre de la empresa (Razón Social)" required>
+                                <input type="text" class="form-control" id="razon_social" name="razon_social" style="text-transform:uppercase" placeholder="Nombre de la empresa (Razón Social)" required>
                                 <input type="hidden" name="razon_social_id" id="razon_social_id" value="">
 
                                 <div class="invalid-feedback">

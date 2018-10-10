@@ -20,8 +20,6 @@
     z-index: 1101;
 }
 
-.star-rating .fa-star{color: yellow;}
-
 .evalua {
 	width: 200px;
 }
@@ -61,7 +59,7 @@
     top:3px;
 }
 
-.star-rating .fa-star {
+.star-rating .fas {
     color: f6a42f !important;
 }
 
