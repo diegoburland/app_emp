@@ -130,9 +130,8 @@ function editar(opc){
           icon: "success",
         });
       }
-       window.location.href = "/evaluacion_list";
+     //  window.location.href = "/evaluacion_list";
     });
-   
   }
   else{
     swal({
@@ -154,8 +153,9 @@ function editar(opc){
             alert("Edito");
         }
     })
-    window.location.href = "/evaluacion_list";
+ //   window.location.href = "/evaluacion_list";
   }
+  setTimeout(function(){window.close()},4000); // 3000ms = 3s
 } 
 
 function actualiza(status){
@@ -168,26 +168,6 @@ function cambioComentario(id){
 }
 
 
-
-function evaluar(self, item){
-
-    
-	//console.log($(self).siblings('input.rating-value').val())
-	///$(self).siblings('input.rating-value').val($(self).data('rating'));
-	//console.log($(self).siblings('input.rating-value').val())}
-    $('#puntaje_'+item).val($(self).data('rating'));
-
-    $("#mensaje_"+item).css('display', 'none');
-
-	var $star_rating = $('.star-rating-' + item + ' .fa');
-	$star_rating.each(function() {
-		if (parseInt($('#puntaje_'+item).val()) >= parseInt($(this).data('rating'))) {
-	      return $(this).removeClass('fa-star-o').addClass('fa-star');
-	    } else {
-	      return $(this).removeClass('fa-star').addClass('fa-star-o');
-	    }
-    });
-}
 
 function text_show(item) {
     $('.text_hide').hide();
@@ -219,7 +199,6 @@ function evaluo_mi(self){
 
     $('#evalua').val($(self).text());
 
-    console.log($(self).attr('id'));
     if ($(self).attr('id') == "btn_actual" || $(self).attr('id') == "btn_pasado") {
 
         if (!$("#btn_empleado").is(":visible")) {
@@ -237,7 +216,8 @@ function evaluo_mi(self){
 
     }else{
 
-        
+      console.log(self);
+      console.log("Hizo click en practicante");
 
         if (!$("#btn_practicante").is(":visible")) {
 
@@ -271,11 +251,6 @@ function elegir_pos(self){
     //validar_botones();
 }
 
-function save_empresa(){
-
-    $('#modal_empresa').submit();
-    
-}
 
 
 function elegir_ofre(self){
@@ -360,28 +335,7 @@ function validar_botones(){
     return validar;
 }
 
-function validar_modal(){
-
-    var validar = true;
-
-    if($('#ciudad_id').val() == ""){
-
-        $('#validar_ciudad').css('display', 'block');
-        $('#ciudad').removeClass('form-control:valid').addClass('form-control:invalid');
-        validar = false;
-    }else{
-
-        $('#validar_ciudad').css('display', 'none');
-    }
-    return validar;
-}
-
 $(function() {
-
-    $("#pre_oferta").hide();
-
-  $(".dim_practicante").hide();
-  $(".bne_practica").hide();
   
      
 	var forms = document.getElementsByClassName('needs-validation');

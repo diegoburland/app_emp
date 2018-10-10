@@ -58,7 +58,7 @@ Cantidad de empresas: {{$totalEmpresas}}
       <td valign=top><font face="verdana, arial, helvetica" size=1>*</font></td> 
       <td><font face="verdana, arial, helvetica" size=2> 
 
-Total evaluacion: {{$totalEvaluaciones}}
+Total evaluaciones: {{$totalEvaluaciones}}
 
       </font></td> 
    </tr>  
@@ -87,22 +87,22 @@ Total evaluacion: {{$totalEvaluaciones}}
       Institución:
      <div class="institucion"> </div>
      <p></p>
-     Status eval:
+     Estado evaluacion:
      <div class="statusevaluacion"> </div>
      <p></p>
-     Status correo:
+     Correo verificado:
      <div class="statuscorreo"> </div>
    </div>
   <div id="derecho">
-      Status empresa:
+      Estado empresa:
      <div class="statusempresa"> </div>
      <p></p>
-     Status contenido:
+     Contenido:
      <div class="statuscontenido"> </div>
      <p></p>
-     Status publicacion:
+     Publicada:
      <div class="statuspublicacion"> </div>
-   </div>
+  </div>
 
 
 <table id="listEvaluacion" class="display" style="width:100%">
@@ -114,13 +114,13 @@ Total evaluacion: {{$totalEvaluaciones}}
             <th>Correo</th>
             <th width="150">Fecha</th>
             <th scope="col">IP</th>
-            <th width="150">Tipo de trabajo</th>
+            <th width="150">Evaluó su</th>
             <th scope="col">Institucion Educativa</th>
-            <th scope="col">Status de evaluación</th>
-            <th scope="col">Status Correo</th>
-            <th scope="col">Status Empresa</th>
-            <th scope="col">Status Contenido</th>
-            <th scope="col">Status Publicación</th>
+            <th scope="col">Estado evaluación</th>
+            <th scope="col">Correo verificado</th>
+            <th scope="col">Estado empresa</th>
+            <th scope="col">Contenido</th>
+            <th scope="col">Publicada</th>
           </tr>
         </thead>
         <tbody>
@@ -160,26 +160,26 @@ Total evaluacion: {{$totalEvaluaciones}}
               @if($eval->confirmed != 'SI' && $eval->confirmed != 'NO' && $eval->confirmed != 'PENDIENTE')
                  <td>{{$eval->confirmed}}</td>
               @endif
-              @if($eval->flag_empresa == 'SIN REVISION')
-                 <td style="background: indianred;">{{$eval->flag_empresa}}</td>
+              @if($eval->statusEmpresa == 'SIN REVISION')
+                 <td style="background: indianred;">{{$eval->statusEmpresa}}</td>
               @endif
-              @if($eval->flag_empresa == 'NO VERIFICADA')
-                 <td style="background: indianred;">{{$eval->flag_empresa}}</td>
+              @if($eval->statusEmpresa == 'NO VERIFICADA')
+                 <td style="background: indianred;">{{$eval->statusEmpresa}}</td>
               @endif
-              @if($eval->flag_empresa == 'SI')
-                 <td style="background: lightgreen;">{{$eval->flag_empresa}}</td>
+              @if($eval->statusEmpresa == 'SI')
+                 <td style="background: lightgreen;">{{$eval->statusEmpresa}}</td>
               @endif
-              @if($eval->flag_empresa == 'ESPERANDO')
-                 <td style="background: orange;">{{$eval->flag_empresa}}</td>
+              @if($eval->statusEmpresa == 'ESPERANDO')
+                 <td style="background: orange;">{{$eval->statusEmpresa}}</td>
               @endif
-              @if($eval->flag_empresa == 'POR VERIFICAR')
-                 <td style="background: yellow;">{{$eval->flag_empresa}}</td>
+              @if($eval->statusEmpresa == 'POR VERIFICAR')
+                 <td style="background: yellow;">{{$eval->statusEmpresa}}</td>
               @endif
-              @if($eval->flag_empresa == 'PENDIENTE')
-                 <td style="background: #2350E3;">{{$eval->flag_empresa}}</td>
+              @if($eval->statusEmpresa == 'PENDIENTE')
+                 <td style="background: #2350E3;">{{$eval->statusEmpresa}}</td>
               @endif
-              @if($eval->flag_empresa != 'SIN REVISION' && $eval->flag_empresa != 'NO VERIFICADA' && $eval->flag_empresa != 'SI' && $eval->flag_empresa != 'ESPERANDO' && $eval->flag_empresa != 'POR VERIFICAR' && $eval->flag_empresa != 'PENDIENTE')
-                 <td>{{$eval->flag_empresa}}</td>
+              @if($eval->statusEmpresa != 'SIN REVISION' && $eval->statusEmpresa != 'NO VERIFICADA' && $eval->statusEmpresa != 'SI' && $eval->statusEmpresa != 'ESPERANDO' && $eval->statusEmpresa != 'POR VERIFICAR' && $eval->statusEmpresa != 'PENDIENTE')
+                 <td>{{$eval->statusEmpresa}}</td>
               @endif
               @if($eval->contenido == 'SIN REVISION')
                  <td style="background: indianred;">{{$eval->contenido}}</td>
@@ -217,7 +217,7 @@ Total evaluacion: {{$totalEvaluaciones}}
           @endforeach
           </tbody>
     </table>
-    <div style="margin-left: 31%;">
+    <div style="margin-left: 25%; margin-top: 1%;">
       {!! $evaluacion->render() !!}
     </div>
 
