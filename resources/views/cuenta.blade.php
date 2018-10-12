@@ -1,15 +1,6 @@
-@extends('layouts.master')
+<meta http-equiv="refresh" content="0; url=https://vidaandwork.com/retroalimentacion" />
 
-@section('title', 'VidAndWork.com')
-
-@section('head')
-  <script type="text/javascript" src="/js/empresa/home.js"></script>
-@endsection
-
-@section('content')
-
-
-<div class="row justify-content-center mt-5">
+<!--div class="row justify-content-center mt-5">
 	<div class="col-12">
 	  <div class="alert alert-success" role="alert">
 		  <h4 class="alert-heading">¡Tu evaluación ha sido guardada con éxito!</h4>
@@ -34,8 +25,4 @@
         <a href="https://vidaandwork.com/sobre-nosotros/" class="btn btn-warning m-1"><b>Conoce más sobre nosotros</b></a>
         <a href="https://vidaandwork.com/preguntas-frecuentes/" class="btn btn-warning m-1"><b>Preguntas Frequentes</b></a>            
     </center>
-</div>
-
-
-
-@endsection
+</div-->

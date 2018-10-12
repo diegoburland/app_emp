@@ -1,23 +1,51 @@
+@extends('layouts.master_eval')
+
+@section('title', 'Evaluar Empresa - VidAndWork.com')
 
 
-<meta http-equiv="refresh" content="0; url=https://vidaandwork.com/preguntas-adicionales" />
+@section('content')
 
-<!--div class="row justify-content-center mt-5">
-	<div class="col-10">
-	  <div class="alert alert-warning" role="alert">
-		  <h4 class="alert-heading">¡Tú evaluación se ha guardado con éxito!</h4>
-		 	<p>¡Muchas gracias por tu evaluación anónima sobre {{ $empresa }}!</p>
 
-			<p>Estás a solo unos pasos de publicar tu evaluación:<br>
-			Recibirás un enlace de nosotros para verificar tu correo electrónico a {{ $email }}.
-			Por favor, también revisa tu carpeta de spam.</p>
+@section('head')
+<script type="text/javascript" src="/js/jquery.numeric-min.js?v={{ time() }}"></script>
+<script type="text/javascript" src="/js/empresa/evaluacion.js?v={{ time() }}"></script>
+<script type="text/javascript">
+function ir_a_vw() {
 
-			<p>¿No recibiste un correo electrónico de nosotros? - <a>¡haga clic aquí!</a></p>
-		  <hr>
-		  <p class="mb-0">  	
-			Muchas Gracias, Tu equipo de Ocupasión
-		  </p>
-		</div>
-	</div>
-</div-->
+    window.location.href = "http://vidaandwork.com/";
 
+}
+    
+$(function () {
+
+    $('#myModal').modal();
+
+    
+
+});
+
+</script>
+
+@endsection
+
+<div class="modal" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Información importante</h5>
+                <!--button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="ir_a_vw()">
+                    <span aria-hidden="true">&times;</span>
+                </button-->
+            </div>
+            <div class="modal-body">
+                <p>Te enviamos un correo con un enlace de verificación. 
+                    Por favor, ingresa a tu cuenta de correo y dale click. </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="ir_a_vw()">¡Listo!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection

@@ -5,15 +5,23 @@ function evaluar(self, item) {
     ///$(self).siblings('input.rating-value').val($(self).data('rating'));
     //console.log($(self).siblings('input.rating-value').val())}
     $('#puntaje_' + item).val($(self).data('rating'));
-
+    
     $("#mensaje_" + item).css('display', 'none');
 
-    var $star_rating = $('.star-rating-' + item + ' .fa');
+    var $star_rating;
+    
+    console.log($(self).attr("class"));
+    if($(self).hasClass("far")){
+        $star_rating = $('.star-rating-' + item + ' .far');
+    }else{
+        $star_rating = $('.star-rating-' + item + ' .fas');
+    }
+    
     $star_rating.each(function () {
         if (parseInt($('#puntaje_' + item).val()) >= parseInt($(this).data('rating'))) {
-            return $(this).removeClass('fa-star-o').addClass('fa-star');
+            return $(this).removeClass('far').addClass('fas');
         } else {
-            return $(this).removeClass('fa-star').addClass('fa-star-o');
+            return $(this).removeClass('fas').addClass('far');
         }
     });
 }

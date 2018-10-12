@@ -29,9 +29,9 @@ class OcupasionEmail extends Mailable
     {
         //return $this->view('view.name');
 
-        $address = 'ocupasion2018@gmail.com';
+        $address = 'noreply.vidaandwork@gmail.com';
         $subject = $this->data['subject'];
-        $name = 'VidaAndWork.com';
+        $name = 'Vida and Work';
 
         return $this->view($this->data['template'])
                     ->from($address, $name)
