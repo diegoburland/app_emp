@@ -81,6 +81,8 @@ class Evaluacion_controller extends Controller
         if($request->cambio == "true"){
 
           $eval = Evaluacion::find($request->id);
+          $eval->contenido = 'COPIADA';
+          $eval->save();
           $evaluacion = new Evaluacion();
           $evaluacion->empresa_id = $request->empresa_id;
           $evaluacion->ciudad_eval_id = $eval->ciudad_eval_id;
@@ -139,8 +141,6 @@ class Evaluacion_controller extends Controller
 
     public function list(){
 
-
-
       /////////////////////////////////// CALCULO DE ESTADISTICAS //////////////////////////////////////
       $empresa = new Empresa();
       $empresaArr = Empresa::all()->toArray();
@@ -167,8 +167,11 @@ class Evaluacion_controller extends Controller
 
       ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-        $evaluacionArr = Evaluacion::paginate(50);
-        $evaluacion = Evaluacion::paginate(50);
+        $evaluacionArr = Evaluacion::where('contenido','<>', 'COPIADA')->paginate(50);
+        $evaluacion = Evaluacion::where('contenido','<>', 'COPIADA')->paginate(50);
+    //     $evaluacionArr = $evaluacionArr::where('contenido', 'COPIADA')->get();
+       //  var_dump($evaluacionArr);
+     //    exit();
 
         for ($i=0; $i < count($evaluacionArr); $i++) { 
             $empresa = $empresa->find($evaluacionArr[$i]['empresa_id']);
