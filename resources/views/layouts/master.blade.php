@@ -32,6 +32,18 @@
             smartlook('init', 'f2519ee6854e705a7666bcb2d045b22e207ed679');
         </script>
         
+        <!-- Hotjar Tracking Code for https://co.vidaandwork.com/empresa_evaluar -->
+        <script>
+            (function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:1051041,hjsv:6};
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                a.appendChild(r);
+            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+        </script>
+        
         <!-- Facebook Pixel Code -->
         <script>
           !function(f,b,e,v,n,t,s)
