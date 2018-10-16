@@ -28,8 +28,8 @@ class OcupasionEmail extends Mailable
     public function build()
     {
         //return $this->view('view.name');
-
-        $address = 'noreply.vidaandwork@gmail.com';
+        $address = 'no-reply@vidaandwork.com';
+        //$address = 'noreply.vidaandwork@gmail.com';
         $subject = $this->data['subject'];
         $name = 'Vida and Work';
 
