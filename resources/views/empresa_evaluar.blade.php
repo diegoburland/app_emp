@@ -1,6 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.master_eval')
 
-@section('title', 'Evaluar Empresa - VidAndWork.com')
+@section('title', 'Evaluar Empresa - Vida and Work')
 
 
 @section('content')
@@ -288,15 +288,15 @@
             <a  class="list-group-item list-group-item-action text-light bg-dark">
                 <h5>Beneficios</h5>    	
             </a>
-            <a  class="list-group-item list-group-item-action bne_empleo">
+            <a  class="list-group-item list-group-item-action bne_empleo bonus_extra">
                 <div class="alert alert-secondary" role="alert">
                     <p id="label_bene">Selecciona los beneficios que te ofrece tu empleador</p>			
                 </div>
 
-                <div class="col-sm-12">
+                <div class="col-sm-12 col_auto">
                     @foreach ($benes as $bene)
                     @if($bene->tipo == 1)
-                    <button type="button" class="btn btn-sm btn-outline-secondary m-1 bunus" onclick="beneficio(this, {{$bene -> id}})">{{$bene->nombre}}</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary mb-1 bunus" onclick="beneficio(this, {{$bene -> id}})">{{$bene->nombre}}</button>
                     <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
                     @endif
                     @endforeach          
@@ -444,20 +444,15 @@
                     <div class="col-sm-8">
                         <label class="control-label" for="">Correo electrónico</label>		
                         <input type="email" class="form-control" id="" name="email" placeholder="Correo electrónico" required>	
-                        <small id="emailHelp" class="form-text text-muted">
-                            Necesitamos tu correo para verificar la autenticidad de tu evaluación. Te enviamos un correo para confirmar tu evaluación. Nunca se publicará tu correo.
+                        <small id="emailHelp" class="form-text text-muted text-justify">
+                            Necesitamos tu correo para verificar la autenticidad de tu evaluación. Te enviamos un correo para confirmar tu evaluación. Nunca se publicará tu correo. 
+                            Al dar click en el botón Finalizar aceptas nuestros <a href="http://vidaandwork.com/terminos-y-condiciones/" target="_blank">Términos y Condiciones.</a>
                         </small>
 
                         <div class="invalid-feedback">
                             Por favor ingresa tu correo
                         </div>
-
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" name="terminos" id="terminos" required>
-                            <label class="custom-control-label" for="terminos"><a href="http://vidaandwork.com/terminos-y-condiciones/" target="_blank">Acepto Términos y Condiciones</a></label>
-                            <!--a  class="custom-control-label" target="_blank" for="terminos">Acepto Terminos y Condiciones</a-->
-
-                        </div>		    	  	
+	    	  	
                     </div>
                 </div>
             </div>	
@@ -493,7 +488,7 @@
                         <div class="form-group required row">
                             <div class="col-sm-12">
                                 <label class="control-label" for="">Nombre de la Empresa (Razón Social)</label>
-                                <input type="text" class="form-control" id="razon_social" name="razon_social" style="text-transform:uppercase" placeholder="Nombre de la empresa (Razón Social)" required>
+                                <input type="text" class="form-control text-uppercase" id="razon_social" name="razon_social" placeholder="Nombre de la empresa (Razón Social)" required>
                                 <input type="hidden" name="razon_social_id" id="razon_social_id" value="">
 
                                 <div class="invalid-feedback">
@@ -517,7 +512,7 @@
                         <div class="form-group required row">
                             <div class="col-sm-12">
                                 <label class="control-label" for="">Ciudad</label>
-                                <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" autocomplete="off" required>
+                                <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Busca y selecciona la ciudad" autocomplete="off" required>
                                 <input type="hidden" name="ciudad_id" id="ciudad_id" value="">  
                                 <div id="validar_ciudad" class="invalid-feedback">
                                     Por favor selecciona una ciudad del listado

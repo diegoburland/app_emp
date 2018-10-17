@@ -126,9 +126,24 @@ html {
       padding-right: 3rem!important;
 }
 @media only screen and (max-width: 600px) {
-    .video{
+    /*.video{
           padding-left: 0rem!important;
           padding-right: 0rem!important;
+    }*/
+    .col_auto{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    
+    .bunus{
+        
+        width: 148px !important;
+        min-height: 80px;
+    }
+    
+    .bonus_extra{
+        padding-left: 2px !important;
+        padding-right: 2px !important;
     }
 }
 
