@@ -1,6 +1,7 @@
 $(document).ready(function() {
+
     $('#listEvaluacion').DataTable({
-        "searching": true,
+        "searching": false,
         "paging": false,
         "info": false,
        "lengthMenu": [[50,70,80,100], [50,70,80,100]],
@@ -15,7 +16,7 @@ $(document).ready(function() {
         },
         "columnDefs": [
         {"className": "dt-center", "targets": "_all"}
-        ],
+        ]/*,
           initComplete: function () {
             this.api().columns().every( function () {
                 var column = this;
@@ -35,7 +36,7 @@ $(document).ready(function() {
                     select.append( '<option value="'+d+'">'+d+'</option>' )
                 } );
             } );
-        }
+        } */
         
     });
 
@@ -46,13 +47,13 @@ $(document).ready(function() {
         window.location.href = "/empresa_editar/"+data[0];
    } );
 
-    var filter1 = createInput(table, [2]);
-    var filter2 = createInput(table, [3]);
-    var filter3 = createInput(table, [6]);
-    var filter4 = createInput(table, [7]);
+    var filter1 = createInput(table, [2], "empresa");
+    var filter2 = createInput(table, [3], "correo");
+    var filter3 = createInput(table, [6], "trabajo");
+    var filter4 = createInput(table, [7], "institucion");
     var filter5 = createDropdowns(table, [8], "evaluacion");
-    var filter6 = createDropdowns(table, [9], "correo");
-    var filter7 = createDropdowns(table, [10], "empresa");
+    var filter6 = createDropdowns(table, [9], "statusCorreo");
+    var filter7 = createDropdowns(table, [10], "statusEmpresa");
     var filter8 = createDropdowns(table, [11], "contenido");
     var filter9 = createDropdowns(table, [12], "publicacion");
 
@@ -66,73 +67,115 @@ $(document).ready(function() {
     filter8.appendTo(".statuscontenido");
     filter9.appendTo(".statuspublicacion");  
 });
+    var empresa;
+    var correo;
+    var trabajo;
+    var institucion;
+    var publicada;
+    var contenido;
+    var statusEmpresa;
+    var statusCorreo;
+    var evaluacion;
 
-function createInput(table, columns) {
-  var input = $('<input class="form-control" type="text"/ style="width: 120%;">').on("keyup", function() {
+
+function ShowSelected() {
+    publicada = document.getElementById('public').value;
+    contenido = document.getElementById('contenido').value;
+    statusEmpresa = document.getElementById('statusEmpresa').value;
+    statusCorreo = document.getElementById('statusCorreo').value;
+    evaluacion = document.getElementById('evaluac').value;
+    empresa = document.getElementById('empresa').value;
+    correo = document.getElementById('correo').value;
+    trabajo = document.getElementById('trabajo').value;
+    institucion = document.getElementById('institucion').value;
+    filterEval(publicada, contenido, statusEmpresa, statusCorreo, evaluacion, empresa, correo, trabajo, institucion)
+};
+
+function createInput(table, columns, id) {
+  var input = $('<input class="form-control" id="'+id+'" type="text"/ style="width: 120%;">').on("keypress", function() {
     table.draw();
-  });
+    empresa = document.getElementById('empresa').value;
+    correo = document.getElementById('correo').value;
+    trabajo = document.getElementById('trabajo').value;
+    institucion = document.getElementById('institucion').value;
+    publicada = document.getElementById('public').value;
+    contenido = document.getElementById('contenido').value;
+    statusEmpresa = document.getElementById('statusEmpresa').value;
+    statusCorreo = document.getElementById('statusCorreo').value;
+    evaluacion = document.getElementById('evaluac').value;
 
-
-  $.fn.dataTable.ext.search.push(function(
-    settings,
-    searchData,
-    index,
-    rowData,
-    counter
-  ) {
-    var val = input.val().toLowerCase();
-
-    for (var i = 0, ien = columns.length; i < ien; i++) {
-      if (searchData[columns[i]].toLowerCase().indexOf(val) !== -1) {
-        return true;
-      }
-    }
-
-    return false;
+    filterEval(publicada, contenido, statusEmpresa, statusCorreo, evaluacion, empresa, correo, trabajo, institucion)
   });
 
   return input;
 }
 
+function filterEval(publicada, contenido, statusEmpresa, statusCorreo, evaluacion, empresa, correo, trabajo, institucion){
+   
+    var CSRF_TOKEN = $('meta[id="csrf-token"]').attr('content');
+    $.ajax({
+        url: 'filter_evaluacion',
+        type: 'POST',
+        data: {_method: 'POST', _token: CSRF_TOKEN, publicada:publicada, contenido:contenido, statusEmpresa: statusEmpresa, 
+                statusCorreo: statusCorreo, evaluacion: evaluacion, empresa: empresa, correo: correo, trabajo: trabajo, 
+                institucion: institucion},
+        dataType: 'JSON',
+    })
+    .done(function(response)
+    {console.log(response[0]);
+        var prueba = response[0];
+
+        $('#prueba listEvaluacion tbody').html(prueba);
+
+
+        
+   //     response.evaluacion = response[0].data;
+     //    $('#listEvaluacion tbody').html(response);
+      //  $('#listEvaluacion').html(response[0]);
+
+        
+    //    console.log(evaluacion);
+     //   var result= $.parseJSON(response);
+       // console.log(result);
+
+     /*   table_students.rows().remove();
+        for (var i = result.length - 1; i >= 0; i--) 
+        {
+            var rowNode = table_students
+            .row.add([
+                                result[i].id_group,
+                                result[i].stu_nombre,
+                                result[i].stu_apellido,
+                                result[i].stu_identificacion,
+                                result[i].stu_calificacion,
+                                '<center><button type="button" name="viewdata" id="viewdata" class="btn btn-warning"><span class="glyphicon glyphicon-file"></span></center></button>',
+                            ])                     
+                        .draw()
+                    .node();
+                }*/
+            })
+            .fail(function() {
+                console.log("error");
+            });
+}
+
+
+
+
 function createDropdowns(table, columns, type) {
     var select
     if(type == "publicacion")
-        select = $('<select class="form-control" id="public"><option value="">Seleccione una opcion</option><option value="SI">SI</option><option value="NO">NO</option></select>')
+        select = $('<select class="form-control" id="public" onchange="ShowSelected();"><option value="">Seleccione una opcion</option><option value="SI">SI</option><option value="NO">NO</option></select>')
     else if(type == "contenido")
-        select = $('<select class="form-control" id="contenido"><option value="">Seleccione una opcion</option><option value="RECHAZADO">RECHAZADO</option><option value="ESPERANDO">ESPERANDO</option><option value="POR VERIFICAR">POR VERIFICAR</option><option value="SIN REVISION">SIN REVISION</option><option value="ACEPTADO">ACEPTADO</option></select>')
-    else if(type == "empresa")
-        select = $('<select class="form-control" id="empresa"><option value="">Seleccione una opcion</option><option value="SI">SI</option><option value="ESPERANDO">ESPERANDO</option><option value="POR VERIFICAR">POR VERIFICAR</option><option value="PENDIENTE">PENDIENTE</option><option value="SIN REVISION">SIN REVISION</option><option value="NO VERIFICADA">NO VERIFICADA</option></select>')
-    else if(type == "correo")
-        select = $('<select class="form-control" id="correo"><option value="">Seleccione una opcion</option><option value="SI">SI</option><option value="NO">NO</option><option value="PENDIENTE">PENDIENTE</option></select>')
+        select = $('<select class="form-control" id="contenido" onchange="ShowSelected();"><option value="">Seleccione una opcion</option><option value="RECHAZADO">RECHAZADO</option><option value="ESPERANDO">ESPERANDO</option><option value="POR VERIFICAR">POR VERIFICAR</option><option value="SIN REVISION">SIN REVISION</option><option value="ACEPTADO">ACEPTADO</option></select>')
+    else if(type == "statusEmpresa")
+        select = $('<select class="form-control" id="statusEmpresa" onchange="ShowSelected();"><option value="">Seleccione una opcion</option><option value="SI">SI</option><option value="ESPERANDO">ESPERANDO</option><option value="POR VERIFICAR">POR VERIFICAR</option><option value="PENDIENTE">PENDIENTE</option><option value="SIN REVISION">SIN REVISION</option><option value="NO VERIFICADA">NO VERIFICADA</option></select>')
+    else if(type == "statusCorreo")
+        select = $('<select class="form-control" id="statusCorreo" onchange="ShowSelected();"><option value="">Seleccione una opcion</option><option value="SI">SI</option><option value="NO">NO</option><option value="PENDIENTE">PENDIENTE</option></select>')
     else if(type == "evaluacion")
-        select = $('<select class="form-control" id="evaluac"><option value="">Seleccione una opcion</option><option value="NORMAL">NORMAL</option><option value="POR CONTROLAR">POR CONTROLAR</option><option value="INVALIDA">INVALIDA</option></select>')
-
-        select.on( 'change', function () {
-            var val = select[0].value;
-            table.draw();   
-        });
-
-
-    $.fn.dataTable.ext.search.push(function(
-    settings,
-    searchData,
-    index,
-    rowData,
-    counter
-  ) {
-   var val = select[0].value;
-
-    for (var i = 0, ien = columns.length; i < ien; i++) {
-      if (searchData[columns[i]].indexOf(val) !== -1) {
-        return true;
-      }
-    }
-
-    return false;
-  });
+        select = $('<select class="form-control" id="evaluac" onchange="ShowSelected();"><option value="">Seleccione una opcion</option><option value="NORMAL">NORMAL</option><option value="POR CONTROLAR">POR CONTROLAR</option><option value="INVALIDA">INVALIDA</option></select>')
 
     return select;
- 
          
   }
 

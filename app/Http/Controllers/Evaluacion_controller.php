@@ -169,9 +169,6 @@ class Evaluacion_controller extends Controller
 
         $evaluacionArr = Evaluacion::where('contenido','<>', 'COPIADA')->paginate(50);
         $evaluacion = Evaluacion::where('contenido','<>', 'COPIADA')->paginate(50);
-    //     $evaluacionArr = $evaluacionArr::where('contenido', 'COPIADA')->get();
-       //  var_dump($evaluacionArr);
-     //    exit();
 
         for ($i=0; $i < count($evaluacionArr); $i++) { 
             $empresa = $empresa->find($evaluacionArr[$i]['empresa_id']);
@@ -179,11 +176,50 @@ class Evaluacion_controller extends Controller
             $evaluacion[$i]['statusEmpresa'] = $empresa->verificada;
         }
 
-     
-       
-
         return view('evaluacion_list', compact('evaluacion', 'totalPublicadas', 'contenidoCont', 'totalEmpPorVerif', 'totalEvaluaciones', 'totalEmpresas'));
     }  
+
+
+   public function filter_evaluacion(Request $request){
+      
+      /////////////////////////////////// CALCULO DE ESTADISTICAS //////////////////////////////////////
+      $empresa = new Empresa();
+      $empresaArr = Empresa::all()->toArray();
+      $totalEmpresas = count($empresaArr);
+      $totalPublicadas = 0;
+      $totalEmpPorVerif = 0;
+      $contenidoCont = 0;
+
+      for ($i=0; $i < count($empresaArr); $i++) { 
+        if($empresaArr[$i]['verificada'] == 'POR VERIFICAR' )
+          $totalEmpPorVerif ++;
+      }
+
+      $evaluaciones = Evaluacion::all();
+      $totalEvaluaciones = count($evaluaciones);
+      for ($i=0; $i < $totalEvaluaciones; $i++) { 
+            if($evaluaciones[$i]['publicada'] == 'SI'){
+              $totalPublicadas ++;
+            }  
+            if($evaluaciones[$i]['contenido'] == 'POR VERIFICAR'){
+              $contenidoCont ++;
+            }  
+        }
+
+      ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+        $evaluacionArr = Evaluacion::where('contenido','<>', 'COPIADA')->paginate(50);
+        $evaluacion = Evaluacion::where('contenido','<>', 'COPIADA')->paginate(50);
+
+        for ($i=0; $i < count($evaluacionArr); $i++) { 
+            $empresa = $empresa->find($evaluacionArr[$i]['empresa_id']);
+            $evaluacion[$i]['empresa'] = "colombo CA";
+            $evaluacion[$i]['statusEmpresa'] = $empresa->verificada;
+        }
+
+        return \Response::json(array($evaluacion));
+       //    return view::make("evaluacion_list", ["evaluacion" => $evaluacion]);
+    }
 
     public function continuar_evaluacion(){
 

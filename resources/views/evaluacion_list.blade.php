@@ -10,9 +10,9 @@
   <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
 
 @endsection
-
-
 @section('content')
+<meta id="csrf-token" content="{{ csrf_token() }}" />
+
 <p>
 <table width="100%" cellspacing="1" cellpadding="3" border="0" bgcolor="#80A93E"> 
 <tr> 
@@ -68,8 +68,6 @@ Total evaluaciones: {{$totalEvaluaciones}}
 </tr> 
 </table>
 
-
-
   <h1> Listado de evaluacion </h1>
   <hr>
   <h5> Filtros de búsqueda </h5>
@@ -103,9 +101,9 @@ Total evaluaciones: {{$totalEvaluaciones}}
      Publicada:
      <div class="statuspublicacion"> </div>
   </div>
+<div id="prueba">
 
-
-<table id="listEvaluacion" class="display" style="width:100%">
+  <table id="listEvaluacion" class="display" style="width:100%">
        <thead>
           <tr>
             <th width="10">Id</th>
@@ -217,6 +215,7 @@ Total evaluaciones: {{$totalEvaluaciones}}
           @endforeach
           </tbody>
     </table>
+</div>
     <div style="margin-left: 25%; margin-top: 1%;">
       {!! $evaluacion->render() !!}
     </div>

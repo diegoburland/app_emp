@@ -216,9 +216,6 @@ function evaluo_mi(self){
 
     }else{
 
-      console.log(self);
-      console.log("Hizo click en practicante");
-
         if (!$("#btn_practicante").is(":visible")) {
 
           $('#btn_directivo').after(BTN_PRACTICANTE);    
@@ -237,7 +234,6 @@ function evaluo_mi(self){
         elegir_pos($("#btn_practicante"));        
     }
 
-    //validar_botones();
 }
 
 function elegir_pos(self){
@@ -248,7 +244,6 @@ function elegir_pos(self){
 
     $('#posicion').val($(self).text());
 
-    //validar_botones();
 }
 
 
@@ -366,37 +361,6 @@ $(function() {
 
 	        form.classList.add('was-validated');
 	    }, false);
-    });
-
-
-    $( "#modal_empresa" ).submit(function( event ) {
-      
-      event.preventDefault();
-
-      if( validar_modal() && $('#modal_empresa')[0].checkValidity()){
-        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        var form = $('#modal_empresa');
-
-        
-        $.ajax({
-            
-            url: '/api/v1/crear_empresa',
-            type: 'POST',
-            
-            data: {_method: 'POST', _token: CSRF_TOKEN, razon_social:$('#razon_social').val(),
-             ciudad_id:$('#ciudad_id').val(), direccion:$('#direccion').val(), sector_economico:$('#sector_economico').val()},
-            dataType: 'JSON',
-            
-            success: function (data) { 
-                $("#empresa").val($('#razon_social').val());
-                $('#empresa_id').val(data);
-                $('#exampleModal').modal('hide');
-            }
-        }); 
-      }
-      $('#modal_empresa').addClass('was-validated');
-      validar_modal();
-      
     });
 
 
