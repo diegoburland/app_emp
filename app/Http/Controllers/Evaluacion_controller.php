@@ -68,12 +68,16 @@ class Evaluacion_controller extends Controller
 
     public function editar(Request $request){
 
+      $empresa = new Empresa();
+      $empresa = $empresa->find($request->empresa_id);
+      $nombreEmpresa = $empresa->razon_social;
+
       if($request->rechazado == 'true'){
         $evaluacion = Evaluacion::find($request->id);
         $evaluacion->contenido = "RECHAZADO";
         $evaluacion->publicada = "NO";
         $evaluacion->save();
-        // Acá envias el correo diciendole que su evaluacion esta rechazada
+        $this->enviarEmail($evaluacion->contenido, $nombreEmpresa, $evaluacion->email);
       }
       else{
         $calificaciones = $request->calificaciones; 
@@ -123,7 +127,7 @@ class Evaluacion_controller extends Controller
              $bene = $beneficio[$i];
              $bene->save();
           }
-          // Acá envias el correo diciendole que su evaluacion esta editada
+          $this->enviarEmail($evaluacion->contenido, $nombreEmpresa, $evaluacion->email);
 
         }
         else{
@@ -131,7 +135,7 @@ class Evaluacion_controller extends Controller
           $evaluacion->contenido = "ACEPTADO";
           $evaluacion->publicada = "SI";
           $evaluacion->save();
-          // Acá envias el correo diciendole que su evaluacion esta aceptada
+          $this->enviarEmail($evaluacion->contenido, $nombreEmpresa, $evaluacion->email);
         }
       }
 
@@ -167,8 +171,8 @@ class Evaluacion_controller extends Controller
 
       ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-        $evaluacionArr = Evaluacion::where('contenido','<>', 'COPIADA')->paginate(50);
-        $evaluacion = Evaluacion::where('contenido','<>', 'COPIADA')->paginate(50);
+        $evaluacionArr = Evaluacion::where('contenido','<>', 'COPIADA')->orWhere('contenido','=', NULL)->paginate(50);
+        $evaluacion = Evaluacion::where('contenido','<>', 'COPIADA')->orWhere('contenido','=', NULL)->paginate(50);
 
         for ($i=0; $i < count($evaluacionArr); $i++) { 
             $empresa = $empresa->find($evaluacionArr[$i]['empresa_id']);
@@ -249,6 +253,15 @@ class Evaluacion_controller extends Controller
       $beneficios = $eval_bene->getBeneByEvaluation($idEvaluacion);
       
       return view('empresa_editar', array('categorias' => $categorias, 'items' => $items, 'benes'=>$benes, 'evaluacion' => $evaluacion, 'empresa' => $empresa, 'calificaciones' => $calificaciones, 'beneficios' => $beneficios));
+    }
+
+    public function enviarEmail($contenido, $empresa, $email){
+          $subject = 'Tu evaluación ha sido verificada';
+          $template = 'emails.verificacionEvaluacion';
+          
+          $data = ['subject' => $subject, 'template' => $template, 'contenido' => $contenido, 'empresa' => $empresa];
+
+          Mail::to($email)->send(new OcupasionEmail($data));
     }
   
 
