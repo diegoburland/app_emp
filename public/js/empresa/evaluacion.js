@@ -32,8 +32,8 @@ function text_show(item) {
     $('#desc_' + item).show();
 }
 
-const BTN_PRACTICANTE = "<button type='button' id='btn_practicante' class='btn-pos btn btn-dark'  onclick='elegir_pos(this)'>Prácticante</button>";
-const BTN_OTROS = "<button type='button' id='btn_empleado' class='btn-pos btn btn-dark' onclick='elegir_pos(this)'>Empleado</button><button type='button' id='btn_directivo' class='btn-pos btn btn-dark'  onclick='elegir_pos(this)'>Directivo</button>";
+//const BTN_PRACTICANTE = "<button type='button' id='btn_practicante' class='btn-pos btn btn-dark'  onclick='elegir_pos(this)'>Prácticante</button>";
+//const BTN_OTROS = "<button type='button' id='btn_empleado' class='btn-pos btn btn-dark' onclick='elegir_pos(this)'>Empleado</button><button type='button' id='btn_directivo' class='btn-pos btn btn-dark'  onclick='elegir_pos(this)'>Directivo</button>";
 
 function beneficio(self, id) {
 
@@ -59,12 +59,12 @@ function evaluo_mi(self) {
     //console.log($(self).attr('id'));
     if ($(self).attr('id') == "btn_actual" || $(self).attr('id') == "btn_pasado") {
 
-        if (!$("#btn_empleado").is(":visible")) {
+        /*if (!$("#btn_empleado").is(":visible")) {
 
             $("#btn_practicante").before(BTN_OTROS);
         }
 
-        $("#btn_practicante").remove();
+        $("#btn_practicante").remove();*/
 
         $(".dim_practicante").hide();
         $(".dim_empleado").show();
@@ -96,11 +96,11 @@ function evaluo_mi(self) {
 
         $("#label_salario").text('Apoyo de sostenimiento mensual');
 
-        if (!$("#btn_practicante").is(":visible")) {
+        /*if (!$("#btn_practicante").is(":visible")) {
 
             $('#btn_directivo').after(BTN_PRACTICANTE);
             //elegir_pos($("#btn_practicante"));        
-        }
+        }*/
 
         $("#btn_empleado").remove();
         $("#btn_directivo").remove();
@@ -118,7 +118,7 @@ function evaluo_mi(self) {
     //validar_botones();
 }
 
-function elegir_pos(self) {
+/*function elegir_pos(self) {
 
     $('.btn-pos').removeClass('btn-warning').addClass('btn-dark');
 
@@ -127,7 +127,7 @@ function elegir_pos(self) {
     $('#posicion').val($(self).text());
 
     //validar_botones();
-}
+}*/
 
 function save_empresa() {
 
@@ -415,7 +415,18 @@ $(function () {
         $.each(data, function (key, entry) {
 
             cache_ies.push(entry.value);
-        })
+        });
+        //console.log(cache_ies);
+    });
+    
+    var cache_cargos = [];
+    const url_cargos = '/json/cargos.json';
+    $.getJSON(url_cargos, function (data, status, xhr) {
+
+        $.each(data, function (key, entry) {
+
+            cache_cargos.push(entry.value);
+        });
         //console.log(cache_ies);
     });
 
@@ -437,6 +448,19 @@ $(function () {
         },
         select: function (event, ui) {
             $('#ies').val(ui.item.value);
+
+        }
+    });
+        
+    $("#posicion_campo").autocomplete({
+        minLength: 3,
+        source: function (request, response) {
+            var results = $.ui.autocomplete.filter(cache_cargos, request.term);
+
+            response(results.slice(0, 10));
+        },
+        select: function (event, ui) {
+            $('#posicion').val(ui.item.value);
 
         }
     });
