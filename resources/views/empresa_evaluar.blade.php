@@ -130,7 +130,7 @@
                 </div>
             </div>
 
-            <a class="list-group-item list-group-item-action">
+            <a class="list-group-item list-group-item-action" id="pre_cargo">
                 <div class="form-group row">
                     <div class="col-sm-6">                           
                        <label class="control-label" for="">Elegir Cargo</label>

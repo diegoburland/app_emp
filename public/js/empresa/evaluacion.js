@@ -65,7 +65,7 @@ function evaluo_mi(self) {
         }
 
         $("#btn_practicante").remove();*/
-
+        $("#pre_cargo").show();
         $(".dim_practicante").hide();
         $(".dim_empleado").show();
 
@@ -107,6 +107,7 @@ function evaluo_mi(self) {
 
         $(".dim_practicante").show();
         $("#pre_ies").show();
+        $("#pre_cargo").hide();
         $(".bne_practica").show();
         $(".bne_empleo").hide();
         $(".dim_empleado").hide();
