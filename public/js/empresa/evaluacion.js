@@ -113,7 +113,6 @@ function evaluo_mi(self) {
         $(".dim_empleado").hide();
         $("#pre_motivo").hide();
 
-        elegir_pos($("#btn_practicante"));
     }
 
     //validar_botones();
@@ -307,16 +306,16 @@ $(function () {
                 var errorElements = $(
                         "input:invalid, select:invalid, .invalid-feedback[style*='display: block']")
                         .toArray();
-                //document.querySelectorAll(
-                //"input:invalid, .invalid-feedback[style='display:block']");              
+
+                $('html, body').animate({
+                    scrollTop: $(errorElements[0]).offset().top - 50
+                }, 2000);            
 
             }else{
                 $("#public_div").show();
             }
 
-            $('html, body').animate({
-                scrollTop: $(errorElements[0]).offset().top - 50
-            }, 2000);
+            
 
             form.classList.add('was-validated');
         }, false);
