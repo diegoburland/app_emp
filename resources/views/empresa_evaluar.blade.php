@@ -228,7 +228,7 @@
                     </div>
                     <div class="col-sm-4 ">
                         @if ($item == $items[0])
-                        <div >   
+                        <div style="display: inline-flex;">   
                             
                             <div class="d-inline">
                                <i class="far fa-frown-open fa-2x" style="color: #ff3100;"></i> 
