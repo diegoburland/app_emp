@@ -201,14 +201,20 @@ function validar_botones() {
         $('#validar_evalua').css('display', 'none');
     }
 
-    if ($('#posicion').val() == "") {
+    if($('#evalua').val() != "Práctica"){
+
+        if ($('#posicion').val() == "") {
 
         $('#validar_posicion').css('display', 'block');
-        validar = false;
-    } else {
+            validar = false;
+        } else {
 
-        $('#validar_posicion').css('display', 'none');
+            $('#validar_posicion').css('display', 'none');
+        }    
+    }else{
+        $('#posicion').val("Prácticante");
     }
+    
 
     if ($('#empresa_id').val() == "") {
 
