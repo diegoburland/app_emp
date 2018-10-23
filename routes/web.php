@@ -58,6 +58,10 @@ Route::get('login', function () {
     return view('login');
 })->name('login');
 
+Route::get('bienvenido', function () {
+    return view('emails.bienvenido', array('empresa'=>'prueba', 'confir_code'=>'a'));
+})->name('bienvenido');
+
 Route::get('empresa_list', 'Empresa_controller@list');
 
 Route::get('evaluacion_list', 'Evaluacion_controller@list');

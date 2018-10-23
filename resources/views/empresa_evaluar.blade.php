@@ -20,7 +20,7 @@
 <div class="row justify-content-md-center">
     
     <form id="form_evaluar_empresa" method="POST" action="/crear_evaluacion" novalidate class="needs-validation">
-
+        
         <div class="col-sm-11 centrar_div">
 
 
@@ -56,7 +56,7 @@
                 <div class="form-group row required ">
                     <div class="col-sm-6">
                         <label class="control-label" ><b>Busca y selecciona la empresa</b></label>
-                        <input type="text" class="form-control" id="empresa" name="empresa_nombre" placeholder="Busca y selecciona la empresa" required>
+                        <input type="text" class="form-control" id="empresa" autocomplete="nope" name="empresa_nombre" placeholder="Busca y selecciona la empresa" required>
                         <input type="hidden" name="empresa_id" id="empresa_id" value="">  
 
                         <small id="buscar_emp" class="form-text text-muted">
@@ -81,7 +81,7 @@
                 <div class="form-group row required ">
                     <div class="col-sm-6">
                         <label class="control-label" for="">Ciudad</label>
-                        <input type="text" class="form-control" id="ciudad_eval" name="ciudad_eval" placeholder="Busca y selecciona la ciudad" autocomplete="off" required>
+                        <input type="text" class="form-control" id="ciudad_eval" name="ciudad_eval" placeholder="Busca y selecciona la ciudad" autocomplete="nope" required>
                         <input type="hidden" name="ciudad_eval_id" id="ciudad_eval_id" value="">  
                         <div id="validar_ciudad" class="invalid-feedback">
                             Por favor selecciona una ciudad del listado
@@ -121,7 +121,7 @@
                 <div class="form-group row required ">
                     <div class="col-sm-6">
                         <label class="control-label" for="">Institución Educativa</label>
-                        <input type="text" class="form-control" id="ies_campo" name="ies_campo" placeholder="Institución Educativa" autocomplete="off">
+                        <input type="text" class="form-control" id="ies_campo" name="ies_campo" placeholder="Institución Educativa" autocomplete="nope">
                         <input type="hidden" name="ies" id="ies" value="">  
                         <div class="invalid-feedback">
                             Por favor selecciona una institución educativa del listado
@@ -130,31 +130,22 @@
                 </div>
             </div>
 
-            <a class="list-group-item list-group-item-action">
+            <a class="list-group-item list-group-item-action" id="pre_cargo">
                 <div class="form-group row">
-                    <div class="col-sm-5">
-                        <div class="row ml-1">
-                            <label class="control-label" for="">Elegir Posición</label>		
-                        </div>
-
-
-                        <div class="btn-group flex-wrap" role="group" aria-label="Basic example">
-                            <button type="button" id="btn_empleado" class="btn-pos btn btn-dark" onclick="elegir_pos(this)">Empleado</button>
-                            <button type="button" id="btn_directivo" class="btn-pos btn btn-dark"  onclick="elegir_pos(this)">Directivo</button>
-                            <button type="button" id="btn_practicante" class="btn-pos btn btn-dark"  onclick="elegir_pos(this)">Practicante</button>
-                        </div>
-
-                        <input type="hidden" name="posicion" id="posicion" value="">
-
-                        <!--select name="posicion" class="form-control" required>
-                              <option value="">Selecciona una opción</option>
-                              <option value="Empleado/Obrero">Empleado/Colaborador</option>
-                              <option value="Gerente/Directivo">Gerente/Directivo</option>
-                              <option value="Contrato a tiempo parcial">Prácticante</option>						  	
-                        </select-->
+                    <div class="col-sm-6">                           
+                       <label class="control-label" for="">Elegir Cargo</label>
+                       <input type="text" class="form-control" id="posicion_campo" name="posicion_campo" placeholder="Busca y selecciona un cargo" autocomplete="nope">
+                       <input type="hidden" name="posicion" id="posicion" value="">
                         <div id="validar_posicion" class="invalid-feedback">
                             Por favor selecciona la posición
                         </div>
+                        <!--div class="btn-group flex-wrap" role="group" aria-label="Basic example">
+                            <button type="button" id="btn_empleado" class="btn-pos btn btn-dark" onclick="elegir_pos(this)">Empleado</button>
+                            <button type="button" id="btn_directivo" class="btn-pos btn btn-dark"  onclick="elegir_pos(this)">Directivo</button>
+                            <button type="button" id="btn_practicante" class="btn-pos btn btn-dark"  onclick="elegir_pos(this)">Practicante</button>
+                        </div-->
+
+                        
                     </div>
                 </div>
             </a>
@@ -237,13 +228,16 @@
                     </div>
                     <div class="col-sm-4 ">
                         @if ($item == $items[0])
-                        <div>   
-                            <i class="far fa-frown-open fa-2x" style="color: #ff3100;"></i>
-                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <div >   
                             
-                            <i class="far fa-grin-alt fa-2x" aria-hidden="true" style="color: green"></i>
+                            <div class="d-inline">
+                               <i class="far fa-frown-open fa-2x" style="color: #ff3100;"></i> 
+                            </div>
+                            <div class="d-inline" style="padding-left: 195px"></div>
+                            <div class="d-inline">
+                               <i class="far fa-grin-alt fa-2x" aria-hidden="true" style="color: green"></i> 
+                            </div>
+                            
                         </div>
                         @endif
                         
@@ -484,7 +478,6 @@
                     <meta name="csrf-token" content="{{ csrf_token() }}" />
                     <form id="modal_empresa" novalidate class="needs-validation2" method="POST">
 
-
                         <div class="form-group required row">
                             <div class="col-sm-12">
                                 <label class="control-label" for="">Nombre de la Empresa (Razón Social)</label>
@@ -512,7 +505,7 @@
                         <div class="form-group required row">
                             <div class="col-sm-12">
                                 <label class="control-label" for="">Ciudad</label>
-                                <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Busca y selecciona la ciudad" autocomplete="off" required>
+                                <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Busca y selecciona la ciudad" autocomplete="nope" required>
                                 <input type="hidden" name="ciudad_id" id="ciudad_id" value="">  
                                 <div id="validar_ciudad" class="invalid-feedback">
                                     Por favor selecciona una ciudad del listado
