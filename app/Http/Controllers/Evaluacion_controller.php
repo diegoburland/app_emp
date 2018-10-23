@@ -77,7 +77,12 @@ class Evaluacion_controller extends Controller
         $evaluacion->contenido = "RECHAZADO";
         $evaluacion->publicada = "NO";
         $evaluacion->save();
-        $this->enviarEmail($evaluacion->contenido, $nombreEmpresa, $evaluacion->email);
+        try{
+          $this->enviarEmail($evaluacion->contenido, $nombreEmpresa, $evaluacion->email);
+        }catch (\Exception $e) {
+            Log::info("---------------" . $e . "-------------------");
+            Log::info($e->getMessage());
+         }
       }
       else{
         $calificaciones = $request->calificaciones; 
@@ -127,7 +132,12 @@ class Evaluacion_controller extends Controller
              $bene = $beneficio[$i];
              $bene->save();
           }
-          $this->enviarEmail($evaluacion->contenido, $nombreEmpresa, $evaluacion->email);
+          try{
+            $this->enviarEmail($evaluacion->contenido, $nombreEmpresa, $evaluacion->email);
+          }catch (\Exception $e) {
+            Log::info("---------------" . $e . "-------------------");
+            Log::info($e->getMessage());
+         }
 
         }
         else{
@@ -135,7 +145,12 @@ class Evaluacion_controller extends Controller
           $evaluacion->contenido = "ACEPTADO";
           $evaluacion->publicada = "SI";
           $evaluacion->save();
-          $this->enviarEmail($evaluacion->contenido, $nombreEmpresa, $evaluacion->email);
+          try{
+            $this->enviarEmail($evaluacion->contenido, $nombreEmpresa, $evaluacion->email);
+          }catch (\Exception $e) {
+            Log::info("---------------" . $e . "-------------------");
+            Log::info($e->getMessage());
+         }
         }
       }
 
