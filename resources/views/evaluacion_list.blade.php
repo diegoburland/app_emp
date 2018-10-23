@@ -11,6 +11,7 @@
 
 @endsection
 @section('content')
+
 <meta id="csrf-token" content="{{ csrf_token() }}" />
 
 <p>
@@ -129,12 +130,17 @@ Total evaluaciones: {{$totalEvaluaciones}}
               <td><a target="_blank" href="{{URL::action('Evaluacion_controller@mostrar_evaluacion',$eval->id)}} ">
               <button class="btn btn-info"><i class="fa fa-check-circle"></i></button></a></td>
               <td>{{$eval->empresa}}</td>
-              <td>{{$eval->email}}</td>
+              @if( strlen($eval->email) >= 25)
+                 <td style="font-size: 9px;">{{$eval->email}}</td>
+              @endif
+              @if( strlen($eval->email) < 25)
+                 <td>{{$eval->email}}</td>
+              @endif
               <td>{{$eval->created_at->format('Y-m-d')}}</td>
               <td>{{$eval->ip}}</td>
               <td>{{$eval->evalua}}</td>
               <td>{{$eval->ies}}</td>
-                    @if($eval->estado == 'INVALIDA')
+              @if($eval->estado == 'INVALIDA')
                  <td style="background: indianred;">{{$eval->estado}}</td>
               @endif
               @if($eval->estado == 'NORMAL')
