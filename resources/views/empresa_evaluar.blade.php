@@ -131,7 +131,7 @@
             </div>
 
             <a class="list-group-item list-group-item-action" id="pre_cargo">
-                <div class="form-group row">
+                <div class="form-group row required">
                     <div class="col-sm-6">                           
                        <label class="control-label" for="">Elegir Cargo</label>
                        <input type="text" class="form-control" id="posicion_campo" name="posicion_campo" placeholder="Busca y selecciona un cargo" autocomplete="nope">
@@ -228,7 +228,7 @@
                     </div>
                     <div class="col-sm-4 ">
                         @if ($item == $items[0])
-                        <div >   
+                        <div style="display: inline-flex;">   
                             
                             <div class="d-inline">
                                <i class="far fa-frown-open fa-2x" style="color: #ff3100;"></i> 

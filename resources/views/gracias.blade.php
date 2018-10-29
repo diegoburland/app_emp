@@ -7,8 +7,6 @@
 
 
 @section('head')
-<script type="text/javascript" src="/js/jquery.numeric-min.js?v={{ time() }}"></script>
-<script type="text/javascript" src="/js/empresa/evaluacion.js?v={{ time() }}"></script>
 <script type="text/javascript">
 function ir_a_vw() {
 
