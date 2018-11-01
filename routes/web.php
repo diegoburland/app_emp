@@ -68,6 +68,8 @@ Route::get('evaluacion_list', 'Evaluacion_controller@list');
 
 Route::post('filter_evaluacion', 'Evaluacion_controller@filter_evaluacion');
 
+Route::get('filter_evaluacion', 'Evaluacion_controller@filter_evaluacion');
+
 Route::get('/api/v1/encontrar_empresa', 'Empresa_controller@get_empresa');
 Route::get('/api/v1/encontrar_ubicacion', 'Ciudad_controller@get_ciudad');
 
