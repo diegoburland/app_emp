@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title', 'Listado de evaluacion')
-
+<div id="prueba">
 @section('head')
   <script type="text/javascript" src="/js/empresa/evaluacionList.js"></script>
   
@@ -91,7 +91,7 @@ Total evaluaciones: {{$totalEvaluaciones}}
      <p></p>
      Correo verificado:
      <div class="statuscorreo"> </div>
-   </div>
+  </div>
   <div id="derecho">
       Estado empresa:
      <div class="statusempresa"> </div>
@@ -102,7 +102,11 @@ Total evaluaciones: {{$totalEvaluaciones}}
      Publicada:
      <div class="statuspublicacion"> </div>
   </div>
-<div id="prueba">
+  <div id="btnbuscar">
+    <button class="btn btn-warning btn-xs" style="width: 422%;" onclick="actionFilter()">
+        Buscar
+    </button>
+  </div>
 
   <table id="listEvaluacion" class="display" style="width:100%">
        <thead>
@@ -123,6 +127,7 @@ Total evaluaciones: {{$totalEvaluaciones}}
           </tr>
         </thead>
         <tbody>
+
             @foreach ($evaluacion as $eval)
 
             <tr>
@@ -136,7 +141,7 @@ Total evaluaciones: {{$totalEvaluaciones}}
               @if( strlen($eval->email) < 25)
                  <td>{{$eval->email}}</td>
               @endif
-              <td>{{$eval->created_at->format('Y-m-d')}}</td>
+              <td>{{ Carbon\Carbon::parse($eval->created_at)->format('Y-m-d') }}</td> 
               <td>{{$eval->ip}}</td>
               <td>{{$eval->evalua}}</td>
               <td>{{$eval->ies}}</td>
@@ -217,14 +222,16 @@ Total evaluaciones: {{$totalEvaluaciones}}
                  <td>{{$eval->publicada}}</td>
               @endif
             </tr>
-
           @endforeach
           </tbody>
     </table>
-</div>
+
+
+
     <div style="margin-left: 25%; margin-top: 1%;">
-      {!! $evaluacion->render() !!}
+      {!! $evaluacion->appends(['evaluacion' => $eva, 'publicada' => $pub, 'contenido' => $conte, 'statusEmpresa' => $sEmpresa, 'statusCorreo' =>$sCorreo, 'empresa' => $emp, 'correo' => $cor, 'trabajo' =>$tr, 'institucion' => $ins])->render() !!}
     </div>
+</div>
 
 
 @endsection

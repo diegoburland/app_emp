@@ -13,6 +13,7 @@ use App\Benes;
 use App\Mail\OcupasionEmail;
 
 use Mail;
+use DB;
 
 use App\Eval_item;
 use App\Eval_bene;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Log;
 
 class Evaluacion_controller extends Controller
 {
+
     public function store(Request $request){
 		
 
@@ -160,6 +162,16 @@ class Evaluacion_controller extends Controller
 
     public function list(){
 
+      $eva = '';
+      $pub = '';
+      $conte = '';
+      $sEmpresa = '';
+      $sCorreo = '';
+      $emp = '';
+      $cor = '';
+      $tr = '';
+      $ins = ''; 
+
       /////////////////////////////////// CALCULO DE ESTADISTICAS //////////////////////////////////////
       $empresa = new Empresa();
       $empresaArr = Empresa::all()->toArray();
@@ -195,11 +207,20 @@ class Evaluacion_controller extends Controller
             $evaluacion[$i]['statusEmpresa'] = $empresa->verificada;
         }
 
-        return view('evaluacion_list', compact('evaluacion', 'totalPublicadas', 'contenidoCont', 'totalEmpPorVerif', 'totalEvaluaciones', 'totalEmpresas'));
+        return view('evaluacion_list', compact('evaluacion', 'totalPublicadas', 'contenidoCont', 'totalEmpPorVerif', 'totalEvaluaciones', 'totalEmpresas', 'eva', 'pub', 'conte', 'sEmpresa', 'sCorreo', 'emp', 'cor', 'tr', 'ins'));
     }  
 
-
    public function filter_evaluacion(Request $request){
+
+      $eva = $request['evaluacion'];
+      $pub = $request['publicada'];
+      $conte = $request['contenido'];
+      $sEmpresa = $request['statusEmpresa'];
+      $sCorreo = $request['statusCorreo'];
+      $emp = $request['empresa'];
+      $cor = $request['correo'];
+      $tr = $request['trabajo'];
+      $ins = $request['institucion'];
       
       /////////////////////////////////// CALCULO DE ESTADISTICAS //////////////////////////////////////
       $empresa = new Empresa();
@@ -226,18 +247,64 @@ class Evaluacion_controller extends Controller
         }
 
       ///////////////////////////////////////////////////////////////////////////////////////////////////
-
-        $evaluacionArr = Evaluacion::where('contenido','<>', 'COPIADA')->paginate(50);
-        $evaluacion = Evaluacion::where('contenido','<>', 'COPIADA')->paginate(50);
-
-        for ($i=0; $i < count($evaluacionArr); $i++) { 
-            $empresa = $empresa->find($evaluacionArr[$i]['empresa_id']);
-            $evaluacion[$i]['empresa'] = "colombo CA";
-            $evaluacion[$i]['statusEmpresa'] = $empresa->verificada;
+  
+        $filter = $request->all();
+        $where = [];
+        foreach ($filter as $key => $value) {
+            if(is_null($value) == true) {
+                continue;
+            } else {
+                switch ($key) {
+                    case 'evaluacion':
+                        $where[] = "evaluaciones.estado = '" . $value . "'";
+                        $eva = $value;
+                        break;
+                    case 'contenido':
+                        $where[] = "evaluaciones.$key = '" . $value . "'";
+                        break;
+                    case 'publicada':
+                        $where[] = "evaluaciones.$key = '" . $value . "'";
+                        break;
+                    case 'statusEmpresa':
+                       $where[] = "empresas.verificada = '" . $value . "'";
+                        break;
+                   case 'statusCorreo':
+                        $where[] = "evaluaciones.confirmed = '" . $value . "'";
+                        break;
+                    case 'empresa':
+                        $where[] = "empresas.razon_social LIKE '%" . $value . "%'";
+                        break;
+                    case 'correo':
+                        $where[] = "evaluaciones.email LIKE '%" . $value . "%'";
+                        break;
+                    case 'trabajo':
+                        $where[] = "evaluaciones.evalua LIKE '%" . $value . "%'";
+                        break;
+                    case 'institucion':
+                        $where[] = "evaluaciones.ies LIKE '%" . $value . "%'";
+                        break;
+                }
+            }
         }
 
-        return \Response::json(array($evaluacion));
-       //    return view::make("evaluacion_list", ["evaluacion" => $evaluacion]);
+        $fullWhere = implode(" AND ", $where);
+
+        if(empty($fullWhere)) {
+            $evaluacion = DB::table('evaluaciones')
+                  ->select('evaluaciones.*','empresas.razon_social as empresa', 'empresas.verificada as statusEmpresa')
+                  ->join('empresas', 'evaluaciones.empresa_id', '=', 'empresas.id')
+                  ->where('contenido','<>', 'COPIADA')->orWhere('contenido','=', NULL)
+                  ->paginate(50);
+        } else {
+            $evaluacion = DB::table('evaluaciones')
+                ->select('evaluaciones.*','empresas.razon_social as empresa', 'empresas.verificada as statusEmpresa')
+                ->join('empresas', 'evaluaciones.empresa_id', '=', 'empresas.id')
+                ->whereRaw(DB::raw($fullWhere))
+                ->where('contenido','<>', 'COPIADA')->orWhere('contenido','=', NULL)
+                ->paginate(50);
+        }
+
+        return view('evaluacion_list', compact('evaluacion', 'totalPublicadas', 'contenidoCont', 'totalEmpPorVerif', 'totalEvaluaciones', 'totalEmpresas', 'eva', 'pub', 'conte', 'sEmpresa', 'sCorreo', 'emp', 'cor', 'tr', 'ins'));
     }
 
     public function continuar_evaluacion(){
