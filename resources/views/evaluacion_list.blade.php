@@ -135,10 +135,11 @@ Total evaluaciones: {{$totalEvaluaciones}}
               <td><a target="_blank" href="{{URL::action('Evaluacion_controller@mostrar_evaluacion',$eval->id)}} ">
               <button class="btn btn-info"><i class="fa fa-check-circle"></i></button></a></td>
               <td>{{$eval->empresa}}</td>
-              @if( strlen($eval->email) >= 25)
+              @if( strlen($eval->email) >= 24)
                  <td style="font-size: 9px;">{{$eval->email}}</td>
-              @endif
-              @if( strlen($eval->email) < 25)
+              @elseif( strlen($eval->email) > 20 && strlen($eval->email) < 24)
+                  <td style="font-size: 11px;">{{$eval->email}}</td>
+              @elseif( strlen($eval->email) < 24)
                  <td>{{$eval->email}}</td>
               @endif
               <td>{{ Carbon\Carbon::parse($eval->created_at)->format('Y-m-d') }}</td> 

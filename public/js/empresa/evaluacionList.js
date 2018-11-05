@@ -5,6 +5,7 @@ $(document).ready(function() {
         "paging": false,
         "info": false,
         "scrollX": false,
+        "ordering": false,
        "lengthMenu": [[50,70,80,100], [50,70,80,100]],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json",
@@ -30,7 +31,7 @@ $(document).ready(function() {
 
     var filter1 = createInput(table, [2], "empresa");
     var filter2 = createInput(table, [3], "correo");
-    var filter3 = createInput(table, [6], "trabajo");
+    var filter3 = createDropdowns(table, [6], "trabajo");
     var filter4 = createInput(table, [7], "institucion");
     var filter5 = createDropdowns(table, [8], "evaluacion");
     var filter6 = createDropdowns(table, [9], "statusCorreo");
@@ -122,6 +123,8 @@ function createDropdowns(table, columns, type) {
         select = $('<select class="form-control" id="statusCorreo" ><option value="">Seleccione una opcion</option><option value="SI">SI</option><option value="NO">NO</option><option value="PENDIENTE">PENDIENTE</option></select>')
     else if(type == "evaluacion")
         select = $('<select class="form-control" id="evaluac" ><option value="">Seleccione una opcion</option><option value="NORMAL">NORMAL</option><option value="POR CONTROLAR">POR CONTROLAR</option><option value="INVALIDA">INVALIDA</option></select>')
+    else if(type == "trabajo")
+        select = $('<select class="form-control" id="trabajo" ><option value="">Seleccione una opcion</option><option value="TRABAJO ACTUAL">TRABAJO ACTUAL</option><option value="TRABAJO PASADO">TRABAJO PASADO</option><option value="PRÁCTICA">PRÁCTICA</option></select>')
 
     return select;
          

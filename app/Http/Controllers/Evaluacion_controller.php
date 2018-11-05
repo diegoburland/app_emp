@@ -107,6 +107,7 @@ class Evaluacion_controller extends Controller
           $evaluacion->email = $eval->email;
           $evaluacion->terminos = $eval->terminos;
           $evaluacion->ofrecer = $eval->ofrecer;
+          $evaluacion->motivo = $request->motivo;
           $evaluacion->oferta = $eval->oferta;
           $evaluacion->confir_code = bin2hex(random_bytes(32));
           $evaluacion->departamento = $request->departamento;
@@ -294,6 +295,8 @@ class Evaluacion_controller extends Controller
                   ->select('evaluaciones.*','empresas.razon_social as empresa', 'empresas.verificada as statusEmpresa')
                   ->join('empresas', 'evaluaciones.empresa_id', '=', 'empresas.id')
                   ->where('contenido','<>', 'COPIADA')->orWhere('contenido','=', NULL)
+                  ->orderBy('created_at', 'ASC')
+                  ->orderBy('evalua', 'ASC')
                   ->paginate(50);
         } else {
             $evaluacion = DB::table('evaluaciones')
@@ -301,6 +304,8 @@ class Evaluacion_controller extends Controller
                 ->join('empresas', 'evaluaciones.empresa_id', '=', 'empresas.id')
                 ->whereRaw(DB::raw($fullWhere))
                 ->where('contenido','<>', 'COPIADA')->orWhere('contenido','=', NULL)
+                ->orderBy('created_at', 'ASC')
+                ->orderBy('evalua', 'ASC')
                 ->paginate(50);
         }
 
@@ -338,10 +343,26 @@ class Evaluacion_controller extends Controller
     }
 
     public function enviarEmail($contenido, $empresa, $email){
-          $subject = 'Tu evaluación ha sido verificada';
-          $template = 'emails.verificacionEvaluacion';
+      if($contenido == 'ACEPTADO'){
+          $subject = 'Subida exitosa de tu evaluación en Vida and Work';
+          $template = 'emails.verificacionEvaluacionAceptada';
           
-          $data = ['subject' => $subject, 'template' => $template, 'contenido' => $contenido, 'empresa' => $empresa];
+          $data = ['subject' => $subject, 'template' => $template, 'contenido' => $contenido, 'empresa' => $empresa, 'correo' => $email];
+      }
+      else if($contenido == 'EDITADA'){
+          $subject = 'Subida exitosa de tu evaluación en Vida and Work';
+          $template = 'emails.verificacionEvaluacionEditada';
+          
+          $data = ['subject' => $subject, 'template' => $template, 'contenido' => $contenido, 'empresa' => $empresa, 'correo' => $email];
+      }
+      else if($contenido == 'RECHAZADA'){
+          $subject = 'Fallo de la subida de tu evaluación en Vida and Work';
+          $template = 'emails.verificacionEvaluacionRechazada';
+          
+          $data = ['subject' => $subject, 'template' => $template, 'contenido' => $contenido, 'empresa' => $empresa, 'correo' => $email];
+      }
+
+          
 
           Mail::to($email)->send(new OcupasionEmail($data));
     }

@@ -46,7 +46,7 @@ ul.ui-autocomplete {
 
 <div class="row justify-content-md-center">
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
-	<form id="form_evaluacion" novalidate class="needs-validation">
+	<form id="form_evaluacion" novalidate class="needs-validation" style="width: 75%;">
 
 	<div class="col-sm-11" style="margin-left: 4%;">
 
@@ -135,24 +135,24 @@ ul.ui-autocomplete {
 					<div class="col-sm-6">
 					  <input type="hidden" name="depatarmentoEmp" id="depatarmentoEmp" value="{{$evaluacion->departamento}}" onChange="actualiza('true')">
 					  <label for="">Departamento de la Empresa</label>
-					  <select name="departamento" id="departamento" class="form-control" required>
-					  	<option value="">Selecciona una opción</option>
-					  	<option value="Administración / Organización">Administración / Organización</option>
-					  	<option value="Compras / Proveedores">Compras / Proveedores</option>
-					  	<option value="Control de Gestión">Control de Gestión</option>
-					  	<option value="Finanzas / Contabilidad">Finanzas / Contabilidad</option>
-					  	<option value="Investigación / Desarrollo">Investigación / Desarrollo</option>
-					  	<option value="Gerencia / Dirección">Gerencia / Dirección</option>
-					  	<option value="Sistemas de información / TI">Sistemas de información / TI</option>
-					  	<option value="Logística / Almacén / Inventario">Logística / Almacén / Inventario</option>
-					  	<option value="Mercadeo / Gerencia de Productos">Mercadeo / Gerencia de Productos</option>
-					  	<option value="Comunicación / Relaciones públicas">Comunicación / Relaciones públicas</option>
-					  	<option value="Talento humano">Talento humano</option>
-					  	<option value="Producción">Producción</option>
-					  	<option value="Legal / Fiscal">Legal / Fiscal</option>
-					  	<option value="Ventas / Comercial">Ventas / Comercial</option>
-					  	<option value="Gestión de Calidad">Gestión de Calidad</option>
-					  	<option value="Otro">Otro</option>
+					  <select name="departamento" id="departamento" class="form-control" disabled="true" required>
+					  		<option value="">Selecciona una opción</option>
+                            <option value="Administración / Organización">Administración / Organización</option>
+                            <option value="Compras / Proveedores">Compras / Proveedores</option>
+                            <option value="Control de Gestión">Control de Gestión</option>
+                            <option value="Finanzas / Contabilidad">Finanzas / Contabilidad</option>
+                            <option value="Investigación / Desarrollo/ Innovación">Investigación / Desarrollo/ Innovación</option>
+                            <option value="Gerencia / Dirección">Gerencia / Dirección</option>
+                            <option value="Sistemas de información / TI">Sistemas de información / TI</option>
+                            <option value="Logística y Abastecimiento">Logística y Abastecimiento</option>
+                            <option value="Mercadeo / Gerencia de Productos">Mercadeo / Gerencia de Productos</option>
+                            <option value="Comunicación / Relaciones públicas">Comunicación / Relaciones públicas</option>
+                            <option value="Talento humano">Talento humano</option>
+                            <option value="Producción">Producción</option>
+                            <option value="Legal / Fiscal">Legal / Fiscal</option>
+                            <option value="Ventas / Comercial">Ventas / Comercial</option>
+                            <option value="Gestión de Calidad">Gestión de Calidad</option>
+                            <option value="Otro">Otro</option>
 					  </select>
 					  <div class="invalid-feedback">
 				          Por favor selecciona el departamento
@@ -162,115 +162,6 @@ ul.ui-autocomplete {
 			</a>
 
 		</div>
-
-		<div class="col-sm-11" style="margin-left: 4%;">
-		
-			<div class="alert alert-secondary" role="alert">
-		  	
-			  	<p>Todos juntos aspiramos a hacer más transparente el mercado laboral. 
-				Por favor, evalúa cada dimensión laboral lo más honesto posible. </p>
-
-				<p><b>Recuerda:</b> Somos una plataforma neutral y justa. Por lo tanto, te pedimos tomar en cuenta los siguientes aspectos: </p>
-
-				<ul>
-					<dl>
-						• No mencionar personas específicas ni nombres.	
-					</dl>
-					<dl>
-						• Se prohíbe publicar información interna, secreta o sensible de la organización. 		
-					</dl>
-					<dl>
-						• Se prohíbe el uso de lenguaje discriminatorio, desacreditante, racista o vulgar. 		
-					</dl>
-				</ul>	
-
-				En Ocupasión utilizamos un modo amigable de calificar. Sin embargo, ten presente el siguiente rubro de calificación de estrellas:		
-
-				<div class="row">
-							  		
-			  		<div class="col-sm-3 h5 mt-2">
-				  		Muy insatisfecho
-				  	</div>
-				  	<div class="col-sm-5 ">
-				  		<div class="d-inline-flex star-rating" >
-				        <span class="p-1 fa fa-star fa-2x" data-rating="1" ></span>
-				        <span class="p-1 fa fa-star-o fa-2x" data-rating="2" ></span>
-				        <span class="p-1 fa fa-star-o fa-2x" data-rating="3" ></span>
-				        <span class="p-1 fa fa-star-o fa-2x" data-rating="4" ></span>
-				        <span class="p-1 fa fa-star-o fa-2x" data-rating="5" ></span>				        
-				      </div>
-				  	</div>
-			  	</div>
-
-			  	<div class="row">
-								  		
-			  		<div class="col-sm-3 h5 mt-2">
-				  		Insatisfecho
-				  	</div>
-				  	<div class="col-sm-5 ">
-				  		<div class="d-inline-flex star-rating" >
-				        <span class="p-1 fa fa-star fa-2x" data-rating="1" ></span>
-				        <span class="p-1 fa fa-star fa-2x" data-rating="2" ></span>
-				        <span class="p-1 fa fa-star-o fa-2x" data-rating="3" ></span>
-				        <span class="p-1 fa fa-star-o fa-2x" data-rating="4" ></span>
-				        <span class="p-1 fa fa-star-o fa-2x" data-rating="5" ></span>				        
-				      </div>
-				  	</div>
-			  	</div>
-
-			  	<div class="row">
-								  		
-			  		<div class="col-sm-3 h5 mt-2">
-				  		Neutral
-				  	</div>
-				  	<div class="col-sm-5 ">
-				  		<div class="d-inline-flex star-rating" >
-				        <span class="p-1 fa fa-star fa-2x" data-rating="1" ></span>
-				        <span class="p-1 fa fa-star fa-2x" data-rating="2" ></span>
-				        <span class="p-1 fa fa-star fa-2x" data-rating="3" ></span>
-				        <span class="p-1 fa fa-star-o fa-2x" data-rating="4" ></span>
-				        <span class="p-1 fa fa-star-o fa-2x" data-rating="5" ></span>				        
-				      </div>
-				  	</div>
-			  	</div>
-
-			  	<div class="row">
-								  		
-			  		<div class="col-sm-3 h5 mt-2">
-				  		Satisfecho
-				  	</div>
-				  	<div class="col-sm-5 ">
-				  		<div class="d-inline-flex star-rating" >
-				        <span class="p-1 fa fa-star fa-2x" data-rating="1" ></span>
-				        <span class="p-1 fa fa-star fa-2x" data-rating="2" ></span>
-				        <span class="p-1 fa fa-star fa-2x" data-rating="3" ></span>
-				        <span class="p-1 fa fa-star fa-2x" data-rating="4" ></span>
-				        <span class="p-1 fa fa-star-o fa-2x" data-rating="5" ></span>				        
-				      </div>
-				  	</div>
-			  	</div>
-
-			  	<div class="row">
-								  		
-			  		<div class="col-sm-3 h5 mt-2">
-				  		Muy satisfecho
-				  	</div>
-				  	<div class="col-sm-5 ">
-				  		<div class="d-inline-flex star-rating" >
-				        <span class="p-1 fa fa-star fa-2x" data-rating="1" ></span>
-				        <span class="p-1 fa fa-star fa-2x" data-rating="2" ></span>
-				        <span class="p-1 fa fa-star fa-2x" data-rating="3" ></span>
-				        <span class="p-1 fa fa-star fa-2x" data-rating="4" ></span>
-				        <span class="p-1 fa fa-star fa-2x" data-rating="5" ></span>				        
-				      </div>
-				  	</div>
-			  	</div>
-			</div>	
-
-			
-		</div>
-		
-
 		<div class="col-sm-11" style="margin-left: 4%;">
 
 			
@@ -517,6 +408,15 @@ ul.ui-autocomplete {
 			  	    </div>
 			  	</div>
 			</a>
+
+			<a  class="list-group-item list-group-item-action dim_pre_retiro">
+                <div class="form-group row">
+                    <div class="col-sm-8">
+                        <label for="">¿Cuál fue el motivo de tu retiro?</label>
+                        <textarea class="form-control" onChange="actualiza('true')" name="motivo" id="pre_motivo">{{$evaluacion->motivo}}</textarea>
+                    </div>
+                </div>
+            </a> 
 
 			<a class="list-group-item list-group-item-action">
 				<div class="form-group row">
