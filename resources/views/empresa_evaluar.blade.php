@@ -139,11 +139,9 @@
                         <div id="validar_posicion" class="invalid-feedback">
                             Por favor selecciona la posición
                         </div>
-                        <!--div class="btn-group flex-wrap" role="group" aria-label="Basic example">
-                            <button type="button" id="btn_empleado" class="btn-pos btn btn-dark" onclick="elegir_pos(this)">Empleado</button>
-                            <button type="button" id="btn_directivo" class="btn-pos btn btn-dark"  onclick="elegir_pos(this)">Directivo</button>
-                            <button type="button" id="btn_practicante" class="btn-pos btn btn-dark"  onclick="elegir_pos(this)">Practicante</button>
-                        </div-->
+                        <small id="emailHelp" class="form-text text-muted text-justify">
+                           Nunca se publica
+                        </small>
 
                         
                     </div>
@@ -319,10 +317,14 @@
 
             <a  class="list-group-item list-group-item-action">
                 <div class="form-group row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-5">
                         <label id="label_salario" for="">Salario</label>
                         <input type="text" class="form-control" id="salario" name="salario" placeholder="$COP Pesos Colombianos" >
+                        <small id="emailHelp" class="form-text text-muted text-justify">
+                           Nunca se publica
+                        </small>
                     </div>
+                    
                 </div>
             </a>
 
@@ -439,7 +441,7 @@
                         <label class="control-label" for="">Correo electrónico</label>		
                         <input type="email" class="form-control" id="" name="email" placeholder="Correo electrónico" required>	
                         <small id="emailHelp" class="form-text text-muted text-justify">
-                            Necesitamos tu correo para verificar la autenticidad de tu evaluación. Te enviamos un correo para confirmar tu evaluación. Nunca se publicará tu correo. 
+                            Nunca se publicará tu correo. Necesitamos tu correo para verificar la autenticidad de tu evaluación. Te enviamos un correo para confirmar tu evaluación. 
                             Al dar click en el botón Finalizar aceptas nuestros <a href="http://vidaandwork.com/terminos-y-condiciones/" target="_blank">Términos y Condiciones.</a>
                         </small>
 

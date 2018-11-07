@@ -1,4 +1,14 @@
 [
+    
+{"value": "Analista"},
+{"value": "Profesor"},
+{"value": "Docente"},
+{"value": "Profesor de Colegio"},
+{"value": "Docente de Colegio"},
+{"value": "Profesor/a universitario (Posgrado)"},
+{"value": "Profesor/a universitario (Pregrado)"},
+{"value": "Docente universitario (Posgrado)"},
+{"value": "Docente universitario (Pregrado)"},
 {"value": "Abastecedor/a"},
 {"value": "Abogado/a"},
 {"value": "Abogado/a Especialista"},

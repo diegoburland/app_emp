@@ -256,6 +256,12 @@ function validar_modal() {
     return validar;
 }
 
+$.fn.digits = function(){ 
+    return this.each(function(){ 
+        $(this).val( $(this).val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") ); 
+    })
+}
+
 $(function () {
 
     $(".retornar").on('click', function () {
@@ -275,8 +281,12 @@ $(function () {
     $("#pre_motivo").hide();
     $("#pre_ies").hide();
 
-    $('#salario').numeric({negative: true, decimal: false});
-    $('#trabajo_tiempo').numeric({negative: true, decimal: false})
+    $('#salario').numeric({negative: false, decimal: true});
+    $("#salario").keyup(function() {
+        $("#salario").digits();
+    });
+    
+    $('#trabajo_tiempo').numeric({negative: true, decimal: false});
 
 
     //sector_economico
@@ -471,6 +481,8 @@ $(function () {
         }
     });
 
-
+    $("#posicion_campo").keyup(function() {
+        $('#posicion').val($("#posicion_campo").val());
+    });
 
 });

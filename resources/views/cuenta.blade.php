@@ -1,5 +1,7 @@
 <meta http-equiv="refresh" content="0; url=https://vidaandwork.com/retroalimentacion" />
-
+<script type="text/javascript">
+window.location.href = "http://vidaandwork.com/retroalimentacion";
+</script>
 <!--div class="row justify-content-center mt-5">
 	<div class="col-12">
 	  <div class="alert alert-success" role="alert">
