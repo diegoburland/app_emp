@@ -83,7 +83,7 @@
                         <label class="control-label" for="">Ciudad</label>
                         <input type="text" class="form-control" id="ciudad_eval" name="ciudad_eval" placeholder="Busca y selecciona la ciudad" autocomplete="nope" required>
                         <input type="hidden" name="ciudad_eval_id" id="ciudad_eval_id" value="">  
-                        <div id="validar_ciudad" class="invalid-feedback">
+                        <div id="validar_ciudad_eval" class="invalid-feedback">
                             Por favor selecciona una ciudad del listado
                         </div>
                     </div>

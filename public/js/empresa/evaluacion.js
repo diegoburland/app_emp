@@ -225,6 +225,16 @@ function validar_botones() {
 
         $('#validar_empresa').css('display', 'none');
     }
+    
+    if ($('#ciudad_eval').val() == "") {
+
+        $('#validar_ciudad_eval').css('display', 'block');
+        $('#ciudad_eval').removeClass('form-control:valid').addClass('form-control:invalid');
+        validar = false;
+    } else {
+
+        $('#validar_ciudad_eval').css('display', 'none');
+    }
 
     var $starts = $('.rating-value');
 
