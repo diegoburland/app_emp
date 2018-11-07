@@ -46,7 +46,8 @@ class User_controller extends Controller
         if($evaluacion->confirmed == 'SI'){
 
           Log::info('-----------------entro code 2 -------------');
-          return redirect()->action('Evaluacion_controller@continuar_evaluacion');
+          return redirect('cuenta');
+          //return redirect()->action('Evaluacion_controller@continuar_evaluacion');
         }
 
         //return $evaluacion;
