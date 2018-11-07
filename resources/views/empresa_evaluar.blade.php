@@ -199,7 +199,7 @@
                 <div class="form-group row">
                     <div class="col-sm-8">
                         <label class="control-label" for="">Título de tu evaluación</label>
-                        <input type="text" class="form-control" id=""  name="titulo" placeholder="Resume tu experiencia en la empresa" >
+                        <input type="text" class="form-control" id=""  name="titulo" maxlength="100" placeholder="Breve resume tu experiencia en la empresa" >
                     </div>
                 </div>
             </a>			

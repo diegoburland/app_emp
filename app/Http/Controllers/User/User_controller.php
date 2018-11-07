@@ -38,13 +38,13 @@ class User_controller extends Controller
     $evaluacion = Evaluacion::where('confir_code', $code)->first();
     if ($evaluacion === null) {
       
-      //Log::info('-----------------entro 1 -------------');
+      Log::info('-----------------entro code 1 -------------');
       return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
     }
-    //log::info('valor de confirmacion:' . $evaluacion->confirmed);
+    log::info('valor de confirmacion:' . $evaluacion->confirmed);
     if($evaluacion->confirmed == 'SI'){
       
-      //Log::info('-----------------entro 2 -------------');
+      Log::info('-----------------entro code 2 -------------');
       return redirect()->action('Evaluacion_controller@continuar_evaluacion');
     }
     
@@ -74,10 +74,10 @@ class User_controller extends Controller
       $user = User::create($data);
       
       //si falla volver
-    // Log::info('-----------------entro 3 -------------');
+      Log::info('-----------------entro code 3 -------------');
       if($user === null){
         
-        //Log::info('-----------------entro 4 -------------');
+        Log::info('-----------------entro code 4 -------------');
         $evaluacion->confirmed = false;
         $evaluacion->save();
         return redirect()->action('Evaluacion_controller@continuar_evaluacion');
@@ -85,7 +85,7 @@ class User_controller extends Controller
     }else{
       
       //ya publico 
-      //Log::info('-----------------entro 5 -------------');
+      Log::info('-----------------entro code 5 -------------');
       return redirect('cuenta');
     }
        
@@ -93,7 +93,7 @@ class User_controller extends Controller
     //Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
     
     //redireccionar
-    Log::info('-----------------entro finaliza -------------');
+    Log::info('-----------------entro code finaliza -------------');
     return redirect('cuenta');
     
   }
