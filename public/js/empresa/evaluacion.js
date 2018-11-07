@@ -226,7 +226,7 @@ function validar_botones() {
         $('#validar_empresa').css('display', 'none');
     }
     
-    if ($('#ciudad_eval').val() == "") {
+    if ($('#ciudad_eval_id').val() == "") {
 
         $('#validar_ciudad_eval').css('display', 'block');
         $('#ciudad_eval').removeClass('form-control:valid').addClass('form-control:invalid');
