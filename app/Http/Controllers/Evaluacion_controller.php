@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Evaluacion;
 use App\Empresa;
 use App\Item;
+use App\User;
 use App\Categoria;
 use App\Ciudad;
 use App\Benes;
@@ -29,7 +30,7 @@ class Evaluacion_controller extends Controller
         $random_hash = bin2hex(random_bytes(32));
         //$random_hash
         $request->request->add(['confir_code' =>  $random_hash, 'ip' => $request->ip()]);
-		    $evaluacion = Evaluacion::create($request->all()); //mejorar        
+		    $evaluacion = Evaluacion::create($request->all()); //mejorar       
 
         $items = Item::all();
       
@@ -58,7 +59,8 @@ class Evaluacion_controller extends Controller
             }
         }
 
-
+        $this->verificarStatusEvaluacion($evaluacion->id); 
+        $this->verificarStatusContenido($evaluacion->id)
         //return $request;
         Log::info('----------------- redirect to gracias -------------');
         //return redirect()->action('Evaluacion_controller@gracias', ['id' => $evaluacion->id]);
@@ -366,6 +368,107 @@ class Evaluacion_controller extends Controller
 
           Mail::to($email)->send(new OcupasionEmail($data));
     }
+
+    public function verificarStatusEvaluacion($id){
+        $eval = Evaluacion::find($id);
+        $result = DB::table('evaluaciones')
+                ->where('ip', $eval->ip)
+                ->select(DB::raw('count(*) as ipCont'))
+                ->first();
+
+        if($result->ipCont > 4){
+          $eval->estado = "POR CONTROLAR";
+          $eval->save();
+          return;
+        }
+
+        $result = DB::table('evaluaciones')
+                ->where('email', $eval->email)
+                ->select(DB::raw('count(*) as emailCont'))
+                ->first();
+
+        if($result->emailCont > 4){
+          $eval->estado = "POR CONTROLAR";
+          $eval->save();
+          return;
+        }
+
+        $result = DB::table('evaluaciones')
+                ->where('email', $eval->email)
+                ->where('empresa_id', $eval->empresa_id)
+                ->select(DB::raw('count(*) as contRep'))
+                ->first();
+
+        if($result->contRep > 2){
+            $eval->estado = "INVALIDA";
+            $eval->save();
+            return;
+        }
+
+        $result = DB::table('evaluaciones')
+                ->where('email', $eval->email)
+                ->where('empresa_id', $eval->empresa_id)
+                ->where('evalua', $eval->evalua)
+                ->select(DB::raw('count(*) as contEvalua'))
+                ->first();
+
+        if($result->contEvalua > 0){
+            $eval->estado = "INVALIDA";
+            $eval->save();
+            return;
+        }
+
+        if($eval->evalua == 'Trabajo Pasado'){
+             $result = DB::table('evaluaciones')
+                ->where('email', $eval->email)
+                ->where('empresa_id', $eval->empresa_id)
+                ->where('evalua', 'Trabajo Actual')
+                ->select(DB::raw('count(*) as contEvalua'))
+                ->first();
+
+            if($result->contEvalua > 0){
+                $eval->estado = "INVALIDA";
+                $eval->save();
+                return;
+            }
+        }
+        else if($eval->evalua == 'Trabajo Actual'){
+            $result = DB::table('evaluaciones')
+                ->where('email', $eval->email)
+                ->where('empresa_id', $eval->empresa_id)
+                ->where('evalua', 'Trabajo Pasado')
+                ->select(DB::raw('count(*) as contEvalua'))
+                ->first();
+
+            if($result->contEvalua > 0){
+                $eval->estado = "INVALIDA";
+                $eval->save();
+                return;
+            }
+        }
+    }
+
+
+  public function verificarStatusContenido($id){
+        $evaluacion = Evaluacion::find($id);
+        $empresa = Empresa::find($evaluacion->empresa_id);
+        if($empresa->verificada == "SIN REVISION" || $empresa->verificada == "NO"){
+            $evaluacion->contenido = "SIN REVISION";
+            $evaluacion->save();
+            return;
+        }
+        if($empresa->verificada == "SI" && $evaluacion->confirmed == "SI"){
+            $evaluacion->contenido = "SIN REVISION";
+            $evaluacion->save();
+            return;
+        }
+        if($empresa->verificada == "POR VERIFICAR" || $empresa->verificada == "ESPERANDO" || $empresa->verificada == "PENDIENTE"){
+            $evaluacion->contenido = "ESPERANDO";
+            $evaluacion->save();
+            return;
+        }
+        
+    }
   
 
 
@@ -373,33 +476,52 @@ class Evaluacion_controller extends Controller
       
         try{
           $evaluacion = Evaluacion::find($id);
-          
-          Log::info('-----------------entro gracias 1 -------------');
-          if ($evaluacion === null) {
-             // eval doesn't exist
-            return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
-          }
-          
-          if($evaluacion->confirmed == 'SI'){
-            
-            return redirect()->action('Evaluacion_controller@continuar_evaluacion');
-          }
-          
-          Log::info('-----------------entro gracias 2 -------------');
-          
           $empresa = Empresa::find($evaluacion->empresa_id);
-          
-          $subject = 'Confirma el correo de tu evaluación en Vida and Work';
-          $template = 'emails.bienvenido';
-          
-          $data = ['subject' => $subject, 'template' => $template, 'email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
 
-          Log::info('-----------------entro gracias 3 -------------');
-          Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
+          $user = User::where('email', $evaluacion->email)->get();
 
-          Log::info('-----------------entro gracias 6 -------------');
-          return view('gracias', $data);
+          if (!empty($user)) {
+            $evaluacion->confirmed = "SI";
+            $evaluacion->save();
+
+            $subject = 'Hemos recibido tu evaluación | Vida and Work';
+            $template = 'emails.evaluacionRegistrada';
+            
+            $data = ['subject' => $subject, 'template' => $template, 'email' => $evaluacion->email, 'empresa' => $empresa->razon_social];
+
+            Log::info('-----------------entro gracias 3 -------------');
+            Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
+            
+          }
+          else{
+
+            $evaluacion->confirmed = "PENDIENTE";
+            $evaluacion->save();
           
+            Log::info('-----------------entro gracias 1 -------------');
+            if ($evaluacion === null) {
+               // eval doesn't exist
+              return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
+            }
+            
+            if($evaluacion->confirmed == 'SI'){
+              
+              return redirect()->action('Evaluacion_controller@continuar_evaluacion');
+            }
+            
+            Log::info('-----------------entro gracias 2 -------------');
+            
+            $subject = 'Confirma el correo de tu evaluación en Vida and Work';
+            $template = 'emails.bienvenido';
+            
+            $data = ['subject' => $subject, 'template' => $template, 'email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
+
+            Log::info('-----------------entro gracias 3 -------------');
+            Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
+
+            Log::info('-----------------entro gracias 6 -------------');
+            return view('gracias', $data);
+          }
         }catch (\Exception $e) {
           
           Log::info("---------------" . $e . "-------------------");
