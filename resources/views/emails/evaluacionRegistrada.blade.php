@@ -23,8 +23,8 @@
     </p>  
     <p>
       ¿Tú no publicaste esta evaluación en <a href="http://www.vidaandwork.com/login">vidaandwork.com</a>?<br>
-      - Por favor, responda a este correo electrónico con el asunto: No creé esta
-      evaluación
+      - Por favor, responda a este correo electrónico con el asunto: <u>No creé esta
+      evaluación</u>
     </p>
 
   </body>

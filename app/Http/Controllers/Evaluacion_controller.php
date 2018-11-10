@@ -59,6 +59,13 @@ class Evaluacion_controller extends Controller
             }
         }
 
+        $user = User::where('email', $evaluacion->email)->first();
+        
+          if (!empty($user)) {
+            $evaluacion->confirmed = "SI";
+            $evaluacion->save();
+          }
+
         $this->verificarStatusEvaluacion($evaluacion->id); 
         $this->verificarStatusContenido($evaluacion->id);
         //return $request;
@@ -115,6 +122,7 @@ class Evaluacion_controller extends Controller
           $evaluacion->departamento = $request->departamento;
           $evaluacion->titulo = $request->titulo;
           $evaluacion->salario = $request->salario;
+          $evaluacion->confirmed = $eval->confirmed;
           $evaluacion->trabajo_tiempo = $request->horas; 
           $evaluacion->mejoras = $request->mejoras;
           $evaluacion->like = $request->like;
@@ -369,10 +377,39 @@ class Evaluacion_controller extends Controller
           Mail::to($email)->send(new OcupasionEmail($data));
     }
 
+    public function verificarStatusCorreo(){
+        $evaluacion = DB::table('evaluaciones')
+                  ->select(DB::raw('evaluaciones.*, empresas.razon_social as empresa, empresas.verificada as statusEmpresa, (SELECT DATEDIFF(DATE(NOW()),DATE(eval.created_at)) as time FROM evaluaciones as eval WHERE eval.id = evaluaciones.id) as time'))
+                  ->join('empresas', 'evaluaciones.empresa_id', '=', 'empresas.id')
+                  ->where('confirmed', 'PENDIENTE')
+                  ->get();
+
+        for ($i=0; $i < count($evaluacion); $i++) { 
+          if($evaluacion[$i]->time == 2 || $evaluacion[$i]->time == 4){
+              $subject = 'Aun no has confirmado el correo de tu evaluacion. Finalizala con solo un click';
+              $template = 'emails.recordatorioConfirmacionCorreo';
+              
+              $data = ['subject' => $subject, 'template' => $template, 'empresa' => $evaluacion[$i]->empresa, 'confir_code' => $evaluacion[$i]->confir_code];
+
+              Mail::to($evaluacion[$i]->email)->send(new OcupasionEmail($data));
+             
+          }
+          else if($evaluacion[$i]->time >= 7){
+            $eval = Evaluacion::find($evaluacion[$i]->id);
+            $eval->confirmed = "NO";
+            $eval->save();
+          }
+        }
+        
+    }
+
+
     public function verificarStatusEvaluacion($id){
         $eval = Evaluacion::find($id);
+
         $result = DB::table('evaluaciones')
                 ->where('ip', $eval->ip)
+                ->where('contenido','<>', 'COPIADA')->orWhere('contenido','=', NULL)
                 ->select(DB::raw('count(*) as ipCont'))
                 ->first();
 
@@ -384,6 +421,7 @@ class Evaluacion_controller extends Controller
 
         $result = DB::table('evaluaciones')
                 ->where('email', $eval->email)
+                ->where('contenido','<>', 'COPIADA')->orWhere('contenido','=', NULL)
                 ->select(DB::raw('count(*) as emailCont'))
                 ->first();
 
@@ -396,6 +434,7 @@ class Evaluacion_controller extends Controller
         $result = DB::table('evaluaciones')
                 ->where('email', $eval->email)
                 ->where('empresa_id', $eval->empresa_id)
+                ->where('contenido','<>', 'COPIADA')->orWhere('contenido','=', NULL)
                 ->select(DB::raw('count(*) as contRep'))
                 ->first();
 
@@ -409,6 +448,7 @@ class Evaluacion_controller extends Controller
                 ->where('email', $eval->email)
                 ->where('empresa_id', $eval->empresa_id)
                 ->where('evalua', $eval->evalua)
+                ->where('contenido','<>', 'COPIADA')->orWhere('contenido','=', NULL)
                 ->select(DB::raw('count(*) as contEvalua'))
                 ->first();
 
@@ -423,6 +463,7 @@ class Evaluacion_controller extends Controller
                 ->where('email', $eval->email)
                 ->where('empresa_id', $eval->empresa_id)
                 ->where('evalua', 'Trabajo Actual')
+                ->where('contenido','<>', 'COPIADA')->orWhere('contenido','=', NULL)
                 ->select(DB::raw('count(*) as contEvalua'))
                 ->first();
 
@@ -437,6 +478,7 @@ class Evaluacion_controller extends Controller
                 ->where('email', $eval->email)
                 ->where('empresa_id', $eval->empresa_id)
                 ->where('evalua', 'Trabajo Pasado')
+                ->where('contenido','<>', 'COPIADA')->orWhere('contenido','=', NULL)
                 ->select(DB::raw('count(*) as contEvalua'))
                 ->first();
 
@@ -446,19 +488,24 @@ class Evaluacion_controller extends Controller
                 return;
             }
         }
+
+        $eval->estado = "NORMAL";
+        $eval->save();
+        return;
     }
 
 
   public function verificarStatusContenido($id){
         $evaluacion = Evaluacion::find($id);
         $empresa = Empresa::find($evaluacion->empresa_id);
+
         if($empresa->verificada == "SIN REVISION" || $empresa->verificada == "NO"){
             $evaluacion->contenido = "SIN REVISION";
             $evaluacion->save();
             return;
         }
         if($empresa->verificada == "SI" && $evaluacion->confirmed == "SI"){
-            $evaluacion->contenido = "SIN REVISION";
+            $evaluacion->contenido = "POR VERIFICAR";
             $evaluacion->save();
             return;
         }
@@ -469,8 +516,6 @@ class Evaluacion_controller extends Controller
         }
         
     }
-  
-
 
     public function gracias($id){
       
@@ -478,12 +523,10 @@ class Evaluacion_controller extends Controller
           $evaluacion = Evaluacion::find($id);
           $empresa = Empresa::find($evaluacion->empresa_id);
 
-          $user = User::where('email', $evaluacion->email)->get();
+          $user = User::where('email', $evaluacion->email)->first();
 
           if (!empty($user)) {
-            $evaluacion->confirmed = "SI";
-            $evaluacion->save();
-
+  
             $subject = 'Hemos recibido tu evaluación | Vida and Work';
             $template = 'emails.evaluacionRegistrada';
             
