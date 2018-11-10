@@ -60,7 +60,7 @@ class Evaluacion_controller extends Controller
         }
 
         $this->verificarStatusEvaluacion($evaluacion->id); 
-        $this->verificarStatusContenido($evaluacion->id)
+        $this->verificarStatusContenido($evaluacion->id);
         //return $request;
         Log::info('----------------- redirect to gracias -------------');
         //return redirect()->action('Evaluacion_controller@gracias', ['id' => $evaluacion->id]);
