@@ -113,7 +113,6 @@ function evaluo_mi(self) {
         $(".dim_empleado").hide();
         $("#pre_motivo").hide();
 
-        elegir_pos($("#btn_practicante"));
     }
 
     //validar_botones();
@@ -202,14 +201,20 @@ function validar_botones() {
         $('#validar_evalua').css('display', 'none');
     }
 
-    if ($('#posicion').val() == "") {
+    if($('#evalua').val() != "Práctica"){
+
+        if ($('#posicion').val() == "") {
 
         $('#validar_posicion').css('display', 'block');
-        validar = false;
-    } else {
+            validar = false;
+        } else {
 
-        $('#validar_posicion').css('display', 'none');
+            $('#validar_posicion').css('display', 'none');
+        }    
+    }else{
+        $('#posicion').val("Prácticante");
     }
+    
 
     if ($('#empresa_id').val() == "") {
 
@@ -219,6 +224,16 @@ function validar_botones() {
     } else {
 
         $('#validar_empresa').css('display', 'none');
+    }
+    
+    if ($('#ciudad_eval_id').val() == "") {
+
+        $('#validar_ciudad_eval').css('display', 'block');
+        $('#ciudad_eval').removeClass('form-control:valid').addClass('form-control:invalid');
+        validar = false;
+    } else {
+
+        $('#validar_ciudad_eval').css('display', 'none');
     }
 
     var $starts = $('.rating-value');
@@ -251,6 +266,12 @@ function validar_modal() {
     return validar;
 }
 
+$.fn.digits = function(){ 
+    return this.each(function(){ 
+        $(this).val( $(this).val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") ); 
+    })
+}
+
 $(function () {
 
     $(".retornar").on('click', function () {
@@ -270,8 +291,12 @@ $(function () {
     $("#pre_motivo").hide();
     $("#pre_ies").hide();
 
-    $('#salario').numeric({negative: true, decimal: false});
-    $('#trabajo_tiempo').numeric({negative: true, decimal: false})
+    $('#salario').numeric({negative: false, decimal: true});
+    $("#salario").keyup(function() {
+        $("#salario").digits();
+    });
+    
+    $('#trabajo_tiempo').numeric({negative: true, decimal: false});
 
 
     //sector_economico
@@ -307,16 +332,16 @@ $(function () {
                 var errorElements = $(
                         "input:invalid, select:invalid, .invalid-feedback[style*='display: block']")
                         .toArray();
-                //document.querySelectorAll(
-                //"input:invalid, .invalid-feedback[style='display:block']");              
+
+                $('html, body').animate({
+                    scrollTop: $(errorElements[0]).offset().top - 50
+                }, 2000);            
 
             }else{
                 $("#public_div").show();
             }
 
-            $('html, body').animate({
-                scrollTop: $(errorElements[0]).offset().top - 50
-            }, 2000);
+            
 
             form.classList.add('was-validated');
         }, false);
@@ -466,6 +491,8 @@ $(function () {
         }
     });
 
-
+    $("#posicion_campo").keyup(function() {
+        $('#posicion').val($("#posicion_campo").val());
+    });
 
 });

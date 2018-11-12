@@ -83,7 +83,7 @@
                         <label class="control-label" for="">Ciudad</label>
                         <input type="text" class="form-control" id="ciudad_eval" name="ciudad_eval" placeholder="Busca y selecciona la ciudad" autocomplete="nope" required>
                         <input type="hidden" name="ciudad_eval_id" id="ciudad_eval_id" value="">  
-                        <div id="validar_ciudad" class="invalid-feedback">
+                        <div id="validar_ciudad_eval" class="invalid-feedback">
                             Por favor selecciona una ciudad del listado
                         </div>
                     </div>
@@ -131,7 +131,7 @@
             </div>
 
             <a class="list-group-item list-group-item-action" id="pre_cargo">
-                <div class="form-group row">
+                <div class="form-group row required">
                     <div class="col-sm-6">                           
                        <label class="control-label" for="">Elegir Cargo</label>
                        <input type="text" class="form-control" id="posicion_campo" name="posicion_campo" placeholder="Busca y selecciona un cargo" autocomplete="nope">
@@ -139,11 +139,9 @@
                         <div id="validar_posicion" class="invalid-feedback">
                             Por favor selecciona la posición
                         </div>
-                        <!--div class="btn-group flex-wrap" role="group" aria-label="Basic example">
-                            <button type="button" id="btn_empleado" class="btn-pos btn btn-dark" onclick="elegir_pos(this)">Empleado</button>
-                            <button type="button" id="btn_directivo" class="btn-pos btn btn-dark"  onclick="elegir_pos(this)">Directivo</button>
-                            <button type="button" id="btn_practicante" class="btn-pos btn btn-dark"  onclick="elegir_pos(this)">Practicante</button>
-                        </div-->
+                        <small id="emailHelp" class="form-text text-muted text-justify">
+                           Nunca se publica
+                        </small>
 
                         
                     </div>
@@ -201,7 +199,7 @@
                 <div class="form-group row">
                     <div class="col-sm-8">
                         <label class="control-label" for="">Título de tu evaluación</label>
-                        <input type="text" class="form-control" id=""  name="titulo" placeholder="Resume tu experiencia en la empresa" >
+                        <input type="text" class="form-control" id=""  name="titulo" maxlength="100" placeholder="Breve resume tu experiencia en la empresa" >
                     </div>
                 </div>
             </a>			
@@ -228,7 +226,7 @@
                     </div>
                     <div class="col-sm-4 ">
                         @if ($item == $items[0])
-                        <div >   
+                        <div style="display: inline-flex;">   
                             
                             <div class="d-inline">
                                <i class="far fa-frown-open fa-2x" style="color: #ff3100;"></i> 
@@ -319,10 +317,14 @@
 
             <a  class="list-group-item list-group-item-action">
                 <div class="form-group row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-5">
                         <label id="label_salario" for="">Salario</label>
                         <input type="text" class="form-control" id="salario" name="salario" placeholder="$COP Pesos Colombianos" >
+                        <small id="emailHelp" class="form-text text-muted text-justify">
+                           Nunca se publica
+                        </small>
                     </div>
+                    
                 </div>
             </a>
 
@@ -439,7 +441,7 @@
                         <label class="control-label" for="">Correo electrónico</label>		
                         <input type="email" class="form-control" id="" name="email" placeholder="Correo electrónico" required>	
                         <small id="emailHelp" class="form-text text-muted text-justify">
-                            Necesitamos tu correo para verificar la autenticidad de tu evaluación. Te enviamos un correo para confirmar tu evaluación. Nunca se publicará tu correo. 
+                            Nunca se publicará tu correo. Necesitamos tu correo para verificar la autenticidad de tu evaluación. Te enviamos un correo para confirmar tu evaluación. 
                             Al dar click en el botón Finalizar aceptas nuestros <a href="http://vidaandwork.com/terminos-y-condiciones/" target="_blank">Términos y Condiciones.</a>
                         </small>
 

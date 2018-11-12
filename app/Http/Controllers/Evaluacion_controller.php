@@ -313,7 +313,7 @@ class Evaluacion_controller extends Controller
                 ->select('evaluaciones.*','empresas.razon_social as empresa', 'empresas.verificada as statusEmpresa')
                 ->join('empresas', 'evaluaciones.empresa_id', '=', 'empresas.id')
                 ->whereRaw(DB::raw($fullWhere))
-                ->where('contenido','<>', 'COPIADA')->orWhere('contenido','=', NULL)
+                //->where('contenido','<>', 'COPIADA')->orWhere('contenido','=', NULL)
                 ->orderBy('created_at', 'ASC')
                 ->orderBy('evalua', 'ASC')
                 ->paginate(50);
