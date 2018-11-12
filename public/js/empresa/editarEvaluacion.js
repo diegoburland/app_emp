@@ -98,6 +98,7 @@ function editar(opc){
   var salario = $('#salario').val();
   var horas = $('#trabajo_tiempo').val(); 
   var mejoras = $('#mejoras').val();
+  var motivo = $('#pre_motivo').val();
   var like = $('#like').val();
   var no_like = $('#no_like').val(); 
   var empresa = $('#empresa_id').val();
@@ -118,7 +119,7 @@ function editar(opc){
             type: 'POST',
             
             data: {_method: 'POST',  _token: CSRF_TOKEN, id: id, departamento: departamento, titulo: titulo, salario: salario,
-                    horas: horas, calificaciones: calificaciones, mejoras: mejoras, like: like, no_like: no_like, cambio: cambio, 
+                    horas: horas, calificaciones: calificaciones, mejoras: mejoras, motivo: motivo, like: like, no_like: no_like, cambio: cambio, 
                     empresa_id: empresa, evalua: evalua, posicion: tipocargo, id_padre: id, rechazado: opc },
             dataType: 'JSON',
             
@@ -145,7 +146,7 @@ function editar(opc){
         type: 'POST',
             
         data: {_method: 'POST',  _token: CSRF_TOKEN, id: id, departamento: departamento, titulo: titulo, salario: salario,
-                horas: horas, calificaciones: calificaciones, mejoras: mejoras, like: like, no_like: no_like, cambio: cambio, 
+                horas: horas, calificaciones: calificaciones, mejoras: mejoras, motivo: motivo, like: like, no_like: no_like, cambio: cambio, 
                 empresa_id: empresa, evalua: evalua, posicion: tipocargo, id_padre: id, rechazado: opc },
         dataType: 'JSON',
             
@@ -155,7 +156,7 @@ function editar(opc){
     })
  //   window.location.href = "/evaluacion_list";
   }
-  setTimeout(function(){window.close()},4000); // 3000ms = 3s
+  setTimeout(function(){window.close()},4000);
 } 
 
 function actualiza(status){
@@ -199,9 +200,26 @@ function evaluo_mi(self){
 
     $('#evalua').val($(self).text());
 
-    if ($(self).attr('id') == "btn_actual" || $(self).attr('id') == "btn_pasado") {
+    if ($(self).attr('id') == "btn_actual") {
 
         if (!$("#btn_empleado").is(":visible")) {
+          
+           $("#btn_practicante").before(BTN_OTROS);          
+        }
+       
+        $("#btn_practicante").remove();
+        $(".dim_pre_retiro").hide();
+        $(".dim_practicante").hide();
+        $(".dim_empleado").show();
+      
+        $(".bne_practica").hide();
+        $(".bne_empleo").show();
+
+    }
+    else if($(self).attr('id') == "btn_pasado"){
+        if (!$("#btn_empleado").is(":visible")) {
+
+           $(".dim_pre_retiro").show();
           
            $("#btn_practicante").before(BTN_OTROS);          
         }
@@ -213,8 +231,8 @@ function evaluo_mi(self){
       
         $(".bne_practica").hide();
         $(".bne_empleo").show();
-
-    }else{
+    }
+    else{
 
         if (!$("#btn_practicante").is(":visible")) {
 

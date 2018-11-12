@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('title', 'Listado de evaluacion')
+
 <div id="prueba">
 @section('head')
   <script type="text/javascript" src="/js/empresa/evaluacionList.js"></script>
@@ -11,6 +12,7 @@
 
 @endsection
 @section('content')
+@if(session('tipo') == 'admin')
 
 <meta id="csrf-token" content="{{ csrf_token() }}" />
 
@@ -26,7 +28,6 @@
 <tr> 
    <td valign=top><font face="verdana, arial, helvetica" size=1>*</font></td> 
    <td><font face="verdana, arial, helvetica" size=2> 
-
 Total de empresas por verificar: {{$totalEmpPorVerif}} 
 
       </font></td> 
@@ -134,11 +135,12 @@ Total evaluaciones: {{$totalEvaluaciones}}
               <td>{{$eval->id}}</td>
               <td><a target="_blank" href="{{URL::action('Evaluacion_controller@mostrar_evaluacion',$eval->id)}} ">
               <button class="btn btn-info"><i class="fa fa-check-circle"></i></button></a></td>
-              <td>{{$eval->empresa}}</td>
-              @if( strlen($eval->email) >= 25)
+              <td style="font-size: 11px;">{{$eval->empresa}}</td>
+              @if( strlen($eval->email) >= 24)
                  <td style="font-size: 9px;">{{$eval->email}}</td>
-              @endif
-              @if( strlen($eval->email) < 25)
+              @elseif( strlen($eval->email) > 20 && strlen($eval->email) < 24)
+                  <td style="font-size: 11px;">{{$eval->email}}</td>
+              @elseif( strlen($eval->email) < 24)
                  <td>{{$eval->email}}</td>
               @endif
               <td>{{ Carbon\Carbon::parse($eval->created_at)->format('Y-m-d') }}</td> 
@@ -232,6 +234,10 @@ Total evaluaciones: {{$totalEvaluaciones}}
       {!! $evaluacion->appends(['evaluacion' => $eva, 'publicada' => $pub, 'contenido' => $conte, 'statusEmpresa' => $sEmpresa, 'statusCorreo' =>$sCorreo, 'empresa' => $emp, 'correo' => $cor, 'trabajo' =>$tr, 'institucion' => $ins])->render() !!}
     </div>
 </div>
-
-
+@else
+<div style="text-align: center; margin-top: 14%;">
+     <h1> ¡Esta página sólo es visible con permisos de administrador! </h1> 
+     <img src="/img/advertencia.png" width="180px">
+</div>
+@endif
 @endsection
