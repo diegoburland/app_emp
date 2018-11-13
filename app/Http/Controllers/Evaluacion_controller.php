@@ -395,9 +395,15 @@ class Evaluacion_controller extends Controller
              
           }
           else if($evaluacion[$i]->time >= 7){
-            $eval = Evaluacion::find($evaluacion[$i]->id);
+            /*$eval = Evaluacion::find($evaluacion[$i]->id);
             $eval->confirmed = "NO";
-            $eval->save();
+            $eval->save();*/
+              $subject = 'Aun no has confirmado el correo de tu evaluacion. Finalizala con solo un click';
+              $template = 'emails.recordatorioConfirmacionCorreo';
+              
+              $data = ['subject' => $subject, 'template' => $template, 'empresa' => $evaluacion[$i]->empresa, 'confir_code' => $evaluacion[$i]->confir_code];
+
+              Mail::to($evaluacion[$i]->email)->send(new OcupasionEmail($data));
           }
         }
         
