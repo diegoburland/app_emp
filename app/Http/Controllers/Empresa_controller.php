@@ -58,6 +58,10 @@ class Empresa_controller extends Controller
 
     public function save_empresa(Request $request){
 
+        $empresa = Empresa::where('razon_social', $request->input('razon_social'))->orWhere('nicknames', $request->input('razon_social'))->first();
+         if (!empty($empresa)) {
+             return $empresa->id;
+         }
         return Empresa::create($request->all())->id;
     }
 

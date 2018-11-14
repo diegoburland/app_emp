@@ -39,7 +39,7 @@ class Evaluacion_controller extends Controller
          //Log::info('-----------------entro 1 -------------');
         foreach ($items as $item) {
             
-            if($request->input('puntaje_' . $item->id) != null){
+            if($request->input('puntaje_' . $item->id) != null && intval($request->input('puntaje_' . $item->id) > 0)){
 
                 Eval_item::create(array('evaluacion_id' => $evaluacion->id, 'item_id' => $item->id, 'puntaje' => $request->input('puntaje_' . $item->id), 'comentario' => $request->input('comentario_' . $item->id)));
 
