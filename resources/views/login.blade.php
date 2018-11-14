@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Ocupacion')
+@section('title', 'VidAndWork.com')
 
 @section('head')
   <script type="text/javascript" src="/js/empresa/profile.js"></script>
