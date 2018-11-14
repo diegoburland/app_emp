@@ -362,7 +362,7 @@ $(function () {
                 url: '/api/v1/crear_empresa',
                 type: 'POST',
 
-                data: {_method: 'POST', _token: CSRF_TOKEN, razon_social: $('#razon_social').val(),
+                data: {_method: 'POST', _token: CSRF_TOKEN, razon_social: $('#razon_social').val().toUpperCase(), verificada:'POR VERIFICAR',
                     ciudad_id: $('#ciudad_id').val(), direccion: $('#direccion').val(), sector_economico: $('#sector_economico').val()},
                 dataType: 'JSON',
 

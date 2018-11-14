@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('prueba/{id}', 'Prueba_controller@show');
 
 Route::get('empresa/{id}', 'Empresa_controller@show');
 //Route::post('crear_empresa', 'Empresa_controller@store')->name('empresa.store');
