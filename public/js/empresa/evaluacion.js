@@ -367,12 +367,22 @@ $(function () {
                 dataType: 'JSON',
 
                 success: function (data) {
-                    $("#empresa").val($('#razon_social').val());
-                    $('#empresa_id').val(data);
-                    $('#exampleModal').modal('hide');
-                    $('#ciudad_eval_id').val($('#ciudad_id').val());
-                    $('#ciudad_eval').val($('#ciudad').val());
-                     
+                    
+                    if(parseInt(data) > 0){
+                        $("#empresa").val($('#razon_social').val().toUpperCase());
+                        $('#empresa_id').val(data);
+                        $('#exampleModal').modal('hide');
+                        $('#ciudad_eval_id').val($('#ciudad_id').val());
+                        $('#ciudad_eval').val($('#ciudad').val());
+                    }else{
+                        alert('Error al crear la nueva empresa. Por favor vuelva a intentar.');
+                    }                                         
+                },
+                error: function (request, status, error) {
+                    console.log(error);
+                    console.log(status);
+                    console.log(request);
+                    alert('Error al crear la nueva empresa. Por favor vuelva a intentar.');
                 }
             });
         }
