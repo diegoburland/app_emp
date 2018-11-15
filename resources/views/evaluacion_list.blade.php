@@ -143,10 +143,10 @@ Total evaluaciones: {{$totalEvaluaciones}}
               @elseif( strlen($eval->email) < 24)
                  <td>{{$eval->email}}</td>
               @endif
-              <td>{{ Carbon\Carbon::parse($eval->created_at)->format('Y-m-d') }}</td> 
-              <td>{{$eval->ip}}</td>
+              <td style="font-size: 12px;">{{ Carbon\Carbon::parse($eval->created_at)->format('Y-m-d') }}</td>
+              <td style="font-size: 12px;">{{$eval->ip}}</td>
               <td>{{$eval->evalua}}</td>
-              <td>{{$eval->ies}}</td>
+              <td style="font-size: 12px;">{{$eval->ies}}</td>
               @if($eval->estado == 'INVALIDA')
                  <td style="background: indianred;">{{$eval->estado}}</td>
               @endif

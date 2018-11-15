@@ -3,6 +3,7 @@ $(document).ready(function() {
   var URLactual = window.location;
 
   if(/empresa_editar/.test(URLactual)){
+
     var btn_actual = document.getElementById('btn_actual');
     var btn_practica = document.getElementById('btn_practica');
     var btn_pasado = document.getElementById('btn_pasado');
@@ -71,13 +72,14 @@ $(document).ready(function() {
       $('#btn_pra_no').click();
       btn_SiOfrece.disabled = true;
     }
-
-    if($('#aceptaoferta')[0].value == "Si"){
+    if($('#aceptaoferta')[0].value == "SI"){
       $('#btn_si_acepta').click();
+      $('#pre_porque').hide();
       btn_NoAcepta.disabled = true;
     }
-    else{
+    else if($('#aceptaoferta')[0].value == "NO"){
       $('#btn_no_acepta').click();
+      $('#pre_porque').show();
       btn_SiAcepta.disabled = true;
     }
   }
@@ -99,6 +101,7 @@ function editar(opc){
   var horas = $('#trabajo_tiempo').val(); 
   var mejoras = $('#mejoras').val();
   var motivo = $('#pre_motivo').val();
+  var porque = $('#porque').val();
   var like = $('#like').val();
   var no_like = $('#no_like').val(); 
   var empresa = $('#empresa_id').val();
@@ -119,8 +122,8 @@ function editar(opc){
             type: 'POST',
             
             data: {_method: 'POST',  _token: CSRF_TOKEN, id: id, departamento: departamento, titulo: titulo, salario: salario,
-                    horas: horas, calificaciones: calificaciones, mejoras: mejoras, motivo: motivo, like: like, no_like: no_like, cambio: cambio, 
-                    empresa_id: empresa, evalua: evalua, posicion: tipocargo, id_padre: id, rechazado: opc },
+                    horas: horas, calificaciones: calificaciones, mejoras: mejoras, porque: porque, motivo: motivo, like: like,  
+                    no_like: no_like, cambio: cambio, empresa_id: empresa, evalua: evalua, posicion: tipocargo, id_padre: id, rechazado: opc },
             dataType: 'JSON',
             
             success: function (data) { 
@@ -146,7 +149,7 @@ function editar(opc){
         type: 'POST',
             
         data: {_method: 'POST',  _token: CSRF_TOKEN, id: id, departamento: departamento, titulo: titulo, salario: salario,
-                horas: horas, calificaciones: calificaciones, mejoras: mejoras, motivo: motivo, like: like, no_like: no_like, cambio: cambio, 
+                horas: horas, calificaciones: calificaciones, mejoras: mejoras, porque: porque, motivo: motivo, like: like, no_like: no_like, cambio: cambio, 
                 empresa_id: empresa, evalua: evalua, posicion: tipocargo, id_padre: id, rechazado: opc },
         dataType: 'JSON',
             
@@ -211,6 +214,7 @@ function evaluo_mi(self){
         $(".dim_pre_retiro").hide();
         $(".dim_practicante").hide();
         $(".dim_empleado").show();
+        $("#pre_porque").hide();
       
         $(".bne_practica").hide();
         $(".bne_empleo").show();
@@ -228,6 +232,7 @@ function evaluo_mi(self){
 
         $(".dim_practicante").hide();
         $(".dim_empleado").show();
+        $("#pre_porque").hide();
       
         $(".bne_practica").hide();
         $(".bne_empleo").show();
@@ -239,7 +244,7 @@ function evaluo_mi(self){
           $('#btn_directivo').after(BTN_PRACTICANTE);    
           //elegir_pos($("#btn_practicante"));        
         }
-
+        $(".dim_pre_retiro").hide();
         $("#btn_empleado").remove();
         $("#btn_directivo").remove();
 
@@ -286,11 +291,20 @@ function elegir_ofre(self){
 
 function elegir_oferta(self){
 
-    $('.btn-oferta').removeClass('btn-dark').addClass('btn-secondary');
+    $('.btn-oferta').removeClass('btn-warning').addClass('btn-dark');
 
-    $(self).removeClass('btn-secondary').addClass('btn-dark');
+    $(self).removeClass('btn-dark').addClass('btn-warning');
 
-    $('#oferta').val($(self).text());
+    var text = $(self).text().toUpperCase();
+    $('#oferta').val(text);
+
+    console.log(text);
+
+    if (text == "NO") {
+        $("#pre_porque").show();
+    } else {
+        $("#pre_porque").hide();
+    }
 }
 
 function elegir_recomienda(self){

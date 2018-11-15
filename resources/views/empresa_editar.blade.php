@@ -43,7 +43,7 @@ ul.ui-autocomplete {
 	<script type="text/javascript" src="/js/empresa/editarEvaluacion.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection
-
+@if(session('tipo') == 'admin')
 <div class="row justify-content-md-center">
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 	<form id="form_evaluacion" novalidate class="needs-validation" style="width: 75%;">
@@ -54,10 +54,7 @@ ul.ui-autocomplete {
 			@csrf
 			
 			<h4>Verificar evaluación</h4>
-		
-			  <button type="button" class="btn btn-warning" onclick="history.go(-1); return false;" style="margin-left: 93%;"> 
-			  	Atrás
-			  </button>
+
 					
 			<a class="list-group-item list-group-item-action text-light bg-dark">
 				<h5>Datos Generales</h5>    								
@@ -196,7 +193,7 @@ ul.ui-autocomplete {
 								  	</div>
 								  	@foreach ($calificaciones as $calificacion)
 								  	<input type="hidden" name="calificaciones" id="calificaciones" value="{{$calificaciones}}">
-								  	@if($item->id == $calificacion->id)
+								  	@if($item->id == $calificacion->item_id)
 								  	@if($calificacion->puntaje == "1")
 								  	<div class="col-sm-4 ">
 								  		<div class="d-inline-flex star-rating star-rating-{{$item->id}}">
@@ -275,7 +272,7 @@ ul.ui-autocomplete {
 								  	
 							  	</div>						  	
 							  	  @if($calificacion->comentario != "")					      
-							      	<textarea name="comentario_{{$item->id}}" id="text_{{$item->id}}" class="form-control" onChange="cambioComentario('{{$calificacion->id}}')" placeholder="Agrega un comentario">{{$calificacion->comentario}}</textarea>
+							      	<textarea name="comentario_{{$item->id}}" id="text_{{$item->id}}" class="form-control" onChange="cambioComentario('{{$calificacion->item_id}}')" placeholder="Agrega un comentario">{{$calificacion->comentario}}</textarea>
 							      @endif
 							      <input type="hidden" name="puntaje_{{$item->id}}" id="puntaje_{{$item->id}}" class="rating-value" value="0">
 
@@ -377,7 +374,14 @@ ul.ui-autocomplete {
 			  	</div>
 			</a>
 
-			
+			 <a  id="pre_porque" class="list-group-item list-group-item-action">
+                <div class="form-group row">
+                    <div class="col-sm-8">
+                        <label for="">¿Qué lo motivó a no aceptar la oferta?</label>
+                        <textarea class="form-control" onChange="actualiza('true')" name="porque" id="porque">{{$evaluacion->porque}}</textarea>
+                    </div>
+                </div>
+            </a>
 
 			<a  class="list-group-item list-group-item-action text-light bg-dark">
 				<h5>Cuéntanos algo sobre tu empleador</h5>    	
@@ -458,5 +462,10 @@ ul.ui-autocomplete {
 	</div>
 	</form>
 </div>
-
+@else
+<div style="text-align: center; margin-top: 14%;">
+     <h1> ¡Esta página sólo es visible con permisos de administrador! </h1> 
+     <img src="/img/advertencia.png" width="180px">
+</div>
+@endif
 @endsection

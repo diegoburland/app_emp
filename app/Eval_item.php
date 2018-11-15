@@ -9,7 +9,7 @@ class Eval_item extends Model
 {
 	protected $table = "eval_items";
 
-    protected $fillable = array('evaluacion_id', 'item_id', 'puntaje', 'comentario');
+    protected $fillable = array('id','evaluacion_id', 'item_id', 'puntaje', 'comentario');
 
     public function getItemByEvaluation($idEval){
 

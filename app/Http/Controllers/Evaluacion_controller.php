@@ -96,7 +96,6 @@ class Evaluacion_controller extends Controller
          }
       }
       else{
-        $calificaciones = $request->calificaciones; 
 
         if($request->cambio == "true"){
 
@@ -117,6 +116,7 @@ class Evaluacion_controller extends Controller
           $evaluacion->terminos = $eval->terminos;
           $evaluacion->ofrecer = $eval->ofrecer;
           $evaluacion->motivo = $request->motivo;
+          $evaluacion->porque = $request->porque;
           $evaluacion->oferta = $eval->oferta;
           $evaluacion->confir_code = bin2hex(random_bytes(32));
           $evaluacion->departamento = $request->departamento;
@@ -131,6 +131,8 @@ class Evaluacion_controller extends Controller
           $evaluacion->contenido = 'EDITADO';
           $evaluacion->publicada = "SI";
           $evaluacion->save();
+
+          $calificaciones = $request->calificaciones;
 
           for ($i=0; $i < count($calificaciones); $i++) { 
             $item = Eval_item::find($calificaciones[$i]['id']);
@@ -197,15 +199,16 @@ class Evaluacion_controller extends Controller
       }
 
       $evaluaciones = Evaluacion::all();
-      $totalEvaluaciones = count($evaluaciones);
-      for ($i=0; $i < $totalEvaluaciones; $i++) { 
-            if($evaluaciones[$i]['publicada'] == 'SI'){
+
+      $totalEvaluaciones = 0;
+      for ($i=0; $i < count($evaluaciones); $i++) { 
+            if($evaluaciones[$i]['publicada'] == 'SI' && $evaluaciones[$i]['contenido'] <> 'COPIADA')
               $totalPublicadas ++;
-            }  
-            if($evaluaciones[$i]['contenido'] == 'POR VERIFICAR'){
+            if($evaluaciones[$i]['contenido'] == 'POR VERIFICAR')
               $contenidoCont ++;
+            if($evaluaciones[$i]['contenido'] <> 'COPIADA') 
+              $totalEvaluaciones ++;
             }  
-        }
 
       ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -353,6 +356,7 @@ class Evaluacion_controller extends Controller
     }
 
     public function enviarEmail($contenido, $empresa, $email){
+      $data = [];
       if($contenido == 'ACEPTADO'){
           $subject = 'Subida exitosa de tu evaluación en Vida and Work';
           $template = 'emails.verificacionEvaluacionAceptada';
