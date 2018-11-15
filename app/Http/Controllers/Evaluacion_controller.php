@@ -68,13 +68,9 @@ class Evaluacion_controller extends Controller
 
         $this->verificarStatusEvaluacion($evaluacion->id); 
         $this->verificarStatusContenido($evaluacion->id);
-        //return $request;
-        Log::info('----------------- redirect to gracias -------------');
-        //return redirect()->action('Evaluacion_controller@gracias', ['id' => $evaluacion->id]);
-        return redirect()->route('gracias', [$evaluacion->id]);
       
-        //return redirect('/gracias?email='. $request->input('email') . '&empresa=' . $request->input('empresa_nombre'));
-        
+        return redirect()->route('gracias', ['id' => $evaluacion->id]);
+       
     }
 
     public function editar(Request $request){
@@ -329,10 +325,8 @@ class Evaluacion_controller extends Controller
 
       
     	$categorias = Categoria::all();
-    	$items = Item::all();
-      
-      $benes = Benes::all();
-      
+    	$items = Item::all();      
+        $benes = Benes::all();     
     	return view('empresa_evaluar', array('categorias' => $categorias, 'items' => $items, 'benes'=>$benes));
     }
 
@@ -542,38 +536,28 @@ class Evaluacion_controller extends Controller
             
             $data = ['subject' => $subject, 'template' => $template, 'email' => $evaluacion->email, 'empresa' => $empresa->razon_social];
 
-            Log::info('-----------------entro gracias by Luis -------------');
+            Log::info('----mail when user exist----')
             Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
-            return view('gracias', $data);
+            return view('gracias');
           }
           else{
 
             $evaluacion->confirmed = "PENDIENTE";
             $evaluacion->save();
           
-            Log::info('-----------------entro gracias 1 -------------');
-            if ($evaluacion === null) {
+            if ($evaluacion === null || $evaluacion->confirmed == 'SI') {
                // eval doesn't exist
               return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
             }
-            
-            if($evaluacion->confirmed == 'SI'){
-              
-              return redirect()->action('Evaluacion_controller@continuar_evaluacion');
-            }
-            
-            Log::info('-----------------entro gracias 2 -------------');
             
             $subject = 'Confirma el correo de tu evaluación en Vida and Work';
             $template = 'emails.bienvenido';
             
             $data = ['subject' => $subject, 'template' => $template, 'email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
 
-            Log::info('-----------------entro gracias 3 -------------');
+            Log::info('----mail when user doesnt exist----');
             Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
-
-            Log::info('-----------------entro gracias 6 -------------');
-            return view('gracias', $data);
+            return view('gracias');
           }
         }catch (\Exception $e) {
           
