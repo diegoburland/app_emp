@@ -75,14 +75,11 @@
                     <p>¡Te prometemos un 100% de anonimato y un manejo confiable de tus datos en todo momento!</p>
 
                     <p>Tu equipo de Vida and Work</p>
-            </div>
-           
-
-        <div class="card-footer">
-           <p>¿Tú no publicaste esta evaluación en <a href="https://www.vidaandwork.com" target="_blank">www.vidaandwork.com</a>?<br>
-            - Por favor, responda a este correo electrónico con el asunto: No creé esta evaluación</p>
+                    <p>¿Tú no publicaste esta evaluación en <a href="https://www.vidaandwork.com" target="_blank">www.vidaandwork.com</a>?<br>
+                        - Por favor, responda a este correo electrónico con el asunto: No creé esta evaluación</p>
          
-        </div>
+                    
+            </div>
          
         </div>
         
