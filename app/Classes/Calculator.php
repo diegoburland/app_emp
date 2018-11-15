@@ -11,6 +11,10 @@ class Calculator {
     private static $AVG_2 = 3.4;
     private static $AVG_3 = 2.4;
 
+    private function total_dim_less_two(){
+        
+    }
+
     public function average_eval($id) {
 
         $avg = DB::table('evaluaciones')
@@ -21,7 +25,7 @@ class Calculator {
         return $avg->avg_eval;
     }
 
-    private function average_vw() {
+    public function average_vw() {
         $avg = DB::table('evaluaciones')
                         ->join('eval_items', 'eval_items.evaluacion_id', '=', 'evaluaciones.id')
                         ->select(DB::raw('avg(eval_items.puntaje) as avg_vw'))

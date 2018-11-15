@@ -2,7 +2,7 @@
 <html lang="en-US">
     <head>
         <meta charset="utf-8">
-        <style>
+        <!--style>
             .btn{
                 color: #212529;
 
@@ -24,7 +24,8 @@
                 border-radius: .25rem;
                 transition: color .15s 
             }
-        </style>
+        </style-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     </head>
     <body>
         <b>¡Muchas gracias por tu evaluación anónima sobre la empresa {{$empresa}}!</b><br>
@@ -33,7 +34,7 @@
             Dale clic al botón abajo para confirmar tu correo electrónico:
         </p>
 
-        <p><a class="btn" href="https://co.vidaandwork.com/code/{{$confir_code}}" target="_blank">Confirmar correo</a></p>
+        <p><a class="btn btn-warning" href="https://co.vidaandwork.com/code/{{$confir_code}}" target="_blank">Confirmar correo</a></p>
         <p>¡Gracias por tu aporte para un mercado laboral más transparente!</p>
         <p>¡Te prometemos un 100% de anonimato y un manejo confiable de tus datos en todo momento!</p>
 
