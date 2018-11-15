@@ -536,7 +536,7 @@ class Evaluacion_controller extends Controller
             
             $data = ['subject' => $subject, 'template' => $template, 'email' => $evaluacion->email, 'empresa' => $empresa->razon_social];
 
-            Log::info('----mail when user exist----')
+            Log::info('----mail when user exist----');
             Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
             return view('gracias');
           }
