@@ -16,7 +16,7 @@ class Eval_item extends Model
         $results = array();
 
         $queries = DB::table('eval_items')
-            ->select('eval_items.item_id as id', 'eval_items.puntaje as puntaje', 'eval_items.comentario as comentario')
+            ->select('eval_items.id as id', 'eval_items.evaluacion_id as evaluacion_id', 'eval_items.item_id as item_id', 'eval_items.puntaje as puntaje', 'eval_items.comentario as comentario')
             ->where('eval_items.evaluacion_id', '=', $idEval)
             ->get();
 
