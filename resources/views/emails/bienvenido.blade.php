@@ -47,6 +47,8 @@
                 background-color: rgba(0,0,0,.03);
                 border-top: 1px solid rgba(0,0,0,.125);
                 color: #6c757d!important;
+                -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
             }
             .card-body {
                 -ms-flex: 1 1 auto;
@@ -62,17 +64,17 @@
         
             <div class="card-body">
                   <img src="https://co.vidaandwork.com/img/transparente1-k.png" alt="Vida And Work" width="200px"><br>
-        <b>¡Muchas gracias por tu evaluación anónima sobre la empresa {{$empresa}}!</b><br>
+                    <b>¡Muchas gracias por tu evaluación anónima sobre la empresa {{$empresa}}!</b><br>
 
-        <p>
-            Dale clic al botón abajo para confirmar tu correo electrónico:
-        </p>
+                    <p>
+                        Dale clic al botón abajo para confirmar tu correo electrónico:
+                    </p>
 
-        <p><a class="btn" href="https://co.vidaandwork.com/code/{{$confir_code}}" target="_blank">Confirmar correo</a></p>
-        <p>¡Gracias por tu aporte para un mercado laboral más transparente!</p>
-        <p>¡Te prometemos un 100% de anonimato y un manejo confiable de tus datos en todo momento!</p>
+                    <p><a class="btn" href="https://co.vidaandwork.com/code/{{$confir_code}}" target="_blank">Confirmar correo</a></p>
+                    <p>¡Gracias por tu aporte para un mercado laboral más transparente!</p>
+                    <p>¡Te prometemos un 100% de anonimato y un manejo confiable de tus datos en todo momento!</p>
 
-        <p>Tu equipo de Vida and Work</p>
+                    <p>Tu equipo de Vida and Work</p>
             </div>
            
 
