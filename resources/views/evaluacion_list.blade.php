@@ -9,6 +9,11 @@
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
   <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
+  <style>
+      td{
+          font-size: 12px;
+      }
+  </style>
 
 @endsection
 @section('content')
@@ -149,7 +154,10 @@ Total evaluaciones: {{$totalEvaluaciones}}
               <td style="font-size: 12px;">{{ Carbon\Carbon::parse($eval->created_at)->format('Y-m-d') }}</td>
               <td style="font-size: 12px;">{{$eval->ip}}</td>
               <td>{{$eval->evalua}}</td>
-              <td style="font-size: 12px;">{{$eval->ies}}</td>
+              <td ><div style="text-overflow: ellipsis;
+                    max-width: 100px;
+                    overflow: hidden;
+                    white-space: nowrap;">{{$eval->ies}}</div></td>
               @if($eval->estado == 'INVALIDA')
                  <td style="background: indianred;">{{$eval->estado}}</td>
               @endif
@@ -233,7 +241,7 @@ Total evaluaciones: {{$totalEvaluaciones}}
 
 
 
-    <div style="margin-left: 25%; margin-top: 1%;">
+    <div style="margin-left: 40%; margin-top: 1%;">
       {!! $evaluacion->appends(['evaluacion' => $eva, 'publicada' => $pub, 'contenido' => $conte, 'statusEmpresa' => $sEmpresa, 'statusCorreo' =>$sCorreo, 'empresa' => $emp, 'correo' => $cor, 'trabajo' =>$tr, 'institucion' => $ins, 'ip' => $ipp])->render() !!}
     </div>
 </div>

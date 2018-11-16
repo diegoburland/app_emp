@@ -13,6 +13,13 @@ class Calculator {
 
     private function total_dim_less_two(){
         
+        $dims = DB::table('evaluaciones')
+                        ->join('eval_items', 'eval_items.evaluacion_id', '=', 'evaluaciones.id')
+                ->join('eval_items', 'eval_items.evaluacion_id', '=', 'evaluaciones.id')
+                        ->select(DB::raw('avg(eval_items.puntaje) as avg_eval'))
+                        ->where([['eval_items.puntaje', '>', 0],
+                                ['id', '=', $id]])->get();
+        return $dims;
     }
 
     public function average_eval($id) {
