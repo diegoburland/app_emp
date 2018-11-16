@@ -350,20 +350,18 @@ class Evaluacion_controller extends Controller {
             $template = 'emails.verificacionEvaluacionAceptada';
 
             $data = ['subject' => $subject, 'template' => $template, 'contenido' => $contenido, 'empresa' => $empresa, 'correo' => $email];
-        } else if ($contenido == 'EDITADA') {
+        } else if ($contenido == 'EDITADO') {
             $subject = 'Subida exitosa de tu evaluación en Vida and Work';
             $template = 'emails.verificacionEvaluacionEditada';
 
             $data = ['subject' => $subject, 'template' => $template, 'contenido' => $contenido, 'empresa' => $empresa, 'correo' => $email];
-        } else if ($contenido == 'RECHAZADA') {
+        } else if ($contenido == 'RECHAZADO') {
             $subject = 'Fallo de la subida de tu evaluación en Vida and Work';
             $template = 'emails.verificacionEvaluacionRechazada';
 
             $data = ['subject' => $subject, 'template' => $template, 'contenido' => $contenido, 'empresa' => $empresa, 'correo' => $email];
         }
-
-
-
+     
         Mail::to($email)->send(new OcupasionEmail($data));
     }
 
