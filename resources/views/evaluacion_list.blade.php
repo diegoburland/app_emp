@@ -13,6 +13,9 @@
       td{
           font-size: 12px;
       }
+      table.dataTable thead th, table.dataTable thead td {
+      padding: 0px 0px !important; 
+      }
   </style>
 
 @endsection
