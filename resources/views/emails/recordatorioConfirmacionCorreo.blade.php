@@ -14,7 +14,7 @@
        Tu equipo de Vida and Work
     </p>  
     <p>
-      ¿Tú no publicaste esta evaluación en <a href="http://www.vidaandwork.com/login">vidaandwork.com</a>?<br>
+      ¿Tú no publicaste esta evaluación en <a href="http://www.vidaandwork.com">vidaandwork.com</a>?<br>
       - Por favor, responda a este correo electrónico con el asunto: <u>No creé esta
       evaluación</u>
     </p>
