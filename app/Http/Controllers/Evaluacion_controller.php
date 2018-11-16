@@ -498,6 +498,11 @@ class Evaluacion_controller extends Controller {
             $evaluacion->save();
             return;
         }
+        if ($empresa->verificada == "SI" && $evaluacion->confirmed == "PENDIENTE") {
+            $evaluacion->contenido = "ESPERANDO";
+            $evaluacion->save();
+            return;
+        }
         if ($empresa->verificada == "POR VERIFICAR" || $empresa->verificada == "ESPERANDO" || $empresa->verificada == "PENDIENTE") {
             $evaluacion->contenido = "ESPERANDO";
             $evaluacion->save();
