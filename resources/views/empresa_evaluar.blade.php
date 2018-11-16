@@ -148,7 +148,7 @@
                 </div>
             </a>
             <a class="list-group-item list-group-item-action">
-                <div class="form-group row">
+                <div class="form-group row required">
                     <div class="col-sm-6">
                         <label class="control-label" for="">Departamento de la Empresa</label>
                         <select name="departamento" class="form-control" required>
@@ -168,6 +168,8 @@
                             <option value="Legal / Fiscal">Legal / Fiscal</option>
                             <option value="Ventas / Comercial">Ventas / Comercial</option>
                             <option value="Gestión de Calidad">Gestión de Calidad</option>
+                            <option value="Salud">Salud</option>
+                            <option value="Educación">Educación</option>
                             <option value="Otro">Otro</option>
                         </select>
                         <div class="invalid-feedback">

@@ -82,26 +82,29 @@ Total evaluaciones: {{$totalEvaluaciones}}
     <p></p>
     Tipo de trabajo:
     <div class="trabajo"> </div>
+    <p></p>
+    Publicada:
+    <div class="statuspublicacion"> </div>
  </div>
  <div id="center">
       Institución:
      <div class="institucion"> </div>
      <p></p>
+     IP:
+    <div class="ip"> </div>
+    <p></p>
      Estado evaluacion:
      <div class="statusevaluacion"> </div>
-     <p></p>
-     Correo verificado:
-     <div class="statuscorreo"> </div>
   </div>
   <div id="derecho">
+     Correo verificado:
+     <div class="statuscorreo"> </div>
+     <p></p>
       Estado empresa:
      <div class="statusempresa"> </div>
      <p></p>
      Contenido:
      <div class="statuscontenido"> </div>
-     <p></p>
-     Publicada:
-     <div class="statuspublicacion"> </div>
   </div>
   <div id="btnbuscar">
     <button class="btn btn-warning btn-xs" style="width: 422%;" onclick="actionFilter()">
@@ -141,7 +144,7 @@ Total evaluaciones: {{$totalEvaluaciones}}
               @elseif( strlen($eval->email) > 20 && strlen($eval->email) < 24)
                   <td style="font-size: 11px;">{{$eval->email}}</td>
               @elseif( strlen($eval->email) < 24)
-                 <td>{{$eval->email}}</td>
+                 <td style="font-size: 12px;">{{$eval->email}}</td>
               @endif
               <td style="font-size: 12px;">{{ Carbon\Carbon::parse($eval->created_at)->format('Y-m-d') }}</td>
               <td style="font-size: 12px;">{{$eval->ip}}</td>
@@ -231,7 +234,7 @@ Total evaluaciones: {{$totalEvaluaciones}}
 
 
     <div style="margin-left: 25%; margin-top: 1%;">
-      {!! $evaluacion->appends(['evaluacion' => $eva, 'publicada' => $pub, 'contenido' => $conte, 'statusEmpresa' => $sEmpresa, 'statusCorreo' =>$sCorreo, 'empresa' => $emp, 'correo' => $cor, 'trabajo' =>$tr, 'institucion' => $ins])->render() !!}
+      {!! $evaluacion->appends(['evaluacion' => $eva, 'publicada' => $pub, 'contenido' => $conte, 'statusEmpresa' => $sEmpresa, 'statusCorreo' =>$sCorreo, 'empresa' => $emp, 'correo' => $cor, 'trabajo' =>$tr, 'institucion' => $ins, 'ip' => $ipp])->render() !!}
     </div>
 </div>
 @else

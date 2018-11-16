@@ -38,6 +38,7 @@ $(document).ready(function() {
     var filter7 = createDropdowns(table, [10], "statusEmpresa");
     var filter8 = createDropdowns(table, [11], "contenido");
     var filter9 = createDropdowns(table, [12], "publicacion");
+    var filter10 = createInput(table, [5], "ip");
 
     filter1.appendTo(".empresa");
     filter2.appendTo(".correo");
@@ -48,6 +49,7 @@ $(document).ready(function() {
     filter7.appendTo(".statusempresa");
     filter8.appendTo(".statuscontenido");
     filter9.appendTo(".statuspublicacion");  
+    filter10.appendTo(".ip");
 });
     var empresa;
     var correo;
@@ -58,6 +60,7 @@ $(document).ready(function() {
     var statusEmpresa;
     var statusCorreo;
     var evaluacion;
+    var ip;
 
 function createInput(table, columns, id) {
   var input = $('<input class="form-control" id="'+id+'" type="text"/ style="width: 120%;">').on("keypress", function() {
@@ -78,11 +81,12 @@ function actionFilter(){
     statusEmpresa = document.getElementById('statusEmpresa').value;
     statusCorreo = document.getElementById('statusCorreo').value;
     evaluacion = document.getElementById('evaluac').value;
+    ip = document.getElementById('ip').value;
 
-    filterEval(publicada, contenido, statusEmpresa, statusCorreo, evaluacion, empresa, correo, trabajo, institucion)
+    filterEval(publicada, contenido, statusEmpresa, statusCorreo, evaluacion, empresa, correo, trabajo, institucion, ip)
 }
 
-function filterEval(publicada, contenido, statusEmpresa, statusCorreo, evaluacion, empresa, correo, trabajo, institucion){
+function filterEval(publicada, contenido, statusEmpresa, statusCorreo, evaluacion, empresa, correo, trabajo, institucion, ip){
    
     var CSRF_TOKEN = $('meta[id="csrf-token"]').attr('content');
     $.ajax({
@@ -90,7 +94,7 @@ function filterEval(publicada, contenido, statusEmpresa, statusCorreo, evaluacio
         type: 'POST',
         data: {_method: 'POST', _token: CSRF_TOKEN, publicada:publicada, contenido:contenido, statusEmpresa: statusEmpresa, 
                 statusCorreo: statusCorreo, evaluacion: evaluacion, empresa: empresa, correo: correo, trabajo: trabajo, 
-                institucion: institucion},
+                institucion: institucion, ip: ip},
       
     })
     .done(function(response)    

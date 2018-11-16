@@ -180,6 +180,7 @@ class Evaluacion_controller extends Controller
       $cor = '';
       $tr = '';
       $ins = ''; 
+      $ipp = '';
 
       /////////////////////////////////// CALCULO DE ESTADISTICAS //////////////////////////////////////
       $empresa = new Empresa();
@@ -217,7 +218,7 @@ class Evaluacion_controller extends Controller
             $evaluacion[$i]['statusEmpresa'] = $empresa->verificada;
         }
 
-        return view('evaluacion_list', compact('evaluacion', 'totalPublicadas', 'contenidoCont', 'totalEmpPorVerif', 'totalEvaluaciones', 'totalEmpresas', 'eva', 'pub', 'conte', 'sEmpresa', 'sCorreo', 'emp', 'cor', 'tr', 'ins'));
+        return view('evaluacion_list', compact('evaluacion', 'totalPublicadas', 'contenidoCont', 'totalEmpPorVerif', 'totalEvaluaciones', 'totalEmpresas', 'eva', 'pub', 'conte', 'sEmpresa', 'sCorreo', 'emp', 'cor', 'tr', 'ins', 'ipp'));
     }  
 
    public function filter_evaluacion(Request $request){
@@ -231,6 +232,7 @@ class Evaluacion_controller extends Controller
       $cor = $request['correo'];
       $tr = $request['trabajo'];
       $ins = $request['institucion'];
+      $ipp = $request['ip'];
       
       /////////////////////////////////// CALCULO DE ESTADISTICAS //////////////////////////////////////
       $empresa = new Empresa();
@@ -246,15 +248,16 @@ class Evaluacion_controller extends Controller
       }
 
       $evaluaciones = Evaluacion::all();
-      $totalEvaluaciones = count($evaluaciones);
-      for ($i=0; $i < $totalEvaluaciones; $i++) { 
-            if($evaluaciones[$i]['publicada'] == 'SI'){
+
+      $totalEvaluaciones = 0;
+      for ($i=0; $i < count($evaluaciones); $i++) { 
+            if($evaluaciones[$i]['publicada'] == 'SI' && $evaluaciones[$i]['contenido'] <> 'COPIADA')
               $totalPublicadas ++;
-            }  
-            if($evaluaciones[$i]['contenido'] == 'POR VERIFICAR'){
+            if($evaluaciones[$i]['contenido'] == 'POR VERIFICAR')
               $contenidoCont ++;
+            if($evaluaciones[$i]['contenido'] <> 'COPIADA') 
+              $totalEvaluaciones ++;
             }  
-        }
 
       ///////////////////////////////////////////////////////////////////////////////////////////////////
   
@@ -293,6 +296,9 @@ class Evaluacion_controller extends Controller
                     case 'institucion':
                         $where[] = "evaluaciones.ies LIKE '%" . $value . "%'";
                         break;
+                    case 'ip':
+                        $where[] = "evaluaciones.ip LIKE '%" . $value . "%'";
+                        break;
                 }
             }
         }
@@ -318,7 +324,7 @@ class Evaluacion_controller extends Controller
                 ->paginate(50);
         }
 
-        return view('evaluacion_list', compact('evaluacion', 'totalPublicadas', 'contenidoCont', 'totalEmpPorVerif', 'totalEvaluaciones', 'totalEmpresas', 'eva', 'pub', 'conte', 'sEmpresa', 'sCorreo', 'emp', 'cor', 'tr', 'ins'));
+        return view('evaluacion_list', compact('evaluacion', 'totalPublicadas', 'contenidoCont', 'totalEmpPorVerif', 'totalEvaluaciones', 'totalEmpresas', 'eva', 'pub', 'conte', 'sEmpresa', 'sCorreo', 'emp', 'cor', 'tr', 'ins', 'ipp'));
     }
 
     public function continuar_evaluacion(){

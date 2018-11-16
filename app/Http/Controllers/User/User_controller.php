@@ -50,10 +50,9 @@ class User_controller extends Controller
           //return redirect()->action('Evaluacion_controller@continuar_evaluacion');
         }
 
-        //return $evaluacion;
+        $this->changeStatus($evaluacion->id);
 
-        $evaluacion->confirmed = 'SI';
-        $evaluacion->save();
+        //return $evaluacion;
 
         $empresa = Empresa::find($evaluacion->empresa_id);
 
@@ -104,4 +103,16 @@ class User_controller extends Controller
         return redirect('cuenta');
     }       
   }
+
+  public function changeStatus($id){
+        $evaluacion = Evaluacion::find($id);
+        $evaluacion->confirmed = 'SI';
+        $empresa = Empresa::find($evaluacion->empresa_id);
+
+        if($empresa->verificada == "SI" && $evaluacion->confirmed == "SI"){
+            $evaluacion->contenido = "POR VERIFICAR";
+            $evaluacion->save();
+}
+        
+    }
 }
