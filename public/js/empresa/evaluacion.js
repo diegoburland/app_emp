@@ -1,3 +1,22 @@
+var accentMap = {
+  'á': 'a',
+  'é': 'e',
+  'í': 'i',
+  'ó': 'o',
+  'ú': 'u'
+};
+
+function accent_fold(s) {
+  if (!s) {
+    return '';
+  }
+  var ret = '';
+  for (var i = 0; i < s.length; i++) {
+    ret += accentMap[s.charAt(i)] || s.charAt(i);
+  }
+  return ret;
+};
+
 function evaluar(self, item) {
 
 
@@ -5,18 +24,18 @@ function evaluar(self, item) {
     ///$(self).siblings('input.rating-value').val($(self).data('rating'));
     //console.log($(self).siblings('input.rating-value').val())}
     $('#puntaje_' + item).val($(self).data('rating'));
-    
+
     $("#mensaje_" + item).css('display', 'none');
 
     var $star_rating;
-    
+
     console.log($(self).attr("class"));
-    if($(self).hasClass("far")){
+    if ($(self).hasClass("far")) {
         $star_rating = $('.star-rating-' + item + ' .far');
-    }else{
+    } else {
         $star_rating = $('.star-rating-' + item + ' .fas');
     }
-    
+
     $star_rating.each(function () {
         if (parseInt($('#puntaje_' + item).val()) >= parseInt($(this).data('rating'))) {
             return $(this).removeClass('far').addClass('fas');
@@ -60,11 +79,11 @@ function evaluo_mi(self) {
     if ($(self).attr('id') == "btn_actual" || $(self).attr('id') == "btn_pasado") {
 
         /*if (!$("#btn_empleado").is(":visible")) {
-
-            $("#btn_practicante").before(BTN_OTROS);
-        }
-
-        $("#btn_practicante").remove();*/
+         
+         $("#btn_practicante").before(BTN_OTROS);
+         }
+         
+         $("#btn_practicante").remove();*/
         $("#pre_cargo").show();
         $(".dim_practicante").hide();
         $(".dim_empleado").show();
@@ -97,10 +116,10 @@ function evaluo_mi(self) {
         $("#label_salario").text('Apoyo de sostenimiento mensual');
 
         /*if (!$("#btn_practicante").is(":visible")) {
-
-            $('#btn_directivo').after(BTN_PRACTICANTE);
-            //elegir_pos($("#btn_practicante"));        
-        }*/
+         
+         $('#btn_directivo').after(BTN_PRACTICANTE);
+         //elegir_pos($("#btn_practicante"));        
+         }*/
 
         $("#btn_empleado").remove();
         $("#btn_directivo").remove();
@@ -119,15 +138,15 @@ function evaluo_mi(self) {
 }
 
 /*function elegir_pos(self) {
-
-    $('.btn-pos').removeClass('btn-warning').addClass('btn-dark');
-
-    $(self).removeClass('btn-dark').addClass('btn-warning');
-
-    $('#posicion').val($(self).text());
-
-    //validar_botones();
-}*/
+ 
+ $('.btn-pos').removeClass('btn-warning').addClass('btn-dark');
+ 
+ $(self).removeClass('btn-dark').addClass('btn-warning');
+ 
+ $('#posicion').val($(self).text());
+ 
+ //validar_botones();
+ }*/
 
 function save_empresa() {
 
@@ -201,20 +220,20 @@ function validar_botones() {
         $('#validar_evalua').css('display', 'none');
     }
 
-    if($('#evalua').val() != "Práctica"){
+    if ($('#evalua').val() != "Práctica") {
 
         if ($('#posicion').val() == "") {
 
-        $('#validar_posicion').css('display', 'block');
+            $('#validar_posicion').css('display', 'block');
             validar = false;
         } else {
 
             $('#validar_posicion').css('display', 'none');
-        }    
-    }else{
+        }
+    } else {
         $('#posicion').val("Prácticante");
     }
-    
+
 
     if ($('#empresa_id').val() == "") {
 
@@ -225,7 +244,7 @@ function validar_botones() {
 
         $('#validar_empresa').css('display', 'none');
     }
-    
+
     if ($('#ciudad_eval_id').val() == "") {
 
         $('#validar_ciudad_eval').css('display', 'block');
@@ -266,9 +285,9 @@ function validar_modal() {
     return validar;
 }
 
-$.fn.digits = function(){ 
-    return this.each(function(){ 
-        $(this).val( $(this).val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") ); 
+$.fn.digits = function () {
+    return this.each(function () {
+        $(this).val($(this).val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1."));
     })
 }
 
@@ -292,10 +311,10 @@ $(function () {
     $("#pre_ies").hide();
 
     $('#salario').numeric({negative: false, decimal: true});
-    $("#salario").keyup(function() {
+    $("#salario").keyup(function () {
         $("#salario").digits();
     });
-    
+
     $('#trabajo_tiempo').numeric({negative: true, decimal: false});
 
 
@@ -335,13 +354,13 @@ $(function () {
 
                 $('html, body').animate({
                     scrollTop: $(errorElements[0]).offset().top - 50
-                }, 2000);            
+                }, 2000);
 
-            }else{
+            } else {
                 $("#public_div").show();
             }
 
-            
+
 
             form.classList.add('was-validated');
         }, false);
@@ -362,21 +381,21 @@ $(function () {
                 url: '/api/v1/crear_empresa',
                 type: 'POST',
 
-                data: {_method: 'POST', _token: CSRF_TOKEN, razon_social: $('#razon_social').val().toUpperCase(), verificada:'PENDIENTE',
+                data: {_method: 'POST', _token: CSRF_TOKEN, razon_social: $('#razon_social').val().toUpperCase(), verificada: 'PENDIENTE',
                     ciudad_id: $('#ciudad_id').val(), direccion: $('#direccion').val(), sector_economico: $('#sector_economico').val()},
                 dataType: 'JSON',
 
                 success: function (data) {
-                    
-                    if(parseInt(data) > 0){
+
+                    if (parseInt(data) > 0) {
                         $("#empresa").val($('#razon_social').val().toUpperCase());
                         $('#empresa_id').val(data);
                         $('#exampleModal').modal('hide');
                         $('#ciudad_eval_id').val($('#ciudad_id').val());
                         $('#ciudad_eval').val($('#ciudad').val());
-                    }else{
+                    } else {
                         alert('Error al crear la nueva empresa. Por favor vuelva a intentar.');
-                    }                                         
+                    }
                 },
                 error: function (request, status, error) {
                     console.log(error);
@@ -454,7 +473,7 @@ $(function () {
         });
         //console.log(cache_ies);
     });
-    
+
     var cache_cargos = [];
     const url_cargos = '/json/cargos.json';
     $.getJSON(url_cargos, function (data, status, xhr) {
@@ -475,10 +494,38 @@ $(function () {
         }
     });
 
+    $("#ciudad_eval").focusout(function () {
+
+        if ($('#ciudad_eval_id').val() == "" && $('#ciudad_eval').val() != "") {
+
+            $.ajax({
+
+                url: '/api/v1/encontrar_ubicacion',
+                type: 'GET',
+                data: {term: $('#ciudad_eval').val()},
+                dataType: 'JSON',
+                success: function (data) {
+                    console.log(data);
+                    $('#ciudad_eval').val(data[0].value);
+                    $('#ciudad_eval_id').val(data[0].id);
+                },
+                error: function (request, status, error) {
+                    console.log(error);
+                    console.log(status);
+                    console.log(request);
+                    alert('Error de conexión. Por favor vuelva a intentar.');
+                }
+            });
+        }
+
+    });
+
+    
+
     $("#ies_campo").autocomplete({
         minLength: 3,
         source: function (request, response) {
-            var results = $.ui.autocomplete.filter(cache_ies, request.term);
+            var results = $.ui.autocomplete.filter(cache_ies, accent_fold(request.term));
 
             response(results.slice(0, 10));
         },
@@ -487,7 +534,7 @@ $(function () {
 
         }
     });
-        
+
     $("#posicion_campo").autocomplete({
         minLength: 3,
         source: function (request, response) {
@@ -501,8 +548,9 @@ $(function () {
         }
     });
 
-    $("#posicion_campo").keyup(function() {
+    $("#posicion_campo").keyup(function () {
         $('#posicion').val($("#posicion_campo").val());
     });
 
 });
+

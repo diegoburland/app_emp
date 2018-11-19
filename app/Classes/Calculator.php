@@ -11,14 +11,14 @@ class Calculator {
     private static $AVG_2 = 3.4;
     private static $AVG_3 = 2.4;
 
-    private function total_dim_less_two(){
+    public function total_dim_less_two($id){
         
         $dims = DB::table('evaluaciones')
                         ->join('eval_items', 'eval_items.evaluacion_id', '=', 'evaluaciones.id')
-                ->join('eval_items', 'eval_items.evaluacion_id', '=', 'evaluaciones.id')
-                        ->select(DB::raw('avg(eval_items.puntaje) as avg_eval'))
-                        ->where([['eval_items.puntaje', '>', 0],
-                                ['id', '=', $id]])->get();
+                        ->join('items', 'items.id', '=', 'eval_items.item_id')
+                        ->select('items.nombre')
+                        ->where([['eval_items.puntaje', '<=', 2],
+                                ['evaluaciones.id', '=', $id]])->get();
         return $dims;
     }
 
@@ -28,7 +28,7 @@ class Calculator {
                         ->join('eval_items', 'eval_items.evaluacion_id', '=', 'evaluaciones.id')
                         ->select(DB::raw('avg(eval_items.puntaje) as avg_eval'))
                         ->where([['eval_items.puntaje', '>', 0],
-                                ['id', '=', $id]])->first();
+                                ['evaluaciones.id', '=', $id]])->first();
         return $avg->avg_eval;
     }
 
@@ -68,6 +68,20 @@ class Calculator {
         }if (self::$AVG_3 > $avg_eval) {
             $string = $string . $json["case-6"];
         }
+        
+        $dims = $this->total_dim_less_two($id_eval);
+        
+        if(count($dims) > 0){
+        
+            $str_tem = "";
+            foreach ($dims as $dim) {
+
+                $str_tem = $str_tem . $dim->nombre . ", ";
+            }
+            $string = $string . $json["case-7"];
+            $string = str_replace("$1", $str_tem, $string);
+        }
+        
 
         return $string;
     }
