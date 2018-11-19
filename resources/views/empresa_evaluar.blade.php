@@ -18,9 +18,9 @@
 </div>
 
 <div class="row justify-content-md-center">
-    
+
     <form id="form_evaluar_empresa" method="POST" action="/crear_evaluacion" novalidate class="needs-validation">
-        
+
         <div class="col-sm-11 centrar_div">
 
 
@@ -30,20 +30,20 @@
             @method('POST')
             @csrf
 
-            
-            
+
+
             <h4>Evalúa a tu empleador</h4>
             <div class="alert alert-secondary" role="alert">                
-                    <p>Gracias por aportar tu experiencia laboral. Así otros pueden tener una
-                        mejor idea de como es realmente trabajar para una empresa como la tuya.
-                        Por supuesto, la evaluación es <b> 100% gratuita y anónima.</b>
-                    </p>			
+                <p>Gracias por aportar tu experiencia laboral. Así otros pueden tener una
+                    mejor idea de como es realmente trabajar para una empresa como la tuya.
+                    Por supuesto, la evaluación es <b> 100% gratuita y anónima.</b>
+                </p>			
             </div>
 
 
             <!--button type="submit" btn btn-secondary>Empezar Evaluación</button-->
 
-            
+
 
             <a class="list-group-item list-group-item-action text-light bg-dark">
                 <h5>Datos Generales</h5>    								
@@ -96,11 +96,11 @@
                         <div class="row ml-1">
                             <label class="control-label" for="">Evalúo mi</label>
                         </div>
-                        <div class="btn-group flex-wrap" role="group" aria-label="Basic example">
-                            <button type="button" id="btn_actual" class="btn-evaluo btn btn-dark" onclick="evaluo_mi(this)">Trabajo Actual</button>
-                            <button type="button" id="btn_pasado" class="btn-evaluo btn btn-dark"  onclick="evaluo_mi(this)">Trabajo Pasado</button>
-                            <button type="button" id="btn_practica" class="btn-evaluo btn btn-dark"  onclick="evaluo_mi(this)">Práctica</button>
-                        </div>
+
+                        <button type="button" id="btn_actual" class="btn-evaluo btn btn-dark" onclick="evaluo_mi(this)">Trabajo Actual</button>
+                        <button type="button" id="btn_pasado" class="btn-evaluo btn btn-dark"  onclick="evaluo_mi(this)">Trabajo Pasado</button>
+                        <button type="button" id="btn_practica" class="btn-evaluo btn btn-dark"  onclick="evaluo_mi(this)">Práctica</button>
+
 
                         <input type="hidden" data-validate="true" name="evalua" id="evalua" value="" required>
 
@@ -133,17 +133,17 @@
             <a class="list-group-item list-group-item-action" id="pre_cargo">
                 <div class="form-group row required">
                     <div class="col-sm-6">                           
-                       <label class="control-label" for="">Elegir Cargo</label>
-                       <input type="text" class="form-control" id="posicion_campo" name="posicion_campo" placeholder="Busca y selecciona un cargo" autocomplete="nope">
-                       <input type="hidden" name="posicion" id="posicion" value="">
+                        <label class="control-label" for="">Elegir Cargo</label>
+                        <input type="text" class="form-control" id="posicion_campo" name="posicion_campo" placeholder="Busca y selecciona un cargo" autocomplete="nope">
+                        <input type="hidden" name="posicion" id="posicion" value="">
                         <div id="validar_posicion" class="invalid-feedback">
                             Por favor selecciona la posición
                         </div>
                         <small id="emailHelp" class="form-text text-muted text-justify">
-                           Nunca se publica
+                            Nunca se publica
                         </small>
 
-                        
+
                     </div>
                 </div>
             </a>
@@ -186,7 +186,7 @@
             <div class="alert alert-secondary" role="alert">
 
                 <p><b>Recuerda:</b> Somos una plataforma neutral y justa. Por lo tanto, te pedimos ser respetuoso en tus comentarios, no mencionar personas específicas ni información sensible de la organización. 
-                         
+
             </div>	
 
 
@@ -229,18 +229,18 @@
                     <div class="col-sm-4 ">
                         @if ($item == $items[0])
                         <div style="display: inline-flex;">   
-                            
+
                             <div class="d-inline">
-                               <i class="far fa-frown-open fa-2x" style="color: #ff3100;"></i> 
+                                <i class="far fa-frown-open fa-2x" style="color: #ff3100;"></i> 
                             </div>
                             <div class="d-inline" style="padding-left: 195px"></div>
                             <div class="d-inline">
-                               <i class="far fa-grin-alt fa-2x" aria-hidden="true" style="color: green"></i> 
+                                <i class="far fa-grin-alt fa-2x" aria-hidden="true" style="color: green"></i> 
                             </div>
-                            
+
                         </div>
                         @endif
-                        
+
                         <div class="d-inline-flex star-rating star-rating-{{$item->id}}" 
                              onclick="text_show({{$item -> id}})">
                             <!--i class="far fa-star"></i-->
@@ -255,7 +255,7 @@
                             <span class="p-1 far fa-star fa-2x" data-rating="5" 
                                   onclick="evaluar(this, {{$item -> id}})"></span>								        
                         </div>                        
-                        
+
                     </div>
                     <div class="col-sm-4 mb-2 text_hide " id="desc_{{$item->id}}">
                         <small id="emailHelp" class="form-text text-muted font-italic">{{$item->descripcion}}</small>
@@ -323,10 +323,10 @@
                         <label id="label_salario" for="">Salario</label>
                         <input type="text" class="form-control" id="salario" name="salario" placeholder="$COP Pesos Colombianos" >
                         <small id="emailHelp" class="form-text text-muted text-justify">
-                           Nunca se publica
+                            Nunca se publica
                         </small>
                     </div>
-                    
+
                 </div>
             </a>
 
@@ -450,7 +450,7 @@
                         <div class="invalid-feedback">
                             Por favor ingresa tu correo
                         </div>
-	    	  	
+
                     </div>
                 </div>
             </div>	
