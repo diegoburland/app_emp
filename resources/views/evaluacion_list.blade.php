@@ -79,6 +79,7 @@ Total evaluaciones: {{$totalEvaluaciones}}
 </table>
 
   <h1> Listado de evaluacion </h1>
+  <span id="contador" style="text-align: right;"><h5> Resultados: {{$resultados}}</h5></center></span>
   <hr>
   <h5> Filtros de búsqueda </h5>
   <div id="izquierdo">

@@ -69,9 +69,7 @@
     /*border-color: #ffc107;*/
 }
 
-.btn-evaluo{
-   margin-top: 4px;
-}
+
 .form-group.required .control-label:after { 
     color: #d00;
     content: "*";

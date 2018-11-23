@@ -48,7 +48,9 @@ ul.ui-autocomplete {
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 	<form id="form_evaluacion" novalidate class="needs-validation" style="width: 75%;">
 
-	<div class="col-sm-11" style="margin-left: 4%;">
+<!--	<div class="col-sm-11" style="margin-left: 4%;"> -->
+        
+        <div class="col-sm-11 centrar_div">
 
 			@method('POST')
 			@csrf
@@ -159,13 +161,12 @@ ul.ui-autocomplete {
 			</a>
 
 		</div>
-		<div class="col-sm-11" style="margin-left: 4%;">
-
+		
+		<div class="col-sm-11 centrar_div">
 			
-
 			<a class="list-group-item list-group-item-action">
-				<div class="form-group row">
-					<div class="col-sm-8">
+                <div class="form-group row">
+                    <div class="col-sm-8">
 					  <label for="">Título de tu evaluación</label>
 					  <input type="text" class="form-control" value='{{$evaluacion->titulo}}' name="titulo" id="titulo" onChange="actualiza('true')" placeholder="Ponle un título a tu experencia en la empresa/organización" >
 					</div>
@@ -284,52 +285,52 @@ ul.ui-autocomplete {
 				    	@endif
 				  	
 				  	@endforeach
-
 				
-			@endforeach		
+			@endforeach	
+	<div class="mediapage">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a class="list-group-item list-group-item-action text-light bg-dark">
+               <h5>Beneficios</h5>    	
+        </a>
+            <a class="list-group-item list-group-item-action bne_empleo bonus_extra">
+                <div class="col-sm-12">
+                	 @foreach ($benes as $bene)
+			            @if($bene->tipo == 1)
+			            	@foreach ($beneficios as $beneficio)
+			         
+			            		@if($beneficio->bene_id == $bene->id)
+					             <button type="button" class="btn btn-warning m-1">{{$bene->nombre}}</button>
+					              <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
+				              	@endif
+				            
+				             @endforeach 
+			            @endif
+			         @endforeach        
+                </div>
+            </a>
+            
+            <a  class="list-group-item list-group-item-action bne_practica">
+                <div class="col-sm-12">
 
-      <a class="list-group-item list-group-item-action text-light bg-dark">
-				<h5>Beneficios</h5>    	
-			</a>
-      <a class="list-group-item list-group-item-action bne_empleo">
-				<div class="col-sm-12">
-          @foreach ($benes as $bene)
-            @if($bene->tipo == 1)
-            	@foreach ($beneficios as $beneficio)
-         
-            		@if($beneficio->bene_id == $bene->id)
-		              <button type="button" style="white-space: normal;width: 200px;" class="btn btn-warning m-1">{{$bene->nombre}}</button>
-		              <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
-	              	@endif
-	            
-	             @endforeach 
-            @endif
-         @endforeach 
-			  </div>
-			</a>
-      
-      <a class="list-group-item list-group-item-action bne_practica">
-				<div class="col-sm-12">
-		@foreach ($benes as $bene)
-            @if($bene->tipo == 2)
-              @foreach ($beneficios as $beneficio)
-            		@if($beneficio->bene_id == $bene->id)
-		              <button type="button" style="white-space: normal;width: 200px;" class="btn btn-warning m-1">{{$bene->nombre}}</button>
-		              <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
-	              	@endif
-	             @endforeach 
-            @endif
-          @endforeach          
-			  </div>
-			</a>
-      
+                	@foreach ($benes as $bene)
+			            @if($bene->tipo == 2)
+			              @foreach ($beneficios as $beneficio)
+			            		@if($beneficio->bene_id == $bene->id)
+					             <button type="button" class="btn btn-warning m-1">{{$bene->nombre}}</button>
+					              <input type="hidden" name="bene_{{$bene->id}}" id="bene_{{$bene->id}}" value="">
+				              	@endif
+				             @endforeach 
+			            @endif
+			          @endforeach           
+                </div>
+            </a>      
 			<a  class="list-group-item list-group-item-action text-light bg-dark">
 				<h5>Información adicional</h5>    	
 			</a>
 
 			<a  class="list-group-item list-group-item-action">
-				<div class="form-group row">
-			    	<div class="col-sm-4">
+                <div class="form-group row">
+                    <div class="col-sm-5">
 			      		<label for="">Salario</label>
 			    	  	<input type="number" class="form-control" id="salario" name="salario" value="{{$evaluacion->salario}}" onChange="actualiza('true')" placeholder="$COP Pesos Colombianos" >
 			  	    </div>
@@ -337,8 +338,8 @@ ul.ui-autocomplete {
 			</a>
 
 			<a  class="list-group-item list-group-item-action">
-			 	<div class="form-group row">
-			    	<div class="col-sm-4">
+                <div class="form-group row">
+                    <div class="col-sm-4">
 			      		<label for="">Horas trabajadas por semana</label>
 			    	  	<input type="number" class="form-control" id="trabajo_tiempo" name="trabajo_tiempo" value="{{$evaluacion->trabajo_tiempo}}" onChange="actualiza('true')" placeholder="Horas por semana" >
 			  	    </div>
@@ -346,8 +347,8 @@ ul.ui-autocomplete {
 			</a>
 
 			<a  class="list-group-item list-group-item-action dim_practicante">
-			 	<div class="form-group row">
-			    	<div class="col-sm-4">
+                <div class="form-group row">
+                    <div class="col-sm-4">
 			    		<input type="hidden" name="puestoempresa" id="puestoempresa" value="{{$evaluacion->ofrecer}}">
 			      		<label for="">¿Le ofrecieron un puesto en la empresa después de la practica?</label>
 			    	  	<div class="btn-group" role="group" aria-label="Basic example">
@@ -447,25 +448,27 @@ ul.ui-autocomplete {
 			  	    </div>
 			  	</div>
 			</div>								
-
-			<div class="card-body d-flex justify-content-between align-items-center">
-				<button class="btn btn-warning btn-lg" onclick="editar('false')" style="width: 40%;">
+</div>
+			<div class="card-body d-flex align-items-center" style="margin-left: 14%;">
+				<button class="btn btn-warning btn-lg" onclick="editar('false')" style="width: 30%;">
 					Aceptar
 				</button>
 		
-				<button class="btn btn-danger btn-lg" onclick="editar('true')" style="width: 40%;">
+				<button class="btn btn-danger btn-lg" onclick="editar('true')" style="width: 30%; margin-left: 23%;">
 					Rechazar
 				</button>
 			</div>
 						  				
 
-	</div>
+
 	</form>
-</div>
+</div>	
 @else
 <div style="text-align: center; margin-top: 14%;">
      <h1> ¡Esta página sólo es visible con permisos de administrador! </h1> 
      <img src="/img/advertencia.png" width="180px">
 </div>
 @endif
+</div>
+
 @endsection

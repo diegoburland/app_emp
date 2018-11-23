@@ -18,8 +18,8 @@
       evaluaciones. Mantendrás siempre el control.
     </p>
     <p>
-       Usuario: {{correo}} <br>
-       Contraseña: xxxxxxx <br>
+       Usuario: {{$correo}} <br>
+       Contraseña: {{$password}} <br>
     </p>
     <p>
       Te invitamos a explorar el mundo de Vida and Work. Conoce ahora las experiencias laborales

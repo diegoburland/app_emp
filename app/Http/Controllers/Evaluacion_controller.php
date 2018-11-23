@@ -61,7 +61,6 @@ class Evaluacion_controller extends Controller {
 
         $this->verificarStatusEvaluacion($evaluacion->id);
         
-
         return redirect()->route('gracias', ['id' => $evaluacion->id]);
     }
 
@@ -105,7 +104,7 @@ class Evaluacion_controller extends Controller {
                 $evaluacion->motivo = $request->motivo;
                 $evaluacion->porque = $request->porque;
                 $evaluacion->oferta = $eval->oferta;
-                $evaluacion->confir_code = bin2hex(random_bytes(32));
+                $evaluacion->confir_code = $eval->confir_code;
                 $evaluacion->departamento = $request->departamento;
                 $evaluacion->titulo = $request->titulo;
                 $evaluacion->salario = $request->salario;
@@ -196,6 +195,8 @@ class Evaluacion_controller extends Controller {
                 $totalEvaluaciones ++;
         }
 
+        $resultados = $totalEvaluaciones;
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////
 
         $evaluacionArr = Evaluacion::where('contenido', '<>', 'COPIADA')->orWhere('contenido', '=', NULL)->paginate(50);
@@ -207,7 +208,7 @@ class Evaluacion_controller extends Controller {
             $evaluacion[$i]['statusEmpresa'] = $empresa->verificada;
         }
 
-        return view('evaluacion_list', compact('evaluacion', 'totalPublicadas', 'contenidoCont', 'totalEmpPorVerif', 'totalEvaluaciones', 'totalEmpresas', 'eva', 'pub', 'conte', 'sEmpresa', 'sCorreo', 'emp', 'cor', 'tr', 'ins', 'ipp'));
+        return view('evaluacion_list', compact('evaluacion', 'totalPublicadas', 'contenidoCont', 'totalEmpPorVerif', 'totalEvaluaciones', 'totalEmpresas', 'eva', 'pub', 'conte', 'sEmpresa', 'sCorreo', 'emp', 'cor', 'tr', 'ins', 'ipp', 'resultados'));
     }
 
     public function filter_evaluacion(Request $request) {
@@ -302,6 +303,13 @@ class Evaluacion_controller extends Controller {
                     ->orderBy('created_at', 'ASC')
                     ->orderBy('evalua', 'ASC')
                     ->paginate(50);
+
+            $result = DB::table('evaluaciones')
+                ->select(DB::raw('count(*) as cantidad'))
+                ->join('empresas', 'evaluaciones.empresa_id', '=', 'empresas.id')
+                ->where('contenido', '<>', 'COPIADA')->orWhere('contenido', '=', NULL)
+                ->first();
+
         } else {
             $evaluacion = DB::table('evaluaciones')
                     ->select('evaluaciones.*', 'empresas.razon_social as empresa', 'empresas.verificada as statusEmpresa')
@@ -311,9 +319,17 @@ class Evaluacion_controller extends Controller {
                     ->orderBy('created_at', 'ASC')
                     ->orderBy('evalua', 'ASC')
                     ->paginate(50);
+
+            $result = DB::table('evaluaciones')
+                ->select(DB::raw('count(*) as cantidad'))
+                ->join('empresas', 'evaluaciones.empresa_id', '=', 'empresas.id')
+                ->whereRaw(DB::raw($fullWhere))
+                ->first();
         }
 
-        return view('evaluacion_list', compact('evaluacion', 'totalPublicadas', 'contenidoCont', 'totalEmpPorVerif', 'totalEvaluaciones', 'totalEmpresas', 'eva', 'pub', 'conte', 'sEmpresa', 'sCorreo', 'emp', 'cor', 'tr', 'ins', 'ipp'));
+        $resultados = $result->cantidad;
+
+        return view('evaluacion_list', compact('evaluacion', 'totalPublicadas', 'contenidoCont', 'totalEmpPorVerif', 'totalEvaluaciones', 'totalEmpresas', 'eva', 'pub', 'conte', 'sEmpresa', 'sCorreo', 'emp', 'cor', 'tr', 'ins', 'ipp', 'resultados'));
     }
 
     public function continuar_evaluacion() {
@@ -345,16 +361,19 @@ class Evaluacion_controller extends Controller {
 
     public function enviarEmail($contenido, $empresa, $email) {
         $data = [];
-        if ($contenido == 'ACEPTADO') {
+        $password;
+        $user = User::where('email', $email)->first();
+
+        if ($contenido == 'ACEPTADO' && !empty($user)) {
             $subject = 'Subida exitosa de tu evaluación en Vida and Work';
             $template = 'emails.verificacionEvaluacionAceptada';
 
-            $data = ['subject' => $subject, 'template' => $template, 'contenido' => $contenido, 'empresa' => $empresa, 'correo' => $email];
-        } else if ($contenido == 'EDITADO') {
+            $data = ['subject' => $subject, 'template' => $template, 'contenido' => $contenido, 'empresa' => $empresa, 'correo' => $email, 'password' => $user->password];
+        } else if ($contenido == 'EDITADO' && !empty($user)) {
             $subject = 'Subida exitosa de tu evaluación en Vida and Work';
             $template = 'emails.verificacionEvaluacionEditada';
 
-            $data = ['subject' => $subject, 'template' => $template, 'contenido' => $contenido, 'empresa' => $empresa, 'correo' => $email];
+            $data = ['subject' => $subject, 'template' => $template, 'contenido' => $contenido, 'empresa' => $empresa, 'correo' => $email, 'password' => $user->password];
         } else if ($contenido == 'RECHAZADO') {
             $subject = 'Fallo de la subida de tu evaluación en Vida and Work';
             $template = 'emails.verificacionEvaluacionRechazada';
@@ -400,7 +419,7 @@ class Evaluacion_controller extends Controller {
 
         $result = DB::table('evaluaciones')
                 ->where('ip', $eval->ip)
-                ->where('contenido', '<>', 'COPIADA')->orWhere('contenido', '=', NULL)
+                ->where('contenido', '<>', 'COPIADA')
                 ->select(DB::raw('count(*) as ipCont'))
                 ->first();
 
@@ -412,7 +431,7 @@ class Evaluacion_controller extends Controller {
 
         $result = DB::table('evaluaciones')
                 ->where('email', $eval->email)
-                ->where('contenido', '<>', 'COPIADA')->orWhere('contenido', '=', NULL)
+                ->where('contenido', '<>', 'COPIADA')
                 ->select(DB::raw('count(*) as emailCont'))
                 ->first();
 
@@ -425,7 +444,7 @@ class Evaluacion_controller extends Controller {
         $result = DB::table('evaluaciones')
                 ->where('email', $eval->email)
                 ->where('empresa_id', $eval->empresa_id)
-                ->where('contenido', '<>', 'COPIADA')->orWhere('contenido', '=', NULL)
+                ->where('contenido', '<>', 'COPIADA')
                 ->select(DB::raw('count(*) as contRep'))
                 ->first();
 
@@ -439,7 +458,7 @@ class Evaluacion_controller extends Controller {
                 ->where('email', $eval->email)
                 ->where('empresa_id', $eval->empresa_id)
                 ->where('evalua', $eval->evalua)
-                ->where('contenido', '<>', 'COPIADA')->orWhere('contenido', '=', NULL)
+                ->where('contenido', '<>', 'COPIADA')
                 ->select(DB::raw('count(*) as contEvalua'))
                 ->first();
 
@@ -454,7 +473,7 @@ class Evaluacion_controller extends Controller {
                     ->where('email', $eval->email)
                     ->where('empresa_id', $eval->empresa_id)
                     ->where('evalua', 'Trabajo Actual')
-                    ->where('contenido', '<>', 'COPIADA')->orWhere('contenido', '=', NULL)
+                    ->where('contenido', '<>', 'COPIADA')
                     ->select(DB::raw('count(*) as contEvalua'))
                     ->first();
 
