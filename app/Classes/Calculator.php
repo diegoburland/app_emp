@@ -79,16 +79,17 @@ class Calculator {
         }
         
         
-        $string = "";
+        $string = "<h4>Promedio de evaluación subida en comparación con promedio de todas las evaluaciones subidas</h4>";
         if ($avg_eval < $avg_vw) {
-            $string = str_replace("$1", $avg_eval, $json[ 1]);
+            $string = $string . str_replace("$1", $avg_eval, $json[ 1]);
             $string = str_replace("$2", $avg_vw, $string);
         } else if ($avg_eval >= $avg_vw) {
-            $string = str_replace("$1", $avg_eval, $json[ 2]);
+            $string = $string . str_replace("$1", $avg_eval, $json[ 2]);
             $string = str_replace("$2", $avg_vw, $string);
         }
 
         //get interpretations
+        $string = $string . "<h4>Interpretación del resultado</h4>";
         if ($avg_eval >= self::$AVG_1) {
             $string = $string . $json[ 3];
         } else if (self::$AVG_1 > $avg_eval && $avg_eval >= self::$AVG_2) {
@@ -108,6 +109,7 @@ class Calculator {
 
                 $str_tem = $str_tem . $dim->nombre . ", ";
             }
+            $string = $string . "<h4>Interpretación de dimensiones</h4>";
             $string = $string . str_replace("$1", $str_tem, $json[ 7]);
         }
         
@@ -115,6 +117,7 @@ class Calculator {
         $avg_bene = round($this->average_bene_vw(),2);
         
         //benefy
+        $string = $string . "<h4>Interpretación Beneficios </h4>";
         if($total_bene < $avg_bene){
             $string = $string . str_replace("$1", $avg_bene, $json[ 8]);
         }else{
@@ -122,6 +125,7 @@ class Calculator {
         }
         
         //worked time
+        $string = $string . "<h4>Interpretación Horas Trabajadas por Semana</h4>";
         if($evaluation->trabajo_tiempo > 0){
             if($evaluation->trabajo_tiempo > self::$HOUR_1){
 
