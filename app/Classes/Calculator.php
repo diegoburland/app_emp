@@ -18,7 +18,7 @@ class Calculator {
                         ->join('eval_items', 'eval_items.evaluacion_id', '=', 'evaluaciones.id')
                         ->join('items', 'items.id', '=', 'eval_items.item_id')
                         ->select('items.nombre')
-                        ->where([['eval_items.puntaje', '<=', 2],
+                        ->where([['eval_items.puntaje', '>', 0],['eval_items.puntaje', '<=', 2],
                                 ['evaluaciones.id', '=', $id]])->get();
         return $dims;
     }
