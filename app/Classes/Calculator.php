@@ -77,8 +77,8 @@ class Calculator {
         }else if($evaluation->evalua == "Práctica"){
              $json = $json["pratice_job"];
         }
-        return $evaluation->evalua;
-        /*
+        //return $evaluation->evalua;
+        
         $avg_eval_string = "";
         $avg_eval_detail = "";
         if ($avg_eval < $avg_vw) {
@@ -154,7 +154,7 @@ class Calculator {
             'bene_detail' =>$bene_detail, 
             'hours_detail' => $hours_detail);
         
-        return $result;*/
+        return $result;
     }
 
 }
