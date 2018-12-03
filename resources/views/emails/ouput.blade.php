@@ -600,6 +600,9 @@ a[x-apple-data-detectors=true] {
         </div>
       </div>
     </div>
+                    
+                    @if ($dimen_detail != null)
+                    
     <div style="background-image:url('https://d1oco4z2z1fhwp.cloudfront.net/templates/default/130/funky-lines.png');background-position:top center;background-repeat:repeat;;background-color:transparent">
       <div style="Margin: 0 auto;min-width: 320px;max-width: 700px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #FFFFFF;" class="block-grid mixed-two-up ">
         <div style="border-collapse: collapse;display: table;width: 100%;background-color:#FFFFFF;">
@@ -626,7 +629,7 @@ a[x-apple-data-detectors=true] {
               <div style="background-color: transparent; width: 100% !important;">
               <!--[if (!mso)&(!IE)]><!--><div style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;"><!--<![endif]-->
 
-                  @if ($dimen_detail != null)
+                  
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top: 40px; padding-bottom: 10px;"><![endif]-->
 	<div style="font-family:'Oswald', Arial, 'Helvetica Neue', Helvetica, sans-serif;color:#f6a42f;line-height:120%; padding-right: 20px; padding-left: 20px; padding-top: 40px; padding-bottom: 10px;">	
@@ -643,7 +646,7 @@ a[x-apple-data-detectors=true] {
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
-                  @endif
+                  
                   
                     
 <div align="center" class="button-container center " style="padding-right: 20px; padding-left: 0px; padding-top:10px; padding-bottom:15px;">
@@ -656,12 +659,15 @@ a[x-apple-data-detectors=true] {
 
                   
               <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+              
               </div>
             </div>
           <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
         </div>
       </div>
     </div>
+                    
+                    @endif
     <div style="background-image:url('https://d1oco4z2z1fhwp.cloudfront.net/templates/default/130/funky-lines.png');background-position:top center;background-repeat:repeat;;background-color:#C9C9C9">
       <div style="Margin: 0 auto;min-width: 320px;max-width: 700px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;" class="block-grid ">
         <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
