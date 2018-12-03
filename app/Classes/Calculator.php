@@ -67,9 +67,9 @@ class Calculator {
         $evaluation = Evaluacion::find($id_eval);
         $avg_eval = round($this->average_eval($id_eval),2);
 
+        return $evaluation;
         
-        
-        if($evaluation->evalua == "Trabajo Actual"){
+        /*if($evaluation->evalua == "Trabajo Actual"){
             
             $json = $json["current_job"];
         }else if($evaluation->evalua == "Trabajo Pasado"){
@@ -154,7 +154,7 @@ class Calculator {
             'bene_detail' =>$bene_detail, 
             'hours_detail' => $hours_detail);
         
-        return $result;
+        return $result;*/
     }
 
 }
