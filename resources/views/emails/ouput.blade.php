@@ -575,6 +575,7 @@ a[x-apple-data-detectors=true] {
         </div>
       </div>
     </div>
+                     @if ($dimen_detail != null)
     <div style="background-image:url('https://d1oco4z2z1fhwp.cloudfront.net/templates/default/130/funky-lines.png');background-position:top center;background-repeat:repeat;;background-color:#C9C9C9">
       <div style="Margin: 0 auto;min-width: 320px;max-width: 700px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;" class="block-grid ">
         <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
@@ -601,7 +602,7 @@ a[x-apple-data-detectors=true] {
       </div>
     </div>
                     
-                    @if ($dimen_detail != null)
+                   
                     
     <div style="background-image:url('https://d1oco4z2z1fhwp.cloudfront.net/templates/default/130/funky-lines.png');background-position:top center;background-repeat:repeat;;background-color:transparent">
       <div style="Margin: 0 auto;min-width: 320px;max-width: 700px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #FFFFFF;" class="block-grid mixed-two-up ">
