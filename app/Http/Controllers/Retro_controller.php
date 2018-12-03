@@ -10,8 +10,8 @@ class Retro_controller extends Controller
     {
         $calculator = new Calculator();
         //$result =  $calculator->macth_result($id);
-        return $calculator->macth_result($id);
-        //return view('emails.ouput', $result);
+        //return $calculator->macth_result($id);
+        return view('emails.ouput', $result);
     }
 }
 
