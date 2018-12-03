@@ -68,7 +68,7 @@ class Calculator {
         $avg_eval = round($this->average_eval($id_eval),2);
 
         
-      
+        
         if($evaluation->evalua == "Trabajo Actual"){
             
             $json = $json["current_job"];
@@ -79,29 +79,34 @@ class Calculator {
         }
         
         
-        $string = "<h4>Promedio de evaluación subida en comparación con promedio de todas las evaluaciones subidas</h4>";
+        $avg_eval_string = "";
+        $avg_eval_detail = "";
         if ($avg_eval < $avg_vw) {
-            $string = $string . str_replace("$1", $avg_eval, $json[ 1]);
-            $string = str_replace("$2", $avg_vw, $string);
+            //$string1 = $string1 . str_replace("$1", $avg_eval, $json[ 1]);
+            $avg_eval_string = str_replace("$2", $avg_vw, $json[ 1]);
+            $avg_eval_detail = $json["1.1"];
         } else if ($avg_eval >= $avg_vw) {
-            $string = $string . str_replace("$1", $avg_eval, $json[ 2]);
-            $string = str_replace("$2", $avg_vw, $string);
+            //$string1 = $string1 . str_replace("$1", $avg_eval, $json[ 2]);
+            $avg_eval_string = str_replace("$2", $avg_vw, $json[ 2]);
+            $avg_eval_detail = $json["2.1"];
         }
 
         //get interpretations
-        $string = $string . "<h4>Interpretación del resultado</h4>";
+        $interpre_detail = "";
         if ($avg_eval >= self::$AVG_1) {
-            $string = $string . $json[ 3];
+            $interpre_detail = $json[ 3];
         } else if (self::$AVG_1 > $avg_eval && $avg_eval >= self::$AVG_2) {
-            $string = $string . $json[ 4];
+            $interpre_detail = $json[ 4];
         } else if (self::$AVG_2 > $avg_eval && $avg_eval >= self::$AVG_3) {
-            $string = $string . $json[ 5];
+            $interpre_detail = $json[ 5];
         }if (self::$AVG_3 > $avg_eval) {
-            $string = $string . $json[ 6];
+            $interpre_detail = $json[ 6];
         }
         
         $dims = $this->total_dim_less_two($id_eval);
         
+        
+        $dimen_detail = "";
         if(count($dims) > 0){
         
             $str_tem = "";
@@ -109,38 +114,47 @@ class Calculator {
 
                 $str_tem = $str_tem . $dim->nombre . ", ";
             }
-            $string = $string . "<h4>Interpretación de dimensiones</h4>";
-            $string = $string . str_replace("$1", $str_tem, $json[ 7]);
+            
+            $dimen_detail = str_replace("$1", $str_tem, $json[ 7]);
         }
         
         $total_bene = $this->total_bene_eval($id_eval);
         $avg_bene = round($this->average_bene_vw(),2);
         
         //benefy
-        $string = $string . "<h4>Interpretación Beneficios </h4>";
+        $bene_detail = "";
         if($total_bene < $avg_bene){
-            $string = $string . str_replace("$1", $avg_bene, $json[ 8]);
+            $bene_detail = str_replace("$1", $avg_bene, $json[ 8]);
         }else{
-            $string = $string . str_replace("$1", $avg_bene, $json[ 9]);
+            $bene_detail = str_replace("$1", $avg_bene, $json[ 9]);
         }
         
         //worked time
-        $string = $string . "<h4>Interpretación Horas Trabajadas por Semana</h4>";
+        $hours_detail = "";
         if($evaluation->trabajo_tiempo > 0){
             if($evaluation->trabajo_tiempo > self::$HOUR_1){
 
-                $string = $string . str_replace("$1", $evaluation->trabajo_tiempo, $json[ 10]);
+                $hours_detail = str_replace("$1", $evaluation->trabajo_tiempo, $json[ 10]);
                 $more = $evaluation->trabajo_tiempo - self::$HOUR_1;
-                $string = str_replace("$2", $more, $string);
+                $hours_detail = str_replace("$2", $more, $hours_detail);
             }else{
-                $string = $string . str_replace("$1", $evaluation->trabajo_tiempo, $json[ 11]);
+                $hours_detail = str_replace("$1", $evaluation->trabajo_tiempo, $json[ 11]);
                 $less = self::$HOUR_1 - $evaluation->trabajo_tiempo;
-                $string = str_replace("$2", $less, $string);
+                $hours_detail = str_replace("$2", $less, $hours_detail);
             }    
         }
         
        
-        return $string;
+        $result = array('avg_eval'=> $avg_eval, 
+            'type' => $evaluation->evalua,
+            'avg_eval_string' => $avg_eval_string,
+            'avg_eval_detail' => $avg_eval_detail,
+            'interpre_detail' => $interpre_detail, 
+            'dimen_detail' =>$dimen_detail, 
+            'bene_detail' =>$bene_detail, 
+            'hours_detail' => $hours_detail);
+        
+        return $result;
     }
 
 }
