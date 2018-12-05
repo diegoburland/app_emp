@@ -93,20 +93,26 @@ class Calculator {
 
         //get interpretations
         $interpre_detail = "";
+        $inter_link = "";
         if ($avg_eval >= self::$AVG_1) {
             $interpre_detail = $json[ 3];
+            $inter_link = $json[ "3.1"];
         } else if (self::$AVG_1 > $avg_eval && $avg_eval >= self::$AVG_2) {
             $interpre_detail = $json[ 4];
+            $inter_link = $json[ "4.1"];
         } else if (self::$AVG_2 > $avg_eval && $avg_eval >= self::$AVG_3) {
             $interpre_detail = $json[ 5];
+            $inter_link = $json[ "5.1"];
         }if (self::$AVG_3 > $avg_eval) {
             $interpre_detail = $json[ 6];
+            $inter_link = $json[ "6.1"];
         }
         
         $dims = $this->total_dim_less_two($id_eval);
         
         
         $dimen_detail = "";
+        $dimen_link = "";
         if(count($dims) > 0){
         
             $str_tem = "";
@@ -116,6 +122,7 @@ class Calculator {
             }
             
             $dimen_detail = str_replace("$1", $str_tem, $json[ 7]);
+            $dimen_link = $json["7.1"];
         }
         
         $total_bene = $this->total_bene_eval($id_eval);
@@ -123,24 +130,30 @@ class Calculator {
         
         //benefy
         $bene_detail = "";
+        $bene_link = "";
         if($total_bene < $avg_bene){
             $bene_detail = str_replace("$1", $avg_bene, $json[ 8]);
+            $bene_link = $json["8.1"];
         }else{
             $bene_detail = str_replace("$1", $avg_bene, $json[ 9]);
+            $bene_link = $json["9.1"];
         }
         
         //worked time
         $hours_detail = "";
+        $hours_link = "";
         if($evaluation->trabajo_tiempo > 0){
             if($evaluation->trabajo_tiempo > self::$HOUR_1){
 
                 $hours_detail = str_replace("$1", $evaluation->trabajo_tiempo, $json[ 10]);
+                $hours_link = $json[ "10.1"];
                 $more = $evaluation->trabajo_tiempo - self::$HOUR_1;
                 $hours_detail = str_replace("$2", $more, $hours_detail);
             }else{
                 $hours_detail = str_replace("$1", $evaluation->trabajo_tiempo, $json[ 11]);
                 $less = self::$HOUR_1 - $evaluation->trabajo_tiempo;
                 $hours_detail = str_replace("$2", $less, $hours_detail);
+                $hours_link = $json[ "11.1"];
             }    
         }
         
@@ -150,9 +163,17 @@ class Calculator {
             'avg_eval_string' => $avg_eval_string,
             'avg_eval_detail' => $avg_eval_detail,
             'interpre_detail' => $interpre_detail, 
+            'inter_link' => $inter_link,
             'dimen_detail' =>$dimen_detail, 
+            'dimen_link' => $dimen_link,
             'bene_detail' =>$bene_detail, 
-            'hours_detail' => $hours_detail);
+            'bene_link' => $bene_link,
+            'hours_job' => $evaluation->trabajo_tiempo,
+            'hours_detail' => $hours_detail,
+            'hours_link' => $hours_link,
+            'interpre_salary' => "",
+            
+            'salary' => $evaluation->salario);
         
         return $result;
     }
