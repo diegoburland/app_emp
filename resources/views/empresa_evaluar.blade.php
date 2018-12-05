@@ -263,7 +263,7 @@
                     </div>
                 </div>							  	
 
-                <textarea name="comentario_{{$item->id}}" id="text_{{$item->id}}" maxlength="255" class="text_hide form-control" placeholder="Agrega un comentario"></textarea>
+                <textarea name="comentario_{{$item->id}}" id="text_{{$item->id}}" class="text_hide form-control" placeholder="Agrega un comentario"></textarea>
 
                 <div id="mensaje_{{$item->id}}" class="invalid-feedback">
                     Debes asignar una estrella
