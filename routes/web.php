@@ -29,9 +29,9 @@ Route::post('login_usuario', 'User\User_controller@login');
 
 Route::get('gracias/{id}', 'Evaluacion_controller@gracias')->name('gracias');
 
-Route::get('gracias', function () {
+/*Route::get('gracias', function () {
     return view('emails.ouput');
-})->name('gracias');
+})->name('gracias');*/
 
 //Route::get('code/{code}', 'Evaluacion_controller@code');
 Route::get('code/{code}', 'User\User_controller@code')->name('code');
