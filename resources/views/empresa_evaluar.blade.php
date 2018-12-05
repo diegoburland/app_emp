@@ -56,7 +56,7 @@
                 <div class="form-group row required ">
                     <div class="col-sm-6">
                         <label class="control-label" ><b>Busca y selecciona la empresa</b></label>
-                        <input type="text" class="form-control" id="empresa" autocomplete="nope" name="empresa_nombre" placeholder="Busca y selecciona la empresa" required>
+                        <input type="text" class="form-control" id="empresa" maxlength="255" autocomplete="nope" name="empresa_nombre" placeholder="Busca y selecciona la empresa" required>
                         <input type="hidden" name="empresa_id" id="empresa_id" value="">  
 
                         <small id="buscar_emp" class="form-text text-muted">
@@ -81,7 +81,7 @@
                 <div class="form-group row required ">
                     <div class="col-sm-6">
                         <label class="control-label" for="">Ciudad</label>
-                        <input type="text" class="form-control" id="ciudad_eval" name="ciudad_eval" placeholder="Busca y selecciona la ciudad" autocomplete="nope" required>
+                        <input type="text" class="form-control" maxlength="255" id="ciudad_eval" name="ciudad_eval" placeholder="Busca y selecciona la ciudad" autocomplete="nope" required>
                         <input type="hidden" name="ciudad_eval_id" id="ciudad_eval_id" value="">  
                         <div id="validar_ciudad_eval" class="invalid-feedback">
                             Por favor selecciona una ciudad del listado
@@ -201,7 +201,7 @@
                 <div class="form-group row">
                     <div class="col-sm-8">
                         <label class="control-label" for="">Título de tu evaluación</label>
-                        <input type="text" class="form-control" id=""  name="titulo" maxlength="100" placeholder="Breve resume tu experiencia en la empresa" >
+                            <input type="text" class="form-control" id=""  name="titulo" maxlength="100" placeholder="Breve resume tu experiencia en la empresa" >
                     </div>
                 </div>
             </a>			
@@ -263,7 +263,7 @@
                     </div>
                 </div>							  	
 
-                <textarea name="comentario_{{$item->id}}" id="text_{{$item->id}}" class="text_hide form-control" placeholder="Agrega un comentario"></textarea>
+                <textarea name="comentario_{{$item->id}}" maxlength="1000" id="text_{{$item->id}}" class="text_hide form-control" placeholder="Agrega un comentario"></textarea>
 
                 <div id="mensaje_{{$item->id}}" class="invalid-feedback">
                     Debes asignar una estrella
@@ -321,7 +321,7 @@
                 <div class="form-group row">
                     <div class="col-sm-5">
                         <label id="label_salario" for="">Salario</label>
-                        <input type="text" class="form-control" id="salario" name="salario" placeholder="$COP Pesos Colombianos" >
+                        <input type="text" class="form-control" id="salario" maxlength="15" name="salario" placeholder="$COP Pesos Colombianos" >
                         <small id="emailHelp" class="form-text text-muted text-justify">
                             Nunca se publica
                         </small>
@@ -334,7 +334,7 @@
                 <div class="form-group row">
                     <div class="col-sm-4">
                         <label for="">Horas trabajadas por semana</label>
-                        <input type="text" class="form-control" id="trabajo_tiempo" name="trabajo_tiempo" placeholder="Horas por semana" >
+                        <input type="text" class="form-control" id="trabajo_tiempo" maxlength="3" name="trabajo_tiempo" placeholder="Horas por semana" >
                     </div>
                 </div>
             </a>
@@ -370,7 +370,7 @@
                 <div class="form-group row">
                     <div class="col-sm-8">
                         <label for="">¿Qué lo motivó a no aceptar la oferta?</label>
-                        <textarea class="form-control" name="porque"></textarea>
+                        <textarea class="form-control" name="porque" maxlength="1000"></textarea>
                     </div>
                 </div>
             </a>
@@ -384,7 +384,7 @@
                 <div class="form-group row">
                     <div class="col-sm-8">
                         <label for="">¿En qué puede mejorar tu empleador?</label>
-                        <textarea class="form-control" name="mejoras"></textarea>
+                        <textarea class="form-control" name="mejoras" maxlength="1000"></textarea>
                     </div>
                 </div>
             </a>
@@ -393,7 +393,7 @@
                 <div class="form-group row">
                     <div class="col-sm-8">
                         <label id="label_gusto" for="">¿Qué te gustó de tu empleador?</label>
-                        <textarea class="form-control" name="like"></textarea>
+                        <textarea class="form-control" name="like"  maxlength="1000"></textarea>
                     </div>
                 </div>
             </a>
@@ -402,7 +402,7 @@
                 <div class="form-group row">
                     <div class="col-sm-8">
                         <label id="label_nogusto" for="">¿Qué no te gustó de tu empleador?</label>
-                        <textarea class="form-control" name="no_like"></textarea>
+                        <textarea class="form-control" name="no_like" maxlength="1000"></textarea>
                     </div>
                 </div>
             </a>
@@ -411,7 +411,7 @@
                 <div class="form-group row">
                     <div class="col-sm-8">
                         <label for="">¿Cuál fue el motivo de tu retiro?</label>
-                        <textarea class="form-control" name="motivo"></textarea>
+                        <textarea class="form-control" name="motivo" maxlength="1000"></textarea>
                     </div>
                 </div>
             </a>      
@@ -441,7 +441,7 @@
                 <div class="form-group row required">
                     <div class="col-sm-8">
                         <label class="control-label" for="">Correo electrónico</label>		
-                        <input type="email" class="form-control" id="" name="email" placeholder="Correo electrónico" required>	
+                        <input type="email" class="form-control" id="" name="email" maxlength="255"  placeholder="Correo electrónico" required>	
                         <small id="emailHelp" class="form-text text-muted text-justify">
                             Nunca se publicará tu correo. Necesitamos tu correo para verificar la autenticidad de tu evaluación. Te enviamos un correo para confirmar tu evaluación. 
                             Al dar click en el botón Finalizar aceptas nuestros <a href="http://vidaandwork.com/terminos-y-condiciones/" target="_blank">Términos y Condiciones.</a>
@@ -485,7 +485,7 @@
                         <div class="form-group required row">
                             <div class="col-sm-12">
                                 <label class="control-label" for="">Nombre de la Empresa (Razón Social)</label>
-                                <input type="text" class="form-control text-uppercase" id="razon_social" name="razon_social" placeholder="Nombre de la empresa (Razón Social)" required>
+                                <input type="text" maxlength="255" class="form-control text-uppercase" id="razon_social" name="razon_social" placeholder="Nombre de la empresa (Razón Social)" required>
                                 <input type="hidden" name="razon_social_id" id="razon_social_id" value="">
 
                                 <div class="invalid-feedback">
@@ -509,7 +509,7 @@
                         <div class="form-group required row">
                             <div class="col-sm-12">
                                 <label class="control-label" for="">Ciudad</label>
-                                <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Busca y selecciona la ciudad" autocomplete="nope" required>
+                                <input type="text" maxlength="255" class="form-control" id="ciudad" name="ciudad" placeholder="Busca y selecciona la ciudad" autocomplete="nope" required>
                                 <input type="hidden" name="ciudad_id" id="ciudad_id" value="">  
                                 <div id="validar_ciudad" class="invalid-feedback">
                                     Por favor selecciona una ciudad del listado
@@ -519,7 +519,7 @@
                         <div class="form-group row">
                             <div class="col-sm-12">
                                 <label for="">Página web</label>
-                                <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Página web">
+                                <input type="text" class="form-control" maxlength="255" id="direccion" name="direccion" placeholder="Página web">
                             </div>
                         </div>
 
