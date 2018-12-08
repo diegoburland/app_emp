@@ -968,10 +968,12 @@ a[x-apple-data-detectors=true] {
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
                   
+              
+                  
                   <div class="">
-	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 20px; padding-left: 10px; padding-top: 10px; padding-bottom: 20px;"><![endif]-->
-	<div style="font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;color:#555555;line-height:150%; padding-right: 20px; padding-left: 10px; padding-top: 10px; padding-bottom: 20px;">	
-		<div style="font-size:12px;line-height:18px;color:#555555;font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 21px">{!!$salary!!}</p></div>	
+	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 3px; padding-bottom: 10px;"><![endif]-->
+	<div style="font-family:'Oswald', Arial, 'Helvetica Neue', Helvetica, sans-serif;color:#555555;line-height:120%; padding-right: 10px; padding-left: 10px; padding-top: 3px; padding-bottom: 10px;">	
+		<div style="font-size:12px;line-height:14px;font-family:Oswald, Arial, 'Helvetica Neue', Helvetica, sans-serif;color:#555555;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><strong><span style="font-size: 22px; line-height: 26px;">{{$salary}}</span></strong></p></div>	
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
@@ -987,13 +989,13 @@ a[x-apple-data-detectors=true] {
                   
                   
                     
-<div align="center" class="button-container center " style="padding-right: 20px; padding-left: 0px; padding-top:10px; padding-bottom:15px;">
-  <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 20px; padding-left: 0px; padding-top:10px; padding-bottom:15px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:31pt; v-text-anchor:middle; width:91pt;" arcsize="120%" strokecolor="#7BBAC0" fillcolor="#7BBAC0"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#FFFFFF; font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif; font-size:16px;"><![endif]-->
+<!--div align="center" class="button-container center " style="padding-right: 20px; padding-left: 0px; padding-top:10px; padding-bottom:15px;">
+  
     <div style="color: #FFFFFF; background-color: #7BBAC0; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px; max-width: 152px; width: 112px;width: auto; border-top: 0px solid #131b4a; border-right: 0px solid #131b4a; border-bottom: 0px solid #131b4a; border-left: 0px solid #131b4a; padding-top: 5px; padding-right: 20px; padding-bottom: 5px; padding-left: 20px; font-family: 'Roboto', Tahoma, Verdana, Segoe, sans-serif; text-align: center; mso-border-alt: none;">
       <span style="font-size:16px;line-height:32px;"><strong>LOREM IPSUM</strong></span>
     </div>
-  <!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
-</div>
+  
+</div-->
 
                   
               <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->

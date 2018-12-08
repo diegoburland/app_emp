@@ -74,4 +74,6 @@ Route::get('filter_evaluacion', 'Evaluacion_controller@filter_evaluacion');
 Route::get('/api/v1/encontrar_empresa', 'Empresa_controller@get_empresa');
 Route::get('/api/v1/encontrar_ubicacion', 'Ciudad_controller@get_ciudad');
 
+Route::get('/api/v1/search_job', 'Job_controller@get_job');
+
 Route::post('/api/v1/crear_empresa', 'Empresa_controller@save_empresa');

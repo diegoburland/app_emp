@@ -15,6 +15,7 @@ use Mail;
 use DB;
 use App\Eval_item;
 use App\Eval_bene;
+use App\Job;
 use Illuminate\Support\Facades\Log;
 
 class Evaluacion_controller extends Controller {
@@ -25,6 +26,12 @@ class Evaluacion_controller extends Controller {
         $random_hash = bin2hex(random_bytes(32));
         //$random_hash
         $request->request->add(['confir_code' => $random_hash, 'ip' => $request->ip()]);
+                
+        
+        if(empty($request->input('job_id'))){
+            $job_id = Job::create(array('name' =>$request->input('posicion_campo'), 'state' => 'NO VERIFICADO', 'salary'=>intval($request->input('salary'))));
+            $request->merge(['job_id' => $job_id->id]);
+        }
         $evaluacion = Evaluacion::create($request->all()); //mejorar       
 
         $items = Item::all();

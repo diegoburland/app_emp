@@ -135,7 +135,7 @@
                     <div class="col-sm-6">                           
                         <label class="control-label" for="">Elegir Cargo</label>
                         <input type="text" class="form-control" id="posicion_campo" name="posicion_campo" placeholder="Busca y selecciona un cargo" autocomplete="nope">
-                        <input type="hidden" name="posicion" id="posicion" value="">
+                        <input type="hidden" name="job_id" id="job_id" value="">
                         <div id="validar_posicion" class="invalid-feedback">
                             Por favor selecciona la posición
                         </div>
@@ -322,6 +322,7 @@
                     <div class="col-sm-5">
                         <label id="label_salario" for="">Salario</label>
                         <input type="text" class="form-control" id="salario" maxlength="15" name="salario" placeholder="$COP Pesos Colombianos" >
+                        <input type="hidden" name="salary" id="salary" value="">
                         <small id="emailHelp" class="form-text text-muted text-justify">
                             Nunca se publica
                         </small>

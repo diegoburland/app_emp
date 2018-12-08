@@ -210,6 +210,8 @@ function elegir_recomienda(self) {
 function validar_botones() {
 
     var validar = true;
+    
+    $("#salary").val($("#salario").val().replace('.',''));
 
     if ($('#evalua').val() == "") {
 
@@ -222,7 +224,7 @@ function validar_botones() {
 
     if ($('#evalua').val() != "Práctica") {
 
-        if ($('#posicion').val() == "") {
+        if ($('#posicion_campo').val() == "") {
 
             $('#validar_posicion').css('display', 'block');
             validar = false;
@@ -288,6 +290,7 @@ function validar_modal() {
 $.fn.digits = function () {
     return this.each(function () {
         $(this).val($(this).val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1."));
+        
     })
 }
 
@@ -313,7 +316,14 @@ $(function () {
     $('#salario').numeric({negative: false, decimal: true});
     $("#salario").keyup(function () {
         $("#salario").digits();
+        
     });
+    
+    $("#salario").focusout(function () {
+        $("#salary").val($("#salario").val().replace('.',''));
+    });
+    
+    
 
     $('#trabajo_tiempo').numeric({negative: true, decimal: false});
 
@@ -343,7 +353,7 @@ $(function () {
 
             //event.preventDefault();
             //event.stopPropagation();
-
+            //
             if (validar_botones() == false || form.checkValidity() === false) {
                 event.preventDefault();
                 event.stopPropagation();
@@ -474,7 +484,7 @@ $(function () {
         //console.log(cache_ies);
     });
 
-    var cache_cargos = [];
+    /*var cache_cargos = [];
     const url_cargos = '/json/cargos.json';
     $.getJSON(url_cargos, function (data, status, xhr) {
 
@@ -483,7 +493,7 @@ $(function () {
             cache_cargos.push(entry.value);
         });
         //console.log(cache_ies);
-    });
+    });*/
 
     $("#ciudad_eval").autocomplete({
         source: "/api/v1/encontrar_ubicacion",
@@ -493,6 +503,19 @@ $(function () {
             $('#ciudad_eval_id').val(ui.item.id);
         }
     });
+    
+    $("#posicion_campo").autocomplete({
+        source: "/api/v1/search_job",
+        minLength: 2,
+        select: function (event, ui) {
+            $('#posicion_campo').val(ui.item.value);            
+            $('#job_id').val(ui.item.id);
+        }
+    });
+
+    /*$("#posicion_campo").keyup(function () {
+        $('#posicion').val($("#posicion_campo").val());
+    });*/
 
     $("#ciudad_eval").focusout(function () {
 
@@ -535,22 +558,7 @@ $(function () {
         }
     });
 
-    $("#posicion_campo").autocomplete({
-        minLength: 3,
-        source: function (request, response) {
-            var results = $.ui.autocomplete.filter(cache_cargos, request.term);
-
-            response(results.slice(0, 10));
-        },
-        select: function (event, ui) {
-            $('#posicion').val(ui.item.value);
-
-        }
-    });
-
-    $("#posicion_campo").keyup(function () {
-        $('#posicion').val($("#posicion_campo").val());
-    });
+    
 
 });
 

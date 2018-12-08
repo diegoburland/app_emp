@@ -21,8 +21,14 @@
         "10": "<p style='margin: 0;font-size: 14px;line-height: 21px'>Estás laborando $1 horas semanales, lo que significa que estás trabajando $2 horas más que el promedio colombiano de acuerdo con el Ministerio de Trabajo (El Promedio laboró en 2016 un total de 2.193 horas/año lo que equivale unas 44,6 horas por semana). En última instancia, sin embargo, el número de las horas de trabajo es algo muy subjetivo. En un trabajo insatisfactorio, cada hora de trabajo es probablemente demasiado, mientras que las personas que son felices en su trabajo están más dispuestas a trabajar por encima del promedio y hacer horas extras. Sin embargo, siempre debes vigilar tu equilibrio trabajo-vida, porque al final una buena organización de tu tiempo personal con un equilibrio entre tu vida profesional y tu vida personal es un requisito importante para garantizar no solo tu satisfacción laboral sino también la calidad de tu vida.</p>",
         "10.1":"",
         "11": "<p style='margin: 0;font-size: 14px;line-height: 21px'>Estás laborando $1 horas semanales, lo que significa que estás trabajando $2 horas menos que el promedio colombiano de acuerdo con el Ministerio de Trabajo (El Promedio laboró en 2016 un total de 2.193 horas/año lo que equivale unas 44,6 horas por semana). En última instancia, sin embargo, el número de las horas de trabajo es algo muy subjetivo. En un trabajo insatisfactorio, cada hora de trabajo es probablemente demasiado, mientras que las personas que son felices en su trabajo están más dispuestas a trabajar por encima del promedio y hacer horas extras. Sin embargo, siempre debes vigilar tu equilibrio trabajo-vida, porque al final una buena organización de tu tiempo personal con un equilibrio entre tu vida profesional y tu vida personal es un requisito importante para garantizar no solo tu satisfacción laboral sino también la calidad de tu vida.</p>",
-        "11.1":""
-
+        "11.1":"",
+        "12":"Te felicitamos. Tu salario está por encima del promedio para este cargo en Vida and Work. El salario promedio según Vida and Work para tu cargo es $2 COP, lo que significa que ganas ($1 COP) más. Sabías que el promedio general de todos los salarios en Colombia es ….?",
+        "13":"Lo lamentamos. Tu salario está por debajo del promedio para este cargo en Vida and Work. El salario promedio según Vida and Work para tu cargo es $2 COP, lo que significa que ganas ($1 COP) menos.  Sabías que el promedio general de todos los salarios en Colombia es ….?",
+        "14":"Lamentablemente no encontramos un referente para tu cargo en nuestra BD. Sabías que el promedio general de todos los salarios en Colombia es ….? Te felicitamos! Esto quiere decir que ganas ($1) más que el promedio Colombiano.",
+        "15":"Lamentablemente no encontramos un referente para tu cargo en nuestra BD. Sabías que el promedio general de  todos los salarios en Colombia es ….? Lo lamentamos! Esto quiere decir que ganas ($1) menos que el promedio Colombiano. ",
+        "16":"Dado que no indicaste tu salario no podemos ponerlo en comparación. Sin embrago te queremos compartir el salario promedio según Vida and Work para tu cargo, que es $1 COP. Sabías que el promedio general de todos los salarios en Colombia es ….?",
+        "17":"Dado que no indicaste tu salario no podemos ponerlo en comparación. Sin embrago te queremos compartir el promedio general de todos los salarios en Colombia, que es ….",
+        "18":"Dado que no indicaste tu cargo y tu salario no podemos hacer una comparación. Sin embrago te queremos compartir el promedio general de todos los salarios en Colombia, que es …."
     },
     "past_job": {
         "1": "Tu satisfacción laboral es menor que el promedio de todas las evaluaciones de Vida and Work ($2).",
@@ -46,7 +52,14 @@
         "10": "<p style='margin: 0;font-size: 14px;line-height: 21px'>Estabas laborando $1 horas semanales, lo que significa que estabas trabajando $2 horas más que el promedio colombiano de acuerdo con el Ministerio de Trabajo (El Promedio laboró en 2016 un total de 2.193 horas/año lo que equivale unas 44,6 horas por semana). En última instancia, sin embargo, el número de las horas de trabajo es algo muy subjetivo. En un trabajo insatisfactorio, cada hora de trabajo es probablemente demasiado, mientras que las personas que son felices en su trabajo están más dispuestas a trabajar por encima del promedio y hacer horas extras. Sin embargo, siempre debes vigilar tu equilibrio trabajo-vida, porque al final una buena organización de tu tiempo personal con un equilibrio entre tu vida profesional y tu vida personal es un requisito importante para garantizar no solo tu satisfacción laboral sino también la calidad de tu vida. </p>",
         "10.1":"",
         "11": "<p style='margin: 0;font-size: 14px;line-height: 21px'>Estabas laborando $1 horas semanales, lo que significa que estabas trabajando $2 horas menos que el promedio colombiano de acuerdo con el Ministerio de Trabajo (El Promedio laboró en 2016 un total de 2.193 horas/año lo que equivale unas 44,6 horas por semana). En última instancia, sin embargo, el número de las horas de trabajo es algo muy subjetivo. En un trabajo insatisfactorio, cada hora de trabajo es probablemente demasiado, mientras que las personas que son felices en su trabajo están más dispuestas a trabajar por encima del promedio y hacer horas extras. Sin embargo, siempre debes vigilar tu equilibrio trabajo-vida, porque al final una buena organización de tu tiempo personal con un equilibrio entre tu vida profesional y tu vida personal es un requisito importante para garantizar no solo tu satisfacción laboral sino también la calidad de tu vida.</p>",
-        "11.1":""
+        "11.1":"",
+        "12":"Te felicitamos. Tu salario está por encima del promedio para este cargo en Vida and Work. El salario promedio según Vida and Work para tu cargo es $2 COP, lo que significa que ganas ($1 COP) más. Sabías que el promedio general de todos los salarios en Colombia es ….?",
+        "13":"Lo lamentamos. Tu salario está por debajo del promedio para este cargo en Vida and Work. El salario promedio según Vida and Work para tu cargo es $2 COP, lo que significa que ganas ($1 COP) menos.  Sabías que el promedio general de todos los salarios en Colombia es ….?",
+        "14":"Lamentablemente no encontramos un referente para tu cargo en nuestra BD. Sabías que el promedio general de todos los salarios en Colombia es ….? Te felicitamos! Esto quiere decir que ganas ($1) más que el promedio Colombiano.",
+        "15":"Lamentablemente no encontramos un referente para tu cargo en nuestra BD. Sabías que el promedio general de  todos los salarios en Colombia es ….? Lo lamentamos! Esto quiere decir que ganas ($1) menos que el promedio Colombiano. ",
+        "16":"Dado que no indicaste tu salario no podemos ponerlo en comparación. Sin embrago te queremos compartir el salario promedio según Vida and Work para tu cargo, que es $1 COP. Sabías que el promedio general de todos los salarios en Colombia es ….?",
+        "17":"Dado que no indicaste tu salario no podemos ponerlo en comparación. Sin embrago te queremos compartir el promedio general de todos los salarios en Colombia, que es ….",
+        "18":"Dado que no indicaste tu cargo y tu salario no podemos hacer una comparación. Sin embrago te queremos compartir el promedio general de todos los salarios en Colombia, que es …."
     },
     "pratice_job": {
         "1": "Estas por encima del promedio de Vida and Work ($2).",
@@ -70,7 +83,10 @@
         "10": "<p style='margin: 0;font-size: 14px;line-height: 21px'>Estás laborando $1 horas por semana más que el promedio de los practicantes de acuerdo con el Ministerio de Trabajo (El Promedio laboró en 2016 un total de 2.193 horas/año lo que equivale unas 44,6 horas por semana)</p>",
         "10.1":"",
         "11": "<p style='margin: 0;font-size: 14px;line-height: 21px'>Estás laborando $1 horas por semana menos que el promedio de los practicantes de acuerdo con el Ministerio de Trabajo (El Promedio laboró en 2016 un total de 2.193 horas/año lo que equivale unas 44,6 horas por semana)</p>",
-        "11.1":""
+        "11.1":"",
+        "12":"Te felicitamos, tu recompensación financiera está por encima del promedio de practicantes en Vida and Work ($1). Ganas $2 más que el promedio. ",
+        "13":"Lo lamentamos, tu recompensación financiera está por debajo del promedio de practicantes en Vida ad Work ($1). Ganas $2 más que el promedio.",
+        "14":"Dado que no indicaste tu cargo y tu salario no podemos hacer una comparación. Sin embrago te queremos compartir el promedio general de todos los salarios en Colombia, que es …."
     }
 
 }
