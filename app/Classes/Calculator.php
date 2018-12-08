@@ -54,11 +54,23 @@ class Calculator {
         return $total->total_bene;
     }
 
-    public function average_vw() {
-        $avg = DB::table('evaluaciones')
+    public function average_vw($tipo) {
+        
+        $avg;
+        
+        if ($tipo == "Práctica") {
+            $avg = DB::table('evaluaciones')
                         ->join('eval_items', 'eval_items.evaluacion_id', '=', 'evaluaciones.id')
                         ->select(DB::raw('avg(eval_items.puntaje) as avg_vw'))
-                        ->where('eval_items.puntaje', '>', 0)->first();
+                        ->where([['eval_items.puntaje', '>', 0], ['evaluaciones.evalua', '=', "Práctica"]])->first();
+        }else{
+            $avg = DB::table('evaluaciones')
+                        ->join('eval_items', 'eval_items.evaluacion_id', '=', 'evaluaciones.id')
+                        ->select(DB::raw('avg(eval_items.puntaje) as avg_vw'))
+                        ->where([['eval_items.puntaje', '>', 0], ['evaluaciones.evalua', '<>', "Práctica"]])->first();
+        }
+        
+        
         return $avg->avg_vw;
     }
 
@@ -66,8 +78,9 @@ class Calculator {
 
         $file = file_get_contents(__DIR__ . "/output.json");
         $json = json_decode($file, true);
-        $avg_vw = round($this->average_vw(), 2);
         $evaluation = Evaluacion::find($id_eval);
+        $avg_vw = round($this->average_vw($evaluation->evalua), 2);
+        
         $avg_eval = round($this->average_eval($id_eval), 2);
 
 
