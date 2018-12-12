@@ -5,6 +5,7 @@ namespace App\Classes;
 use DB;
 use App\Evaluacion;
 use App\Job;
+use Illuminate\Support\Facades\Log;
 
 class Calculator {
 
@@ -51,6 +52,7 @@ class Calculator {
                         ->join('eval_benes', 'eval_benes.evaluacion_id', '=', 'evaluaciones.id')
                         ->select(DB::raw('count(*) total_bene'))
                         ->where('evaluaciones.id', '=', $id)->first();
+        og::info("---------------" . $total->total_bene . "-------------------");
         return $total->total_bene;
     }
 
