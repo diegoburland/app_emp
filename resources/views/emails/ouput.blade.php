@@ -1099,7 +1099,7 @@ a[x-apple-data-detectors=true] {
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
 	<div style="font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;color:#555555;line-height:120%; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">	
-		<div style="font-size:12px;line-height:14px;color:#555555;font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;text-align:left;"><p style="margin: 0;font-size: 12px;line-height: 14px;text-align: center"><span style="font-size: 22px; line-height: 26px;">Con tu evaluación retroalimentas a tu empresa a mejorar constantemente y al mismo tiempo ayudas a miles de colombianos en búsqueda de su empresa ideal.</span></strong></p></div>	
+		<div style="font-size:12px;line-height:14px;color:#555555;font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;text-align:left;"><p style="margin: 0;font-size: 12px;line-height: 14px;text-align: center"><span style="font-size: 22px; line-height: 26px;">Con tu evaluación retroalimentas a tu empresa a mejorar constantemente y al mismo tiempo ayudas a miles de colombianos en búsqueda de su empresa ideal.&#160;</span></p><p style="margin: 0;font-size: 12px;line-height: 14px;text-align: center">&#160;</p><p style="margin: 0;font-size: 12px;line-height: 14px;text-align: center"><strong><span style="font-size: 22px; line-height: 26px;">Invita a tus amigos para que obtengan su diagnóstico laboral</span></strong></p></div>	
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
