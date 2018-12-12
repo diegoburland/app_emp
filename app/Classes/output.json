@@ -88,7 +88,8 @@
         "11": "<p style='margin: 0;font-size: 14px;line-height: 21px'>Estás laborando $2 horas por semana más que el promedio colombiano de acuerdo con el Ministerio de Trabajo (El Promedio laboró en 2016 un total de 2.193 horas/año lo que equivale unas 44,6 horas por semana). Sin embargo, el número de las horas de trabajo es algo muy subjetivo, si te encuentras muy insatisfecho con tu labor probablemente cada hora de trabajo es demasiado, por el contrario, las personas que son felices en su trabajo están más dispuestas a trabajar por encima del promedio y hacer horas extras.</p>",
         "11.1": "",
         "12": "Te felicitamos, tu recompensación financiera está por encima del promedio de practicantes en Vida and Work ($1). Ganas $2 más que el promedio. ",
-        "13": "Tu recompensación financiera está por debajo del promedio de practicantes en Vida ad Work ($1 COP). Ganas $2 COP menos que el promedio."
+        "13": "Tu recompensación financiera está por debajo del promedio de practicantes en Vida ad Work ($1 COP). Ganas $2 COP menos que el promedio.",
+        "14": "Dado que no indicaste tu salario no podemos ponerlo en comparación. Sin embrago, te queremos compartir el promedio salarial de todos los practicantes de Vida and Work, que es $2 COP."
     }
 
 }

@@ -225,7 +225,7 @@ class Calculator {
                 $interpre_salary = str_replace("$2", $rest, $interpre_salary);
             }else{
                 
-                $interpre_salary = $json[14];
+                $interpre_salary = str_replace("$2", self::$AVG_SALARY_PRAC, $json[14]);
             }
             
         }
