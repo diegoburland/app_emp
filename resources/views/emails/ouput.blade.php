@@ -319,7 +319,7 @@ a[x-apple-data-detectors=true] {
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 0px;"><![endif]-->
 	<div style="font-family:'Oswald', Arial, 'Helvetica Neue', Helvetica, sans-serif;color:#7bbac0;line-height:120%; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 0px;">	
-		<div style="line-height:14px;font-family:Oswald, Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:12px;color:#7bbac0;text-align:left;"><p style="margin: 0;line-height: 14px;text-align: center;font-size: 12px"><span style="font-size: 64px; line-height: 76px;"><strong>¡Felicitaciones!</strong></span></p></div>	
+		<div style="line-height:14px;font-family:Oswald, Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:12px;color:#7bbac0;text-align:left;"><p style="margin: 0;line-height: 14px;text-align: center;font-size: 12px"><span style="font-size: 64px; line-height: 76px;"><strong>{{$intro}}</strong></span></p></div>	
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
@@ -328,7 +328,7 @@ a[x-apple-data-detectors=true] {
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 0px; padding-bottom: 10px;"><![endif]-->
 	<div style="font-family:'Oswald', Arial, 'Helvetica Neue', Helvetica, sans-serif;color:#555555;line-height:120%; padding-right: 10px; padding-left: 10px; padding-top: 0px; padding-bottom: 10px;">	
-		<div style="line-height:14px;font-family:Oswald, Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:12px;color:#555555;text-align:left;"><p style="margin: 0;line-height: 14px;text-align: center;font-size: 12px"><span style="font-size: 46px; line-height: 55px;"><strong>Tu evaluación tiene un promedio</strong></span></p><p style="margin: 0;line-height: 14px;text-align: center;font-size: 12px"><span style="font-size: 46px; line-height: 55px;"><strong>{{$avg_eval}}</strong></span></p></div>	
+		<div style="line-height:14px;font-family:Oswald, Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:12px;color:#555555;text-align:left;"><p style="margin: 0;line-height: 14px;text-align: center;font-size: 12px"><span style="font-size: 46px; line-height: 55px;"><strong>Tu evaluación tiene un promedio de</strong></span></p><p style="margin: 0;line-height: 14px;text-align: center;font-size: 12px"><span style="font-size: 46px; line-height: 55px;"><strong>{{$avg_eval}}</strong></span></p></div>	
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
@@ -755,6 +755,16 @@ a[x-apple-data-detectors=true] {
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
+                @if($total_bene > 0)  
+                  <div class="">
+	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 3px; padding-bottom: 10px;"><![endif]-->
+	<div style="font-family:'Oswald', Arial, 'Helvetica Neue', Helvetica, sans-serif;color:#555555;line-height:120%; padding-right: 10px; padding-left: 10px; padding-top: 3px; padding-bottom: 10px;">	
+		<div style="font-size:12px;line-height:14px;font-family:Oswald, Arial, 'Helvetica Neue', Helvetica, sans-serif;color:#555555;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><strong><span style="font-size: 22px; line-height: 26px;">{{$total_bene}}</span></strong></p></div>	
+	</div>
+	<!--[if mso]></td></tr></table><![endif]-->
+</div>
+                
+                @endif
                   
                   
                     <div class="">

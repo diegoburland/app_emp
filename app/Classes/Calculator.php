@@ -84,7 +84,7 @@ class Calculator {
         $avg_eval = round($this->average_eval($id_eval), 2);
 
 
-
+        $intro = "";
         if ($evaluation->evalua == "Trabajo Actual") {
 
             $json = $json["current_job"];
@@ -100,11 +100,13 @@ class Calculator {
         if ($avg_eval < $avg_vw) {
             //$string1 = $string1 . str_replace("$1", $avg_eval, $json[ 1]);
             $avg_eval_string = str_replace("$2", $avg_vw, $json[1]);
+            $intro = $json["1.2"];
             $avg_eval_detail = $json["1.1"];
         } else if ($avg_eval >= $avg_vw) {
             //$string1 = $string1 . str_replace("$1", $avg_eval, $json[ 2]);
             $avg_eval_string = str_replace("$2", $avg_vw, $json[2]);
             $avg_eval_detail = $json["2.1"];
+            $intro = $json["2.2"];
         }
 
         //get interpretations
@@ -189,17 +191,20 @@ class Calculator {
                 
                 $rest = $evaluation->salary - self::$AVG_SALARY;
                 $interpre_salary = str_replace("$1", $rest, $json[14]);
+                $interpre_salary = str_replace("$2", self::$AVG_SALARY, $interpre_salary);
             }else if ($job->state == "NO VERIFICADO" && $evaluation->salary <= self::$AVG_SALARY) {
                 
                 
                 $rest = self::$AVG_SALARY - $evaluation->salary;
                 $interpre_salary = str_replace("$1", $rest, $json[15]);
+                $interpre_salary = str_replace("$2", self::$AVG_SALARY, $interpre_salary);
             }else if (!empty($job->salery) && $job->state == "VERIFICADO" && empty($evaluation->salary)) {
                                                 
                 $interpre_salary = str_replace("$1", $job->salary, $json[16]);
             }else if (empty($job->salery) && $job->state == "VERIFICADO" && empty($evaluation->salary)) {
                                                 
                 $interpre_salary = str_replace("$1", $job->salary, $json[17]);
+                $interpre_salary = str_replace("$2", self::$AVG_SALARY, $interpre_salary);
             }else {
                 $interpre_salary = $json[18];
             }
@@ -224,7 +229,10 @@ class Calculator {
         }
 
 
-        $result = array('avg_eval' => $avg_eval,
+        $result = array(
+            'intro' => $intro,
+            'total_bene' => $total_bene,
+            'avg_eval' => $avg_eval,
             'type' => $evaluation->evalua,
             'avg_eval_string' => $avg_eval_string,
             'avg_eval_detail' => $avg_eval_detail,
