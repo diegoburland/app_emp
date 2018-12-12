@@ -208,7 +208,7 @@ class Calculator {
             }else {
                 $interpre_salary = $json[18];
             }
-        }else if(!empty($job)){
+        }else {
             
             if(!empty($evaluation->salary) && $evaluation->salary > self::$AVG_SALARY_PRAC){
                 
