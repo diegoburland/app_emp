@@ -1095,11 +1095,11 @@ a[x-apple-data-detectors=true] {
 </div>
                   
                   
-                    
+  <!--                  
 <div align="center" style="padding-right: 10px; padding-left: 10px; padding-bottom: 10px;" class="">
   <div style="line-height:10px;font-size:1px">&#160;</div>
   <div style="display: table; max-width:114px;">
-  <!--[if (mso)|(IE)]><table width="94" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-collapse:collapse; padding-right: 10px; padding-left: 10px; padding-bottom: 10px;"  align="center"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; mso-table-lspace: 0pt;mso-table-rspace: 0pt; width:94px;"><tr><td width="32" style="width:32px; padding-right: 5px;" valign="top"><![endif]-->
+  
     <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;Margin-right: 5px">
       <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
         <a href="https://www.facebook.com/" title="Facebook" target="_blank">
@@ -1108,7 +1108,7 @@ a[x-apple-data-detectors=true] {
       <div style="line-height:5px;font-size:1px">&#160;</div>
       </td></tr>
     </tbody></table>
-      <!--[if (mso)|(IE)]></td><td width="32" style="width:32px; padding-right: 0;" valign="top"><![endif]-->
+      
     <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;Margin-right: 0">
       <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
         <a href="https://www.wechat.com" title="Wechat" target="_blank">
@@ -1117,9 +1117,8 @@ a[x-apple-data-detectors=true] {
       <div style="line-height:5px;font-size:1px">&#160;</div>
       </td></tr>
     </tbody></table>
-    <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
   </div>
-</div>
+</div>-->
                   
               <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
               </div>
