@@ -1085,7 +1085,7 @@ a[x-apple-data-detectors=true] {
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
                   
-                  
+                @if($tipo == "Práctica") 
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
 	<div style="font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;color:#555555;line-height:120%; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">	
@@ -1093,8 +1093,17 @@ a[x-apple-data-detectors=true] {
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
-                  
-                  
+       @endif           
+       
+       @if($tipo != "Práctica") 
+                    <div class="">
+	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
+	<div style="font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;color:#555555;line-height:120%; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">	
+		<div style="font-size:12px;line-height:14px;color:#555555;font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;text-align:left;"><p style="margin: 0;font-size: 12px;line-height: 14px;text-align: center"><span style="font-size: 22px; line-height: 26px;">Con tu evaluación retroalimentas a tu empresa a mejorar constantemente y al mismo tiempo ayudas a miles de colombianos en búsqueda de su empresa ideal.</span></strong></p></div>	
+	</div>
+	<!--[if mso]></td></tr></table><![endif]-->
+</div>
+       @endif 
   <!--                  
 <div align="center" style="padding-right: 10px; padding-left: 10px; padding-bottom: 10px;" class="">
   <div style="line-height:10px;font-size:1px">&#160;</div>

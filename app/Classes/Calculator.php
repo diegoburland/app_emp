@@ -232,6 +232,7 @@ class Calculator {
 
 
         $result = array(
+            'tipo' => $evaluation->evalua,
             'intro' => $intro,
             'total_bene' => $total_bene,
             'avg_eval' => $avg_eval,
