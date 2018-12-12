@@ -50,7 +50,7 @@ class Calculator {
 
         $total = DB::table('evaluaciones')
                         ->join('eval_benes', 'eval_benes.evaluacion_id', '=', 'evaluaciones.id')
-                        ->select(DB::raw('count(*) total_bene'))
+                        ->select(DB::raw('count(*) as total_bene'))
                         ->where('evaluaciones.id', '=', $id)->first();
         og::info("---------------" . $total->total_bene . "-------------------");
         return $total->total_bene;
