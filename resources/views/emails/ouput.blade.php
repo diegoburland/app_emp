@@ -643,7 +643,7 @@ a[x-apple-data-detectors=true] {
 </div>
                   
                   
-     if($dimen_link != "")               
+     @if($dimen_link != "")               
 <div align="center" class="button-container center " style="padding-right: 20px; padding-left: 0px; padding-top:10px; padding-bottom:15px;">
   <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 20px; padding-left: 0px; padding-top:10px; padding-bottom:15px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:31pt; v-text-anchor:middle; width:277pt;" arcsize="120%" strokecolor="#7BBAC0" fillcolor="#7BBAC0"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#FFFFFF; font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif; font-size:16px;"><![endif]-->
     <div style="color: #FFFFFF; background-color: #7BBAC0; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px; max-width: 400px; width: 360px;width: auto; border-top: 0px solid #131b4a; border-right: 0px solid #131b4a; border-bottom: 0px solid #131b4a; border-left: 0px solid #131b4a; padding-top: 5px; padding-right: 20px; padding-bottom: 5px; padding-left: 20px; font-family: 'Roboto', Tahoma, Verdana, Segoe, sans-serif; text-align: center; mso-border-alt: none;">
