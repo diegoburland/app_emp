@@ -28,7 +28,7 @@ class Evaluacion_controller extends Controller {
         $request->request->add(['confir_code' => $random_hash, 'ip' => $request->ip()]);
                 
         
-        if(empty($request->input('job_id'))){
+        if(empty($request->input('job_id')) && !empty($request->input('posicion_campo')) ){
             $job_id = Job::create(array('name' =>$request->input('posicion_campo'), 'state' => 'NO VERIFICADO', 'salary'=>intval($request->input('salary'))));
             $request->merge(['job_id' => $job_id->id]);
         }
