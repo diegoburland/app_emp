@@ -1211,6 +1211,158 @@ a[x-apple-data-detectors=true] {
         </div>
       </div>
     </div>
+
+    @if($tipo == "Práctica") 
+                    
+    <div style="background-color:#FFFFFF;">
+      <div style="Margin: 0 auto;min-width: 320px;max-width: 700px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;" class="block-grid three-up ">
+        <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
+          <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background-color:#FFFFFF;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width: 700px;"><tr class="layout-full-width" style="background-color:transparent;"><![endif]-->
+
+              <!--[if (mso)|(IE)]><td align="center" width="233" style="background-color:#FFFFFF; width:233px; padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:5px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><![endif]-->
+            <div class="col num4" style="max-width: 320px;min-width: 233px;display: table-cell;vertical-align: top;">
+              <div style="background-color: #FFFFFF; width: 100% !important;">
+              <!--[if (!mso)&(!IE)]><!--><div style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:0px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;"><!--<![endif]-->
+
+                  
+                    <div align="center" class="img-container center  autowidth  fullwidth " style="padding-right: 10px;  padding-left: 10px;">
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px;line-height:0px;"><td style="padding-right: 10px; padding-left: 10px;" align="center"><![endif]-->
+<div style="line-height:10px;font-size:1px">&#160;</div>  <img class="center  autowidth  fullwidth" align="center" border="0" src="/images/rawpixel-651327-unsplash-760x410_1.jpg" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: 0;height: auto;float: none;width: 100%;max-width: 213.333333333333px" width="213.333333333333">
+<div style="line-height:10px;font-size:1px">&#160;</div><!--[if mso]></td></tr></table><![endif]-->
+</div>
+
+                  
+                  
+                    <div class="">
+	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 5px;"><![endif]-->
+	<div style="font-family:'Oswald', Arial, 'Helvetica Neue', Helvetica, sans-serif;color:#f6a42f;line-height:150%; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 5px;">	
+		<div style="font-size:12px;line-height:18px;font-family:Oswald, Arial, 'Helvetica Neue', Helvetica, sans-serif;color:#f6a42f;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 21px"><span style="font-size: 18px; line-height: 27px;">14 hábitos de las personas exitosas</span></p></div>	
+	</div>
+	<!--[if mso]></td></tr></table><![endif]-->
+</div>
+                  
+                  
+                    <div class="">
+	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 0px; padding-bottom: 10px;"><![endif]-->
+	<div style="font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;color:#555555;line-height:150%; padding-right: 10px; padding-left: 10px; padding-top: 0px; padding-bottom: 10px;">	
+		<div style="font-size:12px;line-height:18px;color:#555555;font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 21px"><span style="font-size: 13px; line-height: 19px;">Constantemente estamos admirando a las personas que logran destacarse y ser reconocidas por el mundo, nos preguntamos qué es lo que hacen ...</span></p></div>	
+	</div>
+	<!--[if mso]></td></tr></table><![endif]-->
+</div>
+                  
+                  
+                    
+<div align="center" class="button-container center " style="padding-right: 20px; padding-left: 20px; padding-top:15px; padding-bottom:15px;">
+  <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top:15px; padding-bottom:15px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://vidaandwork.com/14-habitos-de-las-personas-exitosas/" style="height:31pt; v-text-anchor:middle; width:99pt;" arcsize="120%" strokecolor="#7BBAC0" fillcolor="#7BBAC0"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#FFFFFF; font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif; font-size:16px;"><![endif]-->
+    <a href="https://vidaandwork.com/14-habitos-de-las-personas-exitosas/" target="_blank" style="display: block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #7BBAC0; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px; max-width: 133px; width: 53px;width: auto; border-top: 0px solid #131b4a; border-right: 0px solid #131b4a; border-bottom: 0px solid #131b4a; border-left: 0px solid #131b4a; padding-top: 5px; padding-right: 40px; padding-bottom: 5px; padding-left: 40px; font-family: 'Roboto', Tahoma, Verdana, Segoe, sans-serif;mso-border-alt: none">
+      <span style="font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;font-size:16px;line-height:32px;"><strong>Leer más</strong></span>
+    </a>
+  <!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
+</div>
+
+                  
+              <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+              </div>
+            </div>
+              <!--[if (mso)|(IE)]></td><td align="center" width="233" style=" width:233px; padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:5px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><![endif]-->
+            <div class="col num4" style="max-width: 320px;min-width: 233px;display: table-cell;vertical-align: top;">
+              <div style="background-color: transparent; width: 100% !important;">
+              <!--[if (!mso)&(!IE)]><!--><div style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:0px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;"><!--<![endif]-->
+
+                  
+                    <div align="center" class="img-container center  autowidth  fullwidth " style="padding-right: 10px;  padding-left: 10px;">
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px;line-height:0px;"><td style="padding-right: 10px; padding-left: 10px;" align="center"><![endif]-->
+<div style="line-height:10px;font-size:1px">&#160;</div>  <img class="center  autowidth  fullwidth" align="center" border="0" src="/images/nathan-dumlao-263787-unsplash-760x410.jpg" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: 0;height: auto;float: none;width: 100%;max-width: 213.333333333333px" width="213.333333333333">
+<div style="line-height:10px;font-size:1px">&#160;</div><!--[if mso]></td></tr></table><![endif]-->
+</div>
+
+                  
+                  
+                    <div class="">
+	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 5px;"><![endif]-->
+	<div style="font-family:'Oswald', Arial, 'Helvetica Neue', Helvetica, sans-serif;color:#f6a42f;line-height:150%; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 5px;">	
+		<div style="font-size:12px;line-height:18px;font-family:Oswald, Arial, 'Helvetica Neue', Helvetica, sans-serif;color:#f6a42f;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 21px"><span style="font-size: 18px; line-height: 27px;">8 Errores típicos durante las prácticas profesionales</span></p></div>	
+	</div>
+	<!--[if mso]></td></tr></table><![endif]-->
+</div>
+                  
+                  
+                    <div class="">
+	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 0px; padding-bottom: 10px;"><![endif]-->
+	<div style="font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;color:#555555;line-height:150%; padding-right: 10px; padding-left: 10px; padding-top: 0px; padding-bottom: 10px;">	
+		<div style="font-size:12px;line-height:18px;color:#555555;font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 21px"><span style="font-size: 13px; line-height: 19px;">Para un estudiante es un reto ingresar a su práctica, porque sabemos que puede marcar el inicio de tu carrera profesional.</span></p></div>	
+	</div>
+	<!--[if mso]></td></tr></table><![endif]-->
+</div>
+                  
+                  
+                    
+<div align="center" class="button-container center " style="padding-right: 20px; padding-left: 20px; padding-top:15px; padding-bottom:15px;">
+  <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top:15px; padding-bottom:15px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://vidaandwork.com/deseas-cambiar-de-trabajo-4-consejos-que-te-ayuden-en-tu-decision/" style="height:31pt; v-text-anchor:middle; width:99pt;" arcsize="120%" strokecolor="#7BBAC0" fillcolor="#7BBAC0"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#FFFFFF; font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif; font-size:16px;"><![endif]-->
+    <a href="https://vidaandwork.com/8-errores-tipicos-durante-las-practicas-profesionales/" target="_blank" style="display: block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #7BBAC0; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px; max-width: 133px; width: 53px;width: auto; border-top: 0px solid #131b4a; border-right: 0px solid #131b4a; border-bottom: 0px solid #131b4a; border-left: 0px solid #131b4a; padding-top: 5px; padding-right: 40px; padding-bottom: 5px; padding-left: 40px; font-family: 'Roboto', Tahoma, Verdana, Segoe, sans-serif;mso-border-alt: none">
+      <span style="font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;font-size:16px;line-height:32px;"><strong>Leer más</strong></span>
+    </a>
+  <!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
+</div>
+
+                  
+              <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+              </div>
+            </div>
+            
+              <!--[if (mso)|(IE)]></td><td align="center" width="233" style=" width:233px; padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:5px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><![endif]-->
+            <div class="col num4" style="max-width: 320px;min-width: 233px;display: table-cell;vertical-align: top;">
+              <div style="background-color: transparent; width: 100% !important;">
+              <!--[if (!mso)&(!IE)]><!--><div style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:0px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;"><!--<![endif]-->
+
+                  
+                    <div align="center" class="img-container center  autowidth  fullwidth " style="padding-right: 10px;  padding-left: 10px;">
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px;line-height:0px;"><td style="padding-right: 10px; padding-left: 10px;" align="center"><![endif]-->
+<div style="line-height:10px;font-size:1px">&#160;</div>  <img class="center  autowidth  fullwidth" align="center" border="0" src="/images/9 consejos para tu búsqueda de trabajo.jpg" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: 0;height: auto;float: none;width: 100%;max-width: 213.333333333333px" width="213.333333333333">
+<div style="line-height:10px;font-size:1px">&#160;</div><!--[if mso]></td></tr></table><![endif]-->
+</div>
+
+                  
+                  
+                    <div class="">
+	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 5px;"><![endif]-->
+	<div style="font-family:'Oswald', Arial, 'Helvetica Neue', Helvetica, sans-serif;color:#f6a42f;line-height:150%; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 5px;">	
+		<div style="font-size:12px;line-height:18px;font-family:Oswald, Arial, 'Helvetica Neue', Helvetica, sans-serif;color:#f6a42f;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 21px"><span style="font-size: 18px; line-height: 27px;">9 consejos para tu búsqueda de trabajo</span></p></div>	
+	</div>
+	<!--[if mso]></td></tr></table><![endif]-->
+</div>
+                  
+                  
+                    <div class="">
+	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 0px; padding-bottom: 10px;"><![endif]-->
+	<div style="font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;color:#555555;line-height:150%; padding-right: 10px; padding-left: 10px; padding-top: 0px; padding-bottom: 10px;">	
+		<div style="font-size:12px;line-height:18px;color:#555555;font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 21px"><span style="font-size: 13px; line-height: 19px;">La búsqueda del trabajo indicado no es algo sencillo. Conoce nuestros 9 consejos que aumentarán tus probabilidades de éxito. </span></p></div>	
+	</div>
+	<!--[if mso]></td></tr></table><![endif]-->
+</div>
+                  
+                  
+                    
+<div align="center" class="button-container center " style="padding-right: 20px; padding-left: 20px; padding-top:15px; padding-bottom:15px;">
+  <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top:15px; padding-bottom:15px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://vidaandwork.com/10-senales-que-indican-que-estas-infeliz-con-tu-trabajo/" style="height:31pt; v-text-anchor:middle; width:99pt;" arcsize="120%" strokecolor="#7BBAC0" fillcolor="#7BBAC0"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#FFFFFF; font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif; font-size:16px;"><![endif]-->
+    <a href="https://vidaandwork.com/9-consejos-para-tu-busqueda-de-trabajo/" target="_blank" style="display: block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #7BBAC0; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px; max-width: 133px; width: 53px;width: auto; border-top: 0px solid #131b4a; border-right: 0px solid #131b4a; border-bottom: 0px solid #131b4a; border-left: 0px solid #131b4a; padding-top: 5px; padding-right: 40px; padding-bottom: 5px; padding-left: 40px; font-family: 'Roboto', Tahoma, Verdana, Segoe, sans-serif;mso-border-alt: none">
+      <span style="font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;font-size:16px;line-height:32px;"><strong>Leer más</strong></span>
+    </a>
+  <!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
+</div>
+
+                  
+              <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+              </div>
+            </div>
+          <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+        </div>
+      </div>
+    </div>
+    @endif           
+
+    @if($tipo != "Práctica") 
+        
     <div style="background-color:#FFFFFF;">
       <div style="Margin: 0 auto;min-width: 320px;max-width: 700px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;" class="block-grid three-up ">
         <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
@@ -1355,6 +1507,7 @@ a[x-apple-data-detectors=true] {
         </div>
       </div>
     </div>
+    @endif 
     <div style="background-color:#FFFFFF;">
       <div style="Margin: 0 auto;min-width: 320px;max-width: 700px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #FFFFFF;" class="block-grid ">
         <div style="border-collapse: collapse;display: table;width: 100%;background-color:#FFFFFF;">
