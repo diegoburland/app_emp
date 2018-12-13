@@ -95,7 +95,9 @@
                     <a class="dropdown-item" href="#">Crear Sector</a>
                     <a class="dropdown-item" href="#">Crear Categoria</a>
                     <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/evaluacion_list">Lista de Evaluaciones</a>
+                  <a class="dropdown-item" href="/evaluacion_list">Módulo de Evaluaciones</a>
+                   <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/empresa_list">Módulo de Empresas</a>
                   </div>
                 </li>
                  @endif

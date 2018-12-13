@@ -76,4 +76,18 @@ Route::get('/api/v1/encontrar_ubicacion', 'Ciudad_controller@get_ciudad');
 
 Route::get('/api/v1/search_job', 'Job_controller@get_job');
 
+Route::get('empresa_list', 'Empresa_controller@list');
+
 Route::post('/api/v1/crear_empresa', 'Empresa_controller@save_empresa');
+
+Route::post('filter_empresa', 'Empresa_controller@filter_empresa');
+
+Route::get('filter_empresa', 'Empresa_controller@filter_empresa');
+
+Route::get('sectores', 'Empresa_controller@getSectoresEconomicos');
+
+Route::get('clasificacion', 'Empresa_controller@getClasificacion');
+
+Route::get('empresa_editar/{idEmpresa}', 'Empresa_controller@mostrar_empresa');
+
+
