@@ -726,7 +726,7 @@ a[x-apple-data-detectors=true] {
                   
                     <div align="center" class="img-container center  autowidth  fullwidth " style="padding-right: 10px;  padding-left: 15px;">
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px;line-height:0px;"><td style="padding-right: 10px; padding-left: 15px;" align="center"><![endif]-->
-<div style="line-height:60px;font-size:1px">&#160;</div>  <img class="center  autowidth  fullwidth" align="center" border="0" src="/images/project-management-flat-design-icons-set-vector-19838746.jpg" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: 0;height: auto;float: none;width: 100%;max-width: 208.333333333333px" width="208.333333333333">
+<div style="line-height:60px;font-size:1px">&#160;</div>  <img class="center  autowidth  fullwidth" align="center" border="0" src="/images/OO-01.jpg" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: 0;height: auto;float: none;width: 100%;max-width: 208.333333333333px" width="208.333333333333">
 <div style="line-height:10px;font-size:1px">&#160;</div><!--[if mso]></td></tr></table><![endif]-->
 </div>
 
