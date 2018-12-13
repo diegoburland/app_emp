@@ -200,10 +200,10 @@ class Calculator {
                 $rest = self::$AVG_SALARY - $evaluation->salary;
                 $interpre_salary = str_replace("$1", $rest, $json[15]);
                 $interpre_salary = str_replace("$2", self::$AVG_SALARY, $interpre_salary);
-            }else if (!empty($job->salery) && $job->state == "VERIFICADO" && empty($evaluation->salary)) {
+            }else if (!empty($job->salary) && $job->state == "VERIFICADO" && empty($evaluation->salary)) {
                                                 
                 $interpre_salary = str_replace("$1", $job->salary, $json[16]);
-            }else if (empty($job->salery) && $job->state == "VERIFICADO" && empty($evaluation->salary)) {
+            }else if (empty($job->salary) && $job->state == "VERIFICADO" && empty($evaluation->salary)) {
                                                 
                 $interpre_salary = str_replace("$1", $job->salary, $json[17]);
                 $interpre_salary = str_replace("$2", self::$AVG_SALARY, $interpre_salary);
