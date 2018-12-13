@@ -9,13 +9,29 @@
     margin: 17px 0 13px 221px;
     float:left;
 } 
+
+#centerEmp{ 
+    margin: 17px 0 13px 187px;
+    float:left;
+}
+
 #derecho{ 
     margin: 17px 0 13px 300px;
     float:left;
 } 
 
+#derechoEmp{ 
+    margin: 17px 0 13px 156px;
+    float:left;
+} 
+
 #btnbuscar{ 
     margin: 32px 0px 5px 740px;
+    float:left;
+} 
+
+#btnbuscaremp{ 
+    margin: 0px 0px 4px 964px;
     float:left;
 } 
 /*
