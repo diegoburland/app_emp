@@ -39,24 +39,21 @@ class User_controller extends Controller
         $evaluacion = Evaluacion::where('confir_code', $code)->first();
         if ($evaluacion === null) {
 
-          Log::info('-----------------entro code 1 -------------');
-          return redirect()->action('Evaluacion_controller@continuar_evaluacion');            
+          return redirect('cuenta');          
         }
-        log::info('valor de confirmacion:' . $evaluacion->confirmed);
+        
         if($evaluacion->confirmed == 'SI'){
-
-          Log::info('-----------------entro code 2 -------------');
+            
           return redirect('cuenta');
-          //return redirect()->action('Evaluacion_controller@continuar_evaluacion');
         }
 
         $this->changeStatus($evaluacion->id);
+        
+        //return redirect()->action('Retro_controller@show');
+        
+        return redirect()->route('retro', ['id' => $evaluacion->id]);
 
-        //return $evaluacion;
-
-        $empresa = Empresa::find($evaluacion->empresa_id);
-
-        //$hashed_random_password = Hash::make(str_random(8));
+        /*$empresa = Empresa::find($evaluacion->empresa_id);
         $pwd = str_random(8);
 
         //crear el usuario
@@ -74,13 +71,8 @@ class User_controller extends Controller
           //crearlo
           $user = User::create($data);
 
-          //si falla volver
-          Log::info('-----------------entro code 3 -------------');
           if($user === null){
 
-            Log::info('-----------------entro code 4 -------------');
-            $evaluacion->confirmed = false;
-            $evaluacion->save();
             return redirect()->action('Evaluacion_controller@continuar_evaluacion');
           }      
         }else{
@@ -95,7 +87,7 @@ class User_controller extends Controller
 
         //redireccionar
         Log::info('-----------------entro code finaliza -------------');
-        return redirect('cuenta');
+        return redirect('cuenta');*/
     } catch (Exception $ex) {
 
         Log::info('-----------------entro code finaliza con error -------------');

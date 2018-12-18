@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Calculator;
+use App\Mail\OcupasionEmail;
+use Mail;
+use Illuminate\Support\Facades\Log;
 
 class Retro_controller extends Controller
 {
@@ -10,8 +13,16 @@ class Retro_controller extends Controller
     {
         $calculator = new Calculator();
         $result =  $calculator->macth_result($id);
-        //return $calculator->macth_result($id);
-        return view('emails.ouput', $result);
+        
+        
+        $subject = 'Confirma tu correo y reciba tu diagnóstico laboral de Vida and Work';
+        $template = 'emails.ouput';
+
+        $data =  array_merge(['subject' => $subject, 'template' => $template], $result);
+        
+        Log::info('----retro mail----');
+        Mail::to($data['email'])->send(new OcupasionEmail($data));
+        return view('retro');
     }
 }
 

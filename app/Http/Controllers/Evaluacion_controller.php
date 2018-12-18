@@ -551,10 +551,10 @@ class Evaluacion_controller extends Controller {
                 
                 $this->verificarStatusContenido($evaluacion->id);
                 
-                $subject = 'Hemos recibido tu evaluación | Vida and Work';
-                $template = 'emails.evaluacionRegistrada';
+                $subject = 'Hemos recibido tu evaluación | Solicita tu diagnóstico laboral de Vida and Work.';
+                $template = 'emails.confirmacion_cuenta';
 
-                $data = ['subject' => $subject, 'template' => $template, 'email' => $evaluacion->email, 'empresa' => $empresa->razon_social];
+                $data = ['subject' => $subject, 'template' => $template, 'email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'id' => $evaluacion->id];
 
                 Log::info('----mail when user exist----');
                 Mail::to($evaluacion->email)->send(new OcupasionEmail($data));
@@ -571,8 +571,8 @@ class Evaluacion_controller extends Controller {
                     return redirect()->action('Evaluacion_controller@continuar_evaluacion');
                 }
 
-                $subject = 'Confirma el correo de tu evaluación en Vida and Work';
-                $template = 'emails.bienvenido';
+                $subject = 'Confirma tu correo y reciba tu diagnóstico laboral de Vida and Work';
+                $template = 'emails.confirmacion';
 
                 $data = ['subject' => $subject, 'template' => $template, 'email' => $evaluacion->email, 'empresa' => $empresa->razon_social, 'confir_code' => $evaluacion->confir_code];
 

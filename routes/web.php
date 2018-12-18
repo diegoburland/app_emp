@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('retro/{id}', 'Retro_controller@show');
+Route::get('retro/{id}', 'Retro_controller@show')->name('retro');
 
 Route::get('empresa/{id}', 'Empresa_controller@show');
 //Route::post('crear_empresa', 'Empresa_controller@store')->name('empresa.store');
@@ -29,9 +29,9 @@ Route::post('login_usuario', 'User\User_controller@login');
 
 Route::get('gracias/{id}', 'Evaluacion_controller@gracias')->name('gracias');
 
-/*Route::get('gracias', function () {
-    return view('emails.ouput');
-})->name('gracias');*/
+Route::get('prueba', function () {
+    return view('emails.confirmacion_cuenta', array('empresa'=>'prueba', 'id'=>'210'));
+})->name('prueba');
 
 //Route::get('code/{code}', 'Evaluacion_controller@code');
 Route::get('code/{code}', 'User\User_controller@code')->name('code');
