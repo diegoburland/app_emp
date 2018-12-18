@@ -494,7 +494,7 @@ class Evaluacion_controller extends Controller {
                     ->where('email', $eval->email)
                     ->where('empresa_id', $eval->empresa_id)
                     ->where('evalua', 'Trabajo Pasado')
-                    ->where('contenido', '<>', 'COPIADA')->orWhere('contenido', '=', NULL)
+                    ->where('contenido', '<>', 'COPIADA') //->orWhere('contenido', '=', NULL) : error luis
                     ->select(DB::raw('count(*) as contEvalua'))
                     ->first();
 

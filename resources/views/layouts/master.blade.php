@@ -72,7 +72,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
           <a href="https://www.vidaandwork.com" class="navbar-brand">
             <img src="/img/transparente1-k.png" width="180px">
