@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'SearchController@index');
 
 Route::get('retro/{id}', 'Retro_controller@show')->name('retro');
 
