@@ -39,22 +39,22 @@
       <div class="hsb-two">
         <div class="hsb-two-box">
           <div class="hsb-two-box-sticky">
-          {{ Form::open(['action' => ['SearchController@searchUser'], 'method' => 'GET']) }}
           <div class="box-sticky-one">
-            <input type="search" placeholder="Busca una empresa" id="q" name="q">
-              {{ csrf_field() }}
-            </div>
-            <div class="box-sticky-two">
-              <i class="fas fa-angle-down"></i>
-              <select name="" id="">
-                <option value="" disabled selected>Ubicación <img src="http://www.clker.com/cliparts/y/m/X/o/s/R/down-arrow-circle-md.png" width="20" height="20" alt=""></option>
-                <option value="">Medellín</option>
-              </select>
-            </div>
-            <div class="box-sticky-three">
-              <button class="btn-buscar btn-vida-primary">Buscar</button>
-            </div>
-            {{ Form::close() }}
+            <form action="http://localhost:8000/autocomplete" method="post" id="aa">
+              <input type="search" placeholder="Busca una empresa" id="search_text" name="search_text">
+                <!-- {{ csrf_field() }} -->
+              </div>
+              <div class="box-sticky-two">
+                <i class="fas fa-angle-down"></i>
+                <select name="" id="">
+                  <option value="" disabled selected>Ubicación <img src="http://www.clker.com/cliparts/y/m/X/o/s/R/down-arrow-circle-md.png" width="20" height="20" alt=""></option>
+                  <option value="">Medellín</option>
+                </select>
+              </div>
+              <div class="box-sticky-three">
+                <button class="btn-buscar btn-vida-primary">Buscar</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -86,6 +86,9 @@
     </div>
   </footer>
 </div>
+<script>
+  
+</script>
 
 @endsection
 

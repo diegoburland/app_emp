@@ -471,4 +471,6 @@ class Empresa_controller extends Controller
         return view('filtro_empresa',  array('empresas' =>$results));
                 
     }
+
+    
 }

@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/', 'SearchController@index');
+Route::get('autocomplete', array('as'=> 'autocomplete', 'uses'=> 'SearchController@index'));
 
+Route::get('searchajax', array('as' => 'searchajax', 'uses'=> 'SearchController@autocomplete'));
+    
 Route::get('retro/{id}', 'Retro_controller@show')->name('retro');
 
 Route::get('empresa/{id}', 'Empresa_controller@show');
-//Route::post('crear_empresa', 'Empresa_controller@store')->name('empresa.store');
+
 Route::post('crear_empresa', 'Empresa_controller@store');
 
 Route::post('filtrar_empresa', 'Empresa_controller@filtrar');
