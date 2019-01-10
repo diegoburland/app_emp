@@ -34,6 +34,21 @@ class Empresa extends Model
         return $evaluaciones;
     }
 
+    public function get_score_options($id, $tipo){
+        $results = array();
+        
+        $evaluaciones = DB::table('evaluaciones')
+            ->join('eval_items', 'eval_items.evaluacion_id', '=', 'evaluaciones.id')
+            ->join('items', 'items.id', '=', 'eval_items.item_id')
+            ->select('items.id', 'items.nombre', 'items.categoria_id', 'items.descripcion',DB::raw('round((sum(eval_items.puntaje)/count(items.id)), 2 ) as promedio'), DB::raw('count(items.id) as cantidad'))
+            ->where('evaluaciones.empresa_id', '=', $id)->where('evaluaciones.posicion', '=', $tipo)
+            ->groupBy('items.id')->get();
+       
+
+        return $evaluaciones;
+        
+    }
+
     
     
     public function get_nombre($term){

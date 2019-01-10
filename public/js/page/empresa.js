@@ -21,6 +21,13 @@ $(document).ready(function() {
     $('.content-five-box-one button').on('click', function(){
         $('.content-five-box-one button').removeClass('active');
         $(this).addClass('active');
+        let selector = $(this).attr('index');
+        $('.ambiente-box-one').hide();
+
+        $('.'+selector).css("display", "flex")
+        .hide().fadeIn();
+
+
     
       })
 
@@ -67,6 +74,15 @@ $(document).ready(function() {
     // INICIALIZAR TOOLTIPS BOOTSTRAP POPPER
     $('[data-toggle="tooltip"]').tooltip()
     
+
+    //ACTUALIZA EL NUMERO DE EMPLEADOS EN EL EL BOTON SINGLE PAGE
+    let valueEmpleado = $('.hiddenEmpleados').text();
+    let valuePracticante = $('.hiddenPracticantes').text();
+    $('#empleados').text(valueEmpleado + ' Empleados');
+
+    $('#practicantes').text(valuePracticante + ' Practicantes');
+
+
 });
 
   

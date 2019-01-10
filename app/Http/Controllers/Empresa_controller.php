@@ -11,6 +11,7 @@ use App\Item;
 use App\Categoria;
 use App\Ciudad;
 use App\Evaluacion;
+use App\Benes;
 
 use DB;
 
@@ -42,11 +43,13 @@ class Empresa_controller extends Controller
     {
         $empresa = new Empresa();
         $empresa = $empresa->find($id);
+        $beneficios = new Benes();
+
+        $benes = $beneficios->get_beneficios($id);
         $categorias = Categoria::all();
         $items = Item::all();
         $evaluacion = $empresa->get_score($id);
         ($empresa->total_empleados > 199)? $tamano_empresa = "Grande": $tamano_empresa = "Mediana";
-        
         $total_puntaje = $this->totalPuntaje($evaluacion);
         $promedios = $this->empresas_sector($empresa->sector_economico);
         $evaluaciones = array();
@@ -63,12 +66,13 @@ class Empresa_controller extends Controller
                 $count ++;
             }
         }
-
+        $evaluacion_empleados = $empresa->get_score_options($id, 'Empleado');
+        $evaluacion_practicantes = $empresa->get_score_options($id, 'Practicante');
         $total_promedio = round($suma / $count , 1);
         $cantidad_evaluaciones = $this->cantidad_evaluaciones($id);
         $total_evaluaciones = $cantidad_evaluaciones * $count;
         $total_puntaje_fraccionado = $this->totalPuntajeFraccionado($evaluacion);
-        dd(Request $request->ip());
+        $recomendacion = $this->recomendacion($id);
         return view('single',  array(
             'empresa' => $empresa, 
             'categorias' => $categorias, 
@@ -78,9 +82,15 @@ class Empresa_controller extends Controller
             'total_promedio' => $total_promedio,
             'cantidad_evaluaciones' => $cantidad_evaluaciones,
             'total_evaluaciones' => $total_evaluaciones,
-            'total_puntaje_fraccionado' => $total_puntaje_fraccionado
+            'total_puntaje_fraccionado' => $total_puntaje_fraccionado,
+            'recomendacion' => $recomendacion,
+            'evaluacion_empleados' => $evaluacion_empleados,
+            'evaluacion_practicantes' => $evaluacion_practicantes,
+            'benes' => $benes
         ));
     }
+
+    
 
     private function cantidad_evaluaciones($id){
         
@@ -117,21 +127,38 @@ class Empresa_controller extends Controller
 
     }
 
+    private function recomendacion($id){
+        $evaluaciones = DB::table('evaluaciones')->select('recomienda')->where('empresa_id', '=', $id)->get();
+        if($evaluaciones != []){
+            $count = 0;
+            $yes = 0;
+            
+            foreach($evaluaciones as $key => $value){
+                if($value != NULL){
+                    $count++;
+                    if($value == "Si"){
+                        $yes ++;
+                    }
+                }
+            }
+            if($yes != 0){
+                $procentaje = round((($yes / $count)* 1000)/100);
+            }else{
+                $porcentaje = 0;
+            }
+                $result  = $porcentaje;
+        }
+
+        return $result;
+    }
+
     private function totalPuntajeFraccionado($evaluacion){
 
-        $total1 = 0;
-        $count1 = 0;
-        $total2 = 0;
-        $count2 = 0;
-        $total3 = 0;
-        $count3 = 0;
-        $total4 = 0;
-        $count4 = 0;
-        $total5 = 0;
-        $count5 = 0;
+        $total1 = 0;$count1 = 0;$total2 = 0;$count2 = 0;$total3 = 0;$count3 = 0;
+        $total4 = 0;$count4 = 0;$total5 = 0;$count5 = 0;
         $fraccionados = array();
         foreach ($evaluacion as $key => $value) {
-            if($value->promedio >= 1 && $value->promedio <= 1.4){
+            if($value->promedio >= 0.1 && $value->promedio <= 1.4){
                 $total1 = $total1 + $value->promedio;
                 $count1 = $count1 + 1;
             }elseif($value->promedio >= 1.5 && $value->promedio <= 2.4){
@@ -170,7 +197,7 @@ class Empresa_controller extends Controller
         }else{
             $fraccionados["cuatro"] = 0;
         }
-        if($total1 != 0){
+        if($total5 != 0){
             $fraccionados["cinco"] = (round($total5 / $count5, 2) * 1000) /100;
         }else{
             $fraccionados["cinco"] = 0;

@@ -118,7 +118,7 @@
               <div class="rating-stars-two">Basado en {{$cantidad_evaluaciones}} evaluaciones</div>
             </div>
             <div class="rating-indicator">
-            @if($total_puntaje > $total_promedio)
+            @if($total_puntaje >= $total_promedio)
               <img src="/img/Barras-01.png" alt="" title="Por arriba del promedio">
             @elseif($total_puntaje < $total_promedio)
               <img src="/img/Barras-02.png" alt="" title="Por debajo del promedio">
@@ -136,7 +136,7 @@
         </div>
         <div class="content-area-three-box-two hero-recommend line-hero">
           <div class="percentage-rating">
-            <h4>80%</h4>
+            <h4>{{$recomendacion}}%</h4>
             <p>Recomiendan trabajar aquí</p>
           </div>
           <div class="percentage-rating-bar">
@@ -214,337 +214,80 @@
       <div class="content-area-four-box line-hero" height="300">
           <h4>Beneficios más comunes</h4>
           <div class="icons-commun">
-            <div class="icon-commun-box">
-
+            @foreach($benes as $key => $bene)
+          <div class="icon-commun-box" data-toggle="tooltip" data-placement="top" title="{{$bene->nombre}}">
+            <img src="/img/icons/{{$bene->url_img}}"  alt="">
             </div>
-            <div class="icon-commun-box">
-
-            </div>
-            <div class="icon-commun-box">
-
-            </div>
-            <div class="icon-commun-box">
-
-            </div>
-            <div class="icon-commun-box">
-
-            </div>
-            <div class="icon-commun-box">
-
-            </div>
-            <div class="icon-commun-box">
-
-            </div>
-            <div class="icon-commun-box">
-
-            </div>
+            @endforeach
           </div>
       </div>
     </div>
     <div class="content-area-five">
       <div class="content-area-five-box">
         <div class="content-five-box-one">
-          <button class="empleados eone active" index="employees">42 Empleados</button>
-          <button class="empleados etwo"  index="employees">12 Participantes</button>
+          <button class="empleados eone active" index="datos-empleados" id="empleados">Empleados</button>
+          <button class="empleados etwo"  index="datos-practicantes" id="practicantes">Practicantes</button>
         </div>
         <div class="content-five-box-two" id="employees">
           <div class="panel-ambiente line-hero">
-              <div class="panel-ambiente-box flex">
-                <div class="ambiente-box-one">
-                @foreach ($categorias as $categoria)
-                  @if($categoria->dimension == "empleado")
-                  <div class="box-one-one">
-                    <div class="title">
-                      <h4>{{$categoria->nombre}}</h4>
-                    </div>
-                    <div class="content">
-                      @foreach ($items as $item)
-                        @if($item->categoria_id == $categoria->id)
-                        <div class="laboral-item">
-                        <p class="name-item">{{$item->nombre}}</p>
-                        <p class="stars-item">
-                          {{get_rating($item->promedio)}}
-                        </p>
-                        <p class="number-item">
-                        {{$item->promedio}}
-                        </p>
+              <div class="panel-ambiente-box flex column">
+                <div class="ambiente-box-one datos-empleados">
+                  @foreach ($categorias as $categoria)
+                    @if($categoria->dimension == "empleado")
+                    <div class="box-one-one">
+                      <div class="title">
+                        <h4>{{$categoria->nombre}}</h4>
                       </div>
-                        @endif
-                      @endforeach
-                      <!-- <div class="laboral-item">
-                        <p class="name-item">Cultura organizacional</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div>
-                      <div class="laboral-item">
-                        <p class="name-item">Sentido de pertenencia</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div>
-                      <div class="laboral-item">
-                        <p class="name-item">Reconocimiento</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div>
-                      <div class="laboral-item">
-                        <p class="name-item">Relación entre compañeros</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div>
-                      <div class="laboral-item">
-                        <p class="name-item">Liderazgo</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div>
-                      <div class="laboral-item">
-                        <p class="name-item">Comunicación</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div>
-                      <div class="laboral-item">
-                        <p class="name-item">Confianza</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div>
-                      <div class="laboral-item">
-                        <p class="name-item">Trato equitativo</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div>
-                      <div class="laboral-item">
-                        <p class="name-item">Responsabilidad social y ambiental</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div> -->
-                    </div>
-                  </div>
-                  @endif
-                  <!-- <div class="box-one-one">
-                    <div class="title">
-                      <h4>Ambiente laboral</h4>
-                    </div>
-                    <div class="content">
-                      <div class="laboral-item">
-                        <p class="name-item">Carga laboral</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div>
-                      <div class="laboral-item">
-                        <p class="name-item">Tareas</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div>
-                      <div class="laboral-item">
-                        <p class="name-item">Equilibrio trabajo - vida</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div>
-                      <div class="laboral-item">
-                        <p class="name-item">Cond. del lugar de trabajo</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
+                      <div class="content">
+                        @foreach ($evaluacion_empleados as $key => $item)
+                          @if($item->categoria_id == $categoria->id)
+                            <div class="laboral-item">
+                              @if($key == 0)
+                                <p class="hiddenEmpleados" style="display: none">{{$item->cantidad}}</p>
+                              @endif
+                              <p class="name-item" title="{{$item->descripcion}}">{{$item->nombre}}</p>
+                              <p class="stars-item">
+                                {{get_rating($item->promedio)}}
+                              </p>
+                              <p class="number-item">
+                              {{$item->promedio}}
+                              </p>
+                            </div>
+                          @endif
+                        @endforeach
                       </div>
                     </div>
-                  </div>
-                  <div class="box-one-one">
-                    <div class="title">
-                      <h4>Carrera profesional</h4>
-                    </div>
-                    <div class="content">
-                      <div class="laboral-item">
-                        <p class="name-item">Inducción al trabajo</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
+                    @endif
+                  @endforeach
+                </div>
+                <div class="ambiente-box-one datos-practicantes">
+                  @foreach ($categorias as $categoria)
+                    @if($categoria->dimension == "practicante")
+                    <div class="box-one-one">
+                      <div class="title diego">
+                        <h4>{{$categoria->nombre}}</h4>
                       </div>
-                      <div class="laboral-item">
-                        <p class="name-item">Estabilidad laboral</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div>
-                      <div class="laboral-item">
-                        <p class="name-item">Oportunidad de ascenso</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div>
-                      <div class="laboral-item">
-                        <p class="name-item">Crecimiento profesional</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div>
-                      <div class="laboral-item">
-                        <p class="name-item">Remuneración</p>
-                        <p class="stars-item">
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                          <i class="fas fa-star stars-hero-s"></i>
-                        </p>
-                        <p class="number-item">
-                          4.2
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="box-one-one">
-                    <h4>Promedio de empleados</h4>
-                    <div><span>3,9</span></div>
-                    <div class="rating">
-                      <i class="fas fa-star stars-hero-s"></i>
-                      <i class="fas fa-star stars-hero-s"></i>
-                      <i class="fas fa-star stars-hero-s"></i>
-                      <i class="fas fa-star stars-hero-s"></i>
-                      <i class="fas fa-star stars-hero-s"></i>
-                      <i class="fas fa-star stars-hero-s"></i>
-                    </div>
-                    <div class="result-rating">
-                      <p>
-                        Basado en 896 evaluaciones
-                      </p>
-                    </div>
+                      <div class="content">
+                        @foreach ($evaluacion_practicantes as $keys => $item)
+                          @if($item->categoria_id == $categoria->id)
+                          <div class="laboral-item">
+                            @if($keys == 18)
 
-                    <div class="percentage"><span>50%</span></div>
-                    <h4>Recomiendan trabajar aquí </h4>
-                  
-                  
-                  
-                  </div> -->
+                            <p class="hiddenPracticantes" style="display: none">{{$item->cantidad}}</p>
+                            @endif
+                            <p class="name-item" title="{{$item->descripcion}}">{{$item->nombre}}</p>
+                            <p class="stars-item">
+                              {{get_rating($item->promedio)}}
+                            </p>
+                            <p class="number-item">
+                            {{$item->promedio}}
+                            </p>
+                          </div>
+                          @endif
+                        @endforeach
+                      </div>
+                    </div>
+                    @endif
                   @endforeach
                 </div>
               </div>
