@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/owl.carousel.min.css">
         <link href="/css/style.css?v={{ time() }}" rel="stylesheet" type="text/css"> 
         <link rel="stylesheet" media="screen and (max-width: 768px)" href="css/responsive.css?v={{ time() }}"/>
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -72,7 +73,9 @@
         <!-- jQuery, jQuery UI and Bootstrap.js -->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="/js/page/scripts.js"></script>
+        <script src="/js/page/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="/js/page/empresa.js"></script>
     </body>        
 </html>

@@ -1,6 +1,6 @@
 @extends('page.landing')
 
-@section('title', 'VidAndWork.com')
+@section('title', 'VidaAndWork.com')
 
 @section('navbar')
 <nav class="hero-navbar">
@@ -40,9 +40,9 @@
         <div class="hsb-two-box">
           <div class="hsb-two-box-sticky">
           <div class="box-sticky-one">
-            <form action="http://localhost:8000/autocomplete" method="post" id="aa">
-              <input type="search" placeholder="Busca una empresa" id="search_text" name="search_text">
-                <!-- {{ csrf_field() }} -->
+            <form action="{{URL::to('/busqueda')}}" method="post" id="formulario_busqueda">
+              <input type="search" placeholder="Busca una empresa" id="texto_busqueda" name="q">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
               </div>
               <div class="box-sticky-two">
                 <i class="fas fa-angle-down"></i>

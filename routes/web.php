@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('autocomplete', array('as'=> 'autocomplete', 'uses'=> 'SearchController@index'));
+use Illuminate\Support\Facades\Input;
 
-Route::get('searchajax', array('as' => 'searchajax', 'uses'=> 'SearchController@autocomplete'));
+Route::get('/', array('as'=> 'index', 'uses'=> 'Pagina_controller@index'));
+
+Route::get('/api/v1/encontrar_empresa_principal', 'Empresa_controller@get_empresa');
+
+Route::get('busqueda/{id}', 'Empresa_controller@datos_empresa');
     
 Route::get('retro/{id}', 'Retro_controller@show')->name('retro');
 

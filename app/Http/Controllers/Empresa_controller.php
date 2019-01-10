@@ -38,6 +38,58 @@ class Empresa_controller extends Controller
         return view('empresa',  array('empresa' => $empresa, 'categorias' => $categorias, 'items' => $evaluacion, 'total_puntaje' => $total_puntaje));
     }
 
+    public function datos_empresa($id)
+    {
+        $empresa = new Empresa();
+        $empresa = $empresa->find($id);
+        $categorias = Categoria::all();
+        $items = Item::all();
+        $evaluacion = $empresa->get_score($id);
+        ($empresa->total_empleados > 199)? $tamano_empresa = "Grande": $tamano_empresa = "Mediana";
+        
+        $total_puntaje = $this->totalPuntaje($evaluacion);
+        $promedios = $this->empresas_sector($empresa->sector_economico);
+        $evaluaciones = array();
+
+        foreach ($promedios as $key => $promedio){
+            $evaluaciones[] = $empresa->get_score($promedio->id);
+        }
+        $count = 0;
+        $suma = 0;
+        foreach($evaluaciones as $key => $eva){
+            $suma += $this->totalPuntaje($eva);
+            
+            if($this->totalPuntaje($eva) > 0){
+                $count ++;
+            }
+        }
+
+        $total_promedio = round($suma / $count , 1);
+        $cantidad_evaluaciones = $this->cantidad_evaluaciones($id);
+        $total_evaluaciones = $cantidad_evaluaciones * $count;
+        $total_puntaje_fraccionado = $this->totalPuntajeFraccionado($evaluacion);
+        dd(Request $request->ip());
+        return view('single',  array(
+            'empresa' => $empresa, 
+            'categorias' => $categorias, 
+            'items' => $evaluacion, 
+            'total_puntaje' => $total_puntaje,
+            'tamano_empresa' => $tamano_empresa,
+            'total_promedio' => $total_promedio,
+            'cantidad_evaluaciones' => $cantidad_evaluaciones,
+            'total_evaluaciones' => $total_evaluaciones,
+            'total_puntaje_fraccionado' => $total_puntaje_fraccionado
+        ));
+    }
+
+    private function cantidad_evaluaciones($id){
+        
+        $results = array();
+        $evaluaciones = DB::table('evaluaciones')->select('id')->where('empresa_id', '=', $id)->get();
+        
+        return count($evaluaciones);
+    }
+
     private function get_ubicacion($id){
 
         $ciudad = new Ciudad();
@@ -53,10 +105,88 @@ class Empresa_controller extends Controller
             $total = $total + $value->promedio;
             $count = $count + 1;
         }
-        $total_puntaje = round($total / $count, 2);
+        if($total != 0){
+            $total_puntaje = round($total / $count, 2);
+        }else{
+            $total_puntaje = 0;
+        }
+
+        
 
         return $total_puntaje;
 
+    }
+
+    private function totalPuntajeFraccionado($evaluacion){
+
+        $total1 = 0;
+        $count1 = 0;
+        $total2 = 0;
+        $count2 = 0;
+        $total3 = 0;
+        $count3 = 0;
+        $total4 = 0;
+        $count4 = 0;
+        $total5 = 0;
+        $count5 = 0;
+        $fraccionados = array();
+        foreach ($evaluacion as $key => $value) {
+            if($value->promedio >= 1 && $value->promedio <= 1.4){
+                $total1 = $total1 + $value->promedio;
+                $count1 = $count1 + 1;
+            }elseif($value->promedio >= 1.5 && $value->promedio <= 2.4){
+                $total2 = $total2 + $value->promedio;
+                $count2 = $count2 + 1;
+            }elseif($value->promedio >= 2.5 && $value->promedio <= 3.4){
+                $total3 = $total3 + $value->promedio;
+                $count3 = $count3 + 1;
+            }elseif($value->promedio >= 3.5 && $value->promedio <= 4.4){
+                $total4 = $total4 + $value->promedio;
+                $count4 = $count4 + 1;
+            }elseif($value->promedio >= 4.5 && $value->promedio <= 5){
+                $total5 = $total5 + $value->promedio;
+                $count5 = $count5 + 1;
+            }
+            
+        }
+
+        if($total1 != 0){
+            $fraccionados["uno"] = (round($total1 / $count1, 2) * 1000) /100;
+        }else{
+            $fraccionados["uno"] = 0;
+        }
+        if($total2 != 0){
+            $fraccionados["dos"] = (round($total2 / $count2, 2) * 1000) /100;
+        }else{
+            $fraccionados["dos"] = 0;
+        }
+        if($total3 != 0){
+            $fraccionados["tres"] = (round($total3 / $count3, 2) * 1000) /100;
+        }else{
+            $fraccionados["tres"] = 0;
+        }
+        if($total4 != 0){
+            $fraccionados["cuatro"] = (round($total4 / $count4, 2) * 1000) /100;
+        }else{
+            $fraccionados["cuatro"] = 0;
+        }
+        if($total1 != 0){
+            $fraccionados["cinco"] = (round($total5 / $count5, 2) * 1000) /100;
+        }else{
+            $fraccionados["cinco"] = 0;
+        }
+
+        
+        
+
+        return $fraccionados;
+
+    }
+
+    private function empresas_sector($sector){
+        $results = array();
+        $results = Empresa::select('id')->where('sector_economico', '=', $sector)->get();
+        return $results;
     }
 
     public function save_empresa(Request $request){
@@ -396,6 +526,7 @@ class Empresa_controller extends Controller
 
        return view('empresa_list', compact('empresa', 'totalVerificadas', 'totalPorVerif', 'totalPendientes','totalNuevas', 'totalEsperando', 'totalSinRevision', 'totalGrandes', 'totalMedianas', 'totalPequeñas', 'totalStartUp', 'nom', 'sEmpresa', 'clasf', 'emp', 'sector', 'pr', 'temp', 'texe', 'tpra', 'teva', 'resultados'));
     }
+
 
     public function mostrar_empresa($idEmpresa) {
 
