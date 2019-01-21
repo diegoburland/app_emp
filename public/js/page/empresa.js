@@ -26,10 +26,19 @@ $(document).ready(function() {
 
         $('.'+selector).css("display", "flex")
         .hide().fadeIn();
-
-
     
-      })
+    })
+
+    $('.content-area-six-box button').on('click', function(){
+        $('.content-six-box-one button').removeClass('active');
+        $(this).addClass('active');
+        let selector = $(this).attr('index');
+        $('.content-six-box-two .panel-ambiente-box').hide();
+
+        $('.panel-ambiente-box-'+selector).css("display", "flex")
+        .hide().fadeIn();
+
+    })
 
     
     // CONTROLADOR CARRUSEL DE IMAGENES SINGLE PAGE
@@ -81,6 +90,18 @@ $(document).ready(function() {
     $('#empleados').text(valueEmpleado + ' Empleados');
 
     $('#practicantes').text(valuePracticante + ' Practicantes');
+
+
+    $('.sidebar').stickySidebar({
+        topSpacing: 10,
+        bottomSpacing: 0,
+        containerSelector: false,
+        innerWrapperSelector: '.content-profile-hero',
+        resizeSensor: true,
+        stickyClass: 'is-affixed',
+        minWidth: 0
+
+    });
 
 
 });

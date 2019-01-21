@@ -191,3 +191,23 @@ function get_rating_main($rating){
     }
 
 }
+
+function fix_titulo($title){
+    $cant = strlen($title);
+    $result = "";
+    if($cant > 20 && $cant < 25){
+
+        $result = '<h1 style="font-size: 25px">'.$title.'</h1>';
+
+    }elseif($cant > 26 && $cant < 31){
+
+        $result = '<h1 style="font-size: 22px">'.$title.'</h1>';
+
+    }elseif($cant > 32){
+
+        $result = '<h1 style="font-size: 18px">'.$title.'</h1>';
+
+    }
+
+    echo $result;
+}

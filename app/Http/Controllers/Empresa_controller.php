@@ -33,22 +33,55 @@ class Empresa_controller extends Controller
         foreach ($evaluacion as $key => $value) {
             $total = $total + $value->promedio;
             $count = $count + 1;
-        }*/
+        }*/ 
         $total_puntaje = $this->totalPuntaje($evaluacion); //round($total / $count, 2);
 
         return view('empresa',  array('empresa' => $empresa, 'categorias' => $categorias, 'items' => $evaluacion, 'total_puntaje' => $total_puntaje));
     }
 
     public function datos_empresa($id)
-    {
+    {   
+
         $empresa = new Empresa();
         $empresa = $empresa->find($id);
-        $beneficios = new Benes();
 
-        $benes = $beneficios->get_beneficios($id);
+        $beneficios = new Benes();
+        $todos_beneficios = $beneficios->grupo_beneficio();
+        $benes = $beneficios->get_beneficios_icons($id);
+        $benes_grupo = $beneficios->get_beneficios_icons($id);
+        $arrays_beneficio = $beneficios->in_array_beneficios($id);
+        $arrayBeneficios = array();
+
+        $arrayPosicionEmpleado = array();
+        $arrayPosicionPracticante = array();
+
         $categorias = Categoria::all();
         $items = Item::all();
+
         $evaluacion = $empresa->get_score($id);
+        $opiniones = $empresa->score_individual($id);
+        //dd($opiniones);
+        foreach($benes_grupo as $key => $value){
+            if($value->posicion == "Practicante" AND $value->tipo == 2){
+                $arrayPosicionPracticante[] = $value->bene_id;
+            }elseif($value->posicion == "Empleado" AND $value->tipo == 1){
+                $arrayPosicionEmpleado[] = $value->bene_id;
+            }
+
+        }
+        
+        $cantidad_empleados = count($arrayPosicionEmpleado);
+        $cantidad_practicantes = count($arrayPosicionPracticante);
+
+        $lista_beneficios = $this->detalle_beneficios($arrayPosicionEmpleado, $todos_beneficios, 1);
+        $lista_beneficios_practicante = $this->detalle_beneficios($arrayPosicionPracticante, $todos_beneficios, 2);
+        
+        foreach($arrays_beneficio as $key => $value){
+
+            $arrayBeneficios[] = $value->bene_id;
+
+        }
+        
         ($empresa->total_empleados > 199)? $tamano_empresa = "Grande": $tamano_empresa = "Mediana";
         $total_puntaje = $this->totalPuntaje($evaluacion);
         $promedios = $this->empresas_sector($empresa->sector_economico);
@@ -66,13 +99,18 @@ class Empresa_controller extends Controller
                 $count ++;
             }
         }
+
         $evaluacion_empleados = $empresa->get_score_options($id, 'Empleado');
+        $total_puntaje_empleados = $this->totalPuntaje($evaluacion_empleados);
         $evaluacion_practicantes = $empresa->get_score_options($id, 'Practicante');
+        $total_puntaje_practicantes = $this->totalPuntaje($evaluacion_practicantes);
         $total_promedio = round($suma / $count , 1);
         $cantidad_evaluaciones = $this->cantidad_evaluaciones($id);
         $total_evaluaciones = $cantidad_evaluaciones * $count;
         $total_puntaje_fraccionado = $this->totalPuntajeFraccionado($evaluacion);
         $recomendacion = $this->recomendacion($id);
+        $recomendacion_empleados = $this->recomendacion_tipo($id, 'Empleado');
+        $recomendacion_practicantes = $this->recomendacion_tipo($id, 'Practicante');
         return view('single',  array(
             'empresa' => $empresa, 
             'categorias' => $categorias, 
@@ -86,11 +124,63 @@ class Empresa_controller extends Controller
             'recomendacion' => $recomendacion,
             'evaluacion_empleados' => $evaluacion_empleados,
             'evaluacion_practicantes' => $evaluacion_practicantes,
-            'benes' => $benes
-        ));
+            'benes' => $benes,
+            'total_puntaje_empleados' => $total_puntaje_empleados,
+            'total_puntaje_practicantes' => $total_puntaje_practicantes,
+            'recomendacion_empleados' => $recomendacion_empleados,
+            'recomendacion_practicantes' => $recomendacion_practicantes,
+            'arrayBeneficios' => $arrayBeneficios,
+            'lista_beneficios' => $lista_beneficios,
+            'lista_beneficios_practicante' => $lista_beneficios_practicante,
+            'cantidad_empleados' => $cantidad_empleados,
+            'cantidad_practicantes' => $cantidad_practicantes,
+            'opiniones' => $opiniones
+        )); 
     }
 
-    
+    private function detalle_beneficios($arrayPosicion, $todos_beneficios, $tipo){
+        $contados = array_count_values($arrayPosicion);
+        $todos = array();
+        $otro = array();
+        $apoyo = array();
+        $bienestar = array();
+        $financiero = array();
+        foreach($todos_beneficios as $key => $value){
+            if($value->grupo == 'otro' AND $value->tipo == $tipo){
+                if(in_array($value->id, $arrayPosicion)){
+                    $otro[] = array("nombre" => $value->nombre, "img"=> $value->url_img, "cantidad"=> $contados[$value->id]);
+                }else{
+                    $otro[] = array("nombre" => $value->nombre, "img" => $value->url_img, "cantidad" => "");
+                }
+            }elseif($value->grupo == 'apoyo' AND $value->tipo == $tipo){
+                if(in_array($value->id, $arrayPosicion)){
+                    $apoyo[] = array("nombre" => $value->nombre, "img"=> $value->url_img, "cantidad"=> $contados[$value->id]);
+                }else{
+                    $apoyo[] = array("nombre" => $value->nombre, "img" => $value->url_img, "cantidad" => "");
+                }
+            }elseif($value->grupo == 'bienestar' AND $value->tipo == $tipo){
+                if(in_array($value->id, $arrayPosicion)){
+                    $bienestar[] = array("nombre"=> $value->nombre, "img"=> $value->url_img, "cantidad"=> $contados[$value->id]);
+                }else{
+                    $bienestar[] = array("nombre" => $value->nombre, "img" => $value->url_img, "cantidad" => "");
+                }
+            }elseif($value->grupo == 'financiero' AND $value->tipo == $tipo){
+                if(in_array($value->id, $arrayPosicion)){
+                    $financiero[] = array("nombre"=> $value->nombre, "img"=> $value->url_img, "cantidad"=> $contados[$value->id]);
+                }else{
+                    $financiero[] = array("nombre" => $value->nombre, "img" => $value->url_img, "cantidad" => "");
+                }
+            }
+        }
+
+        $todos["otros"] = $otro;
+        $todos["bienestar"] = $otro;
+        $todos["apoyo"] = $apoyo;
+        $todos["financiero"] = $financiero; 
+        
+
+        return $todos;
+    }
 
     private function cantidad_evaluaciones($id){
         
@@ -129,6 +219,31 @@ class Empresa_controller extends Controller
 
     private function recomendacion($id){
         $evaluaciones = DB::table('evaluaciones')->select('recomienda')->where('empresa_id', '=', $id)->get();
+        if($evaluaciones != []){
+            $count = 0;
+            $yes = 0;
+            
+            foreach($evaluaciones as $key => $value){
+                if($value != NULL){
+                    $count++;
+                    if($value == "Si"){
+                        $yes ++;
+                    }
+                }
+            }
+            if($yes != 0){
+                $procentaje = round((($yes / $count)* 1000)/100);
+            }else{
+                $porcentaje = 0;
+            }
+                $result  = $porcentaje;
+        }
+
+        return $result;
+    }
+
+    private function recomendacion_tipo($id, $tipo){
+        $evaluaciones = DB::table('evaluaciones')->select('recomienda')->where('empresa_id', '=', $id)->where('posicion', '=', $tipo)->get();
         if($evaluaciones != []){
             $count = 0;
             $yes = 0;
@@ -208,6 +323,17 @@ class Empresa_controller extends Controller
 
         return $fraccionados;
 
+    }
+
+    private function grupo_beneficios($datos, $tipo, $grupo){
+        $results = array();
+        foreach($datos as $key => $value){
+            if($value->tipo == $tipo && $value->grupo == $grupo){
+                $results[] = $value;
+            }
+        }
+
+        return $results;
     }
 
     private function empresas_sector($sector){
@@ -629,6 +755,7 @@ class Empresa_controller extends Controller
         return view('filtro_empresa',  array('empresas' =>$results));
                 
     }
+
 
     
 }

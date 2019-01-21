@@ -7,6 +7,10 @@ body{
   color: #707070
 }
 
+.single-body{
+  background-color: #f6f6f6
+}
+
 a{
   color: inherit;
 }
@@ -820,6 +824,7 @@ box-shadow: -2px 10px 15px -9px rgba(0,0,0,0.24);
 .box-two-two{
   padding: 50px 40px 30px 40px;
   text-align: center;
+  width: 45%
 }
 
 .box-two-two h4{
@@ -949,6 +954,11 @@ box-shadow: -2px 10px 15px -9px rgba(0,0,0,0.24);
   font-size: 14px;
   color: #dadada;
   margin-bottom: 5px
+}
+
+.content-six-box-two ul li.orange-title{
+  font-weight: bold;
+  color: #ffa041
 }
 
 .main-content-box-one-one,
@@ -1376,6 +1386,21 @@ footer.footer{
 
 .datos-practicantes{
   display: none
+}
+
+.panel-ambiente-box-practicante{
+  display: none;
+}
+
+.sidebar{
+  will-change: min-height;
+  width: 25%;
+}
+
+.content-profile-hero{
+  transform: translate(0, 0); /* For browsers don't support translate3d. */
+  transform: translate3d(0, 0, 0);
+  will-change: position, transform;
 }
 
 /* ***********************END SINGLE PAGE*********************** */
