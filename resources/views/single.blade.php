@@ -552,6 +552,21 @@
           <h4>Conoce los que dicen los empleados</h4>
         </div>
         @foreach($opiniones as $key => $value)
+          @foreach($value as $key => $item)
+            @if(count((array)$item) > 1)
+                @php
+                    $evalua = $item->evalua;
+                    $departamento = $item->departamento;
+                    $date = $item->date;
+                    $titulo = $item->titulo;
+                    $pro = $item->pro;
+                    $contra = $item->contra;
+                    $recomienda = $item->recomienda;
+                    $mejoras = $item->mejoras;
+                @endphp
+              @break
+            @endif
+          @endforeach
           <div class="content-area-nine">
             <div id="accordion">
               <div class="card showing">
@@ -572,15 +587,15 @@
                         <div class="number"><p>4.2</p></div>
                       </div>
                       <div class="box-three">
-                        <div class="content"><p>{{$value[1]->evalua}} | {{$value[1]->departamento}}</p></div>
+                        <div class="content"><p>{{$evalua}} | {{$departamento}}</p></div>
                       </div>
                       <div class="box-four">
-                      <div class="date"><p>{{date('d/m/Y', strtotime($value[1]->date))}}</p></div>
+                      <div class="date"><p>{{date('d/m/Y', strtotime($date))}}</p></div>
                       </div>
                     </div>
                     <div class="card-header-box-two">
                       <div class="card-header-excerpt">
-                        <p>{{$value[1]->titulo}}</p>
+                        <p>{{$titulo}}</p>
                       </div>
                       <button class="btn btn-link button-more" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         <i class="fas fa-plus"></i>
@@ -597,17 +612,17 @@
                             <h4>Ambiente laboral</h4>
                           </div>
                           <div class="content">
-                            @foreach($value as $key => $n)
-                              @if($n->categoriaID == 1)
+                            @for($i = 0; count($value)-1 > $i; $i++)
+                              @if($value[$i]->categoriaID == 1)
                               <div class="item-ambiente">
-                                <div class="title"><p>{{$n->nombre_categoria}}</p></div>
+                                <div class="title"><p>{{$value[$i]->nombre_categoria}}</p></div>
                                 <div class="stars">
-                                  {{get_rating($n->puntaje)}}
+                                  {{get_rating($value[$i]->puntaje)}}
                                 </div>
-                                <div class="number"><p>{{$n->puntaje}}</p></div>
+                                <div class="number"><p>{{$value[$i]->puntaje}}</p></div>
                               </div>
                               @endif
-                            @endforeach
+                            @endfor
                           </div>
                         </div>
                         <div class="box-one-one">
@@ -615,17 +630,17 @@
                             <h4>Condiciones laborales</h4>
                           </div>
                           <div class="content">
-                              @foreach($value as $key => $n)
-                              @if($n->categoriaID == 2)
+                              @for($i = 0; count($value)-1 > $i; $i++)
+                              @if($value[$i]->categoriaID == 2)
                               <div class="item-ambiente">
-                                <div class="title"><p>{{$n->nombre_categoria}}</p></div>
+                                <div class="title"><p>{{$value[$i]->nombre_categoria}}</p></div>
                                 <div class="stars">
-                                  {{get_rating($n->puntaje)}}
+                                  {{get_rating($value[$i]->puntaje)}}
                                 </div>
-                                <div class="number"><p>{{$n->puntaje}}</p></div>
+                                <div class="number"><p>{{$value[$i]->puntaje}}</p></div>
                               </div>
                               @endif
-                            @endforeach
+                            @endfor
                           </div>
                         </div>
                       </div>
@@ -653,7 +668,11 @@
                             </div>
                             <div class="input-group">
                               <span>Opciones de mejorar</span>
-                              <input type="text" disabled placeholder="No hay opinion disponible">
+                              @if($mejoras == NULL)
+                                <input type="text" disabled placeholder="No hay opinion disponible">
+                              @else
+                                <input type="text" disabled value="{{$mejoras}}">
+                              @endif
                             </div>
                           </div>
                         </div>
@@ -662,26 +681,19 @@
                         <div class="box-three-box">
                           <div class="pros">
                             <span>Pro</span>
-                            @foreach($value as $key => $n)
-
-                              @if($n->pro != null)
-                                <textarea name="" id="" disabled cols="30" rows="10">{{$n->pro}}</textarea>
+                              @if($pro != null)
+                                <textarea name="" id="" disabled cols="30" rows="10">{{$pro}}</textarea>
                               @else
                                 <textarea name="" id="" disabled cols="30" rows="10">no hay opinion disponible</textarea>
                               @endif
-                              @if($key == 0) @break @endif
-                            @endforeach
                           </div>
                           <div class="contra">
                             <span>Contra</span>
-                            @foreach($value as $key => $n)
-                              @if($n->contra != null)
-                                <textarea name="" id="" disabled cols="30" rows="10">{{$n->contra}}</textarea>
+                              @if($contra != null)
+                                <textarea name="" id="" disabled cols="30" rows="10">{{$contra}}</textarea>
                               @else
                                 <textarea name="" id="" disabled cols="30" rows="10">no hay opinion disponible</textarea>
                               @endif
-                              @if($key == 0) @break @endif
-                            @endforeach
                           </div>
                         </div>
                       </div>
@@ -691,35 +703,24 @@
                           <div class="content">
                             <div class="box-icons">
                               <div class="icons-commun">
-                                
-                                <div class="icon-commun-box" data-toggle="tooltip" data-placement="top" title="Ejemplo">
-
-                                </div>
-                                <div class="icon-commun-box" data-toggle="tooltip" data-placement="top" title="Ejemplo">
-
-                                </div>
-                                <div class="icon-commun-box" data-toggle="tooltip" data-placement="top" title="Ejemplo">
-
-                                </div>
-                                <div class="icon-commun-box" data-toggle="tooltip" data-placement="top" title="Ejemplo">
-
-                                </div>
-                                <div class="icon-commun-box" data-toggle="tooltip" data-placement="top" title="Ejemplo">
-
-                                </div>
-                                <div class="icon-commun-box" data-toggle="tooltip" data-placement="top" title="Ejemplo">
-
-                                </div>
-                                <div class="icon-commun-box" data-toggle="tooltip" data-placement="top" title="Ejemplo">
-
-                                </div>
-                                <div class="icon-commun-box" data-toggle="tooltip" data-placement="top" title="Ejemplo">
-
-                                </div>
+                                @if($value[count($value)-1] != [])
+                                  @foreach($value[count($value)-1] as $item)
+                                  <div class="icon-commun-box" data-toggle="tooltip" data-placement="top" title="{{$item->nombre}}">
+                                    <img width="20" src="/img/icons/{{$item->url_img}}" alt="">
+                                  </div>
+                                  @endforeach
+                                @endif
                               </div>
                             </div>
                             <div class="box-result">
-                              <p>Recomienda esta empresa <i class="fas fa-thumbs-up"></i></p>
+                              @foreach($value as $val)
+                                @if($recomienda == "Si")
+                                  <p class="text-success">Recomienda esta empresa <i class="fas fa-thumbs-up"></i></p>
+                                @elseif($recomienda == "No")
+                                  <p class="text-danger">No recomienda esta empresa <i class="fas fa-thumbs-down"></i></p>
+                                @endif
+                                @break
+                              @endforeach
                             </div>
                             <div class="box-options">
                               <p>Te pareció valiosa esta evaluación</p>

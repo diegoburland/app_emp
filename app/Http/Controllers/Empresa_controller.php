@@ -60,7 +60,8 @@ class Empresa_controller extends Controller
 
         $evaluacion = $empresa->get_score($id);
         $opiniones = $empresa->score_individual($id);
-        //dd($opiniones);
+        // dd($opiniones);
+
         foreach($benes_grupo as $key => $value){
             if($value->posicion == "Practicante" AND $value->tipo == 2){
                 $arrayPosicionPracticante[] = $value->bene_id;
