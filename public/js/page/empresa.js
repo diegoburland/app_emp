@@ -103,6 +103,115 @@ $(document).ready(function() {
 
     });
 
+    function successMessage(id){
+
+        $('#message' + id).empty().hide().append(
+            `<div class="alert alert-dismissible alert-success alert-si">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Gracias!</strong> por tu valoracion.
+            </div>`).fadeIn();
+
+        setTimeout(function(){
+            $('#message' + id).fadeOut('slow');
+        }, 3000);
+    }
+
+    function successMessage2(id){
+
+        $('#message' + id).empty().hide().append(
+            `<div class="alert alert-dismissible alert-success alert-si">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Gracias!</strong> por tu valoracion.
+            </div>`).fadeIn();
+
+        setTimeout(function(){
+            $('#message' + id).fadeOut('slow');
+        }, 3000);
+    }
+
+    //AJAX PARA EL BOTON DE NO VALIOSA
+
+    $('.option-yes').on('click', function(){
+        let id = $(this).attr('index');
+        let token = $('#token').val();
+
+        $(this).css('background-color', '#66a960');
+        $(this).parent().find('button').prop('disabled', 'disabled').css('cursor', 'no-drop');
+
+        $.ajax({
+            url: '/api/v1/recomienda',
+            headers : {'X-CSRF-TOKEN': token},
+            type : 'POST',
+            dataType : 'json',
+            data : {
+                id: id
+            },
+            success: function(res){
+
+                if(res.success == 200){
+                    let selector = '#yes'+res.id;
+                    $(selector).html(res.value);
+                    successMessage(res.id);
+                }else if(res.success == 400){
+                    $('#message' + res.id).hide().append(
+                        `<div class="alert alert-dismissible alert-danger alert-no">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Disculpa!</strong> Ha ocurrido un error.
+                    </div>`).fadeIn();
+
+                }else{
+                    alert("hola");
+                }
+                
+            }
+
+        })
+    })
+
+    //AJAX PARA EL BOTON DE NO VALIOSA
+
+    $('.option-no').on('click', function(){
+
+        let id = $(this).attr('index');
+        let token = $('#token').val();
+
+        $(this).css('background-color', '#ff4444');
+        $(this).parent().find('button').prop('disabled', 'disabled').css('cursor', 'no-drop');
+        $.ajax({
+            url: '/api/v1/norecomienda',
+            headers : {'X-CSRF-TOKEN': token},
+            type : 'POST',
+            dataType : 'json',
+            data : {
+                id: id
+            },
+            success: function(res){
+                console.log(res);
+                if(res.success == 200){
+                    let selector = '#no'+res.id;
+                    $(selector).html(res.value);
+
+                    successMessage2(res.id);
+                }else if(res.success == 400){
+                    $('#message' + res.id).hide().append(
+                        `<div class="alert alert-dismissible alert-danger alert-no">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Disculpa!</strong> Ha ocurrido un error.
+                    </div>`).fadeIn();
+
+                }else{
+                    alert("hola");
+                }
+                
+            }
+
+        })
+    })
+
+    $('.box-sticky-two i').on('click', function(){
+       $('#selectCity').click()
+    })
+
 
 });
 

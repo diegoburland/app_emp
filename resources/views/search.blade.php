@@ -7,7 +7,9 @@
   <div class="hero-navbar-box">
     <div class="hero-navbar-box-one">
       <div class="hnbo-box ">
-        <img class="img-fluid" src="img/transparente1-k.png" alt="">
+          <a href="{{URL::to('/')}}">
+            <img class="img-fluid" src="/img/transparente1-k.png" alt="">
+          </a>
       </div>
     </div>
     <div class="hero-navbar-box-two">
@@ -45,10 +47,12 @@
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               </div>
               <div class="box-sticky-two">
-                <i class="fas fa-angle-down"></i>
-                <select name="" id="">
+                {{-- <i class="fas fa-angle-down"></i> --}}
+                <select name="" id="selectCity">
                   <option value="" disabled selected>Ubicación <img src="http://www.clker.com/cliparts/y/m/X/o/s/R/down-arrow-circle-md.png" width="20" height="20" alt=""></option>
-                  <option value="">Medellín</option>
+                  @foreach($departamentos as $key => $value)
+                <option value="{{$value->id}}">{{$value->nombre}}</option>
+                  @endforeach
                 </select>
               </div>
               <div class="box-sticky-three">

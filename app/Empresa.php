@@ -28,13 +28,31 @@ class Empresa extends Model
             ->join('items', 'items.id', '=', 'eval_items.item_id')
             ->select('items.id', 'items.nombre', 'items.categoria_id', 
             DB::raw('round((sum(eval_items.puntaje)/count(items.id)), 2 ) as promedio'))
-            ->where('evaluaciones.empresa_id', '=', $id)
+            ->where('evaluaciones.empresa_id', '=', $id)->where('evaluaciones.posicion', '=', 'Practicante')->orWhere('evaluaciones.posicion','Empleado')
             ->groupBy('items.id')->get();
        
 
-
+        // dd($evaluaciones);
         return $evaluaciones;
-    }
+    } 
+
+    // public function get_score($id){
+    	
+        
+    //     $results = array();
+
+    //     $evaluaciones = DB::table('evaluaciones')
+    //         ->join('eval_items', 'eval_items.evaluacion_id', '=', 'evaluaciones.id')
+    //         ->join('items', 'items.id', '=', 'eval_items.item_id')
+    //         ->select('items.id', 'items.nombre', 'items.categoria_id', 
+    //         DB::raw('round((sum(eval_items.puntaje)/count(items.id)), 2 ) as promedio'))
+    //         ->where('evaluaciones.empresa_id', '=', $id)
+    //         ->groupBy('items.id')->get();
+       
+
+
+    //     return $evaluaciones;
+    // } 
 
     public function score_individual($id){
         $evaluaciones = DB::table('evaluaciones')
@@ -47,7 +65,7 @@ class Empresa extends Model
             $eval_items = DB::table('eval_items')
             ->join('evaluaciones', 'evaluaciones.id', '=', 'eval_items.evaluacion_id')
             ->join('items', 'items.id', '=', 'eval_items.item_id')
-            ->select('evaluaciones.id','evaluaciones.titulo','evaluaciones.mejoras','evaluaciones.motivo', 'evaluaciones.porque','evaluaciones.comentarios','evaluaciones.titulo','evaluaciones.recomienda','evaluaciones.created_at as date','eval_items.puntaje', 'eval_items.comentario','items.categoria_id as categoriaID','items.nombre as nombre_categoria', 'evaluaciones.departamento', 'evaluaciones.like as pro', 'evaluaciones.no_like as contra',
+            ->select('evaluaciones.id','evaluaciones.titulo','evaluaciones.mejoras','evaluaciones.motivo', 'evaluaciones.porque','evaluaciones.comentarios','evaluaciones.titulo','evaluaciones.recomienda','evaluaciones.si_valiosa','evaluaciones.no_valiosa','evaluaciones.created_at as date','eval_items.puntaje', 'eval_items.comentario','items.categoria_id as categoriaID','items.nombre as nombre_categoria', 'evaluaciones.departamento', 'evaluaciones.like as pro', 'evaluaciones.no_like as contra',
             'evaluaciones.evalua')
             ->where('eval_items.evaluacion_id', '=', $value->main)->whereIn('items.categoria_id', [1,2])
             ->get();

@@ -7,7 +7,9 @@
   <div class="hero-navbar-box">
     <div class="hero-navbar-box-one">
       <div class="hnbo-box ">
-        <img class="img-fluid" src="/img/transparente1-k.png" alt="">
+        <a href="{{URL::to('/')}}">
+          <img class="img-fluid" src="/img/transparente1-k.png" alt="">
+        </a>
       </div>
     </div>
     <div class="hero-navbar-box-search">
@@ -65,7 +67,7 @@
                 <p>Conoce como trabajar para</p>
               </div>
               <div class="profile-content-two title-single-box">
-                {{fix_titulo($empresa->razon_social)}}{{-- {{$empresa->razon_social}} --}}
+                {{fix_titulo($empresa->razon_social)}}
               </div>
               <div class="profile-content-two">
                 <small>{{$empresa->sector_economico}}</small>
@@ -498,17 +500,17 @@
                           </div>
                           <div class="content">
                             <ul>
-                                @for($i = 0; count($lista_beneficios['bienestar'])> $i; $i++)
-                                @if($lista_beneficios['bienestar'][$i]['cantidad'] != "")
+                                @for($i = 0; count($lista_beneficios_practicante['bienestar'])> $i; $i++)
+                                @if($lista_beneficios_practicante['bienestar'][$i]['cantidad'] != "")
                                   <li class="orange-title">
-                                  <img width="20" src="/img/icons/{{$lista_beneficios['bienestar'][$i]['img']}}" alt="">
-                                  {{$lista_beneficios['bienestar'][$i]['nombre']}} ({{$lista_beneficios['bienestar'][$i]['cantidad']}} de {{$cantidad_practicantes}})
+                                  <img width="20" src="/img/icons/{{$lista_beneficios_practicante['bienestar'][$i]['img']}}" alt="">
+                                  {{$lista_beneficios_practicante['bienestar'][$i]['nombre']}} ({{$lista_beneficios_practicante['bienestar'][$i]['cantidad']}} de {{$cantidad_practicantes}})
                                   </li>
                                   
                                 @else
                                   <li>
-                                    <img width="20" src="/img/icons/{{$lista_beneficios['bienestar'][$i]['img']}}" alt="">
-                                    {{$lista_beneficios['bienestar'][$i]['nombre']}}
+                                    <img width="20" src="/img/icons/{{$lista_beneficios_practicante['bienestar'][$i]['img']}}" alt="">
+                                    {{$lista_beneficios_practicante['bienestar'][$i]['nombre']}}
                                   </li>
                                 @endif
                                 @endfor
@@ -555,6 +557,8 @@
           @foreach($value as $key => $item)
             @if(count((array)$item) > 1)
                 @php
+                    $evalua = "";
+                    $id = $item->id;
                     $evalua = $item->evalua;
                     $departamento = $item->departamento;
                     $date = $item->date;
@@ -563,6 +567,8 @@
                     $contra = $item->contra;
                     $recomienda = $item->recomienda;
                     $mejoras = $item->mejoras;
+                    $si_valiosa = $item->si_valiosa;
+                    $no_valiosa = $item->no_valiosa;
                 @endphp
               @break
             @endif
@@ -725,11 +731,18 @@
                             <div class="box-options">
                               <p>Te pareció valiosa esta evaluación</p>
                               <div class="pane-options">
-                                <div class="result-yes"><p>26</p></div>
+                                <div class="result-yes"><p id="yes{{$id}}">{{$si_valiosa}}</p></div>
                                 <div class="si-or-no">
-                                  <button type="button" class="option-yes">Si</button><button type="button" class="option-no">No</button>
+                                  <form action="" method="post">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+                                    <button type="button" index="{{$id}}" class="option-yes">Si</button>
+                                    <button type="button" index="{{$id}}" class="option-no">No</button>
+                                  </form>
                                 </div>
-                                <div class="result-no"><p>02</p></div>
+                              <div class="result-no"><p id="no{{$id}}">{{$no_valiosa}}</p></div>
+                              </div>
+                              <div class="panel-message" id="message{{$id}}">
+
                               </div>
                             </div>
                           </div>

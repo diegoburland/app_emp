@@ -60,7 +60,7 @@ class Empresa_controller extends Controller
 
         $evaluacion = $empresa->get_score($id);
         $opiniones = $empresa->score_individual($id);
-        // dd($opiniones);
+       
 
         foreach($benes_grupo as $key => $value){
             if($value->posicion == "Practicante" AND $value->tipo == 2){
@@ -76,7 +76,7 @@ class Empresa_controller extends Controller
 
         $lista_beneficios = $this->detalle_beneficios($arrayPosicionEmpleado, $todos_beneficios, 1);
         $lista_beneficios_practicante = $this->detalle_beneficios($arrayPosicionPracticante, $todos_beneficios, 2);
-        
+        // dd($lista_beneficios_practicante);
         foreach($arrays_beneficio as $key => $value){
 
             $arrayBeneficios[] = $value->bene_id;
@@ -86,6 +86,7 @@ class Empresa_controller extends Controller
         ($empresa->total_empleados > 199)? $tamano_empresa = "Grande": $tamano_empresa = "Mediana";
         $total_puntaje = $this->totalPuntaje($evaluacion);
         $promedios = $this->empresas_sector($empresa->sector_economico);
+        // dd($promedios);
         $evaluaciones = array();
 
         foreach ($promedios as $key => $promedio){
@@ -175,7 +176,7 @@ class Empresa_controller extends Controller
         }
 
         $todos["otros"] = $otro;
-        $todos["bienestar"] = $otro;
+        $todos["bienestar"] = $bienestar;
         $todos["apoyo"] = $apoyo;
         $todos["financiero"] = $financiero; 
         
@@ -199,6 +200,26 @@ class Empresa_controller extends Controller
     }
 
     private function totalPuntaje($evaluacion){
+
+        $total = 0;
+        $count = 0;
+        foreach ($evaluacion as $key => $value) {
+            $total = $total + $value->promedio;
+            $count = $count + 1;
+        }
+        if($total != 0){
+            $total_puntaje = round($total / $count, 2);
+        }else{
+            $total_puntaje = 0;
+        }
+
+        
+
+        return $total_puntaje;
+
+    }
+
+    private function totalPuntajeSector($evaluacion){
 
         $total = 0;
         $count = 0;
@@ -339,8 +360,26 @@ class Empresa_controller extends Controller
 
     private function empresas_sector($sector){
         $results = array();
-        $results = Empresa::select('id')->where('sector_economico', '=', $sector)->get();
-        return $results;
+        $empresa = new Empresa();
+        $results = DB::table('empresas')->select('id')->where('sector_economico', '=', $sector)->get();
+        $promedios = array();
+        // foreach($results as $key => $value):
+        //     $promedios[] = $empresa->get_score($value->id);
+
+        // endforeach;
+        $array = array();
+        // foreach($promedios as $key => $value):
+        //     $array[] = $this->totalPuntaje($value);
+
+        // endforeach;
+
+        // foreach($array as $key => $value):
+            
+             
+
+
+        // endforeach;
+        
     }
 
     public function save_empresa(Request $request){

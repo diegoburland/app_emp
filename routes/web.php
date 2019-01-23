@@ -13,11 +13,11 @@
 
 use Illuminate\Support\Facades\Input;
 
-Route::get('/', array('as'=> 'index', 'uses'=> 'Pagina_controller@index'));
+Route::get('/', array('as'=> 'index', 'uses'=> 'Home_controller@index'));
 
 Route::get('/api/v1/encontrar_empresa_principal', 'Empresa_controller@get_empresa');
 
-Route::get('busqueda/{id}', 'Empresa_controller@datos_empresa');
+Route::match(array('GET', 'POST'),'busqueda/{id}', 'Empresa_controller@datos_empresa');
     
 Route::get('retro/{id}', 'Retro_controller@show')->name('retro');
 
@@ -94,4 +94,7 @@ Route::get('clasificacion', 'Empresa_controller@getClasificacion');
 
 Route::get('empresa_editar/{idEmpresa}', 'Empresa_controller@mostrar_empresa');
 
+Route::post('/api/v1/recomienda', 'Evaluacion_controller@update_valiosa_si');
+
+Route::post('/api/v1/norecomienda', 'Evaluacion_controller@update_valiosa_no');
 

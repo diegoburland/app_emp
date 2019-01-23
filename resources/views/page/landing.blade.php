@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/owl.carousel.min.css">
         <link href="/css/style.css?v={{ time() }}" rel="stylesheet" type="text/css"> 
-        <link rel="stylesheet" media="screen and (max-width: 768px)" href="css/responsive.css?v={{ time() }}"/>
+        <link rel="stylesheet" media="screen and (max-width: 768px)" href="/css/responsive.css?v={{ time() }}"/>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127067149-1"></script>
         <script>

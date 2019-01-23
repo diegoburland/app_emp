@@ -20,6 +20,40 @@ use Illuminate\Support\Facades\Log;
 
 class Evaluacion_controller extends Controller {
 
+    public function update_valiosa_si(Request $request){
+        $obj = array();
+        if($request->ajax()){
+            $eval = Evaluacion::find($request->id);
+            $eval->si_valiosa = $eval->si_valiosa + 1;
+            $eval->save();
+            $obj = array('success' => 200, 'id'=> $request->id, 'value' => $eval->si_valiosa, 'ip' => $request->ip());
+            return json_encode($obj);
+
+        }else{
+            $obj = ['success' => 400, 'id' => '', 'value' => $eval->si_valiosa, 'ip' => $request->ip()];
+            return json_encode($obj);
+        }
+
+    }
+
+    public function update_valiosa_no(Request $request){
+        
+        $obj = array();
+        if($request->ajax()){
+            $eval = Evaluacion::find($request->id);
+            $eval->no_valiosa = $eval->no_valiosa + 1;
+            $eval->save();
+            $obj = array('success' => 200, 'id'=> $request->id, 'value' => $eval->no_valiosa);
+            return json_encode($obj);
+
+        }else{
+            $obj = ['success' => 400, 'id' => '', 'value' => $eval->no_valiosa];
+            return json_encode($obj);
+        }
+
+    }
+
+
     public function store(Request $request) {
 
 
