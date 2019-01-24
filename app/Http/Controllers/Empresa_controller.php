@@ -363,22 +363,24 @@ class Empresa_controller extends Controller
         $empresa = new Empresa();
         $results = DB::table('empresas')->select('id')->where('sector_economico', '=', $sector)->get();
         $promedios = array();
-        // foreach($results as $key => $value):
-        //     $promedios[] = $empresa->get_score($value->id);
-
-        // endforeach;
+        foreach($results as $key => $value):
+            $promedios[] = $empresa->get_score($value->id);
+        endforeach;
         $array = array();
-        // foreach($promedios as $key => $value):
-        //     $array[] = $this->totalPuntaje($value);
+        foreach($promedios as $key => $value):
+            $array[] = $this->totalPuntaje($value);
+        endforeach;
+        $total = 0;
+        $count = 0;
+        foreach($array as $key => $value):
+            $count++;
+            $total = $total + $value;
+        endforeach;
+        $promedioSector = array();
+        $promedioSector['promedio'] = round($total / $count, 2);
+        $promedioSector['numero_evaluaciones'] = $count; 
 
-        // endforeach;
-
-        // foreach($array as $key => $value):
-            
-             
-
-
-        // endforeach;
+        return $promedioSector;
         
     }
 
